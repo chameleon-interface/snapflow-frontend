@@ -2,9 +2,11 @@
   "name": "snapflow-frontend",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.28.1",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:production": "next build",
     "start": "next start",
     "lint": "eslint"
   },
