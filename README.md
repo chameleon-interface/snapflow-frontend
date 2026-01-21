@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+﻿# SnapFlow Frontend
 
-## Getting Started
+> Документация начальная и будет обновляться по мере развития проекта.
 
-First, run the development server:
+Фронтенд SnapFlow на Next.js 16 (App Router). Проект на ранней стадии и
+использует Feature-Sliced Design (FSD) для доменной структуры; роутинг Next.js
+остаётся в `src/app`.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Технологический стек
+
+- **Фреймворк:** Next.js 16 (App Router), React 19
+- **Язык:** TypeScript
+- **Состояние и формы:** TanStack Query, React Hook Form
+- **Качество кода:** ESLint (flat config), Prettier, Stylelint
+- **Git-хуки:** Husky + lint-staged
+
+## Структура проекта
+
+```text
+src/
+  app/          Next.js routing shell (segments, layouts)
+  pages-layer/  FSD-страницы (сборка UI из widgets/features)
+  widgets/    крупные блоки интерфейса
+  features/   пользовательские сценарии
+  entities/   доменные сущности
+  shared/     общие компоненты, утилиты, стили
+public/       статические ассеты
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ключевые конфиги в корне: `next.config.ts`, `tsconfig.json`, `eslint.config.mjs`,
+`.stylelintrc.json`, `.prettierrc`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`pages-layer` назван так, чтобы не конфликтовать с Next.js Pages Router
+(`src/pages`).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Маршруты (плейсхолдеры)
 
-## Learn More
+Маршруты находятся в `src/app/<route>/page.tsx` и рендерят FSD-страницы из
+`src/pages-layer/<route>/ui`.
 
-To learn more about Next.js, take a look at the following resources:
+- **Auth:** `/sign-up`, `/sign-in`
+- **Профиль и настройки:** `/profile`, `/settings`
+- **Лента и коммуникации:** `/feed`, `/messenger`, `/search`
+- **Дополнительно:** `/statistics`, `/favorites`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Скрипты
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm dev           # запуск dev-сервера
+pnpm build         # сборка для production
+pnpm start         # запуск production-сборки
+pnpm lint          # ESLint (нулевые warnings)
+pnpm format:check  # проверка Prettier
+pnpm format:write  # форматирование Prettier
+pnpm stylelint     # линт CSS/SCSS
+```
 
-## Deploy on Vercel
+## Правила FSD
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `src/app` композирует страницы и задаёт роутинг.
+- `src/pages-layer/*` импортирует из `widgets`, `features`, `entities`, `shared`.
+- Нижние слои не импортируют верхние (например, `shared` → `features` запрещён).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Роутинг и FSD
+
+- `src/app` содержит только роуты, layout и минимальный glue-код.
+- `src/pages-layer/*` хранит сборку экранов и не знает про Next.js API.
+- Бизнес-логика живёт ниже: `features` и `entities`.
+- Общие UI/утилиты — в `shared`.
+
+## Заметки по разработке
+
+- Используйте `pnpm` (см. `packageManager` в `package.json`).
+- Pre-commit хуки запускают `lint-staged` для форматирования и линта
+  застейдженных файлов.

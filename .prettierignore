@@ -1,0 +1,9 @@
+# Ignore artifacts:
+.next
+node_modules
+coverage
+public
+.env*
+
+
+
