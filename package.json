@@ -8,19 +8,37 @@
     "build": "next build",
     "build:production": "next build",
     "start": "next start",
-    "lint": "eslint"
+
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+
+    "format:write": "prettier \"src/**/*.{js,ts,jsx,tsx}\" --write",
+    "format:check": "prettier \"src/**/*.{js,ts,jsx,tsx}\" --check",
+
+    "stylelint": "stylelint \"**/*.{css,scss,module.css,module.scss}\"",
+    "stylelint:fix": "stylelint \"**/*.{css,scss,module.css,module.scss}\" --fix"
   },
   "dependencies": {
+    "@tanstack/react-query": "5.90.19",
     "next": "16.1.4",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "react-hook-form": "7.71.1"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "5.91.3",
     "@types/node": "20",
     "@types/react": "19",
     "@types/react-dom": "19",
     "eslint": "9",
     "eslint-config-next": "16.1.4",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-prettier": "5.5.5",
+    "prettier": "3.8.0",
+    "stylelint": "17.0.0",
+    "stylelint-config-css-modules": "4.5.1",
+    "stylelint-config-prettier": "9.0.5",
+    "stylelint-config-standard": "40.0.0",
     "typescript": "5"
   }
 }
