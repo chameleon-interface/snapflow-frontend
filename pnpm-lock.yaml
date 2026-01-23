@@ -27,14 +27,14 @@ importers:
         specifier: 5.91.3
         version: 5.91.3(eslint@9.39.2)(typescript@5.9.3)
       '@types/node':
-        specifier: '20'
-        version: 20.19.30
+        specifier: ^25.0.10
+        version: 25.0.10
       '@types/react':
-        specifier: '19'
-        version: 19.2.8
+        specifier: ^19.2.9
+        version: 19.2.9
       '@types/react-dom':
         specifier: '19'
-        version: 19.2.3(@types/react@19.2.8)
+        version: 19.2.3(@types/react@19.2.9)
       eslint:
         specifier: '9'
         version: 9.39.2
@@ -51,17 +51,14 @@ importers:
         specifier: 16.2.7
         version: 16.2.7
       prettier:
-        specifier: 3.8.0
-        version: 3.8.0
+        specifier: 3.8.1
+        version: 3.8.1
       stylelint:
         specifier: 17.0.0
         version: 17.0.0(typescript@5.9.3)
       stylelint-config-css-modules:
-        specifier: 4.5.1
-        version: 4.5.1(stylelint@17.0.0(typescript@5.9.3))
-      stylelint-config-prettier:
-        specifier: 9.0.5
-        version: 9.0.5(stylelint@17.0.0(typescript@5.9.3))
+        specifier: 4.6.0
+        version: 4.6.0(stylelint@17.0.0(typescript@5.9.3))
       stylelint-config-standard:
         specifier: 40.0.0
         version: 40.0.0(stylelint@17.0.0(typescript@5.9.3))
@@ -800,10 +797,10 @@ packages:
         integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==,
       }
 
-  '@types/node@20.19.30':
+  '@types/node@25.0.10':
     resolution:
       {
-        integrity: sha512-WJtwWJu7UdlvzEAUm484QNg5eAoq5QR08KDNx7g45Usrs2NtOPiX8ugDqmKdXkyL03rBqU5dYNYVQetEpBHq2g==,
+        integrity: sha512-zWW5KPngR/yvakJgGOmZ5vTBemDoSqF3AcV/LrO5u5wTWyEAVVh+IT39G4gtyAkh3CtTZs8aX/yRM82OfzHJRg==,
       }
 
   '@types/react-dom@19.2.3':
@@ -814,10 +811,10 @@ packages:
     peerDependencies:
       '@types/react': ^19.2.0
 
-  '@types/react@19.2.8':
+  '@types/react@19.2.9':
     resolution:
       {
-        integrity: sha512-3MbSL37jEchWZz2p2mjntRZtPt837ij10ApxKfgmXCTuHWagYg7iA5bqPw6C8BMPfwidlvfPI/fxOc42HLhcyg==,
+        integrity: sha512-Lpo8kgb/igvMIPeNV2rsYKTgaORYdO1XGVZ4Qz3akwOj0ySGYMPlQWa8BaLn0G63D1aSaAQ5ldR06wCpChQCjA==,
       }
 
   '@typescript-eslint/eslint-plugin@8.53.1':
@@ -2991,10 +2988,10 @@ packages:
       }
     engines: { node: '>= 0.8.0' }
 
-  prettier@3.8.0:
+  prettier@3.8.1:
     resolution:
       {
-        integrity: sha512-yEPsovQfpxYfgWNhCfECjG5AQaO+K3dp6XERmOepyPDVqcJm+bjyCVO3pmU+nAPe0N5dDvekfGezt/EIiRe1TA==,
+        integrity: sha512-UOnG6LftzbdaHZcKoPFtOcCKztrQ57WkHDeRD9t/PTQtmT0NHSeWWepj6pS0z/N7+08BHFDQVUrfmfMRcZwbMg==,
       }
     engines: { node: '>=14' }
     hasBin: true
@@ -3403,23 +3400,13 @@ packages:
       babel-plugin-macros:
         optional: true
 
-  stylelint-config-css-modules@4.5.1:
+  stylelint-config-css-modules@4.6.0:
     resolution:
       {
-        integrity: sha512-xRMvAOVWa8h3Dw2NmanJHuPqMUInmMoBy14kkJDT2xs2xevxl7WnQOe/nDAMvgf9NkodzKrhKZ97E61yQOKkDA==,
+        integrity: sha512-LIgfzNmpiwf/eDxQva2g1mj+mqDpvP1XwOKJC7DSWY/iCQAZdIKnY42jbXuY8thcFN4yM/uF1xfCyfd7fJKh6w==,
       }
     peerDependencies:
-      stylelint: ^14.5.1 || ^15.0.0 || ^16.0.0
-
-  stylelint-config-prettier@9.0.5:
-    resolution:
-      {
-        integrity: sha512-U44lELgLZhbAD/xy/vncZ2Pq8sh2TnpiPvo38Ifg9+zeioR+LAkHu0i6YORIOxFafZoVg0xqQwex6e6F25S5XA==,
-      }
-    engines: { node: '>= 12' }
-    hasBin: true
-    peerDependencies:
-      stylelint: '>= 11.x < 15'
+      stylelint: ^14.5.1 || ^15.0.0 || ^16.0.0 || ^17.0.0
 
   stylelint-config-recommended@18.0.0:
     resolution:
@@ -3439,14 +3426,14 @@ packages:
     peerDependencies:
       stylelint: ^17.0.0
 
-  stylelint-scss@6.14.0:
+  stylelint-scss@7.0.0:
     resolution:
       {
-        integrity: sha512-ZKmHMZolxeuYsnB+PCYrTpFce0/QWX9i9gh0hPXzp73WjuIMqUpzdQaBCrKoLWh6XtCFSaNDErkMPqdjy1/8aA==,
+        integrity: sha512-H88kCC+6Vtzj76NsC8rv6x/LW8slBzIbyeSjsKVlS+4qaEJoDrcJR4L+8JdrR2ORdTscrBzYWiiT2jq6leYR1Q==,
       }
-    engines: { node: '>=18.12.0' }
+    engines: { node: '>=20.19.0' }
     peerDependencies:
-      stylelint: ^16.8.2
+      stylelint: ^16.8.2 || ^17.0.0
 
   stylelint@17.0.0:
     resolution:
@@ -3592,10 +3579,10 @@ packages:
       }
     engines: { node: '>= 0.4' }
 
-  undici-types@6.21.0:
+  undici-types@7.16.0:
     resolution:
       {
-        integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==,
+        integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==,
       }
 
   unicorn-magic@0.4.0:
@@ -4148,15 +4135,15 @@ snapshots:
 
   '@types/json5@0.0.29': {}
 
-  '@types/node@20.19.30':
+  '@types/node@25.0.10':
     dependencies:
-      undici-types: 6.21.0
+      undici-types: 7.16.0
 
-  '@types/react-dom@19.2.3(@types/react@19.2.8)':
+  '@types/react-dom@19.2.3(@types/react@19.2.9)':
     dependencies:
-      '@types/react': 19.2.8
+      '@types/react': 19.2.9
 
-  '@types/react@19.2.8':
+  '@types/react@19.2.9':
     dependencies:
       csstype: 3.2.3
 
@@ -5573,7 +5560,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.8.0: {}
+  prettier@3.8.1: {}
 
   prop-types@15.8.1:
     dependencies:
@@ -5878,15 +5865,11 @@ snapshots:
     optionalDependencies:
       '@babel/core': 7.28.6
 
-  stylelint-config-css-modules@4.5.1(stylelint@17.0.0(typescript@5.9.3)):
+  stylelint-config-css-modules@4.6.0(stylelint@17.0.0(typescript@5.9.3)):
     dependencies:
       stylelint: 17.0.0(typescript@5.9.3)
     optionalDependencies:
-      stylelint-scss: 6.14.0(stylelint@17.0.0(typescript@5.9.3))
-
-  stylelint-config-prettier@9.0.5(stylelint@17.0.0(typescript@5.9.3)):
-    dependencies:
-      stylelint: 17.0.0(typescript@5.9.3)
+      stylelint-scss: 7.0.0(stylelint@17.0.0(typescript@5.9.3))
 
   stylelint-config-recommended@18.0.0(stylelint@17.0.0(typescript@5.9.3)):
     dependencies:
@@ -5897,7 +5880,7 @@ snapshots:
       stylelint: 17.0.0(typescript@5.9.3)
       stylelint-config-recommended: 18.0.0(stylelint@17.0.0(typescript@5.9.3))
 
-  stylelint-scss@6.14.0(stylelint@17.0.0(typescript@5.9.3)):
+  stylelint-scss@7.0.0(stylelint@17.0.0(typescript@5.9.3)):
     dependencies:
       css-tree: 3.1.0
       is-plain-object: 5.0.0
@@ -6056,7 +6039,7 @@ snapshots:
       has-symbols: 1.1.0
       which-boxed-primitive: 1.1.1
 
-  undici-types@6.21.0: {}
+  undici-types@7.16.0: {}
 
   unicorn-magic@0.4.0: {}
 
