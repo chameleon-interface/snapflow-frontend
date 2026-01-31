@@ -1,0 +1,20 @@
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --header-height: 60px;
+  --sidebar-width: 220px;
+  --container-width: 972px;
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+  color: var(--color-light-100);
+  background-color: var(--color-dark-700);
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}

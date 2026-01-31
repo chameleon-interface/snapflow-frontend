@@ -1,0 +1,28 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+}
+
+.menu li:nth-child(5) {
+  margin-bottom: 36px;
+}
+
+.link {
+  font-family: Inter, sans-serif;
+  color: var(--color-light-100);
+  transition: color 120ms ease-out;
+}
+
+.link:hover {
+  font-family: Inter, sans-serif;
+  color: var(--color-accent-500);
+}

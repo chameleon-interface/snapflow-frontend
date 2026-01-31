@@ -50,6 +50,7 @@
     "lint-staged": "16.2.7",
     "prettier": "3.8.1",
     "stylelint": "17.0.0",
+    "stylelint-config-clean-order": "8.0.0",
     "stylelint-config-css-modules": "4.6.0",
     "stylelint-config-standard": "40.0.0",
     "typescript": "5"
