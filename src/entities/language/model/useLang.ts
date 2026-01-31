@@ -1,45 +1,24 @@
-'use client';
+﻿'use client';
 
-import { useLocalStorage } from '@/shared/lib/hooks/useLocalStorage';
+import { useCallback } from 'react';
+import { useLocale } from 'next-intl';
+import { LOCALE_COOKIE } from '@/shared/config/i18n';
 import { DEFAULT_LANG, type LangCode } from '../config/languages';
 
-const LANG_STORAGE_KEY = 'lang';
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 
 /**
  * Hook for managing the current application language.
  *
- * Persists selected language to localStorage and synchronizes
- * state across browser tabs.
- *
- * @returns Tuple [lang, setLang]
- * - `lang` — current language code ('eng' | 'ru')
- * - `setLang` — function to change the language
- *
- * @example
- * ```tsx
- * const [lang, setLang] = useLang();
- *
- * return (
- *   <Select
- *     value={lang}
- *     onChange={setLang}
- *     options={LANG_OPTIONS}
- *   />
- * );
- * ```
- *
- * @example
- * ```tsx
- * // Use anywhere to get the current language
- * const [lang] = useLang();
- *
- * return <div>{lang === 'ru' ? 'Привет' : 'Hello'}</div>;
- * ```
- *
- * @see {@link useLocalStorage} — base hook for localStorage operations
- * @see {@link LangCode} — type for allowed language codes
+ * Persists selected language to a cookie for SSR/CSR consistency.
  */
 export function useLang() {
-  const [lang, setLang] = useLocalStorage(LANG_STORAGE_KEY, DEFAULT_LANG);
-  return [lang as LangCode, setLang] as const;
+  const locale = useLocale();
+  const lang = (locale as LangCode) ?? DEFAULT_LANG;
+
+  const setLang = useCallback((nextLang: LangCode) => {
+    document.cookie = `${LOCALE_COOKIE}=${nextLang}; path=/; max-age=${COOKIE_MAX_AGE}`;
+  }, []);
+
+  return [lang, setLang] as const;
 }

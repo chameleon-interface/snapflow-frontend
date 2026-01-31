@@ -1,12 +1,15 @@
-'use client';
+﻿'use client';
 
 import { Button } from 'snapflow-ui-kit';
 import { LogOutIcon } from 'snapflow-ui-kit/icons';
+import { useTranslations } from 'next-intl';
 import s from './LogoutButton.module.css';
 
 export const LogoutButton = () => {
+  const t = useTranslations('Auth');
+
   const handleLogout = () => {
-    // TODO: логика выхода
+    // TODO: add logout logic
   };
 
   return (
@@ -16,7 +19,7 @@ export const LogoutButton = () => {
       variant={'text'}
       onClick={handleLogout}
     >
-      Log Out
+      {t('logOut')}
     </Button>
   );
 };

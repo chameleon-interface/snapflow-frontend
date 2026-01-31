@@ -1,0 +1,29 @@
+{
+  "Auth": {
+    "logOut": "Log out",
+    "logIn": "Log in",
+    "signUp": "Sign up"
+  },
+  "Nav": {
+    "feed": "Feed",
+    "create": "Create",
+    "profile": "My profile",
+    "messenger": "Messenger",
+    "search": "Search",
+    "statistics": "Statistics",
+    "favorites": "Favorites"
+  },
+  "Pages": {
+    "mainTitle": "Main page",
+    "feedTitle": "Feed",
+    "favoritesTitle": "Favorites",
+    "profileTitle": "Profile",
+    "messengerTitle": "Messenger",
+    "searchTitle": "Search",
+    "statisticsTitle": "Statistics",
+    "settingsTitle": "Settings",
+    "signInTitle": "Sign In",
+    "signUpTitle": "Sign Up",
+    "placeholder": "Placeholder page."
+  }
+}

@@ -33,6 +33,6 @@
 }
 
 .buttonWrapper > button {
-  width: 100px;
-  padding-inline: 0;
+  min-width: 100px;
+  padding-inline: 5px;
 }

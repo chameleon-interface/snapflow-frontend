@@ -1,0 +1,29 @@
+{
+  "Auth": {
+    "logOut": "Выйти",
+    "logIn": "Войти",
+    "signUp": "Регистрация"
+  },
+  "Nav": {
+    "feed": "Лента",
+    "create": "Создать",
+    "profile": "Мой профиль",
+    "messenger": "Мессенджер",
+    "search": "Поиск",
+    "statistics": "Статистика",
+    "favorites": "Избранное"
+  },
+  "Pages": {
+    "mainTitle": "Главная страница",
+    "feedTitle": "Лента",
+    "favoritesTitle": "Избранное",
+    "profileTitle": "Профиль",
+    "messengerTitle": "Мессенджер",
+    "searchTitle": "Поиск",
+    "statisticsTitle": "Статистика",
+    "settingsTitle": "Настройки",
+    "signInTitle": "Вход",
+    "signUpTitle": "Регистрация",
+    "placeholder": "Страница-заглушка."
+  }
+}

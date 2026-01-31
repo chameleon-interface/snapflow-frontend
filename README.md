@@ -55,6 +55,35 @@ pnpm format:write  # форматирование Prettier
 pnpm stylelint     # линт CSS/SCSS
 ```
 
+## Переводы (i18n)
+
+Проект использует `next-intl`. Язык хранится в cookie `locale` и читается на
+сервере через `src/shared/config/i18n/request.ts`.
+
+Файлы переводов лежат в:
+
+```text
+src/shared/config/i18n/messages/
+  en.json
+  ru.json
+```
+
+Как работать с переводами:
+
+1. Добавь ключи в оба файла (`en.json` и `ru.json`).
+2. В Client Components используй `useTranslations`:
+   ```tsx
+   const t = useTranslations('Auth');
+   return <button>{t('logIn')}</button>;
+   ```
+3. В Server Components используй `getTranslations`:
+   ```tsx
+   const t = await getTranslations('Pages');
+   return <h1>{t('mainTitle')}</h1>;
+   ```
+4. Переключение языка — через `LanguageSwitcher`, оно пишет cookie и
+   делает `router.refresh()` для синхронизации SSR/CSR.
+
 ## Правила FSD
 
 - `src/app` композирует страницы и задаёт роутинг.

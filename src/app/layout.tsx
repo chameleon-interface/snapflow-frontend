@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import 'snapflow-ui-kit/styles.css';
 import './global.css';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 import { Header, Sidebar } from '@/widgets';
 import s from './layout.module.css';
 
@@ -24,20 +26,25 @@ export const metadata: Metadata = {
 // TODO: заменить на реальную проверку авторизации
 const isAuth = true;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang={locale} className={inter.variable}>
       <body>
-        <Header />
-        {isAuth && <Sidebar />}
-        <main className={`${s.main} ${isAuth ? s.withSidebar : ''}`}>
-          <div className={s.container}>{children}</div>
-        </main>
-        <div id="modal-root"></div>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Header />
+          {isAuth && <Sidebar />}
+          <main className={`${s.main} ${isAuth ? s.withSidebar : ''}`}>
+            <div className={s.container}>{children}</div>
+          </main>
+          <div id="modal-root"></div>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
