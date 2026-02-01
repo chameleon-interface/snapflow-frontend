@@ -1,4 +1,4 @@
-import { LogoutButton } from '@/features/auth';
+import { LogoutButton } from '@/features/auth/logout';
 import { NavMenu } from '../NavMenu/NavMenu';
 import s from './Sidebar.module.css';
 

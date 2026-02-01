@@ -65,6 +65,26 @@ return <h1>{t('mainTitle')}</h1>;
 - устанавливается cookie `locale`
 - вызывается `router.refresh()` для обновления SSR
 
+## Валидация форм
+
+Валидация строится на `zod`. Базовые поля и сообщения лежат в:
+
+```
+src/shared/lib/validation/
+  fields.ts        # переиспользуемые поля (email, password, username, etc.)
+  patterns.ts      # regex-паттерны и тексты ошибок
+  index.ts         # общий экспорт
+```
+
+Схемы форм живут рядом с фичами в `model/schema.ts`, например:
+
+```
+src/features/auth/**/model/schema.ts
+```
+
+Если нужна проверка на одноразовые почтовые домены — используется список
+`disposable-email-domains` в `patterns.ts` (обновляется через `pnpm`).
+
 ## Скрипты
 
 ```bash
