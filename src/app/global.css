@@ -3,6 +3,9 @@
   --header-height: 60px;
   --sidebar-width: 220px;
   --container-width: 972px;
+  --bp-xl: 1280px;
+  --bp-md: 768px;
+  --bp-sm: 360px;
 }
 
 body {
