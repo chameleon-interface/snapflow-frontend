@@ -10,25 +10,24 @@ export const disposableEmailDomains = new Set<string>(disposableDomains);
 
 export const validationMessages = {
   username: {
-    min: 'Minimum number of characters 6',
-    max: 'Maximum number of characters 30',
-    pattern: 'Username can only contain 0-9, A-Z, a-z, _, -',
+    min: 'Validation.username.min',
+    max: 'Validation.username.max',
+    pattern: 'Validation.username.pattern',
   },
   email: {
-    invalid: 'The email must match the format example@example.com',
-    disposable: 'Temporary email addresses are not allowed',
+    invalid: 'Validation.email.invalid',
+    disposable: 'Validation.email.disposable',
   },
   password: {
-    min: 'Minimum number of characters 6',
-    max: ' Maximum number of characters 20',
-    required:
-      'Password must contain 0-9, a-z, A-Z, ! " # $ % & \' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _ { | } ~ ',
-    pattern: 'Password contains invalid characters',
+    min: 'Validation.password.min',
+    max: 'Validation.password.max',
+    required: 'Validation.password.required',
+    pattern: 'Validation.password.pattern',
   },
   passwordConfirmation: {
-    mismatch: 'Passwords must match',
+    mismatch: 'Validation.passwordConfirmation.mismatch',
   },
   terms: {
-    required: 'You must agree to the Terms of Service',
+    required: 'Validation.terms.required',
   },
 } as const;
