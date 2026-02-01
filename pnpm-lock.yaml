@@ -26,11 +26,11 @@ importers:
         specifier: 7.71.1
         version: 7.71.1(react@19.2.3)
       react-hot-toast:
-        specifier: ^2.6.0
+        specifier: 2.6.0
         version: 2.6.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       snapflow-ui-kit:
-        specifier: 1.0.1
-        version: 1.0.1(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: 1.1.1
+        version: 1.1.1(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       zod:
         specifier: 4.3.6
         version: 4.3.6
@@ -3830,10 +3830,10 @@ packages:
       }
     engines: { node: '>=18' }
 
-  snapflow-ui-kit@1.0.1:
+  snapflow-ui-kit@1.1.1:
     resolution:
       {
-        integrity: sha512-nRE501OZyLQTDnIYn5AJakn1cknRF5hK94zOpsZbtMTJO7hyqu/Rywg4T/TAGQv3+1wHD6jLKNEMGwDEwrSDVg==,
+        integrity: sha512-ESJOIEfxcG6CMxOUA6wq26QBvR2pLdhDFC1t/D2JeFhLDWmWbcMx1BAETkyLZgyH9kJBp43AlMd/UpuK1V5D6Q==,
       }
     peerDependencies:
       react: 19.2.3
@@ -6694,7 +6694,7 @@ snapshots:
       ansi-styles: 6.2.3
       is-fullwidth-code-point: 5.1.0
 
-  snapflow-ui-kit@1.0.1(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  snapflow-ui-kit@1.1.1(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       clsx: 2.1.1
       date-fns: 4.1.0

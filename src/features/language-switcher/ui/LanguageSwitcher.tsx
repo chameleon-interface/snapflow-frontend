@@ -1,6 +1,6 @@
 'use client';
 
-import { Select } from 'snapflow-ui-kit';
+import { Select } from 'snapflow-ui-kit/client';
 import { useRouter } from 'next/navigation';
 import { useLang, LANG_OPTIONS } from '@/entities/language';
 import s from './LanguageSwitcher.module.css';

@@ -1,28 +1,26 @@
-'use client';
-
 import Link from 'next/link';
-import { Typography } from 'snapflow-ui-kit';
-import { useTranslations } from 'next-intl';
+import { Button } from 'snapflow-ui-kit';
 import { navItems } from '@/shared/config/navigation';
 import s from './NavMenu.module.css';
+import { getTranslations } from 'next-intl/server';
 
-export const NavMenu = () => {
-  const t = useTranslations('Nav');
+export const NavMenu = async () => {
+  const t = await getTranslations('Nav');
 
   return (
     <nav>
       <ul className={s.menu}>
         {navItems.map(({ labelKey, href, icon }) => (
           <li key={href}>
-            <Typography
-              variant={'text-14-medium'}
+            <Button
+              variant={'text'}
               as={Link}
               href={href}
               icon={icon}
               className={s.link}
             >
               {t(labelKey)}
-            </Typography>
+            </Button>
           </li>
         ))}
       </ul>

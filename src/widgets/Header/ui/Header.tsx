@@ -1,5 +1,3 @@
-'use client';
-
 import s from './Header.module.css';
 import { Button, Typography } from 'snapflow-ui-kit';
 import Link from 'next/link';
