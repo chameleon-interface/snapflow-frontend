@@ -17,10 +17,12 @@ export const Header = () => {
       <div className={s.actions}>
         <LanguageSwitcher />
         <div className={s.buttonWrapper}>
-          <Button variant={'text'} onClick={() => console.log('login')}>
+          <Button variant={'text'} as={Link} href={'/sign-in'}>
             {t('logIn')}
           </Button>
-          <Button onClick={() => console.log('sign up')}>{t('signUp')}</Button>
+          <Button as={Link} href={'/sign-up'}>
+            {t('signUp')}
+          </Button>
         </div>
       </div>
     </header>
