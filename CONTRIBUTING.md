@@ -22,6 +22,18 @@
 
 Рекомендуемые типы: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`.
 
+## Скрипты
+
+```bash
+pnpm dev           # запуск dev-сервера
+pnpm build         # сборка для production
+pnpm start         # запуск production-сборки
+pnpm lint          # ESLint (нулевые warnings)
+pnpm format:check  # проверка Prettier
+pnpm format:write  # форматирование Prettier
+pnpm stylelint     # линт CSS/SCSS
+```
+
 ## Переводы (i18n)
 
 Проект использует `next-intl`.
@@ -84,18 +96,6 @@ src/features/auth/**/model/schema.ts
 
 Если нужна проверка на одноразовые почтовые домены — используется список
 `disposable-email-domains` в `patterns.ts` (обновляется через `pnpm`).
-
-## Скрипты
-
-```bash
-pnpm dev           # запуск dev-сервера
-pnpm build         # сборка для production
-pnpm start         # запуск production-сборки
-pnpm lint          # ESLint (нулевые warnings)
-pnpm format:check  # проверка Prettier
-pnpm format:write  # форматирование Prettier
-pnpm stylelint     # линт CSS/SCSS
-```
 
 ## FSD правила
 

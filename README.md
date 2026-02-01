@@ -6,6 +6,15 @@
 использует Feature-Sliced Design (FSD) для доменной структуры; роутинг Next.js
 остаётся в `src/app`.
 
+## Быстрый старт
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Приложение будет доступно на `http://localhost:3000`.
+
 ## Технологический стек
 
 - **Фреймворк:** Next.js 16 (App Router), React 19
@@ -42,63 +51,3 @@ public/       статические ассеты
 - **Профиль и настройки:** `/profile`, `/settings`
 - **Лента и коммуникации:** `/feed`, `/messenger`, `/search`
 - **Дополнительно:** `/statistics`, `/favorites`
-
-## Скрипты
-
-```bash
-pnpm dev           # запуск dev-сервера
-pnpm build         # сборка для production
-pnpm start         # запуск production-сборки
-pnpm lint          # ESLint (нулевые warnings)
-pnpm format:check  # проверка Prettier
-pnpm format:write  # форматирование Prettier
-pnpm stylelint     # линт CSS/SCSS
-```
-
-## Переводы (i18n)
-
-Проект использует `next-intl`. Язык хранится в cookie `locale` и читается на
-сервере через `src/shared/config/i18n/request.ts`.
-
-Файлы переводов лежат в:
-
-```text
-src/shared/config/i18n/messages/
-  en.json
-  ru.json
-```
-
-Как работать с переводами:
-
-1. Добавь ключи в оба файла (`en.json` и `ru.json`).
-2. В Client Components используй `useTranslations`:
-   ```tsx
-   const t = useTranslations('Auth');
-   return <button>{t('logIn')}</button>;
-   ```
-3. В Server Components используй `getTranslations`:
-   ```tsx
-   const t = await getTranslations('Pages');
-   return <h1>{t('mainTitle')}</h1>;
-   ```
-4. Переключение языка — через `LanguageSwitcher`, оно пишет cookie и
-   делает `router.refresh()` для синхронизации SSR/CSR.
-
-## Правила FSD
-
-- `src/app` композирует страницы и задаёт роутинг.
-- `src/pages-layer/*` импортирует из `widgets`, `features`, `entities`, `shared`.
-- Нижние слои не импортируют верхние (например, `shared` → `features` запрещён).
-
-## Роутинг и FSD
-
-- `src/app` содержит только роуты, layout и минимальный glue-код.
-- `src/pages-layer/*` хранит сборку экранов и не знает про Next.js API.
-- Бизнес-логика живёт ниже: `features` и `entities`.
-- Общие UI/утилиты — в `shared`.
-
-## Заметки по разработке
-
-- Используйте `pnpm` (см. `packageManager` в `package.json`).
-- Pre-commit хуки запускают `lint-staged` для форматирования и линта
-  застейдженных файлов.
