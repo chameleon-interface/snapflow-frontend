@@ -1,0 +1,23 @@
+.title {
+  margin-bottom: 37px;
+}
+
+.description {
+  margin: 7px 0 24px;
+}
+
+.button {
+  margin-top: 24px;
+}
+
+.successMessage {
+  width: 100%;
+  color: var(--color-light-100);
+}
+
+.errorMessage {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 171%;
+  color: var(--color-danger-500);
+}

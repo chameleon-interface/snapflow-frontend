@@ -24,6 +24,7 @@
     "settingsTitle": "Settings",
     "signInTitle": "Sign In",
     "signUpTitle": "Sign Up",
+    "forgotPasswordTitle": "Forgot Password",
     "placeholder": "Placeholder page."
   },
   "Validation": {
@@ -47,6 +48,9 @@
     },
     "terms": {
       "required": "You must agree to the Terms of Service"
+    },
+    "recaptcha": {
+      "required": "Please complete the reCAPTCHA verification"
     }
   }
 }

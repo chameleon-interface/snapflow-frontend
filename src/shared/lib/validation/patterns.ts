@@ -30,4 +30,7 @@ export const validationMessages = {
   terms: {
     required: 'Validation.terms.required',
   },
+  recaptcha: {
+    required: 'Validation.recaptcha.required',
+  },
 } as const;

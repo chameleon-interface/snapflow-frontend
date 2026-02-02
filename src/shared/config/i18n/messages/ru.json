@@ -24,6 +24,7 @@
     "settingsTitle": "Настройки",
     "signInTitle": "Вход",
     "signUpTitle": "Регистрация",
+    "forgotPasswordTitle": "Восстановление пароля",
     "placeholder": "Страница-заглушка."
   },
   "Validation": {
@@ -47,6 +48,9 @@
     },
     "terms": {
       "required": "Необходимо принять условия сервиса"
+    },
+    "recaptcha": {
+      "required": "Пожалуйста, завершите проверку reCAPTCHA"
     }
   }
 }

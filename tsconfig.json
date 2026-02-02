@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    "src/shared/ui/form/FormTitle/FormTitletsx"
   ],
   "exclude": ["node_modules"]
 }

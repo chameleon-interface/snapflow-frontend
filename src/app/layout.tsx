@@ -1,10 +1,10 @@
+import { Header, Sidebar } from '@/widgets';
 import type { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 import { Inter } from 'next/font/google';
 import 'snapflow-ui-kit/styles.css';
 import './global.css';
-import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages } from 'next-intl/server';
-import { Header, Sidebar } from '@/widgets';
 import s from './layout.module.css';
 
 const inter = Inter({
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 // TODO: заменить на реальную проверку авторизации
-const isAuth = true;
+const isAuth = false;
 
 export default async function RootLayout({
   children,
