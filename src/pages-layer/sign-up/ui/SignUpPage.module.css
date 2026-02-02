@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+
+  width: 378px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.form input {
+  padding: 6px 12px;
+}
+
+.title {
+  color: var(--color-light-100);
+}
+
+.label {
+  color: var(--color-light-100);
+}
+
+.button {
+  width: 100%;
+  padding-inline: 0;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.link {
+  color: var(--color-accent-500);
+}
