@@ -1,0 +1,19 @@
+﻿.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.form input {
+  padding: 6px 12px;
+}
+
+.label {
+  color: var(--color-light-100);
+}
+
+.button {
+  width: 100%;
+  padding-inline: 0;
+}
