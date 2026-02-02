@@ -1,0 +1,9 @@
+.button {
+  align-self: start;
+
+  padding: 0;
+
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-light-100);
+}

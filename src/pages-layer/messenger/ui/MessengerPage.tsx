@@ -1,8 +1,12 @@
-export function MessengerPage() {
+import { getTranslations } from 'next-intl/server';
+
+export async function MessengerPage() {
+  const t = await getTranslations('Pages');
+
   return (
     <main>
-      <h1>Messenger</h1>
-      <p>Placeholder page.</p>
+      <h1>{t('messengerTitle')}</h1>
+      <p>{t('placeholder')}</p>
     </main>
   );
 }

@@ -1,0 +1,52 @@
+{
+  "Auth": {
+    "logOut": "Log out",
+    "logIn": "Log in",
+    "signUp": "Sign up"
+  },
+  "Nav": {
+    "feed": "Feed",
+    "create": "Create",
+    "profile": "My profile",
+    "messenger": "Messenger",
+    "search": "Search",
+    "statistics": "Statistics",
+    "favorites": "Favorites"
+  },
+  "Pages": {
+    "mainTitle": "Main page",
+    "feedTitle": "Feed",
+    "favoritesTitle": "Favorites",
+    "profileTitle": "Profile",
+    "messengerTitle": "Messenger",
+    "searchTitle": "Search",
+    "statisticsTitle": "Statistics",
+    "settingsTitle": "Settings",
+    "signInTitle": "Sign In",
+    "signUpTitle": "Sign Up",
+    "placeholder": "Placeholder page."
+  },
+  "Validation": {
+    "username": {
+      "min": "Minimum number of characters 6",
+      "max": "Maximum number of characters 30",
+      "pattern": "Username can only contain 0-9, A-Z, a-z, _, -"
+    },
+    "email": {
+      "invalid": "The email must match the format example@example.com",
+      "disposable": "Temporary email addresses are not allowed"
+    },
+    "password": {
+      "min": "Minimum number of characters 6",
+      "max": "Maximum number of characters 20",
+      "required": "Password must contain 0-9, a-z, A-Z, ! \" # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _ { | } ~",
+      "pattern": "Password contains invalid characters"
+    },
+    "passwordConfirmation": {
+      "mismatch": "Passwords must match"
+    },
+    "terms": {
+      "required": "You must agree to the Terms of Service"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+.switcher {
+  width: 163px;
+}
+
+.switcher span:last-child {
+  margin-left: 0;
+}

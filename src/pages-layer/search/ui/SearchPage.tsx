@@ -1,8 +1,12 @@
-export function SearchPage() {
+import { getTranslations } from 'next-intl/server';
+
+export async function SearchPage() {
+  const t = await getTranslations('Pages');
+
   return (
     <main>
-      <h1>Search</h1>
-      <p>Placeholder page.</p>
+      <h1>{t('searchTitle')}</h1>
+      <p>{t('placeholder')}</p>
     </main>
   );
 }
