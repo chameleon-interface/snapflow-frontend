@@ -26,6 +26,20 @@
     "signUpTitle": "Sign Up",
     "placeholder": "Placeholder page."
   },
+  "Forms": {
+    "haveAccount": "Do you have an account?",
+    "usernameLabel": "Username",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "passwordConfirmationLabel": "Password confirmation",
+    "Registration": {
+      "agreeToTermsPrefix": "I agree to the",
+      "termsOfService": "Terms of Service",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy",
+      "submit": "Sign Up"
+    }
+  },
   "Validation": {
     "username": {
       "min": "Minimum number of characters 6",
@@ -39,14 +53,12 @@
     "password": {
       "min": "Minimum number of characters 6",
       "max": "Maximum number of characters 20",
-      "required": "Password must contain 0-9, a-z, A-Z, ! \" # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _ { | } ~",
+      "required": "Password must contain 0-9, a-z, A-Z, ! \" # $ % & ( ) * + , - . / : ; < = > ? @ [ \\\\ ] ^ _ '{' | '}' ~",
       "pattern": "Password contains invalid characters"
     },
     "passwordConfirmation": {
-      "mismatch": "Passwords must match"
-    },
-    "terms": {
-      "required": "You must agree to the Terms of Service"
+      "mismatch": "Passwords must match",
+      "required": "Please confirm your password"
     }
   }
 }
