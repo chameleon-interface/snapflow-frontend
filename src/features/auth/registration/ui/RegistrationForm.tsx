@@ -11,6 +11,7 @@ import {
   registrationSchema,
   type RegistrationFormData,
 } from '@/features/auth/registration/model/schema';
+import clsx from 'clsx';
 
 export const RegistrationForm = () => {
   const {
@@ -45,21 +46,19 @@ export const RegistrationForm = () => {
       <Input
         id={'registration-username'}
         label={t('Forms.usernameLabel')}
-        aria-label={t('Forms.usernameLabel')}
         errorMessage={
           errors.username?.message ? t(errors.username.message) : undefined
         }
-        className={errors.username && s.error}
+        className={clsx(errors.username && s.error)}
         {...register('username')}
       />
       <Input
         id={'registration-email'}
         label={t('Forms.emailLabel')}
-        aria-label={t('Forms.emailLabel')}
         errorMessage={
           errors.email?.message ? t(errors.email.message) : undefined
         }
-        className={errors.email && s.error}
+        className={clsx(errors.email && s.error)}
         {...register('email')}
       />
       <Input
@@ -67,11 +66,10 @@ export const RegistrationForm = () => {
         label={t('Forms.passwordLabel')}
         type={'password'}
         allowPasswordToggle
-        aria-label={t('Forms.passwordLabel')}
         errorMessage={
           errors.password?.message ? t(errors.password.message) : undefined
         }
-        className={errors.password && s.error}
+        className={clsx(errors.password && s.error)}
         {...register('password')}
       />
       <Input
@@ -79,14 +77,13 @@ export const RegistrationForm = () => {
         label={t('Forms.passwordConfirmationLabel')}
         type={'password'}
         allowPasswordToggle
-        aria-label={t('Forms.passwordConfirmationLabel')}
         onPaste={(event) => event.preventDefault()}
         errorMessage={
           errors.password_confirmation?.message
             ? t(errors.password_confirmation.message)
             : undefined
         }
-        className={errors.password_confirmation && s.error}
+        className={clsx(errors.password_confirmation && s.error)}
         {...register('password_confirmation')}
       />
       <Controller
@@ -101,8 +98,6 @@ export const RegistrationForm = () => {
             onChange={(event) => {
               setValue('agreeToTerms', event.target.checked, {
                 shouldValidate: true,
-                shouldDirty: true,
-                shouldTouch: true,
               });
             }}
           >
