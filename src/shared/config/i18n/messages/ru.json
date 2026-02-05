@@ -11,7 +11,8 @@
     "messenger": "Мессенджер",
     "search": "Поиск",
     "statistics": "Статистика",
-    "favorites": "Избранное"
+    "favorites": "Избранное",
+    "backToSignUp": "Назад к регистрации"
   },
   "Pages": {
     "mainTitle": "Главная страница",
@@ -24,7 +25,9 @@
     "settingsTitle": "Настройки",
     "signInTitle": "Вход",
     "signUpTitle": "Регистрация",
-    "placeholder": "Страница-заглушка."
+    "placeholder": "Страница-заглушка.",
+    "privacyPolicy": "Политика конфиденциальности",
+    "termsOfService": "Условия предоставления услуг"
   },
   "Forms": {
     "haveAccount": "Уже есть аккаунт?",

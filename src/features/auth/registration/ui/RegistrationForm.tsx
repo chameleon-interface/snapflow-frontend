@@ -105,7 +105,7 @@ export const RegistrationForm = () => {
               {t('Forms.Registration.agreeToTermsPrefix')}&nbsp;
               <Typography
                 as={Link}
-                href={'/terms-of-service'}
+                href={'/sign-up/terms-of-service'}
                 variant={'small-link'}
               >
                 {t('Forms.Registration.termsOfService')}
@@ -113,7 +113,7 @@ export const RegistrationForm = () => {
               &nbsp;{t('Forms.Registration.and')}&nbsp;
               <Typography
                 as={Link}
-                href={'/privacy-policy'}
+                href={'/sign-up/privacy-policy'}
                 variant={'small-link'}
               >
                 {t('Forms.Registration.privacyPolicy')}

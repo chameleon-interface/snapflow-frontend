@@ -1,0 +1,1 @@
+export { termsSections } from './content';

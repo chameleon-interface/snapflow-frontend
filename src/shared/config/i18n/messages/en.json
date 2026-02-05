@@ -11,7 +11,8 @@
     "messenger": "Messenger",
     "search": "Search",
     "statistics": "Statistics",
-    "favorites": "Favorites"
+    "favorites": "Favorites",
+    "backToSignUp": "Back to Sign Up"
   },
   "Pages": {
     "mainTitle": "Main page",
@@ -24,7 +25,9 @@
     "settingsTitle": "Settings",
     "signInTitle": "Sign In",
     "signUpTitle": "Sign Up",
-    "placeholder": "Placeholder page."
+    "placeholder": "Placeholder page.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
   },
   "Forms": {
     "haveAccount": "Do you have an account?",

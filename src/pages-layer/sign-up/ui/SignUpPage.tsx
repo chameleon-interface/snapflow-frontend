@@ -6,16 +6,15 @@ import { RegistrationForm } from '@/features/auth/registration';
 import { FormWrapper } from '@/shared/ui';
 
 export async function SignUpPage() {
-  const tPages = await getTranslations('Pages');
-  const tForms = await getTranslations('Forms');
+  const t = await getTranslations();
 
   return (
-    <FormWrapper title={tPages('signUpTitle')}>
+    <FormWrapper title={t('Pages.signUpTitle')}>
       <RegistrationForm />
       <div className={s.footer}>
-        <Typography variant={'text-16'}>{tForms('haveAccount')}</Typography>
+        <Typography variant={'text-16'}>{t('Forms.haveAccount')}</Typography>
         <Button variant={'text'} as={Link} href={'/sign-in'} className={s.link}>
-          {tPages('signInTitle')}
+          {t('Pages.signInTitle')}
         </Button>
       </div>
     </FormWrapper>
