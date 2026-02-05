@@ -1,16 +1,27 @@
 .main {
   min-height: calc(100vh - var(--header-height));
   margin-top: var(--header-height);
+  padding-bottom: 30px;
 }
 
 .container {
   width: 100%;
-  max-width: calc(var(--container-width) + 20px);
+  max-width: calc(var(--container-width) + var(--container-padding) * 2);
   margin: 0 auto;
   padding-top: 24px;
-  padding-inline: 10px;
+  padding-inline: var(--container-padding);
 }
 
 .main.withSidebar {
   margin-left: var(--sidebar-width);
+}
+
+@media (width <= 380px) {
+  .main {
+    padding-bottom: 15px;
+  }
+
+  .container {
+    padding-top: 17px;
+  }
 }

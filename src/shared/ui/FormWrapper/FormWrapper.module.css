@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+
+  width: 100%;
+  max-width: 378px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+@media (width <= 380px) {
+  .wrapper {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+  }
+}
