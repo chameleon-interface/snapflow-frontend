@@ -1,0 +1,29 @@
+.modal {
+  width: 100%;
+  max-width: 378px;
+  margin-inline: 15px;
+}
+
+.modal > div {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 29px 24px 35px;
+}
+
+.button {
+  align-self: end;
+  width: 96px;
+}
+
+@media (width <= 380px) {
+  .button {
+    align-self: unset;
+    width: unset;
+    padding-block: 12px;
+  }
+
+  .modal > :is(div, header) {
+    padding-inline: 11px;
+  }
+}
