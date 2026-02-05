@@ -1,5 +1,6 @@
 import { Modal } from 'snapflow-ui-kit/client';
 import { Button, Typography } from 'snapflow-ui-kit';
+import { useTranslations } from 'next-intl';
 import s from './EmailSentModal.module.css';
 
 type Props = {
@@ -9,18 +10,13 @@ type Props = {
 };
 
 export const EmailSentModal = ({ open, onClose, email }: Props) => {
+  const t = useTranslations('Modals.EmailSent');
+
   return (
-    <Modal
-      open={open}
-      onClose={onClose}
-      title={'Email sent'}
-      className={s.modal}
-    >
-      <Typography variant={'text-16'}>
-        We have sent a link to confirm your email to {email}
-      </Typography>
+    <Modal open={open} onClose={onClose} title={t('title')} className={s.modal}>
+      <Typography variant={'text-16'}>{t('message', { email })}</Typography>
       <Button className={s.button} onClick={onClose}>
-        ОК
+        OK
       </Button>
     </Modal>
   );

@@ -43,6 +43,12 @@
       "submit": "Sign Up"
     }
   },
+  "Modals": {
+    "EmailSent": {
+      "title": "Email sent",
+      "message": "We have sent a link to confirm your email to {email}"
+    }
+  },
   "Validation": {
     "username": {
       "min": "Minimum number of characters 6",
