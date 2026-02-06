@@ -6,6 +6,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Header, Sidebar } from '@/widgets';
 import s from './layout.module.css';
+import Providers from '@/app/providers';
 
 const inter = Inter({
   subsets: ['latin', 'cyrillic'],
@@ -37,14 +38,16 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={inter.variable}>
       <body>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <Header />
-          {isAuth && <Sidebar />}
-          <main className={`${s.main} ${isAuth ? s.withSidebar : ''}`}>
-            <div className={s.container}>{children}</div>
-          </main>
-          <div id="modal-root"></div>
-        </NextIntlClientProvider>
+        <Providers>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <Header />
+            {isAuth && <Sidebar />}
+            <main className={`${s.main} ${isAuth ? s.withSidebar : ''}`}>
+              <div className={s.container}>{children}</div>
+            </main>
+            <div id="modal-root"></div>
+          </NextIntlClientProvider>
+        </Providers>
       </body>
     </html>
   );
