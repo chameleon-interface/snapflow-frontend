@@ -13,7 +13,11 @@ import {
 } from '../../model/schema';
 import clsx from 'clsx';
 
-export const ConfirmationExpired = () => {
+type Props = {
+  withInput?: boolean;
+};
+
+export const ConfirmationExpired = ({ withInput = true }: Props) => {
   const t = useTranslations();
 
   const {
@@ -44,19 +48,21 @@ export const ConfirmationExpired = () => {
         </Typography>
       </div>
       <form
-        className={clsx(s.form, errors.email && s.error)}
+        className={clsx(s.form, withInput && errors.email && s.error)}
         onSubmit={handleSubmit(onSubmit)}
         noValidate
       >
-        <Input
-          type={'email'}
-          label={t('Forms.emailLabel')}
-          errorMessage={
-            errors.email?.message ? t(errors.email.message) : undefined
-          }
-          {...register('email')}
-        />
-        <Button className={s.button} disabled={!isDirty}>
+        {withInput && (
+          <Input
+            type={'email'}
+            label={t('Forms.emailLabel')}
+            errorMessage={
+              errors.email?.message ? t(errors.email.message) : undefined
+            }
+            {...register('email')}
+          />
+        )}
+        <Button className={s.button} disabled={withInput && !isDirty}>
           Resend verification link
         </Button>
       </form>
