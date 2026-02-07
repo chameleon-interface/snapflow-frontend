@@ -2,7 +2,8 @@
   "Auth": {
     "logOut": "Выйти",
     "logIn": "Войти",
-    "signUp": "Регистрация"
+    "signUp": "Регистрация",
+    "forgotPassword": "Забыли пароль"
   },
   "Nav": {
     "feed": "Лента",

@@ -2,7 +2,8 @@
   "Auth": {
     "logOut": "Log out",
     "logIn": "Log in",
-    "signUp": "Sign up"
+    "signUp": "Sign up",
+    "forgotPassword": "Forgot password"
   },
   "Nav": {
     "feed": "Feed",

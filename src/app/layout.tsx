@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 };
 
 // TODO: заменить на реальную проверку авторизации
-const isAuth = true;
+const isAuth = false;
 
 export default async function RootLayout({
   children,
