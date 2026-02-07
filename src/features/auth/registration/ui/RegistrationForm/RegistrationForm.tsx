@@ -13,8 +13,8 @@ import {
 } from '@/features/auth/registration/model/schema';
 import clsx from 'clsx';
 import { useState } from 'react';
-import { EmailSentModal } from '../EmailSentModal';
 import { useRegistration } from '../../api/useRegistration';
+import { EmailModal } from '@/shared/ui';
 
 export const RegistrationForm = () => {
   const {
@@ -69,7 +69,7 @@ export const RegistrationForm = () => {
 
   return (
     <>
-      <EmailSentModal
+      <EmailModal
         open={isModalOpen}
         onClose={closeModalHandler}
         email={submittedEmail}
