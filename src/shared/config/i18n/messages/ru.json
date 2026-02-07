@@ -25,7 +25,45 @@
     "signInTitle": "Вход",
     "signUpTitle": "Регистрация",
     "forgotPasswordTitle": "Восстановление пароля",
+    "createNewPasswordTitle": "Создать новый пароль",
     "placeholder": "Страница-заглушка."
+  },
+  "Forms": {
+    "emailLabel": "Почта",
+    "emailPlaceholder": "Введите вашу почту"
+  },
+  "PasswordInput": {
+    "label": "Пароль",
+    "placeholder": "Введите пароль",
+    "ariaLabel": "Поле ввода пароля"
+  },
+  "PasswordConfirmationInput": {
+    "label": "Подтверждение пароля",
+    "placeholder": "Подтвердите пароль",
+    "ariaLabel": "Поле ввода подтверждения пароля"
+  },
+  "PasswordRecovery": {
+    "description": "Введите ваш email адрес, и мы отправим вам дальнейшие инструкции",
+    "successMessage": "Ссылка была отправлена на email. <br /> Если вы не получили письмо, отправьте ссылку снова.",
+    "sendLinkAgain": "Отправить ссылку снова",
+    "sendLink": "Отправить ссылку",
+    "backToSignIn": "Вернуться к входу",
+    "newPasswordLabel": "Новый пароль",
+    "newPasswordPlaceholder": "Введите новый пароль",
+    "passwordConfirmationLabel": "Подтверждение пароля",
+    "passwordConfirmationPlaceholder": "Подтвердите новый пароль",
+    "passwordDescription": "Ваш пароль должен содержать от 6 до 20 символов",
+    "createNewPasswordButton": "Создать новый пароль"
+  },
+  "LinkExpired": {
+    "title": "Срок действия ссылки истек",
+    "description": "Похоже, что срок действия ссылки истек. Не беспокойтесь, мы можем отправить ссылку снова",
+    "resendButton": "Отправить ссылку снова",
+    "imageAlt": "Ссылка истекла"
+  },
+  "EmailModal": {
+    "title": "Письмо отправлено",
+    "message": "Мы отправили ссылку для подтверждения вашей почты на {email}"
   },
   "Validation": {
     "username": {
@@ -40,17 +78,19 @@
     "password": {
       "min": "Минимальное количество символов — 6",
       "max": "Максимальное количество символов — 20",
-      "required": "Пароль должен содержать 0-9, a-z, A-Z, ! \" # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _ { | } ~",
+      "required": "Пароль должен содержать как минимум одну цифру, одну заглавную букву и одну строчную букву",
       "pattern": "Пароль содержит недопустимые символы"
     },
     "passwordConfirmation": {
-      "mismatch": "Пароли должны совпадать"
+      "mismatch": "Пароли должны совпадать",
+      "required": "Потвердите пароль"
     },
     "terms": {
       "required": "Необходимо принять условия сервиса"
     },
     "recaptcha": {
-      "required": "Пожалуйста, завершите проверку reCAPTCHA"
+      "required": "Пожалуйста, завершите проверку reCAPTCHA",
+      "expired": "Время проверки reCAPTCHA истекло. Пожалуйста, пройдите проверку снова"
     }
   }
 }
