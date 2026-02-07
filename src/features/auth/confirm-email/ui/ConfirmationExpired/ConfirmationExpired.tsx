@@ -40,11 +40,10 @@ export const ConfirmationExpired = ({ withInput = true }: Props) => {
     <article className={s.wrapper}>
       <div className={s.textWrapper}>
         <Typography variant={'h1'} as={'h1'} className={s.title}>
-          Email verification link expired!
+          {t('LinkExpired.title')}
         </Typography>
         <Typography variant={'text-16'}>
-          Looks like the verification link has expired. Not to worry, we can
-          send the link again
+          {t('LinkExpired.description')}
         </Typography>
       </div>
       <form
@@ -63,12 +62,12 @@ export const ConfirmationExpired = ({ withInput = true }: Props) => {
           />
         )}
         <Button className={s.button} disabled={withInput && !isDirty}>
-          Resend verification link
+          {t('LinkExpired.resendButton')}
         </Button>
       </form>
       <Image
         src={'/images/rafiki.svg'}
-        alt={''}
+        alt={t('LinkExpired.imageAlt')}
         width={473}
         height={352}
         className={s.image}

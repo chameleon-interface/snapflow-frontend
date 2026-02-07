@@ -76,7 +76,7 @@
     "createNewPasswordButton": "Create New Password"
   },
   "LinkExpired": {
-    "title": "Email verification link expired",
+    "title": "Email verification link expired!",
     "description": "Looks like the verification link has expired. Not to worry, we can send the link again",
     "resendButton": "Resend verification link",
     "imageAlt": "Link expired"
