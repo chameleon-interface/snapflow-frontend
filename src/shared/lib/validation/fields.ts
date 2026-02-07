@@ -32,6 +32,8 @@ export const fields = {
     message: msg.email.disposable,
   }),
 
+  recaptcha: z.string().min(1, msg.recaptcha.required),
+
   password: z
     .string()
     .min(6, msg.password.min)

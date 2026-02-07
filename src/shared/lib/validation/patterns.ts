@@ -28,4 +28,7 @@ export const validationMessages = {
     mismatch: 'Validation.passwordConfirmation.mismatch',
     required: 'Validation.passwordConfirmation.required',
   },
+  recaptcha: {
+    required: 'Validation.recaptcha.required',
+  },
 } as const;
