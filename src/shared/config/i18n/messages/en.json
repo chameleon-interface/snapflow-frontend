@@ -24,7 +24,47 @@
     "settingsTitle": "Settings",
     "signInTitle": "Sign In",
     "signUpTitle": "Sign Up",
+    "forgotPasswordTitle": "Forgot Password",
+    "createNewPasswordTitle": "Create New Password",
     "placeholder": "Placeholder page."
+  },
+  "Forms": {
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email address"
+  },
+  "PasswordInput": {
+    "label": "Password",
+    "placeholder": "Enter password",
+    "ariaLabel": "Password input field"
+  },
+  "PasswordConfirmationInput": {
+    "label": "Password confirmation",
+    "placeholder": "Confirm password",
+    "ariaLabel": "Password confirmation input field"
+  },
+  "PasswordRecovery": {
+    "description": "Enter your email address and we will send you further instructions",
+    "successMessage": "The link has been sent by email. If you don't receive an email, send the link again.",
+    "sendLinkAgain": "Send Link Again",
+    "sendLink": "Send Link",
+    "backToSignIn": "Back to Sign In",
+    "error": "An error occurred while sending the request. Please try again.",
+    "newPasswordLabel": "New password",
+    "newPasswordPlaceholder": "Enter new password",
+    "passwordConfirmationLabel": "Password confirmation",
+    "passwordConfirmationPlaceholder": "Confirm new password",
+    "passwordDescription": "Your password must be between 6 and 20 characters",
+    "createNewPasswordButton": "Create New Password"
+  },
+  "LinkExpired": {
+    "title": "Email verification link expired",
+    "description": "Looks like the verification link has expired. Not to worry, we can send the link again",
+    "resendButton": "Resend verification link",
+    "imageAlt": "Link expired"
+  },
+  "EmailModal": {
+    "title": "Email sent",
+    "message": "We have sent a link to confirm your email to {email}"
   },
   "Validation": {
     "username": {
@@ -39,14 +79,19 @@
     "password": {
       "min": "Minimum number of characters 6",
       "max": "Maximum number of characters 20",
-      "required": "Password must contain 0-9, a-z, A-Z, ! \" # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _ { | } ~",
+      "required": "Password must contain at least one number, one uppercase letter and one lowercase letter",
       "pattern": "Password contains invalid characters"
     },
     "passwordConfirmation": {
-      "mismatch": "Passwords must match"
+      "mismatch": "Passwords must match",
+      "required": "Please confirm your password"
     },
     "terms": {
       "required": "You must agree to the Terms of Service"
+    },
+    "recaptcha": {
+      "required": "Please complete the reCAPTCHA verification",
+      "expired": "reCAPTCHA verification has expired. Please complete the verification again"
     }
   }
 }

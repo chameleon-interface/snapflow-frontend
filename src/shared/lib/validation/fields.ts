@@ -32,6 +32,8 @@ export const fields = {
     message: msg.email.disposable,
   }),
 
+  recaptcha: z.string().min(1, msg.recaptcha.required),
+
   password: z
     .string()
     .min(6, msg.password.min)
@@ -42,7 +44,7 @@ export const fields = {
   // Simplified password for login (without complexity check)
   passwordLogin: z.string().min(1, 'Password is required'),
 
-  passwordConfirmation: z.string().min(1, 'Please confirm your password'),
+  passwordConfirmation: z.string().min(1, msg.passwordConfirmation.required),
 
   agreeToTerms: z.boolean().refine((val) => val === true, {
     message: msg.terms.required,
