@@ -14,6 +14,7 @@ import {
 import clsx from 'clsx';
 import { useState } from 'react';
 import { EmailSentModal } from '../EmailSentModal';
+import { useRegistration } from '../../api/useRegistration';
 
 export const RegistrationForm = () => {
   const {
@@ -23,6 +24,7 @@ export const RegistrationForm = () => {
     reset,
     formState: { errors, isValid },
     setValue,
+    setError,
   } = useForm<RegistrationFormData>({
     mode: 'onBlur',
     reValidateMode: 'onBlur',
@@ -39,11 +41,25 @@ export const RegistrationForm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [submittedEmail, setSubmittedEmail] = useState('');
 
+  const { mutate, isPending } = useRegistration();
+
   const onSubmit = (data: RegistrationFormData) => {
     setSubmittedEmail(data.email);
-    setIsModalOpen(true);
-    // TODO: запрос на бек
-    console.log('Registration payload:', data);
+    mutate(
+      {
+        username: data.username,
+        email: data.email,
+        password: data.password,
+      },
+      {
+        onSuccess: () => setIsModalOpen(true),
+        onError: (error) => {
+          error.response?.data.errors.forEach(({ field, message }) => {
+            setError(field as keyof RegistrationFormData, { message });
+          });
+        },
+      },
+    );
   };
 
   const closeModalHandler = () => {
@@ -65,6 +81,7 @@ export const RegistrationForm = () => {
           errorMessage={
             errors.username?.message ? t(errors.username.message) : undefined
           }
+          disabled={isPending}
           className={clsx(errors.username && s.error)}
           {...register('username')}
         />
@@ -74,6 +91,7 @@ export const RegistrationForm = () => {
           errorMessage={
             errors.email?.message ? t(errors.email.message) : undefined
           }
+          disabled={isPending}
           className={clsx(errors.email && s.error)}
           {...register('email')}
         />
@@ -85,6 +103,7 @@ export const RegistrationForm = () => {
           errorMessage={
             errors.password?.message ? t(errors.password.message) : undefined
           }
+          disabled={isPending}
           className={clsx(errors.password && s.error)}
           {...register('password')}
         />
@@ -99,6 +118,7 @@ export const RegistrationForm = () => {
               ? t(errors.password_confirmation.message)
               : undefined
           }
+          disabled={isPending}
           className={clsx(errors.password_confirmation && s.error)}
           {...register('password_confirmation')}
         />
@@ -110,6 +130,7 @@ export const RegistrationForm = () => {
               name={field.name}
               onBlur={field.onBlur}
               checked={!!field.value}
+              disabled={isPending}
               className={s.checkbox}
               onChange={(event) => {
                 setValue('agreeToTerms', event.target.checked, {
@@ -138,7 +159,11 @@ export const RegistrationForm = () => {
             </Checkbox>
           )}
         />
-        <Button type={'submit'} className={s.button} disabled={!isValid}>
+        <Button
+          type={'submit'}
+          className={s.button}
+          disabled={!isValid || isPending}
+        >
           {t('Forms.Registration.submit')}
         </Button>
       </form>
