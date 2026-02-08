@@ -23,15 +23,3 @@
 .error {
   color: var(--color-danger-500);
 }
-
-.success {
-  color: var(--color-success-500);
-}
-
-.checkbox span {
-  display: inline;
-}
-
-.checkbox > span:first-of-type {
-  flex-shrink: 0;
-}

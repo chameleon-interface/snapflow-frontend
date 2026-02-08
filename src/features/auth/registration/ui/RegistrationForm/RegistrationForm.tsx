@@ -1,9 +1,8 @@
 ﻿'use client';
 
-import { Controller, FormProvider, useForm } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Checkbox, Typography } from 'snapflow-ui-kit';
-import Link from 'next/link';
+import { Button } from 'snapflow-ui-kit';
 import { useTranslations } from 'next-intl';
 import s from './RegistrationForm.module.css';
 import {
@@ -15,6 +14,7 @@ import { handleServerErrors } from '@/shared/lib/forms';
 import clsx from 'clsx';
 import { useState } from 'react';
 import { useRegistration } from '../../api/useRegistration';
+import { AgreeToTermsCheckbox } from '../AgreeToTermsCheckbox';
 import {
   EmailInput,
   EmailModal,
@@ -36,11 +36,9 @@ export const RegistrationForm = () => {
     },
   });
   const {
-    control,
     handleSubmit,
     reset,
     formState: { errors, isValid },
-    setValue,
     setError,
   } = form;
   const t = useTranslations();
@@ -95,42 +93,7 @@ export const RegistrationForm = () => {
               confirmMode
               className={clsx(errors.password_confirmation && s.error)}
             />
-            <Controller
-              name={'agreeToTerms'}
-              control={control}
-              render={({ field }) => (
-                <Checkbox
-                  name={field.name}
-                  onBlur={field.onBlur}
-                  checked={!!field.value}
-                  className={s.checkbox}
-                  onChange={(event) => {
-                    setValue('agreeToTerms', event.target.checked, {
-                      shouldValidate: true,
-                    });
-                  }}
-                >
-                  <Typography variant={'small'}>
-                    {t('Forms.Registration.agreeToTermsPrefix')}&nbsp;
-                    <Typography
-                      as={Link}
-                      href={'/sign-up/terms-of-service'}
-                      variant={'small-link'}
-                    >
-                      {t('Forms.Registration.termsOfService')}
-                    </Typography>
-                    &nbsp;{t('Forms.Registration.and')}&nbsp;
-                    <Typography
-                      as={Link}
-                      href={'/sign-up/privacy-policy'}
-                      variant={'small-link'}
-                    >
-                      {t('Forms.Registration.privacyPolicy')}
-                    </Typography>
-                  </Typography>
-                </Checkbox>
-              )}
-            />
+            <AgreeToTermsCheckbox />
             <Button
               type={'submit'}
               className={s.button}
