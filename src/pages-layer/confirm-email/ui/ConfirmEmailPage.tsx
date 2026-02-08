@@ -29,6 +29,5 @@ export const ConfirmEmailPage = ({ code }: Props) => {
     );
   }
 
-  // TODO: replace with Spinner/Skeleton component
   return null;
 };
