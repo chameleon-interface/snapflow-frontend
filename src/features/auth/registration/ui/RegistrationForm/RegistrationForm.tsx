@@ -44,7 +44,7 @@ export const RegistrationForm = () => {
     setError,
   } = form;
   const t = useTranslations();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [sentEmail, setSentEmail] = useState<string | null>(null);
 
   const { mutate, isPending } = useRegistration();
 
@@ -56,7 +56,7 @@ export const RegistrationForm = () => {
         password: data.password,
       },
       {
-        onSuccess: () => setIsModalOpen(true),
+        onSuccess: () => setSentEmail(data.email),
         onError: (error) =>
           handleServerErrors({
             error,
@@ -74,16 +74,16 @@ export const RegistrationForm = () => {
   };
 
   const closeModalHandler = () => {
-    setIsModalOpen(false);
+    setSentEmail(null);
     reset();
   };
 
   return (
     <>
       <EmailModal
-        open={isModalOpen}
+        open={!!sentEmail}
         onClose={closeModalHandler}
-        email={form.getValues('email')}
+        email={sentEmail ?? ''}
       />
       <FormProvider {...form}>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -141,13 +141,6 @@ export const RegistrationForm = () => {
           </fieldset>
         </form>
       </FormProvider>
-      <Button
-        onClick={() => {
-          setIsModalOpen(true);
-        }}
-      >
-        Click
-      </Button>
     </>
   );
 };

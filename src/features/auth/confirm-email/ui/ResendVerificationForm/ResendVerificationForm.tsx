@@ -19,7 +19,7 @@ import { EmailModal, EmailInput } from '@/shared/ui';
 export const ResendVerificationForm = () => {
   const t = useTranslations();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [sentEmail, setSentEmail] = useState<string | null>(null);
 
   const form = useForm<ResendEmailFormData>({
     resolver: zodResolver(resendEmailSchema),
@@ -33,14 +33,13 @@ export const ResendVerificationForm = () => {
     setError,
     reset,
     formState: { errors, isDirty },
-    getValues,
   } = form;
 
   const { mutate, isPending } = useResendConfirmation();
 
   const onSubmit = (data: ResendEmailFormData) => {
     mutate(data.email, {
-      onSuccess: () => setIsModalOpen(true),
+      onSuccess: () => setSentEmail(data.email),
       onError: (error) =>
         handleServerErrors({
           error,
@@ -54,12 +53,12 @@ export const ResendVerificationForm = () => {
   return (
     <>
       <EmailModal
-        open={isModalOpen}
+        open={!!sentEmail}
         onClose={() => {
-          setIsModalOpen(false);
+          setSentEmail(null);
           reset();
         }}
-        email={getValues('email')}
+        email={sentEmail ?? ''}
       />
       <FormProvider {...form}>
         <form
