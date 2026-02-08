@@ -1,12 +1,19 @@
 .form {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
   width: 100%;
 }
 
 .form input {
   padding: 6px 12px;
+}
+
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
 .form div.error {
