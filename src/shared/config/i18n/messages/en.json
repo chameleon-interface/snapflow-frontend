@@ -65,6 +65,10 @@
     "passwordDescription": "Your password must be between 6 and 20 characters",
     "createNewPasswordButton": "Create New Password"
   },
+  "ConfirmationSuccess": {
+    "title": "Congratulations!",
+    "description": "Your email has been confirmed"
+  },
   "LinkExpired": {
     "title": "Email verification link expired!",
     "description": "Looks like the verification link has expired. Not to worry, we can send the link again",

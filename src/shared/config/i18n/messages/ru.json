@@ -62,6 +62,10 @@
     "passwordDescription": "Ваш пароль должен содержать от 6 до 20 символов",
     "createNewPasswordButton": "Создать новый пароль"
   },
+  "ConfirmationSuccess": {
+    "title": "Поздравляем!",
+    "description": "Ваш email был подтверждён"
+  },
   "LinkExpired": {
     "title": "Срок действия ссылки истек!",
     "description": "Похоже, что срок действия ссылки истек. Не беспокойтесь, мы можем отправить ссылку снова",
