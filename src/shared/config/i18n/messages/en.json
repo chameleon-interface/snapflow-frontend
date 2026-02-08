@@ -71,6 +71,10 @@
     "resendButton": "Resend verification link",
     "imageAlt": "Link expired"
   },
+  "ServerErrors": {
+    "usernameExists": "User with this username is already registered",
+    "emailExists": "User with this email is already registered"
+  },
   "Validation": {
     "username": {
       "min": "Minimum number of characters 6",

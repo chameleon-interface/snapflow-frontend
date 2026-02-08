@@ -9,7 +9,8 @@ import s from './RegistrationForm.module.css';
 import {
   registrationSchema,
   type RegistrationFormData,
-} from '@/features/auth/registration/model/schema';
+} from '../../model/schema';
+import { serverErrorMap } from '../../model/serverErrorMap';
 import clsx from 'clsx';
 import { useState } from 'react';
 import { useRegistration } from '../../api/useRegistration';
@@ -57,7 +58,9 @@ export const RegistrationForm = () => {
         onSuccess: () => setIsModalOpen(true),
         onError: (error) => {
           error.response?.data.errors.forEach(({ field, message }) => {
-            setError(field as keyof RegistrationFormData, { message });
+            setError(field as keyof RegistrationFormData, {
+              message: serverErrorMap[message] ?? message,
+            });
           });
         },
       },
