@@ -32,16 +32,6 @@
     "emailLabel": "Email",
     "emailPlaceholder": "Enter your email address"
   },
-  "PasswordInput": {
-    "label": "Password",
-    "placeholder": "Enter password",
-    "ariaLabel": "Password input field"
-  },
-  "PasswordConfirmationInput": {
-    "label": "Password confirmation",
-    "placeholder": "Confirm password",
-    "ariaLabel": "Password confirmation input field"
-  },
   "PasswordRecovery": {
     "description": "Enter your email address and we will send you further instructions",
     "successMessage": "The link has been sent by email. If you don't receive an email, send the link again.",
@@ -61,10 +51,6 @@
     "description": "Looks like the verification link has expired. Not to worry, we can send the link again",
     "resendButton": "Resend verification link",
     "imageAlt": "Link expired"
-  },
-  "EmailModal": {
-    "title": "Email sent",
-    "message": "We have sent a link to confirm your email to {email}"
   },
   "Validation": {
     "username": {
