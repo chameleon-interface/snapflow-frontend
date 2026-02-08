@@ -2,10 +2,11 @@
 
 import { useSearchParams } from 'next/navigation';
 import {
-  ConfirmationExpired,
   ConfirmationSuccess,
+  ResendVerificationForm,
   useConfirmEmail,
 } from '@/features/auth/confirm-email';
+import { ExpiredLinkLayout } from '@/shared/ui';
 import { useEffect } from 'react';
 
 export const ConfirmEmailPage = () => {
@@ -20,6 +21,11 @@ export const ConfirmEmailPage = () => {
 
   // TODO: loading
   if (isSuccess) return <ConfirmationSuccess />;
-  if (isError) return <ConfirmationExpired />;
+  if (isError)
+    return (
+      <ExpiredLinkLayout>
+        <ResendVerificationForm />
+      </ExpiredLinkLayout>
+    );
   return <div>Pending...</div>;
 };
