@@ -10,6 +10,6 @@ type RegistrationUserInputDto = {
 export const useRegistration = () => {
   return useMutation({
     mutationFn: (body: RegistrationUserInputDto) =>
-      api.post<void>('auth/registration', body),
+      api.post<void>('/auth/registration', body),
   });
 };

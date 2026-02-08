@@ -141,6 +141,13 @@ export const RegistrationForm = () => {
           </fieldset>
         </form>
       </FormProvider>
+      <Button
+        onClick={() => {
+          setIsModalOpen(true);
+        }}
+      >
+        Click
+      </Button>
     </>
   );
 };

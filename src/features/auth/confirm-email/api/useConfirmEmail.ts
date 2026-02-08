@@ -10,6 +10,6 @@ type ConfirmationEmailCodeInputDto = {
 export const useConfirmEmail = () => {
   return useMutation({
     mutationFn: (body: ConfirmationEmailCodeInputDto) =>
-      api.post<void>('auth/registration-confirmation', body),
+      api.post<void>('/auth/registration-confirmation', body),
   });
 };

@@ -106,8 +106,7 @@
     },
     "recaptcha": {
       "required": "Please complete the reCAPTCHA verification",
-      "expired": "reCAPTCHA verification has expired. Please complete the verification again",
-      "mismatch": "Passwords must match"
+      "expired": "reCAPTCHA verification has expired. Please complete the verification again"
     }
   }
 }
