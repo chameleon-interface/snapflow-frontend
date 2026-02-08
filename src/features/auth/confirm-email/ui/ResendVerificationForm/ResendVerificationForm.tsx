@@ -12,6 +12,7 @@ import {
   resendEmailSchema,
 } from '../../model/schema';
 import { serverErrorMap } from '../../model/serverErrorMap';
+import { handleServerErrors } from '@/shared/lib/forms';
 import { useResendConfirmation } from '../../api/useResendConfirmation';
 import { EmailModal, EmailInput } from '@/shared/ui';
 
@@ -40,13 +41,13 @@ export const ResendVerificationForm = () => {
   const onSubmit = (data: ResendEmailFormData) => {
     mutate(data.email, {
       onSuccess: () => setIsModalOpen(true),
-      onError: (error) => {
-        error.response?.data.errors.forEach(({ field, message }) => {
-          setError(field as keyof ResendEmailFormData, {
-            message: serverErrorMap[message] ?? message,
-          });
-        });
-      },
+      onError: (error) =>
+        handleServerErrors({
+          error,
+          setError,
+          serverErrorMap,
+          knownFields: ['email'],
+        }),
     });
   };
 
