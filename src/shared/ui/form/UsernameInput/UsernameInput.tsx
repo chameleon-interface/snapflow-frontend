@@ -8,7 +8,7 @@ type Props = {
   className?: string;
 };
 
-export const EmailInput = ({ className }: Props) => {
+export const UsernameInput = ({ className }: Props) => {
   const t = useTranslations();
   const {
     register,
@@ -16,11 +16,13 @@ export const EmailInput = ({ className }: Props) => {
   } = useFormContext();
   return (
     <Input
-      id={'email'}
+      id={'username'}
       className={className}
-      label={t('Forms.emailLabel')}
-      errorMessage={errors.email?.message && t(errors.email.message as string)}
-      {...register('email')}
+      label={t('Forms.usernameLabel')}
+      errorMessage={
+        errors.username?.message && t(errors.username.message as string)
+      }
+      {...register('username')}
     />
   );
 };

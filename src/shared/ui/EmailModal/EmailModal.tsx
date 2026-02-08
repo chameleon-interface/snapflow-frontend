@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const EmailModal = ({ open, onClose, email }: Props) => {
-  const t = useTranslations('EmailModal');
+  const t = useTranslations('Modals.EmailSent');
 
   return (
     <Modal open={open} onClose={onClose} className={s.modal} title={t('title')}>
