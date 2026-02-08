@@ -1,6 +1,5 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
 import {
   ConfirmationSuccess,
   ResendVerificationForm,
@@ -9,23 +8,27 @@ import {
 import { ExpiredLinkLayout } from '@/shared/ui';
 import { useEffect } from 'react';
 
-export const ConfirmEmailPage = () => {
-  const searchParams = useSearchParams();
+type Props = {
+  code: string;
+};
+
+export const ConfirmEmailPage = ({ code }: Props) => {
   const { mutate, isSuccess, isError } = useConfirmEmail();
 
   useEffect(() => {
-    const code = searchParams.get('code');
-    if (!code) return;
     mutate({ code });
-  }, [mutate, searchParams]);
+  }, [mutate, code]);
 
-  // TODO: loading
   if (isSuccess) return <ConfirmationSuccess />;
-  if (isError)
+
+  if (isError) {
     return (
       <ExpiredLinkLayout>
         <ResendVerificationForm />
       </ExpiredLinkLayout>
     );
-  return <div>Pending...</div>;
+  }
+
+  // TODO: replace with Spinner/Skeleton component
+  return null;
 };

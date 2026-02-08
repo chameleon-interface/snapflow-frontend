@@ -9,5 +9,5 @@ export default async function Page({ searchParams }: Props) {
   const { code } = await searchParams;
   if (!code) redirect('/');
 
-  return <ConfirmEmailPage />;
+  return <ConfirmEmailPage code={code} />;
 }
