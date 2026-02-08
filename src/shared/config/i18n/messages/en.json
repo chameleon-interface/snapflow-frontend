@@ -77,7 +77,9 @@
   },
   "ServerErrors": {
     "usernameExists": "User with this username is already registered",
-    "emailExists": "User with this email is already registered"
+    "emailExists": "User with this email is already registered",
+    "emailAlreadyConfirmed": "User with this email already confirmed",
+    "emailNotFound": "User with this email not found"
   },
   "Validation": {
     "username": {

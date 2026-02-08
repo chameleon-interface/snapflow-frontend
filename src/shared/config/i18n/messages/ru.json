@@ -74,7 +74,9 @@
   },
   "ServerErrors": {
     "usernameExists": "Пользователь с таким именем уже зарегистрирован",
-    "emailExists": "Пользователь с таким email уже зарегистрирован"
+    "emailExists": "Пользователь с таким email уже зарегистрирован",
+    "emailAlreadyConfirmed": "Email уже подтверждён",
+    "emailNotFound": "Пользователь с таким email не найден"
   },
   "Validation": {
     "username": {
