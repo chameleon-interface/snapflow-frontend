@@ -6,9 +6,12 @@ type FieldError = {
 };
 
 export type ApiErrorResponse = {
+  timestamp: string;
+  path: string;
+  method: string;
   code: string;
   message: string;
-  errors: FieldError[];
+  extensions: FieldError[];
 };
 
 declare module '@tanstack/react-query' {

@@ -15,7 +15,7 @@ export const handleServerErrors = <T extends FieldValues>({
   serverErrorMap,
   knownFields,
 }: HandleServerErrorsOptions<T>) => {
-  error.response?.data.errors.forEach(({ field, message }) => {
+  error.response?.data.extensions.forEach(({ field, message }) => {
     const formField = field as Path<T>;
     if (knownFields.includes(formField)) {
       setError(formField, {
