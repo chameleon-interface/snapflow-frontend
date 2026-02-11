@@ -1,0 +1,338 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===== USERS ===== */
+.users {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 72px;
+  margin-bottom: 36px;
+  padding: 12px 24px;
+  border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
+
+  background: var(--color-dark-500);
+}
+
+.usersLabel {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 133%;
+  color: var(--color-light-100);
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 203px;
+  height: 48px;
+  border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  background: var(--color-dark-700);
+}
+
+.digit {
+  position: relative;
+  padding: 0 10px;
+}
+
+.digit:not(:last-child)::after {
+  content: '';
+
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+
+  width: 1px;
+  height: 30px;
+
+  background: var(--color-dark-300);
+}
+
+/* ===== POSTS ===== */
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ===== CARD ===== */
+.card {
+  position: relative;
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  width: calc(25% - 9px);
+}
+
+/* ===== IMAGE ===== */
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+  height: 240px;
+  margin-bottom: 12px;
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* ===== META ===== */
+.user {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.username {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%;
+  color: var(--color-light-100);
+}
+
+.time {
+  margin-bottom: 3px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-light-900);
+}
+
+/* ===== TEXT PREVIEW ===== */
+.textPreview {
+  position: relative;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 171%;
+  color: var(--color-light-100);
+}
+
+/* ===== INLINE BUTTON ===== */
+.moreInline {
+  cursor: pointer;
+
+  display: inline;
+
+  border: none;
+
+  color: var(--color-accent-500);
+  text-decoration: underline;
+
+  background: none;
+}
+
+/* ===== OVERLAY ===== */
+.overlay {
+  position: absolute;
+  z-index: 10;
+  inset: 120px 0 0;
+  transform: translateY(100%);
+
+  padding: 12px 0;
+
+  background: var(--color-dark-700);
+
+  animation: overlay-up 0.35s ease forwards;
+}
+
+@keyframes overlay-up {
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* ===== OVERLAY CONTENT ===== */
+.overlayHeader {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.overlayTime {
+  margin-bottom: 3px;
+  font-size: 12px;
+  color: var(--color-light-900);
+}
+
+.overlayText {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-light-100);
+}
+
+.prevArrow,
+.nextArrow {
+  cursor: pointer;
+
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  transform: translateY(-50%);
+
+  border: none;
+
+  font-size: 20px;
+  color: white;
+
+  background: transparent;
+}
+
+.prevArrow {
+  left: 10px;
+}
+
+.nextArrow {
+  right: 10px;
+}
+
+.dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  height: 12px;
+  padding: 0 8px;
+
+  background-color: var(--color-dark-300);
+}
+
+.dot {
+  cursor: pointer;
+
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+
+  background-color: var(--color-light-100);
+}
+
+.activeDot {
+  background: var(--color-accent-500);
+}
+
+/* ===== АДАПТИВ ===== */
+@media (width <= 768px) {
+  .posts {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .users {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    height: auto;
+  }
+
+  .usersLabel {
+    font-size: 16px;
+  }
+
+  .counter {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .digit {
+    padding: 0 8px;
+    font-size: 16px;
+  }
+
+  .username {
+    font-size: 14px;
+  }
+
+  .time {
+    font-size: 11px;
+  }
+
+  .textPreview {
+    font-size: 13px;
+  }
+
+  .overlayText {
+    font-size: 13px;
+  }
+
+  .overlayHeader .username {
+    font-size: 14px;
+  }
+
+  .overlayTime {
+    font-size: 11px;
+  }
+
+  .prevArrow,
+  .nextArrow {
+    font-size: 18px;
+  }
+
+  .dot {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+@media (width <= 480px) {
+  .usersLabel,
+  .counter,
+  .digit {
+    font-size: 14px;
+  }
+
+  .username,
+  .textPreview,
+  .overlayText,
+  .overlayHeader .username {
+    font-size: 12px;
+  }
+
+  .time,
+  .overlayTime {
+    font-size: 10px;
+  }
+
+  .prevArrow,
+  .nextArrow {
+    font-size: 16px;
+  }
+
+  .dot {
+    width: 4px;
+    height: 4px;
+  }
+}

@@ -4,9 +4,11 @@ import 'snapflow-ui-kit/styles.css';
 import './global.css';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
-import { Header, Sidebar } from '@/widgets';
+import { Header } from '@/widgets';
 import s from './layout.module.css';
 import Providers from '@/app/providers';
+import { SidebarGuard } from '@/widgets/SidebarGuard/SidebarGuard';
+import { BottomNav } from '@/widgets/BottomNav';
 
 const inter = Inter({
   subsets: ['latin', 'cyrillic'],
@@ -25,7 +27,6 @@ export const metadata: Metadata = {
 };
 
 // TODO: заменить на реальную проверку авторизации
-const isAuth = true;
 
 export default async function RootLayout({
   children,
@@ -41,10 +42,11 @@ export default async function RootLayout({
         <Providers>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Header />
-            {isAuth && <Sidebar />}
-            <main className={`${s.main} ${isAuth ? s.withSidebar : ''}`}>
+            <SidebarGuard />
+            <main className={s.main}>
               <div className={s.container}>{children}</div>
             </main>
+            <BottomNav />
             <div id="modal-root"></div>
           </NextIntlClientProvider>
         </Providers>
