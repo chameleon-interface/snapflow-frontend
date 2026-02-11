@@ -117,6 +117,8 @@ export function PostCard({ post }: Props) {
               className={s.avatar}
               src={post.avatarUrl}
               alt={post.author}
+              width={24}
+              height={24}
             />
             <span className={s.username}>{post.author}</span>
           </div>
