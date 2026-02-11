@@ -1,0 +1,48 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.backButton {
+  align-self: start;
+
+  padding: 0;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 171%;
+  color: var(--color-light-100);
+}
+
+.text {
+  text-align: center;
+}
+
+@media (width <= 380px) {
+  .header {
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+
+  .backButton {
+    position: absolute;
+    left: 0;
+  }
+
+  .title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 133%;
+    text-align: center;
+  }
+
+  .backButtonText {
+    display: none;
+  }
+}

@@ -11,7 +11,8 @@
     "messenger": "Мессенджер",
     "search": "Поиск",
     "statistics": "Статистика",
-    "favorites": "Избранное"
+    "favorites": "Избранное",
+    "backToSignUp": "Назад к регистрации"
   },
   "Pages": {
     "mainTitle": "Главная страница",
@@ -24,13 +25,29 @@
     "settingsTitle": "Настройки",
     "signInTitle": "Вход",
     "signUpTitle": "Регистрация",
-    "forgotPasswordTitle": "Восстановление пароля",
-    "createNewPasswordTitle": "Создать новый пароль",
-    "placeholder": "Страница-заглушка."
+    "placeholder": "Страница-заглушка.",
+    "privacyPolicy": "Политика конфиденциальности",
+    "termsOfService": "Условия предоставления услуг"
   },
   "Forms": {
-    "emailLabel": "Почта",
-    "emailPlaceholder": "Введите вашу почту"
+    "haveAccount": "Уже есть аккаунт?",
+    "usernameLabel": "Имя пользователя",
+    "emailLabel": "Email",
+    "passwordLabel": "Пароль",
+    "passwordConfirmationLabel": "Подтверждение пароля",
+    "Registration": {
+      "agreeToTermsPrefix": "Я согласен с",
+      "termsOfService": "Условиями предоставления услуг",
+      "and": "и",
+      "privacyPolicy": "Политикой конфиденциальности",
+      "submit": "Создать аккаунт"
+    }
+  },
+  "Modals": {
+    "EmailSent": {
+      "title": "Email отправлен",
+      "message": "Мы отправили ссылку для подтверждения на {email}"
+    }
   },
   "PasswordRecovery": {
     "description": "Введите ваш email адрес, и мы отправим вам дальнейшие инструкции",
@@ -45,11 +62,21 @@
     "passwordDescription": "Ваш пароль должен содержать от 6 до 20 символов",
     "createNewPasswordButton": "Создать новый пароль"
   },
+  "ConfirmationSuccess": {
+    "title": "Поздравляем!",
+    "description": "Ваш email был подтверждён"
+  },
   "LinkExpired": {
-    "title": "Срок действия ссылки истек",
+    "title": "Срок действия ссылки истек!",
     "description": "Похоже, что срок действия ссылки истек. Не беспокойтесь, мы можем отправить ссылку снова",
     "resendButton": "Отправить ссылку снова",
     "imageAlt": "Ссылка истекла"
+  },
+  "ServerErrors": {
+    "usernameExists": "Пользователь с таким именем уже зарегистрирован",
+    "emailExists": "Пользователь с таким email уже зарегистрирован",
+    "emailAlreadyConfirmed": "Email уже подтверждён",
+    "emailNotFound": "Пользователь с таким email не найден"
   },
   "Validation": {
     "username": {
@@ -69,7 +96,7 @@
     },
     "passwordConfirmation": {
       "mismatch": "Пароли должны совпадать",
-      "required": "Потвердите пароль"
+      "required": "Подтвердите пароль"
     },
     "terms": {
       "required": "Необходимо принять условия сервиса"
