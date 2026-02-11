@@ -1,0 +1,7 @@
+.checkbox span {
+  display: inline;
+}
+
+.checkbox > span:first-of-type {
+  flex-shrink: 0;
+}

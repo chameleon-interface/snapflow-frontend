@@ -47,6 +47,6 @@ export const fields = {
   passwordConfirmation: z.string().min(1, msg.passwordConfirmation.required),
 
   agreeToTerms: z.boolean().refine((val) => val === true, {
-    message: msg.terms.required,
+    message: '',
   }),
 } as const;

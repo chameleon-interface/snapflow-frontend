@@ -17,6 +17,7 @@ export const EmailInput = ({ className }: Props) => {
   return (
     <Input
       id={'email'}
+      type="email"
       className={className}
       label={t('Forms.emailLabel')}
       errorMessage={errors.email?.message && t(errors.email.message as string)}

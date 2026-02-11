@@ -1,5 +1,3 @@
-'use client';
-
 import { Button, Modal, Typography } from 'snapflow-ui-kit/client';
 import s from './EmailModal.module.css';
 import { useTranslations } from 'next-intl';
