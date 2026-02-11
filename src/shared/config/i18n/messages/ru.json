@@ -76,7 +76,8 @@
     "usernameExists": "Пользователь с таким именем уже зарегистрирован",
     "emailExists": "Пользователь с таким email уже зарегистрирован",
     "emailAlreadyConfirmed": "Email уже подтверждён",
-    "emailNotFound": "Пользователь с таким email не найден"
+    "emailNotFound": "Пользователь с таким email не найден",
+    "emailNotRegistered": "Невозможно отправить код - указанный email не зарегистрирован"
   },
   "Validation": {
     "username": {
