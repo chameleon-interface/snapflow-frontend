@@ -2,10 +2,10 @@ import Link from 'next/link';
 import { Button } from 'snapflow-ui-kit';
 import { navItems } from '@/shared/config/navigation';
 import s from './NavMenu.module.css';
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
-export const NavMenu = async () => {
-  const t = await getTranslations('Nav');
+export const NavMenu = () => {
+  const t = useTranslations('Nav');
 
   return (
     <nav>

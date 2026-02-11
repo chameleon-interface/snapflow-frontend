@@ -12,3 +12,9 @@
   padding: 72px 0 36px 60px;
   border-right: 1px solid var(--color-dark-300);
 }
+
+@media (width <= 768px) {
+  .sidebar {
+    display: none;
+  }
+}

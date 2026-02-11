@@ -3,18 +3,22 @@
 import { useQuery } from '@tanstack/react-query';
 import type { Me } from './types';
 
-const ME_URL = 'https://snapflow.cc/api/v1/auth/me';
+//const ME_URL = 'https://snapflow.cc/api/v1/auth/me';
+
+// async function fetchMe(): Promise<Me | null> {
+//   const res = await fetch(ME_URL, {
+//     credentials: 'include',
+//   });
+//
+//   if (!res.ok) {
+//     return null;
+//   }
+//
+//   return res.json();
+// }
 
 async function fetchMe(): Promise<Me | null> {
-  const res = await fetch(ME_URL, {
-    credentials: 'include',
-  });
-
-  if (!res.ok) {
-    return null;
-  }
-
-  return res.json();
+  return { userId: '76', username: 'useR', email: 'test@snapflow.cc' };
 }
 
 export function useMe() {

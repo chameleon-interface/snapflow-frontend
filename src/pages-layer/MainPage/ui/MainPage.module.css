@@ -240,9 +240,35 @@
   background: var(--color-accent-500);
 }
 
+@media (width <= 1440px) and (width >= 769px) {
+  .posts,
+  .users {
+    transform: translateX(60px);
+    max-width: 460px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .users {
+    margin-bottom: 36px;
+  }
+
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(2, 220px);
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .card {
+    width: 220px;
+  }
+}
+
 /* ===== АДАПТИВ ===== */
 @media (width <= 768px) {
   .posts {
+    display: flex;
     flex-direction: column;
     gap: 16px;
   }
