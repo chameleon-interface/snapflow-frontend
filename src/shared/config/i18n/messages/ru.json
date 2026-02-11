@@ -3,7 +3,8 @@
     "logOut": "Выйти",
     "logIn": "Войти",
     "signUp": "Регистрация",
-    "forgotPassword": "Забыли пароль"
+    "forgotPassword": "Забыли пароль",
+    "doNotHaveAnAccount": "У вас нет аккаунта?"
   },
   "Nav": {
     "feed": "Лента",

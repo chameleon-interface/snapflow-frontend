@@ -6,7 +6,7 @@ import { LanguageSwitcher } from '@/features/language-switcher/ui/LanguageSwitch
 
 export const Header = () => {
   const t = useTranslations('Auth');
-  const isAuth = false;
+  const isAuth = true;
   return (
     <header className={s.header}>
       <Typography variant={'large'} className={s.logo} as={Link} href={'/'}>

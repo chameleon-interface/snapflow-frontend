@@ -3,7 +3,8 @@
     "logOut": "Log out",
     "logIn": "Log in",
     "signUp": "Sign up",
-    "forgotPassword": "Forgot password"
+    "forgotPassword": "Forgot password",
+    "doNotHaveAnAccount": "Don’t have an account?"
   },
   "Nav": {
     "feed": "Feed",
