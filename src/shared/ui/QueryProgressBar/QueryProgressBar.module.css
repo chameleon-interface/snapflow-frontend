@@ -1,0 +1,62 @@
+.wrapper {
+  pointer-events: none;
+
+  position: fixed;
+  z-index: 99;
+  top: var(--header-height);
+  right: 0;
+  left: 0;
+
+  overflow: hidden;
+
+  height: 3px;
+
+  background: transparent;
+}
+
+.bar {
+  will-change: transform;
+
+  width: 40%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-accent-500),
+    transparent
+  );
+
+  animation: progress-slide 1.3s linear infinite;
+}
+
+@media (width <= 768px) {
+  .bar {
+    width: 55%;
+    animation-duration: 1.1s;
+  }
+}
+
+@media (width <= 480px) {
+  .bar {
+    width: 70%;
+    animation-duration: 1s;
+  }
+}
+
+@media (width <= 360px) {
+  .bar {
+    width: 80%;
+    animation-duration: 0.9s;
+  }
+}
+
+@keyframes progress-slide {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(260%);
+  }
+}

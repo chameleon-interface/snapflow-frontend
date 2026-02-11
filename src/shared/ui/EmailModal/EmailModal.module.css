@@ -1,16 +1,37 @@
 .modal {
   width: 378px;
+  max-width: 100%;
+  margin-inline: 15px;
+}
+
+.modal > div {
+  padding: 30px 24px 36px;
 }
 
 .modalContent {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  padding: 6px 0;
 }
 
 .modalButton {
   align-self: flex-end;
-  box-sizing: border-box;
   width: 96px;
+}
+
+@media (width <= 380px) {
+  .modal > div,
+  .modal > header {
+    padding-inline: 12px;
+  }
+
+  .modalContent {
+    text-align: center;
+  }
+
+  .modalButton {
+    align-self: unset;
+    width: 100%;
+    padding-block: 12px;
+  }
 }

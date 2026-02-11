@@ -2,7 +2,7 @@ import s from './Header.module.css';
 import { Button, Typography } from 'snapflow-ui-kit';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { LanguageSwitcher } from '@/features/language-switcher/ui/LanguageSwitcher';
+import { LanguageSwitcher } from '@/features/language-switcher';
 
 export const Header = () => {
   const t = useTranslations('Auth');

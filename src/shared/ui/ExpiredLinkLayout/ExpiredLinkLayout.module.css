@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 473px;
+  margin: 0 auto;
+}
+
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  align-items: center;
+  order: -2;
+
+  max-width: 305px;
+  margin-bottom: 30px;
+
+  text-align: center;
+}
+
+@media (width <= 480px) {
+  .image {
+    order: -1;
+
+    width: 100%;
+    max-width: 330px;
+    height: auto;
+    margin-bottom: 42px;
+  }
+}
+
+@media (width <= 380px) {
+  .textWrapper {
+    gap: 13px;
+    max-width: 330px;
+  }
+
+  .title {
+    font-size: 18px;
+    line-height: 133%;
+  }
+}

@@ -5,6 +5,7 @@ import './global.css';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Header, Sidebar } from '@/widgets';
+import { QueryProgressBar } from '@/shared/ui';
 import s from './layout.module.css';
 import Providers from '@/app/providers';
 
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
 };
 
 // TODO: заменить на реальную проверку авторизации
-const isAuth = true;
+const isAuth = false;
 
 export default async function RootLayout({
   children,
@@ -41,6 +42,7 @@ export default async function RootLayout({
         <Providers>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Header />
+            <QueryProgressBar />
             {isAuth && <Sidebar />}
             <main className={`${s.main} ${isAuth ? s.withSidebar : ''}`}>
               <div className={s.container}>{children}</div>
