@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import s from './BottomNav.module.css';
 import {
   HomeIcon,
@@ -9,50 +8,54 @@ import {
   PlusSquareIcon,
   SearchIcon,
 } from 'snapflow-ui-kit/icons';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 export const BottomNav = () => {
-  const [active, setActive] = useState('home');
   const router = useRouter();
+  const pathname = usePathname();
 
-  const handleClick = (page: string, path: string) => {
-    setActive(page);
-    router.push(path); // переход по странице
+  const handleClick = (path: string) => {
+    router.push(path);
   };
 
   return (
     <nav className={s.bottomNav}>
       <button
-        className={active === 'menu' ? s.active : ''}
-        onClick={() => handleClick('menu', '/')}
+        className={pathname === '/' ? s.active : ''}
+        onClick={() => handleClick('/')}
+        type="button"
       >
         <HomeIcon />
       </button>
 
       <button
-        className={active === 'home' ? s.active : ''}
-        onClick={() => handleClick('home', '/')}
+        className={pathname === '/' ? s.active : ''}
+        onClick={() => handleClick('/')}
+        type="button"
       >
         <PlusSquareIcon />
       </button>
 
       <button
-        className={active === 'messenger' ? s.active : ''}
-        onClick={() => handleClick('messenger', '/messenger')}
+        className={pathname === '/messenger' ? s.active : ''}
+        onClick={() => handleClick('/messenger')}
+        type="button"
       >
         <MessageIcon />
       </button>
 
       <button
-        className={active === 'search' ? s.active : ''}
-        onClick={() => handleClick('search', '/search')}
+        className={pathname === '/search' ? s.active : ''}
+        onClick={() => handleClick('/search')}
+        type="button"
       >
         <SearchIcon />
       </button>
 
       <button
-        className={active === 'profile' ? s.active : ''}
-        onClick={() => handleClick('profile', '/profile')}
+        className={pathname === '/profile' ? s.active : ''}
+        onClick={() => handleClick('/profile')}
+        type="button"
       >
         <PersonIcon />
       </button>

@@ -17,6 +17,7 @@ import { LogoutButton } from '@/features/auth/logout';
 
 export const Header = () => {
   const t = useTranslations('Auth');
+  const tNav = useTranslations('Nav');
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { isAuth, loading } = useMe();
@@ -81,7 +82,9 @@ export const Header = () => {
                   className={s.menuItem}
                 >
                   <SettingsIcon />
-                  <Typography variant="text-14">Profile Settings</Typography>
+                  <Typography variant="text-14">
+                    {tNav('profileSettings')}
+                  </Typography>
                 </Button>
 
                 <Button
@@ -91,7 +94,9 @@ export const Header = () => {
                   className={s.menuItem}
                 >
                   <TrendingUpIcon />
-                  <Typography variant="text-14">Statistics</Typography>
+                  <Typography variant="text-14">
+                    {tNav('statistics')}
+                  </Typography>
                 </Button>
 
                 <Button
@@ -101,7 +106,7 @@ export const Header = () => {
                   className={s.menuItem}
                 >
                   <BookMarkIcon />
-                  <Typography variant="text-14">Favorites</Typography>
+                  <Typography variant="text-14">{tNav('favorites')}</Typography>
                 </Button>
                 <div className={s.menuItem}>
                   <LogoutButton />

@@ -100,14 +100,14 @@ export function PostCard({ post }: Props) {
       <span className={s.time}>{post.createdAt}</span>
 
       {/* TEXT PREVIEW */}
-      <p className={s.textPreview}>
+      <div className={s.textPreview}>
         {previewText}
         {!expanded && post.description.length > 44 && (
           <button className={s.moreInline} onClick={() => setExpanded(true)}>
             Show more
           </button>
         )}
-      </p>
+      </div>
 
       {/* OVERLAY */}
       {expanded && (
@@ -123,12 +123,12 @@ export function PostCard({ post }: Props) {
             <span className={s.username}>{post.author}</span>
           </div>
           <div className={s.overlayTime}>{post.createdAt}</div>
-          <p className={s.overlayText}>
+          <div className={s.overlayText}>
             {post.description}
             <button className={s.moreInline} onClick={() => setExpanded(false)}>
               Hide
             </button>
-          </p>
+          </div>
         </div>
       )}
     </article>

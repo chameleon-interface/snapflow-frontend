@@ -1,5 +1,1 @@
-export type Me = {
-  userId: string;
-  username: string;
-  email: string;
-};
+export type { MeResponse as Me } from '@/shared/api';

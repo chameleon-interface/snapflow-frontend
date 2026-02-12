@@ -8,6 +8,7 @@
     "feed": "Лента",
     "create": "Создать",
     "profile": "Мой профиль",
+    "profileSettings": "Настройки профиля",
     "messenger": "Мессенджер",
     "search": "Поиск",
     "statistics": "Статистика",
@@ -16,6 +17,7 @@
   "Pages": {
     "mainTitle": "Главная страница",
     "feedTitle": "Лента",
+    "createTitle": "Создать",
     "favoritesTitle": "Избранное",
     "profileTitle": "Профиль",
     "messengerTitle": "Мессенджер",

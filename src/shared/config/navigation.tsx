@@ -17,7 +17,7 @@ export type NavItem = {
 
 export const navItems: NavItem[] = [
   { labelKey: 'feed', href: '/feed', icon: <HomeIcon /> },
-  { labelKey: 'create', href: '/create', icon: <PlusSquareIcon /> },
+  { labelKey: 'create', href: '/', icon: <PlusSquareIcon /> },
   { labelKey: 'profile', href: '/profile', icon: <PersonIcon /> },
   { labelKey: 'messenger', href: '/messenger', icon: <MessageIcon /> },
   { labelKey: 'search', href: '/search', icon: <SearchIcon /> },

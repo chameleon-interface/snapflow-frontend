@@ -8,6 +8,7 @@
     "feed": "Feed",
     "create": "Create",
     "profile": "My profile",
+    "profileSettings": "Profile settings",
     "messenger": "Messenger",
     "search": "Search",
     "statistics": "Statistics",
@@ -16,6 +17,7 @@
   "Pages": {
     "mainTitle": "Main page",
     "feedTitle": "Feed",
+    "createTitle": "Create",
     "favoritesTitle": "Favorites",
     "profileTitle": "Profile",
     "messengerTitle": "Messenger",
