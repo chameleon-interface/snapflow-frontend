@@ -5,7 +5,7 @@ import { LogOutIcon } from 'snapflow-ui-kit/icons';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
-import axios from 'axios';
+import { authApi } from '@/features/auth/api/authApi';
 import s from './LogoutButton.module.css';
 
 export const LogoutButton = () => {
@@ -13,16 +13,10 @@ export const LogoutButton = () => {
   const router = useRouter();
 
   const logoutMutation = useMutation({
-    mutationFn: async () => {
-      await axios.post('https://snapflow.cc/api/v1/auth/logout', null, {
-        withCredentials: true, // 🔴 важно для cookie
-      });
-    },
+    mutationFn: () => authApi.logout(),
 
-    onSettled: () => {
-      localStorage.removeItem('accessToken');
-
-      router.push('/log-in');
+    onSuccess: () => {
+      router.push('/sign-in'); // редирект на страницу логина
     },
   });
 

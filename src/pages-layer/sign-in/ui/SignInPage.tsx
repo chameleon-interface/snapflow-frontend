@@ -1,5 +1,6 @@
 'use client';
 
+import { authApi } from '@/features/auth/api/authApi';
 import { Button } from 'snapflow-ui-kit/client';
 import { EmailInput, FormWrapper, PasswordInput } from '@/shared/ui';
 import Link from 'next/link';
@@ -8,13 +9,8 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import s from './SignInPage.module.css';
-import { api } from '@/shared/api';
 import { LoginFormData, loginSchema } from '@/features/auth/login/model/schema';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-type SignInResponse = {
-  accessToken: string;
-};
 
 export function SignInPage() {
   const t = useTranslations('Auth');
@@ -30,22 +26,24 @@ export function SignInPage() {
     },
   });
 
-  const signInMutation = useMutation<SignInResponse, unknown, LoginFormData>({
-    mutationFn: async (data: LoginFormData) => {
-      const response = await api.post<SignInResponse>('auth/login', data);
-
-      return response.data;
-    },
-
-    onSuccess: (data) => {
-      console.log('Успешный вход:', data);
-      localStorage.setItem('accessToken', data.accessToken);
+  // ===============================
+  // 🔹 Mutation через authApi
+  // ===============================
+  const { mutate, isPending } = useMutation({
+    mutationFn: (data: LoginFormData) =>
+      authApi.login(data.email, data.password),
+    onSuccess: () => {
       router.push('/');
     },
-  });
+  }); //вынести в апи
 
+  // ===============================
+  // 🔹 onSubmit для формы
+  // ===============================
   const onSubmit = (data: LoginFormData) => {
-    signInMutation.mutate(data);
+    mutate(data);
+    //onSonSuccess:
+    //onError:
   };
 
   return (
@@ -69,7 +67,7 @@ export function SignInPage() {
           <div>
             <Button
               type="submit"
-              disabled={signInMutation.isPending}
+              disabled={isPending}
               className={s.loginButton}
             >
               {t('logIn')}
