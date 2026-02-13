@@ -4,13 +4,15 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useMe } from '@/shared/api/useMe';
 import { ROUTES } from '@/shared/config/routes';
+import { hasAuthToken } from '@/shared/lib/storage';
 
 export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { data } = useMe();
+  const { data, isPending } = useMe();
+  const hasToken = hasAuthToken();
   const router = useRouter();
 
   useEffect(() => {
@@ -19,7 +21,7 @@ export default function AuthLayout({
     }
   }, [data, router]);
 
-  if (data) {
+  if (data || (hasToken && isPending)) {
     return null;
   }
 
