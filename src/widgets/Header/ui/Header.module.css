@@ -45,7 +45,7 @@
   display: block;
 }
 
-@media (width <= 530px) {
+@media (width <= 768px) {
   .mobileOnly {
     display: block;
   }

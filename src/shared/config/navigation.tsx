@@ -8,6 +8,7 @@ import {
   TrendingUpIcon,
 } from 'snapflow-ui-kit/icons';
 import { ReactNode } from 'react';
+import { ROUTES } from './routes';
 
 export type NavItem = {
   labelKey: string;
@@ -16,11 +17,20 @@ export type NavItem = {
 };
 
 export const navItems: NavItem[] = [
-  { labelKey: 'feed', href: '/feed', icon: <HomeIcon /> },
-  { labelKey: 'create', href: '/create', icon: <PlusSquareIcon /> },
-  { labelKey: 'profile', href: '/profile', icon: <PersonIcon /> },
-  { labelKey: 'messenger', href: '/messenger', icon: <MessageIcon /> },
-  { labelKey: 'search', href: '/search', icon: <SearchIcon /> },
-  { labelKey: 'statistics', href: '/statistics', icon: <TrendingUpIcon /> },
-  { labelKey: 'favorites', href: '/favorites', icon: <BookMarkIcon /> },
+  { labelKey: 'feed', href: ROUTES.FEED, icon: <HomeIcon /> },
+  { labelKey: 'create', href: ROUTES.CREATE, icon: <PlusSquareIcon /> },
+  { labelKey: 'profile', href: ROUTES.PROFILE, icon: <PersonIcon /> },
+  { labelKey: 'messenger', href: ROUTES.MESSENGER, icon: <MessageIcon /> },
+  { labelKey: 'search', href: ROUTES.SEARCH, icon: <SearchIcon /> },
+  { labelKey: 'statistics', href: ROUTES.STATISTICS, icon: <TrendingUpIcon /> },
+  { labelKey: 'favorites', href: ROUTES.FAVORITES, icon: <BookMarkIcon /> },
+];
+
+// Mobile bottom navigation items
+export const mobileNavItems: NavItem[] = [
+  { labelKey: 'feed', href: ROUTES.FEED, icon: <HomeIcon /> },
+  { labelKey: 'create', href: ROUTES.CREATE, icon: <PlusSquareIcon /> },
+  { labelKey: 'messenger', href: ROUTES.MESSENGER, icon: <MessageIcon /> },
+  { labelKey: 'search', href: ROUTES.SEARCH, icon: <SearchIcon /> },
+  { labelKey: 'profile', href: ROUTES.PROFILE, icon: <PersonIcon /> },
 ];

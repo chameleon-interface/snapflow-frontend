@@ -16,9 +16,20 @@ body:has(aside) .main {
   margin-left: var(--sidebar-width);
 }
 
+@media (width <= 768px) {
+  body:has(aside) .main {
+    margin-left: 0;
+    padding-bottom: 90px; /* Space for bottom navigation (60px height + 30px extra) */
+  }
+}
+
 @media (width <= 380px) {
   .main {
     padding-bottom: 15px;
+  }
+
+  body:has(aside) .main {
+    padding-bottom: 75px; /* Adjusted for smaller screens */
   }
 
   .container {
