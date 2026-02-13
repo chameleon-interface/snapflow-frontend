@@ -80,6 +80,7 @@
     "emailExists": "User with this email is already registered",
     "emailAlreadyConfirmed": "User with this email already confirmed",
     "emailNotFound": "User with this email not found",
+    "emailNotExists": "User with this email doesn't exist",
     "emailNotRegistered": "It is impossible to send the code - the specified email is not registered"
   },
   "Validation": {
