@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from 'snapflow-ui-kit';
-import { navItems } from '@/shared/config/navigation';
+import { navItems } from '../../model';
 import s from './NavMenu.module.css';
 import { useTranslations } from 'next-intl';
 

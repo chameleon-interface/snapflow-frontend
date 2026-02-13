@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { mobileNavItems } from '@/shared/config/navigation';
+import { mobileNavItems } from '../../model';
 import s from './BottomNav.module.css';
 
 export const BottomNav = () => {

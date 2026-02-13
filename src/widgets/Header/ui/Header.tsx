@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { LanguageSwitcher } from '@/features/language-switcher';
 import { MobileMenu } from './MobileMenu/MobileMenu';
-import { useMe } from '@/shared/api/useMe';
+import { useMe } from '@/entities/user';
 import { ROUTES } from '@/shared/config/routes';
 
 export const Header = () => {

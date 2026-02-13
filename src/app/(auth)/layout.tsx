@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useMe } from '@/shared/api/useMe';
+import { useMe } from '@/entities/user';
 import { ROUTES } from '@/shared/config/routes';
 import { hasAuthToken } from '@/shared/lib/storage';
 

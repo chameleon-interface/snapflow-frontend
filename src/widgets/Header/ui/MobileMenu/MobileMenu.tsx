@@ -4,7 +4,7 @@ import { DropdownMenu } from 'snapflow-ui-kit/client';
 import { MoreHozitontalIcon } from 'snapflow-ui-kit/icons';
 import { Button } from 'snapflow-ui-kit';
 import { useTranslations } from 'next-intl';
-import { useMe } from '@/shared/api/useMe';
+import { useMe } from '@/entities/user';
 import { useMenuItems } from '../../model';
 import s from './MobileMenu.module.css';
 
