@@ -33,7 +33,7 @@ export const SetNewPasswordForm = ({ recoveryCode }: Props) => {
 
   const isButtonDisabled = !formState.isValid || isPending;
 
-  const onSubmit = async (data: SetNewPasswordFormData) => {
+  const onSubmit = (data: SetNewPasswordFormData) => {
     mutate(
       {
         newPassword: data.password,
