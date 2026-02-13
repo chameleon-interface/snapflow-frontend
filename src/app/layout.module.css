@@ -12,7 +12,7 @@
   padding-inline: var(--container-padding);
 }
 
-.main.withSidebar {
+body:has(aside) .main {
   margin-left: var(--sidebar-width);
 }
 
