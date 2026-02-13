@@ -1,0 +1,12 @@
+.menu {
+  min-width: 130px;
+}
+
+.menuButton {
+  padding-inline: 0;
+  color: var(--color-light-100);
+}
+
+.menuButton span {
+  margin-right: 0;
+}

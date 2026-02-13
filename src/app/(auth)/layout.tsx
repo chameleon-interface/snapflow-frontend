@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useMe } from '@/shared/api/useMe';
+import { ROUTES } from '@/shared/config/routes';
 
 export default function AuthLayout({
   children,
@@ -14,7 +15,7 @@ export default function AuthLayout({
 
   useEffect(() => {
     if (data) {
-      router.replace('/');
+      router.replace(ROUTES.HOME);
     }
   }, [data, router]);
 
