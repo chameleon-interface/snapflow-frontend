@@ -6,7 +6,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useLocale, useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { useState } from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { Button, Typography } from 'snapflow-ui-kit';
 import { useRequestReset } from '../api/useRequestReset';
@@ -14,7 +13,10 @@ import { RequestResetFormData, requestResetSchema } from '../model/schema';
 import { serverErrorMap } from '../model/serverErrorMap';
 import s from './RequestResetForm.module.css';
 
-const ReCAPTCHA = dynamic(() => import('react-google-recaptcha').then((mod) => mod.default), { ssr: false, });
+const ReCAPTCHA = dynamic(
+  () => import('react-google-recaptcha').then((mod) => mod.default),
+  { ssr: false },
+);
 
 type Props = {
   openModal: (email: string) => void;
@@ -34,28 +36,23 @@ export const RequestResetForm = ({ openModal }: Props) => {
     },
   });
 
-  const { handleSubmit, setError, setValue, control, clearErrors, formState } = form;
+  const { handleSubmit, setError, setValue, control, clearErrors, formState } =
+    form;
 
   const { mutate, isSuccess, isPending } = useRequestReset();
   const isButtonDisabled = !formState.isValid || isPending;
 
-
   const onSubmit = (data: RequestResetFormData) => {
-    mutate(
-      data,
-      {
-        onSuccess: () => openModal(data.email),
-        onError: (error) =>
-          handleServerErrors({
-            error,
-            setError,
-            serverErrorMap,
-            knownFields: [
-              'email',
-            ],
-          }),
-      },
-    );
+    mutate(data, {
+      onSuccess: () => openModal(data.email),
+      onError: (error) =>
+        handleServerErrors({
+          error,
+          setError,
+          serverErrorMap,
+          knownFields: ['email'],
+        }),
+    });
   };
 
   return (

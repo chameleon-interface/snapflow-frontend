@@ -25,11 +25,7 @@ export const RequestResetPage = () => {
       <FormWrapper title={t('forgotPasswordTitle')} className={s.formWrapper}>
         <RequestResetForm openModal={openModalHandler} />
       </FormWrapper>
-      <EmailModal
-        open={open}
-        onClose={closeModalHandler}
-        email={email}
-      />
+      <EmailModal open={open} onClose={closeModalHandler} email={email} />
     </>
   );
 };

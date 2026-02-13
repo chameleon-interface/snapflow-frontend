@@ -23,7 +23,10 @@ export const SetNewPasswordPage = ({ recoveryCode }: Props) => {
 
   if (isSuccess) {
     return (
-      <FormWrapper title={t('Pages.createNewPasswordTitle')} className={s.formWrapper}>
+      <FormWrapper
+        title={t('Pages.createNewPasswordTitle')}
+        className={s.formWrapper}
+      >
         <SetNewPasswordForm recoveryCode={recoveryCode} />
       </FormWrapper>
     );
