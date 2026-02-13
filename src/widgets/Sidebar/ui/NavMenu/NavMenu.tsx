@@ -13,7 +13,7 @@ export const NavMenu = () => {
     <nav>
       <ul className={s.menu}>
         {navItems.map(({ labelKey, href, icon }) => {
-          const isActive = pathname === href;
+          const isActive = pathname === href || pathname.startsWith(`${href}/`);
 
           return (
             <li key={href}>

@@ -14,7 +14,7 @@ export const BottomNav = () => {
     <nav className={s.bottomNav} aria-label="Mobile navigation">
       <ul className={s.menu}>
         {mobileNavItems.map(({ labelKey, href, icon }) => {
-          const isActive = pathname === href;
+          const isActive = pathname === href || pathname.startsWith(`${href}/`);
           const label = t(labelKey);
 
           return (
