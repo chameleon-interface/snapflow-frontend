@@ -32,9 +32,9 @@
   gap: 24px;
 }
 
-.buttonWrapper > button {
-  min-width: 100px;
-  padding-inline: 5px;
+.buttonWrapper > a {
+  width: 100px;
+  padding-inline: 0;
 }
 
 .mobileOnly {
