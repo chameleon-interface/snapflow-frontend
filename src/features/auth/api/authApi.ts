@@ -1,77 +1,30 @@
-// import { api } from '@/shared/api/baseApi';
-// import { tokenService } from '@/shared/lib/tokenService/tokenService';
-//
-// type LoginResponse = {
-//   accessToken: string;
-// };
-//
-// export const authApi = {
-//   async login(email: string, password: string) {
-//     const { data } = await api.post<LoginResponse>('auth/login', {
-//       email,
-//       password,
-//     });
-//
-//     tokenService.set(data.accessToken);
-//
-//     return data;
-//   },
-//
-//   async logout() {
-//     try {
-//       // ⚡️ Передаем флаг skipAuthRefresh, чтобы interceptor не пытался refresh
-//       await api.post('auth/logout', null, { skipAuthRefresh: true });
-//     } catch (error: any) {
-//       // Ошибка больше не игнорируется
-//       console.error(
-//         'Ошибка при logout:',
-//         error.response?.data || error.message,
-//       );
-//       throw error;
-//     } finally {
-//       tokenService.remove();
-//     }
-//   },
-//
-//   async refresh() {
-//     const { data } = await api.post<LoginResponse>('auth/refresh');
-//     tokenService.set(data.accessToken);
-//     return data;
-//   },
-// };
-// import axios from 'axios';
-import { api } from '@/shared/api/baseApi';
 import { tokenService } from '@/shared/lib/tokenService/tokenService';
+import { api } from '@/shared/api/instance';
 
-// const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
-
-type LoginResponse = {
+export type LoginResponse = {
   accessToken: string;
 };
 
 export const authApi = {
-  async login(email: string, password: string) {
+  login: async (email: string, password: string) => {
     const { data } = await api.post<LoginResponse>('auth/login', {
       email,
       password,
     });
 
-    tokenService.set(data.accessToken); //  локал сторедж
+    // Сохраняем токен в localStorage
+    tokenService.set(data.accessToken);
+
     return data;
   },
 
-  async logout() {
+  logout: async () => {
     try {
-      // ❗ logout через обычный axios (без interceptor)
-      await api.post(`auth/logout`, null, {});
+      await api.post('auth/logout'); // сервер удаляет refresh cookie
     } finally {
-      tokenService.remove();
+      tokenService.remove(); // локально очищаем accessToken
     }
   },
 
-  // async refresh() {
-  //   const { data } = await api.post<LoginResponse>('auth/refresh');
-  //   tokenService.set(data.accessToken);
-  //   return data;
-  // },
+  // Здесь можно добавить me() или refresh() позже
 };

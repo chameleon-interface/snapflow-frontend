@@ -1,5 +1,6 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL, // NEXT_PUBLIC_API_URL=/api/ заменить в env на этот путь
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  withCredentials: true, // Required for refresh cookies
 });

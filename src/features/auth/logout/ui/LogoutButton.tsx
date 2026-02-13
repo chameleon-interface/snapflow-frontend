@@ -3,33 +3,18 @@
 import { Button } from 'snapflow-ui-kit';
 import { LogOutIcon } from 'snapflow-ui-kit/icons';
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
-import { useMutation } from '@tanstack/react-query';
-import { authApi } from '@/features/auth/api/authApi';
-import s from './LogoutButton.module.css';
+import { useLogoutMutation } from '@/features/auth/logout/ui/useLogoutMutation';
 
 export const LogoutButton = () => {
   const t = useTranslations('Auth');
-  const router = useRouter();
-
-  const logoutMutation = useMutation({
-    mutationFn: () => authApi.logout(),
-
-    onSuccess: () => {
-      router.push('/sign-in'); // редирект на страницу логина
-    },
-  });
-
-  const handleLogout = () => {
-    logoutMutation.mutate();
-  };
+  const logoutMutation = useLogoutMutation();
 
   return (
     <Button
-      className={s.button}
+      className=""
       icon={<LogOutIcon />}
       variant="text"
-      onClick={handleLogout}
+      onClick={() => logoutMutation.mutate()}
       disabled={logoutMutation.isPending}
     >
       {t('logOut')}
