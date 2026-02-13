@@ -2,7 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
-import { authApi } from '@/features/auth/api/authApi';
+import { api } from '@/shared/api/instance';
+import { tokenService } from '@/shared/lib/tokenService/tokenService';
 import { LoginFormData } from '@/features/auth/login/model/schema';
 import { handleServerErrors } from '@/shared/lib/forms';
 import { serverErrorMap } from '@/features/auth/confirm-email/model/serverErrorMap';
@@ -12,11 +13,19 @@ export const useLoginMutation = (setError: UseFormSetError<LoginFormData>) => {
   const router = useRouter();
 
   return useMutation({
-    mutationFn: (data: LoginFormData) =>
-      authApi.login(data.email, data.password),
+    mutationFn: async (data: LoginFormData) => {
+      const { data: response } = await api.post<{ accessToken: string }>(
+        'auth/login',
+        { email: data.email, password: data.password },
+      );
+
+      tokenService.set(response.accessToken);
+
+      return response;
+    },
 
     onSuccess: () => {
-      router.push('/');
+      router.push('/'); //
     },
 
     onError: (error) => {

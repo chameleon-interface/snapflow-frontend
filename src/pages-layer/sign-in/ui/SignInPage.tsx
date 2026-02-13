@@ -9,6 +9,7 @@ import { LoginFormData, loginSchema } from '@/features/auth/login/model/schema';
 import { FormWrapper, EmailInput, PasswordInput } from '@/shared/ui';
 import s from './SignInPage.module.css';
 import { useLoginMutation } from '@/pages-layer/sign-in/ui/useLoginMutation';
+import Link from 'next/link';
 
 export function SignInPage() {
   const t = useTranslations('Auth');
@@ -33,7 +34,14 @@ export function SignInPage() {
             <EmailInput />
             <PasswordInput />
           </div>
-
+          <div className={s.forgotPassword}>
+            <Link
+              href="/password-recovery/request-reset"
+              className={s.forgotPasswordLink}
+            >
+              {t('forgotPassword')}
+            </Link>
+          </div>
           <div>
             <Button
               type="submit"
@@ -45,6 +53,12 @@ export function SignInPage() {
           </div>
         </form>
       </FormProvider>
+      <div className={s.signupContainer}>
+        <span className={s.doNotHaveAnAccount}>{t('doNotHaveAnAccount')}</span>
+        <Link href="/sign-up" className={s.signupLink}>
+          {t('signUp')}
+        </Link>
+      </div>
     </FormWrapper>
   );
 }
