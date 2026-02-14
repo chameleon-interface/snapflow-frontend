@@ -23,7 +23,6 @@ export const useLoginMutation = (setError: UseFormSetError<LoginFormData>) => {
         },
       );
 
-      // сохраняем токен после успешного логина
       localStorage.setItem('accessToken', response.accessToken);
 
       return response;
@@ -34,18 +33,6 @@ export const useLoginMutation = (setError: UseFormSetError<LoginFormData>) => {
     },
 
     onError: (error) => {
-      const status = error?.response?.status;
-
-      // 429 — rate limit (более 5 попыток за 10 секунд)
-      if (status === 429) {
-        setError('root', {
-          type: 'manual',
-          message: 'Too many attempts. Try again in 10 seconds.',
-        });
-        return;
-      }
-
-      // Все остальные ошибки (401, 400 ValidationError и т.д.)
       handleServerErrors({
         error,
         setError,
