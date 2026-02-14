@@ -32,7 +32,11 @@ export const handleServerErrors = <T extends FieldValues>({
   }
 
   // Если extensions пустой или отсутствует, проверяем message
-  if (errorData.message && serverErrorMap[errorData.message] && knownFields.length > 0) {
+  if (
+    errorData.message &&
+    serverErrorMap[errorData.message] &&
+    knownFields.length > 0
+  ) {
     const formField = knownFields[0] as Path<T>;
     setError(formField, {
       message: serverErrorMap[errorData.message],

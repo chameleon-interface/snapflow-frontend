@@ -127,22 +127,24 @@ export const RequestResetForm = () => {
               </>
             )}
           />
-          {
-            isSuccess || isError ? (
-              <Button
-                className={s.button}
-                type="button"
-                disabled={isButtonDisabled}
-                onClick={handleSendAgain}
-              >
-                {t('PasswordRecovery.sendLinkAgain')}
-              </Button>
-            ) : (
-              <Button className={s.button} type="submit" disabled={isButtonDisabled}>
-                {t('PasswordRecovery.sendLink')}
-              </Button>
-            )
-          }
+          {isSuccess || isError ? (
+            <Button
+              className={s.button}
+              type="button"
+              disabled={isButtonDisabled}
+              onClick={handleSendAgain}
+            >
+              {t('PasswordRecovery.sendLinkAgain')}
+            </Button>
+          ) : (
+            <Button
+              className={s.button}
+              type="submit"
+              disabled={isButtonDisabled}
+            >
+              {t('PasswordRecovery.sendLink')}
+            </Button>
+          )}
           <Button className={s.button} variant="text" as={Link} href="/sign-in">
             {t('PasswordRecovery.backToSignIn')}
           </Button>
