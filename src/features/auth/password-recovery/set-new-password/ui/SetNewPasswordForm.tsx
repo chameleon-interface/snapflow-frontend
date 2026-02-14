@@ -1,5 +1,6 @@
 'use client';
 
+import { handleServerErrors } from '@/shared/lib/forms';
 import { PasswordInput } from '@/shared/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
@@ -7,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Button, Typography } from 'snapflow-ui-kit';
 import { useSetNewPassword } from '../api/useSetNewPassword';
+import { serverErrorMap } from '../model/serverErrorMap';
 import { SetNewPasswordFormData, setNewPasswordSchema } from '../model/schema';
 import s from './SetNewPasswordForm.module.css';
 
@@ -29,7 +31,7 @@ export const SetNewPasswordForm = ({ recoveryCode }: Props) => {
   });
 
   const { mutate, isPending } = useSetNewPassword();
-  const { formState, handleSubmit } = form;
+  const { formState, handleSubmit, setError } = form;
 
   const isButtonDisabled = !formState.isValid || isPending;
 
@@ -40,7 +42,15 @@ export const SetNewPasswordForm = ({ recoveryCode }: Props) => {
         recoveryCode,
       },
       {
-        onSuccess: () => router.push('/sign-in'),
+        onSuccess: () => router.replace('/sign-in'),
+        onError: (error) => {
+          handleServerErrors({
+            error,
+            setError,
+            serverErrorMap,
+            knownFields: ['password', 'password_confirmation'],
+          });
+        },
       },
     );
   };

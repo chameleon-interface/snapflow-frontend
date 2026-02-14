@@ -1,21 +1,21 @@
 'use client';
 
-import { FormProvider, useForm } from 'react-hook-form';
+import { handleServerErrors } from '@/shared/lib/forms';
+import { EmailInput, EmailModal } from '@/shared/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from 'snapflow-ui-kit';
+import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import clsx from 'clsx';
 import { useState } from 'react';
-import s from './ResendVerificationForm.module.css';
+import { FormProvider, useForm } from 'react-hook-form';
+import { Button } from 'snapflow-ui-kit';
+import { useResendConfirmation } from '../../api/useResendConfirmation';
 import {
   type ResendEmailFormData,
   resendEmailSchema,
 } from '../../model/schema';
 import { serverErrorMap } from '../../model/serverErrorMap';
-import { handleServerErrors } from '@/shared/lib/forms';
-import { useResendConfirmation } from '../../api/useResendConfirmation';
-import { EmailModal, EmailInput } from '@/shared/ui';
+import s from './ResendVerificationForm.module.css';
 
 export const ResendVerificationForm = () => {
   const t = useTranslations();

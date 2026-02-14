@@ -7,7 +7,7 @@ type Props = {
 
 export default async function Page({ searchParams }: Props) {
   const { recoveryCode } = await searchParams;
-  if (!recoveryCode) redirect('/password-recovery/request-reset');
+  if (!recoveryCode) redirect('/password-recovery');
 
   return <SetNewPasswordPage recoveryCode={recoveryCode} />;
 }

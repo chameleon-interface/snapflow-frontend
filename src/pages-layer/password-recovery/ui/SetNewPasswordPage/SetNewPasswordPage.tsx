@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { Button } from 'snapflow-ui-kit';
-import s from '../PasswordRecovery.module.css';
+import s from '../PasswordRecoveryPage/PasswordRecoveryPage.module.css';
 
 type Props = {
   recoveryCode: string;
@@ -35,7 +35,7 @@ export const SetNewPasswordPage = ({ recoveryCode }: Props) => {
   if (isError) {
     return (
       <ExpiredLinkLayout>
-        <Button as={Link} href="/password-recovery/request-reset">
+        <Button className={s.resendButton} as={Link} href="/password-recovery">
           {t('LinkExpired.resendButton')}
         </Button>
       </ExpiredLinkLayout>
