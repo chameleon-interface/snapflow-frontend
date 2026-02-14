@@ -31,10 +31,7 @@ export const LoginForm = () => {
             <PasswordInput />
           </div>
           <div className={s.forgotPassword}>
-            <Link
-              href="/password-recovery"
-              className={s.forgotPasswordLink}
-            >
+            <Link href="/password-recovery" className={s.forgotPasswordLink}>
               {t('forgotPassword')}
             </Link>
           </div>
