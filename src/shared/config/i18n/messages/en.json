@@ -1,8 +1,8 @@
 {
   "Auth": {
     "logOut": "Log out",
-    "logIn": "Log in",
-    "signUp": "Sign up",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
     "forgotPassword": "Forgot password",
     "doNotHaveAnAccount": "Don’t have an account?"
   },

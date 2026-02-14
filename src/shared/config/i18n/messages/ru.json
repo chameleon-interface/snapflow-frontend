@@ -1,7 +1,7 @@
 {
   "Auth": {
     "logOut": "Выйти",
-    "logIn": "Войти",
+    "signIn": "Войти",
     "signUp": "Регистрация",
     "forgotPassword": "Забыли пароль",
     "doNotHaveAnAccount": "У вас нет аккаунта?"

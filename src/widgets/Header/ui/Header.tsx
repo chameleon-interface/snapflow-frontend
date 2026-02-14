@@ -6,7 +6,7 @@ import { LanguageSwitcher } from '@/features/language-switcher';
 
 export const Header = () => {
   const t = useTranslations('Auth');
-  const isAuth = true;
+
   return (
     <header className={s.header}>
       <Typography variant={'large'} className={s.logo} as={Link} href={'/'}>
@@ -14,16 +14,15 @@ export const Header = () => {
       </Typography>
       <div className={s.actions}>
         <LanguageSwitcher />
-        {isAuth && (
-          <div className={s.buttonWrapper}>
-            <Button variant={'text'} as={Link} href={'/sign-in'}>
-              {t('logIn')}
-            </Button>
-            <Button as={Link} href={'/sign-up'}>
-              {t('signUp')}
-            </Button>
-          </div>
-        )}
+
+        <div className={s.buttonWrapper}>
+          <Button variant={'text'} as={Link} href={'/sign-in'}>
+            {t('signIn')}
+          </Button>
+          <Button as={Link} href={'/sign-up'}>
+            {t('signUp')}
+          </Button>
+        </div>
       </div>
     </header>
   );
