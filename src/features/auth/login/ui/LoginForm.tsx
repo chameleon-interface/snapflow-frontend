@@ -9,49 +9,42 @@ import { useLoginMutation } from '@/features/auth/login/api/useLoginMutation';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 export const LoginForm = () => {
-  const t = useTranslations('Auth');
+  const t = useTranslations();
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     mode: 'onBlur',
+    reValidateMode: 'onBlur',
     defaultValues: { email: '', password: '' },
   });
 
-  const loginMutation = useLoginMutation(form.setError);
+  const loginMutation = useLoginMutation();
 
   const onSubmit = (data: LoginFormData) => {
     loginMutation.mutate(data);
   };
 
   return (
-    <>
-      <FormProvider {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div className={s.emailPasswordContainer}>
-            <EmailInput />
-            <PasswordInput />
-          </div>
-          <div className={s.forgotPassword}>
-            <Link href="/password-recovery" className={s.forgotPasswordLink}>
-              {t('forgotPassword')}
-            </Link>
-          </div>
-          <div>
-            <Button
-              type="submit"
-              disabled={loginMutation.isPending}
-              className={s.loginButton}
-            >
-              {t('signIn')}
-            </Button>
-          </div>
-        </form>
-      </FormProvider>
-      <div className={s.signupContainer}>
-        <span className={s.doNotHaveAnAccount}>{t('doNotHaveAnAccount')}</span>
-        <Link href="/sign-up" className={s.signupLink}>
-          {t('signUp')}
-        </Link>
-      </div>
-    </>
+    <FormProvider {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className={s.form}>
+        <div className={s.emailPasswordContainer}>
+          <EmailInput />
+          <PasswordInput />
+        </div>
+        <div className={s.forgotPassword}>
+          <Link href="/password-recovery" className={s.forgotPasswordLink}>
+            {t('Forms.forgotPassword')}
+          </Link>
+        </div>
+        <div>
+          <Button
+            type="submit"
+            disabled={loginMutation.isPending}
+            className={s.loginButton}
+          >
+            {t('Auth.signIn')}
+          </Button>
+        </div>
+      </form>
+    </FormProvider>
   );
 };

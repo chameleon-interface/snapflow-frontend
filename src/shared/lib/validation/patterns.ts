@@ -23,6 +23,7 @@ export const validationMessages = {
     max: 'Validation.password.max',
     required: 'Validation.password.required',
     pattern: 'Validation.password.pattern',
+    fieldRequired: 'Validation.password.fieldRequired',
   },
   passwordConfirmation: {
     mismatch: 'Validation.passwordConfirmation.mismatch',
@@ -30,5 +31,8 @@ export const validationMessages = {
   },
   recaptcha: {
     required: 'Validation.recaptcha.required',
+  },
+  login: {
+    invalidCredentials: 'Validation.login.invalidCredentials',
   },
 } as const;

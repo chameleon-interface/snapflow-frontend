@@ -5,12 +5,8 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { api } from '@/shared/api/instance';
 
 import { LoginFormData } from '@/features/auth/login/model/schema';
-import { handleServerErrors } from '@/shared/lib/forms';
 
-import { UseFormSetError } from 'react-hook-form';
-import { loginServerErrorMap } from '@/features/auth/login/model/loginServerErrorMap';
-
-export const useLoginMutation = (setError: UseFormSetError<LoginFormData>) => {
+export const useLoginMutation = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
 
@@ -24,15 +20,6 @@ export const useLoginMutation = (setError: UseFormSetError<LoginFormData>) => {
       queryClient.invalidateQueries({ queryKey: ['auth', 'me'] });
 
       router.push('/profile');
-    },
-
-    onError: (error) => {
-      handleServerErrors({
-        error,
-        setError,
-        serverErrorMap: loginServerErrorMap,
-        knownFields: ['email', 'password'],
-      });
     },
   });
 };

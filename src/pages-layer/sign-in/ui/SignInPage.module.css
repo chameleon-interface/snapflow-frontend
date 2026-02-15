@@ -1,0 +1,14 @@
+.signupContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.doNotHaveAnAccount {
+  color: var(--color-light-100);
+}
+
+.signupLink {
+  color: var(--color-accent-500);
+}

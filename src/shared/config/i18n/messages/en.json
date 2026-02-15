@@ -2,9 +2,7 @@
   "Auth": {
     "logOut": "Log out",
     "signIn": "Sign In",
-    "signUp": "Sign Up",
-    "forgotPassword": "Forgot password",
-    "doNotHaveAnAccount": "Don’t have an account?"
+    "signUp": "Sign Up"
   },
   "Nav": {
     "feed": "Feed",
@@ -35,6 +33,8 @@
   },
   "Forms": {
     "haveAccount": "Do you have an account?",
+    "doNotHaveAnAccount": "Don't have an account?",
+    "forgotPassword": "Forgot password",
     "usernameLabel": "Username",
     "emailLabel": "Email",
     "passwordLabel": "Password",
@@ -81,7 +81,9 @@
     "usernameExists": "User with this username is already registered",
     "emailExists": "User with this email is already registered",
     "emailAlreadyConfirmed": "User with this email already confirmed",
-    "emailNotFound": "User with this email not found"
+    "emailNotFound": "User with this email not found",
+    "invalidCredentials": "Invalid email or password",
+    "validationError": "Invalid input data"
   },
   "Validation": {
     "username": {
@@ -97,7 +99,8 @@
       "min": "Minimum number of characters 6",
       "max": "Maximum number of characters 20",
       "required": "Password must contain at least one number, one uppercase letter and one lowercase letter",
-      "pattern": "Password contains invalid characters"
+      "pattern": "Password contains invalid characters",
+      "fieldRequired": "Password is required"
     },
     "passwordConfirmation": {
       "mismatch": "Passwords must match",
@@ -109,6 +112,9 @@
     "recaptcha": {
       "required": "Please complete the reCAPTCHA verification",
       "expired": "reCAPTCHA verification has expired. Please complete the verification again"
+    },
+    "login": {
+      "invalidCredentials": "Invalid email or password"
     }
   }
 }

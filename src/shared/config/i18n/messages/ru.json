@@ -2,9 +2,7 @@
   "Auth": {
     "logOut": "Выйти",
     "signIn": "Войти",
-    "signUp": "Регистрация",
-    "forgotPassword": "Забыли пароль",
-    "doNotHaveAnAccount": "У вас нет аккаунта?"
+    "signUp": "Регистрация"
   },
   "Nav": {
     "feed": "Лента",
@@ -33,6 +31,8 @@
   },
   "Forms": {
     "haveAccount": "Уже есть аккаунт?",
+    "doNotHaveAnAccount": "У вас нет аккаунта?",
+    "forgotPassword": "Забыли пароль",
     "usernameLabel": "Имя пользователя",
     "emailLabel": "Email",
     "passwordLabel": "Пароль",
@@ -78,7 +78,9 @@
     "usernameExists": "Пользователь с таким именем уже зарегистрирован",
     "emailExists": "Пользователь с таким email уже зарегистрирован",
     "emailAlreadyConfirmed": "Email уже подтверждён",
-    "emailNotFound": "Пользователь с таким email не найден"
+    "emailNotFound": "Пользователь с таким email не найден",
+    "invalidCredentials": "Неверный email или пароль",
+    "validationError": "Некорректные данные"
   },
   "Validation": {
     "username": {
@@ -94,7 +96,8 @@
       "min": "Минимальное количество символов — 6",
       "max": "Максимальное количество символов — 20",
       "required": "Пароль должен содержать как минимум одну цифру, одну заглавную букву и одну строчную букву",
-      "pattern": "Пароль содержит недопустимые символы"
+      "pattern": "Пароль содержит недопустимые символы",
+      "fieldRequired": "Пароль обязателен"
     },
     "passwordConfirmation": {
       "mismatch": "Пароли должны совпадать",
@@ -106,6 +109,9 @@
     "recaptcha": {
       "required": "Пожалуйста, завершите проверку reCAPTCHA",
       "expired": "Время проверки reCAPTCHA истекло. Пожалуйста, пройдите проверку снова"
+    },
+    "login": {
+      "invalidCredentials": "Неверный email или пароль"
     }
   }
 }
