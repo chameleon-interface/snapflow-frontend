@@ -1,0 +1,26 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.form input {
+  padding: 6px 12px;
+}
+
+.forgotPasswordLink {
+  align-self: end;
+  margin-top: 12px;
+  color: var(--color-light-900);
+}
+
+@media (width <= 380px) {
+  .form button {
+    padding-block: 12px;
+  }
+
+  .forgotPasswordLink {
+    margin-top: 0;
+  }
+}

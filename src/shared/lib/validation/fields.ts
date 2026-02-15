@@ -42,7 +42,7 @@ export const fields = {
     .regex(patterns.passwordAllowed, msg.password.pattern),
 
   // Simplified password for login (without complexity check)
-  passwordLogin: z.string().min(1, 'Password is required'),
+  passwordLogin: z.string().min(1, msg.password.fieldRequired),
 
   passwordConfirmation: z.string().min(1, msg.passwordConfirmation.required),
 

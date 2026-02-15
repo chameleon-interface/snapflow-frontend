@@ -14,9 +14,10 @@ export const Header = () => {
       </Typography>
       <div className={s.actions}>
         <LanguageSwitcher />
+
         <div className={s.buttonWrapper}>
           <Button variant={'text'} as={Link} href={'/sign-in'}>
-            {t('logIn')}
+            {t('signIn')}
           </Button>
           <Button as={Link} href={'/sign-up'}>
             {t('signUp')}
