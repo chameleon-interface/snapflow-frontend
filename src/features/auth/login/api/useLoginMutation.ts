@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { api } from '@/shared/api/instance';
 
 import { LoginFormData } from '@/features/auth/login/model/schema';
@@ -12,23 +12,17 @@ import { loginServerErrorMap } from '@/features/auth/login/model/loginServerErro
 
 export const useLoginMutation = (setError: UseFormSetError<LoginFormData>) => {
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (data: LoginFormData) => {
-      const { data: response } = await api.post<{ accessToken: string }>(
-        'auth/login',
-        {
-          email: data.email,
-          password: data.password,
-        },
-      );
+    mutationFn: (data: LoginFormData) =>
+      api.post<{ accessToken: string }>('auth/login', data),
 
-      localStorage.setItem('accessToken', response.accessToken);
+    onSuccess: (response) => {
+      localStorage.setItem('accessToken', response.data.accessToken);
 
-      return response;
-    },
+      queryClient.invalidateQueries({ queryKey: ['auth', 'me'] });
 
-    onSuccess: () => {
       router.push('/profile');
     },
 
