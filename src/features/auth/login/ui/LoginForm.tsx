@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import { LoginFormData, loginSchema } from '@/features/auth/login/model/schema';
 import { useLoginMutation } from '@/features/auth/login/api/useLoginMutation';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Typography } from 'snapflow-ui-kit';
 
 export const LoginForm = () => {
   const t = useTranslations();
@@ -17,33 +18,30 @@ export const LoginForm = () => {
     defaultValues: { email: '', password: '' },
   });
 
-  const loginMutation = useLoginMutation();
+  const { mutate, isPending } = useLoginMutation();
 
   const onSubmit = (data: LoginFormData) => {
-    loginMutation.mutate(data);
+    mutate(data);
   };
 
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className={s.form}>
-        <div className={s.emailPasswordContainer}>
-          <EmailInput />
-          <PasswordInput />
-        </div>
-        <div className={s.forgotPassword}>
-          <Link href="/password-recovery" className={s.forgotPasswordLink}>
-            {t('Forms.forgotPassword')}
-          </Link>
-        </div>
-        <div>
-          <Button
-            type="submit"
-            disabled={loginMutation.isPending}
-            className={s.loginButton}
-          >
-            {t('Auth.signIn')}
-          </Button>
-        </div>
+        <EmailInput />
+        <PasswordInput />
+
+        <Typography
+          variant="text-14"
+          as={Link}
+          href="/password-recovery"
+          className={s.forgotPasswordLink}
+        >
+          {t('Forms.forgotPassword')}
+        </Typography>
+
+        <Button type="submit" disabled={isPending}>
+          {t('Auth.signIn')}
+        </Button>
       </form>
     </FormProvider>
   );

@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { FormWrapper } from '@/shared/ui';
 import { LoginForm } from '@/features/auth/login/ui/LoginForm';
 import s from './SignInPage.module.css';
+import { Button, Typography } from 'snapflow-ui-kit';
 
 export function SignInPage() {
   const t = useTranslations();
@@ -13,12 +14,13 @@ export function SignInPage() {
     <FormWrapper title={t('Auth.signIn')}>
       <LoginForm />
       <div className={s.signupContainer}>
-        <span className={s.doNotHaveAnAccount}>
+        <Typography variant="text-16">
           {t('Forms.doNotHaveAnAccount')}
-        </span>
-        <Link href="/sign-up" className={s.signupLink}>
+        </Typography>
+
+        <Button variant={'text'} as={Link} href={'/sign-up'}>
           {t('Auth.signUp')}
-        </Link>
+        </Button>
       </div>
     </FormWrapper>
   );
