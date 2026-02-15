@@ -4,6 +4,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from 'snapflow-ui-kit';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import clsx from 'clsx';
 import { useState } from 'react';
 import s from './ResendVerificationForm.module.css';
@@ -18,6 +19,7 @@ import { EmailModal, EmailInput } from '@/shared/ui';
 
 export const ResendVerificationForm = () => {
   const t = useTranslations();
+  const router = useRouter();
 
   const [sentEmail, setSentEmail] = useState<string | null>(null);
 
@@ -31,7 +33,6 @@ export const ResendVerificationForm = () => {
   const {
     handleSubmit,
     setError,
-    reset,
     formState: { errors, isDirty },
   } = form;
 
@@ -55,8 +56,7 @@ export const ResendVerificationForm = () => {
       <EmailModal
         open={!!sentEmail}
         onClose={() => {
-          setSentEmail(null);
-          reset();
+          router.replace('/');
         }}
         email={sentEmail ?? ''}
       />

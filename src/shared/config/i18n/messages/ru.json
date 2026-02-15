@@ -78,9 +78,10 @@
     "usernameExists": "Пользователь с таким именем уже зарегистрирован",
     "emailExists": "Пользователь с таким email уже зарегистрирован",
     "emailAlreadyConfirmed": "Email уже подтверждён",
-    "emailNotFound": "Пользователь с таким email не найден",
     "invalidCredentials": "Неверный email или пароль",
-    "validationError": "Некорректные данные"
+    "validationError": "Некорректные данные",
+    "emailNotFound": "Пользователь с таким email не найден",
+    "emailNotRegistered": "Невозможно отправить код - указанный email не зарегистрирован"
   },
   "Validation": {
     "username": {
@@ -109,9 +110,6 @@
     "recaptcha": {
       "required": "Пожалуйста, завершите проверку reCAPTCHA",
       "expired": "Время проверки reCAPTCHA истекло. Пожалуйста, пройдите проверку снова"
-    },
-    "login": {
-      "invalidCredentials": "Неверный email или пароль"
     }
   }
 }

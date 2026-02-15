@@ -82,6 +82,7 @@
     "emailExists": "User with this email is already registered",
     "emailAlreadyConfirmed": "User with this email already confirmed",
     "emailNotFound": "User with this email not found",
+    "emailNotRegistered": "It is impossible to send the code - the specified email is not registered",
     "invalidCredentials": "Invalid email or password",
     "validationError": "Invalid input data"
   },
@@ -112,9 +113,6 @@
     "recaptcha": {
       "required": "Please complete the reCAPTCHA verification",
       "expired": "reCAPTCHA verification has expired. Please complete the verification again"
-    },
-    "login": {
-      "invalidCredentials": "Invalid email or password"
     }
   }
 }

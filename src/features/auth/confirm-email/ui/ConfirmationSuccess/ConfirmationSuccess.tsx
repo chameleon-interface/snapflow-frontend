@@ -17,7 +17,7 @@ export const ConfirmationSuccess = () => {
           {t('ConfirmationSuccess.description')}
         </Typography>
       </div>
-      <Button as={Link} href={'/sign-in'} className={s.link}>
+      <Button as={Link} href={'/sign-in'} className={s.link} replace>
         {t('Auth.logIn')}
       </Button>
       <Image
