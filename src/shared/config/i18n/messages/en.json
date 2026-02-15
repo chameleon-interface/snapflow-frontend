@@ -63,7 +63,8 @@
     "passwordConfirmationLabel": "Password confirmation",
     "passwordConfirmationPlaceholder": "Confirm new password",
     "passwordDescription": "Your password must be between 6 and 20 characters",
-    "createNewPasswordButton": "Create New Password"
+    "createNewPasswordButton": "Create New Password",
+    "passwordChangedSuccess": "Password successfully changed"
   },
   "ConfirmationSuccess": {
     "title": "Congratulations!",

@@ -62,7 +62,8 @@
     "passwordConfirmationLabel": "Подтверждение пароля",
     "passwordConfirmationPlaceholder": "Подтвердите новый пароль",
     "passwordDescription": "Ваш пароль должен содержать от 6 до 20 символов",
-    "createNewPasswordButton": "Создать новый пароль"
+    "createNewPasswordButton": "Создать новый пароль",
+    "passwordChangedSuccess": "Пароль успешно изменён"
   },
   "ConfirmationSuccess": {
     "title": "Поздравляем!",

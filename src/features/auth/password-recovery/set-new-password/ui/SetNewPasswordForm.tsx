@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Button, Typography } from 'snapflow-ui-kit';
+import { toastSuccess } from 'snapflow-ui-kit/client';
 import { useSetNewPassword } from '../api/useSetNewPassword';
 import { serverErrorMap } from '../model/serverErrorMap';
 import { SetNewPasswordFormData, setNewPasswordSchema } from '../model/schema';
@@ -42,7 +43,10 @@ export const SetNewPasswordForm = ({ recoveryCode }: Props) => {
         recoveryCode,
       },
       {
-        onSuccess: () => router.replace('/sign-in'),
+        onSuccess: () => {
+          toastSuccess(t('PasswordRecovery.passwordChangedSuccess'));
+          router.replace('/sign-in');
+        },
         onError: (error) => {
           handleServerErrors({
             error,
