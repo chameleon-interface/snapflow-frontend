@@ -9,7 +9,6 @@ import { Sidebar } from '@/widgets/Sidebar';
 import { QueryProgressBar } from '@/shared/ui';
 import s from './layout.module.css';
 import Providers from '@/app/providers';
-import { BottomNav } from '@/widgets/BottomNav';
 
 const inter = Inter({
   subsets: ['latin', 'cyrillic'],
@@ -49,7 +48,6 @@ export default async function RootLayout({
             <main className={`${s.main} ${isAuth ? s.withSidebar : ''}`}>
               <div className={s.container}>{children}</div>
             </main>
-            <BottomNav />
             <div id="modal-root"></div>
           </NextIntlClientProvider>
         </Providers>
