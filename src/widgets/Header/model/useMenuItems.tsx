@@ -25,7 +25,7 @@ export const useMenuItems = () => {
   const authMenuItems = useMemo(
     () => [
       {
-        label: t('logIn'),
+        label: t('signIn'),
         onSelect: () => router.push(ROUTES.SIGN_IN),
       },
       {

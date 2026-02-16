@@ -32,7 +32,7 @@ export const Header = () => {
           <div className={s.desktopOnly}>
             <div className={s.buttonWrapper}>
               <Button variant={'text'} as={Link} href={ROUTES.SIGN_IN}>
-                {t('logIn')}
+                {t('signIn')}
               </Button>
               <Button as={Link} href={ROUTES.SIGN_UP}>
                 {t('signUp')}
