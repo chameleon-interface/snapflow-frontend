@@ -22,3 +22,7 @@
   font-weight: 500;
   color: var(--color-light-100);
 }
+
+.linkActive {
+  color: var(--color-accent-500);
+}

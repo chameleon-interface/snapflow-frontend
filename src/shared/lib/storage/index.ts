@@ -1,0 +1,1 @@
+export { hasAuthToken } from './hasAuthToken';

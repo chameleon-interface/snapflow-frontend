@@ -26,9 +26,6 @@ export const metadata: Metadata = {
   },
 };
 
-// TODO: заменить на реальную проверку авторизации
-const isAuth = false;
-
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -44,8 +41,8 @@ export default async function RootLayout({
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Header />
             <QueryProgressBar />
-            {isAuth && <Sidebar />}
-            <main className={`${s.main} ${isAuth ? s.withSidebar : ''}`}>
+            <Sidebar />
+            <main className={s.main}>
               <div className={s.container}>{children}</div>
             </main>
             <div id="modal-root"></div>
