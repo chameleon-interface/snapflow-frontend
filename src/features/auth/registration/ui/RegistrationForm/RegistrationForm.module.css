@@ -23,3 +23,9 @@
 .error {
   color: var(--color-danger-500);
 }
+
+@media (width <= 380px) {
+  .form button {
+    padding-block: 12px;
+  }
+}

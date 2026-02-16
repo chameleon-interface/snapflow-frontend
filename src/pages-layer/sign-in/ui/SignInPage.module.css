@@ -1,4 +1,4 @@
-.footer {
+.signupContainer {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -6,7 +6,7 @@
 }
 
 @media (width <= 380px) {
-  .footer a {
+  .signupContainer a {
     padding-block: 12px;
   }
 }
