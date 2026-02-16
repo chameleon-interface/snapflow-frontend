@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+@media (width <= 380px) {
+  .footer a {
+    padding-block: 12px;
+  }
+}

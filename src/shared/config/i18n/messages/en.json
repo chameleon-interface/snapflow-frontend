@@ -1,8 +1,8 @@
 {
   "Auth": {
     "logOut": "Log out",
-    "logIn": "Log in",
-    "signUp": "Sign up"
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
   },
   "Nav": {
     "feed": "Feed",
@@ -12,7 +12,8 @@
     "messenger": "Messenger",
     "search": "Search",
     "statistics": "Statistics",
-    "favorites": "Favorites"
+    "favorites": "Favorites",
+    "backToSignUp": "Back to Sign Up"
   },
   "Pages": {
     "mainTitle": "Main page",
@@ -28,11 +29,31 @@
     "signUpTitle": "Sign Up",
     "forgotPasswordTitle": "Forgot Password",
     "createNewPasswordTitle": "Create New Password",
-    "placeholder": "Placeholder page."
+    "placeholder": "Placeholder page.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
   },
   "Forms": {
+    "haveAccount": "Do you have an account?",
+    "doNotHaveAnAccount": "Don't have an account?",
+    "forgotPassword": "Forgot password",
+    "usernameLabel": "Username",
     "emailLabel": "Email",
-    "emailPlaceholder": "Enter your email address"
+    "passwordLabel": "Password",
+    "passwordConfirmationLabel": "Password confirmation",
+    "Registration": {
+      "agreeToTermsPrefix": "I agree to the",
+      "termsOfService": "Terms of Service",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy",
+      "submit": "Sign Up"
+    }
+  },
+  "Modals": {
+    "EmailSent": {
+      "title": "Email sent",
+      "message": "We have sent a link to confirm your email to {email}"
+    }
   },
   "PasswordRecovery": {
     "description": "Enter your email address and we will send you further instructions",
@@ -48,11 +69,24 @@
     "passwordDescription": "Your password must be between 6 and 20 characters",
     "createNewPasswordButton": "Create New Password"
   },
+  "ConfirmationSuccess": {
+    "title": "Congratulations!",
+    "description": "Your email has been confirmed"
+  },
   "LinkExpired": {
-    "title": "Email verification link expired",
+    "title": "Email verification link expired!",
     "description": "Looks like the verification link has expired. Not to worry, we can send the link again",
     "resendButton": "Resend verification link",
     "imageAlt": "Link expired"
+  },
+  "ServerErrors": {
+    "usernameExists": "User with this username is already registered",
+    "emailExists": "User with this email is already registered",
+    "emailAlreadyConfirmed": "User with this email already confirmed",
+    "emailNotFound": "User with this email not found",
+    "emailNotRegistered": "It is impossible to send the code - the specified email is not registered",
+    "invalidCredentials": "Invalid email or password",
+    "validationError": "Invalid input data"
   },
   "Validation": {
     "username": {
@@ -68,7 +102,8 @@
       "min": "Minimum number of characters 6",
       "max": "Maximum number of characters 20",
       "required": "Password must contain at least one number, one uppercase letter and one lowercase letter",
-      "pattern": "Password contains invalid characters"
+      "pattern": "Password contains invalid characters",
+      "fieldRequired": "Password is required"
     },
     "passwordConfirmation": {
       "mismatch": "Passwords must match",
