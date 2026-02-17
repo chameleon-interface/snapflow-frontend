@@ -7,12 +7,18 @@ import { LoginForm } from '@/features/auth/login/ui/LoginForm';
 import s from './SignInPage.module.css';
 import { Button, Typography } from 'snapflow-ui-kit';
 import { ROUTES } from '@/shared/config';
+import { GoogleOAuthButton } from '@/widgets/google/ui/GoogleOAuthButton';
+import { GitHubOAuthButton } from '@/widgets/github/ui/GitHubOAuthButton';
 
 export function SignInPage() {
   const t = useTranslations();
 
   return (
     <FormWrapper title={t('Auth.signIn')}>
+      <div className={s.oauthContainer}>
+        <GoogleOAuthButton />
+        <GitHubOAuthButton />
+      </div>
       <LoginForm />
       <div className={s.signupContainer}>
         <Typography variant="text-16">

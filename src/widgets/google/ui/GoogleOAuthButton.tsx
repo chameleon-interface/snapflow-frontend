@@ -2,11 +2,11 @@
 
 import { GoogleLogo } from 'snapflow-ui-kit/icons';
 import type { OAuthButtonProps } from '@/features/oauth/types';
+import s from './GoogleOAuthButton.module.css';
 
 export const GoogleOAuthButton = ({
   disabled = false,
   loading = false,
-  className,
 }: OAuthButtonProps) => {
   const handleClick = () => {
     if (disabled || loading) return;
@@ -26,7 +26,7 @@ export const GoogleOAuthButton = ({
       type="button"
       onClick={handleClick}
       disabled={disabled || loading}
-      className={className}
+      className={s.oauthButton}
       aria-label="Sign in with Google"
     >
       <GoogleLogo />

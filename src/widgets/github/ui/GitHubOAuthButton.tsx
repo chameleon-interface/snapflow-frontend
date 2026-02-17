@@ -2,11 +2,10 @@
 
 import { GitHubIcon } from 'snapflow-ui-kit/icons';
 import type { OAuthButtonProps } from '@/features/oauth/types';
-
+import s from './GitHubOAuthButton.module.css';
 export const GitHubOAuthButton = ({
   disabled = false,
   loading = false,
-  className,
 }: OAuthButtonProps) => {
   const handleClick = () => {
     if (disabled || loading) return;
@@ -22,7 +21,7 @@ export const GitHubOAuthButton = ({
       type="button"
       onClick={handleClick}
       disabled={disabled}
-      className={className}
+      className={s.oauthButton}
       aria-label="Sign in with GitHub"
     >
       <GitHubIcon />
