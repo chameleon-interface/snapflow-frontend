@@ -5,6 +5,7 @@ export const ROUTES = {
   SIGN_UP_TERMS_OF_SERVICE: '/sign-up/terms-of-service',
   SIGN_UP_PRIVACY_POLICY: '/sign-up/privacy-policy',
   SIGN_UP_CONFIRM_EMAIL: '/sign-up/confirm-email',
+  PASSWORD_RECOVERY: '/password-recovery',
   SETTINGS: '/settings',
   STATISTICS: '/statistics',
   FAVORITES: '/favorites',

@@ -66,7 +66,8 @@
     "passwordConfirmationLabel": "Password confirmation",
     "passwordConfirmationPlaceholder": "Confirm new password",
     "passwordDescription": "Your password must be between 6 and 20 characters",
-    "createNewPasswordButton": "Create New Password"
+    "createNewPasswordButton": "Create New Password",
+    "passwordChangedSuccess": "Password successfully changed"
   },
   "ConfirmationSuccess": {
     "title": "Congratulations!",
@@ -85,7 +86,8 @@
     "emailNotFound": "User with this email not found",
     "emailNotRegistered": "It is impossible to send the code - the specified email is not registered",
     "invalidCredentials": "Invalid email or password",
-    "validationError": "Invalid input data"
+    "validationError": "Invalid input data",
+    "emailNotExists": "User with this email doesn't exist"
   },
   "Validation": {
     "username": {
