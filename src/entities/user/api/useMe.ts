@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import { api } from '@/shared/api';
-import { hasAuthToken } from '@/shared/lib/storage';
 
 type MeResponse = {
   userId: string;
@@ -15,9 +14,8 @@ export const useMe = () => {
       const response = await api.get<MeResponse>('/auth/me');
       return response.data;
     },
-    enabled: hasAuthToken(),
-    retry: false,
     staleTime: 15 * 60 * 1000,
     refetchOnMount: false,
+    retryOnMount: false,
   });
 };
