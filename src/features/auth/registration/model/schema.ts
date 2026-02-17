@@ -1,5 +1,5 @@
 import * as z from 'zod';
-import { fields, validationMessages as msg } from '@/shared/lib/validation';
+import { fields, validationMessages as msg } from '@/shared/lib';
 
 export const registrationSchema = z
   .object({

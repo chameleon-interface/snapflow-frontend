@@ -5,3 +5,18 @@
 .switcher span:last-child {
   margin-left: 0;
 }
+
+@media (width <= 610px) {
+  .switcher {
+    width: 70px;
+  }
+
+  .switcher button,
+  .switcher [role='listbox'] {
+    border: none;
+  }
+
+  .switcher [role='option'] {
+    justify-content: center;
+  }
+}

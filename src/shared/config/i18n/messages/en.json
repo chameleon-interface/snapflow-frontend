@@ -1,13 +1,14 @@
 {
   "Auth": {
     "logOut": "Log out",
-    "logIn": "Log in",
-    "signUp": "Sign up"
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
   },
   "Nav": {
     "feed": "Feed",
     "create": "Create",
     "profile": "My profile",
+    "profileSettings": "Profile Settings",
     "messenger": "Messenger",
     "search": "Search",
     "statistics": "Statistics",
@@ -33,6 +34,8 @@
   },
   "Forms": {
     "haveAccount": "Do you have an account?",
+    "doNotHaveAnAccount": "Don't have an account?",
+    "forgotPassword": "Forgot password",
     "usernameLabel": "Username",
     "emailLabel": "Email",
     "passwordLabel": "Password",
@@ -81,8 +84,10 @@
     "emailExists": "User with this email is already registered",
     "emailAlreadyConfirmed": "User with this email already confirmed",
     "emailNotFound": "User with this email not found",
-    "emailNotExists": "User with this email doesn't exist",
-    "emailNotRegistered": "It is impossible to send the code - the specified email is not registered"
+    "emailNotRegistered": "It is impossible to send the code - the specified email is not registered",
+    "invalidCredentials": "Invalid email or password",
+    "validationError": "Invalid input data",
+    "emailNotExists": "User with this email doesn't exist"
   },
   "Validation": {
     "username": {
@@ -98,7 +103,8 @@
       "min": "Minimum number of characters 6",
       "max": "Maximum number of characters 20",
       "required": "Password must contain at least one number, one uppercase letter and one lowercase letter",
-      "pattern": "Password contains invalid characters"
+      "pattern": "Password contains invalid characters",
+      "fieldRequired": "Password is required"
     },
     "passwordConfirmation": {
       "mismatch": "Passwords must match",

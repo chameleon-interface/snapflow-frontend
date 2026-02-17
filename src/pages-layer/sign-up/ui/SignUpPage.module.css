@@ -5,6 +5,8 @@
   align-items: center;
 }
 
-.link {
-  color: var(--color-accent-500);
+@media (width <= 380px) {
+  .footer a {
+    padding-block: 12px;
+  }
 }

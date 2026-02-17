@@ -1,13 +1,14 @@
 {
   "Auth": {
     "logOut": "Выйти",
-    "logIn": "Войти",
+    "signIn": "Войти",
     "signUp": "Регистрация"
   },
   "Nav": {
     "feed": "Лента",
     "create": "Создать",
     "profile": "Мой профиль",
+    "profileSettings": "Настройки",
     "messenger": "Мессенджер",
     "search": "Поиск",
     "statistics": "Статистика",
@@ -33,6 +34,8 @@
   },
   "Forms": {
     "haveAccount": "Уже есть аккаунт?",
+    "doNotHaveAnAccount": "У вас нет аккаунта?",
+    "forgotPassword": "Забыли пароль",
     "usernameLabel": "Имя пользователя",
     "emailLabel": "Email",
     "passwordLabel": "Пароль",
@@ -79,6 +82,8 @@
     "usernameExists": "Пользователь с таким именем уже зарегистрирован",
     "emailExists": "Пользователь с таким email уже зарегистрирован",
     "emailAlreadyConfirmed": "Email уже подтверждён",
+    "invalidCredentials": "Неверный email или пароль",
+    "validationError": "Некорректные данные",
     "emailNotFound": "Пользователь с таким email не найден",
     "emailNotExists": "Пользователь с таким email не существует",
     "emailNotRegistered": "Невозможно отправить код - указанный email не зарегистрирован"
@@ -97,7 +102,8 @@
       "min": "Минимальное количество символов — 6",
       "max": "Максимальное количество символов — 20",
       "required": "Пароль должен содержать как минимум одну цифру, одну заглавную букву и одну строчную букву",
-      "pattern": "Пароль содержит недопустимые символы"
+      "pattern": "Пароль содержит недопустимые символы",
+      "fieldRequired": "Пароль обязателен"
     },
     "passwordConfirmation": {
       "mismatch": "Пароли должны совпадать",

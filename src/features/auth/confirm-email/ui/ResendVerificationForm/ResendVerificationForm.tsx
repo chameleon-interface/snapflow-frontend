@@ -1,21 +1,22 @@
 'use client';
 
-import { handleServerErrors } from '@/shared/lib/forms';
-import { EmailInput, EmailModal } from '@/shared/ui';
+import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import clsx from 'clsx';
+import { Button } from 'snapflow-ui-kit';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
+import clsx from 'clsx';
 import { useState } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
-import { Button } from 'snapflow-ui-kit';
-import { useResendConfirmation } from '../../api/useResendConfirmation';
+import s from './ResendVerificationForm.module.css';
 import {
   type ResendEmailFormData,
   resendEmailSchema,
 } from '../../model/schema';
 import { serverErrorMap } from '../../model/serverErrorMap';
-import s from './ResendVerificationForm.module.css';
+import { handleServerErrors } from '@/shared/lib';
+import { useResendConfirmation } from '../../api/useResendConfirmation';
+import { EmailModal, EmailInput } from '@/shared/ui';
+import { ROUTES } from '@/shared/config';
 
 export const ResendVerificationForm = () => {
   const t = useTranslations();
@@ -56,7 +57,7 @@ export const ResendVerificationForm = () => {
       <EmailModal
         open={!!sentEmail}
         onClose={() => {
-          router.replace('/');
+          router.replace(ROUTES.HOME);
         }}
         email={sentEmail ?? ''}
       />
