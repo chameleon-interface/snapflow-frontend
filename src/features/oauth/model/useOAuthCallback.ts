@@ -1,49 +1,34 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { isAxiosError } from 'axios';
 
 import { api } from '@/shared/api/instance';
-import type { ApiErrorResponse } from '@/shared/api/types';
 import type { OAuthError, OAuthCallbackState } from '../types/oauth';
-import { mapOAuthError } from './mapOAuthError';
 
 export function useOAuthCallback(): OAuthCallbackState {
   const router = useRouter();
-  const params = useSearchParams();
 
-  const [error, setError] = useState<OAuthError | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<OAuthError | null>(null);
 
   useEffect(() => {
     const checkAuth = async () => {
-      const code = params.get('code');
-      const errorParam = params.get('error');
-
-      if (errorParam) {
-        if (isOAuthError(errorParam)) {
-          setError(errorParam);
-        } else {
-          setError('unknown');
-        }
-
-        setLoading(false);
-        return;
-      }
-
-      if (!code) {
-        setError('invalid_state');
-        setLoading(false);
-        return;
-      }
-
       try {
         await api.get('/api/v1/auth/me');
         router.replace('/');
       } catch (err) {
-        if (isAxiosError<ApiErrorResponse>(err)) {
-          setError(mapOAuthError(err));
+        if (isAxiosError(err)) {
+          const status = err.response?.status;
+
+          if (status === 401 || status === 403) {
+            setError('unauthorized');
+          } else if (status === 500) {
+            setError('server_error');
+          } else {
+            setError('unknown');
+          }
         } else {
           setError('unknown');
         }
@@ -53,21 +38,7 @@ export function useOAuthCallback(): OAuthCallbackState {
     };
 
     void checkAuth();
-  }, [params, router]);
+  }, [router]);
 
-  return {
-    loading,
-    error,
-  };
-}
-
-function isOAuthError(value: string): value is OAuthError {
-  return [
-    'access_denied',
-    'expired',
-    'invalid_state',
-    'server_error',
-    'unauthorized',
-    'unknown',
-  ].includes(value);
+  return { loading, error };
 }

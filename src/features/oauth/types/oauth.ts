@@ -14,10 +14,6 @@ export type OAuthError =
   | 'unauthorized'
   | 'unknown';
 
-export type OAuthCallbackProps = {
-  provider: OAuthProvider;
-};
-
 export type OAuthCallbackState = {
   loading: boolean;
   error: OAuthError | null;

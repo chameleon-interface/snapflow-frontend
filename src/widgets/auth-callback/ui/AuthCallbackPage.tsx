@@ -1,15 +1,13 @@
 'use client';
 
-import type { OAuthCallbackProps } from '@/features/oauth/types';
 import { useOAuthCallback } from '@/features/oauth/model/useOAuthCallback';
-
 import { OAuthLoadingState } from './OAuthLoadingState';
 import { OAuthErrorState } from './OAuthErrorState';
 
-export function AuthCallbackPage({ provider }: OAuthCallbackProps) {
+export function AuthCallbackPage() {
   const { loading, error } = useOAuthCallback();
 
-  if (loading) return <OAuthLoadingState provider={provider} />;
+  if (loading) return <OAuthLoadingState />;
   if (error) return <OAuthErrorState error={error} />;
 
   return null;
