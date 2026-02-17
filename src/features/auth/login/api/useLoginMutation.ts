@@ -16,12 +16,18 @@ export const useLoginMutation = () => {
     mutationFn: (data: LoginFormData) =>
       api.post<{ accessToken: string }>('auth/login', data),
 
-    onSuccess: (response) => {
+    onSuccess: async (response) => {
       localStorage.setItem(
         STORAGE_KEYS.ACCESS_TOKEN,
         response.data.accessToken,
       );
-      queryClient.invalidateQueries({ queryKey: ['auth', 'me'] });
+      await queryClient.prefetchQuery({
+        queryKey: ['auth', 'me'],
+        queryFn: async () => {
+          const meResponse = await api.get('/auth/me');
+          return meResponse.data;
+        },
+      });
 
       router.push(ROUTES.PROFILE);
     },

@@ -1,13 +1,14 @@
-import { useCallback, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import {
-  SettingsIcon,
-  TrendingUpIcon,
   BookMarkIcon,
   LogOutIcon,
+  SettingsIcon,
+  TrendingUpIcon,
 } from 'snapflow-ui-kit/icons';
 import { ROUTES } from '@/shared/config/routes';
+import { useLogoutMutation } from '@/features/auth/logout';
 
 /**
  * Hook for creating menu items for mobile menu.
@@ -18,9 +19,7 @@ export const useMenuItems = () => {
   const tNav = useTranslations('Nav');
   const router = useRouter();
 
-  const handleLogout = useCallback(() => {
-    // TODO: implement logout logic
-  }, []);
+  const { mutate } = useLogoutMutation();
 
   const authMenuItems = useMemo(
     () => [
@@ -56,10 +55,10 @@ export const useMenuItems = () => {
       {
         label: t('logOut'),
         icon: <LogOutIcon />,
-        onSelect: handleLogout,
+        onSelect: mutate,
       },
     ],
-    [tNav, t, router, handleLogout],
+    [tNav, t, router, mutate],
   );
 
   return { authMenuItems, userMenuItems };

@@ -15,7 +15,7 @@ export const useLogoutMutation = () => {
 
     onSuccess: () => {
       localStorage.removeItem(STORAGE_KEYS.ACCESS_TOKEN);
-      queryClient.invalidateQueries({ queryKey: ['auth', 'me'] });
+      queryClient.resetQueries({ queryKey: ['auth', 'me'] });
       router.push(ROUTES.HOME);
     },
   });
