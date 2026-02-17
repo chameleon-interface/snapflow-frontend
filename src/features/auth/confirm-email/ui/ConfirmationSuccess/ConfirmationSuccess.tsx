@@ -2,6 +2,7 @@ import { Button, Typography } from 'snapflow-ui-kit';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { ROUTES } from '@/shared/config/routes';
 import s from './ConfirmationSuccess.module.css';
 
 export const ConfirmationSuccess = () => {
@@ -17,8 +18,8 @@ export const ConfirmationSuccess = () => {
           {t('ConfirmationSuccess.description')}
         </Typography>
       </div>
-      <Button as={Link} href={'/sign-in'} className={s.link} replace>
-        {t('Auth.logIn')}
+      <Button as={Link} href={ROUTES.SIGN_IN} className={s.link} replace>
+        {t('Auth.signIn')}
       </Button>
       <Image
         src={'/images/bro.svg'}

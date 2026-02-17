@@ -1,4 +1,5 @@
 import axios, { InternalAxiosRequestConfig } from 'axios';
+import { STORAGE_KEYS } from '@/shared/config/storage';
 
 export const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -6,7 +7,7 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-  const token = localStorage.getItem('accessToken');
+  const token = localStorage.getItem(STORAGE_KEYS.ACCESS_TOKEN);
 
   if (token && config.headers) {
     config.headers.Authorization = `Bearer ${token}`;

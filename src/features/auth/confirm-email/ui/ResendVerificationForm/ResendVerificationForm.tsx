@@ -16,6 +16,7 @@ import { serverErrorMap } from '../../model/serverErrorMap';
 import { handleServerErrors } from '@/shared/lib/forms';
 import { useResendConfirmation } from '../../api/useResendConfirmation';
 import { EmailModal, EmailInput } from '@/shared/ui';
+import { ROUTES } from '@/shared/config/routes';
 
 export const ResendVerificationForm = () => {
   const t = useTranslations();
@@ -56,7 +57,7 @@ export const ResendVerificationForm = () => {
       <EmailModal
         open={!!sentEmail}
         onClose={() => {
-          router.replace('/');
+          router.replace(ROUTES.HOME);
         }}
         email={sentEmail ?? ''}
       />

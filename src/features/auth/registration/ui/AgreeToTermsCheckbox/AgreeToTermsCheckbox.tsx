@@ -5,6 +5,7 @@ import { Checkbox, Typography } from 'snapflow-ui-kit';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import s from './AgreeToTermsCheckbox.module.css';
+import { ROUTES } from '@/shared/config/routes';
 
 export const AgreeToTermsCheckbox = () => {
   const { control, trigger } = useFormContext();
@@ -28,7 +29,7 @@ export const AgreeToTermsCheckbox = () => {
             {t('agreeToTermsPrefix')}&nbsp;
             <Typography
               as={Link}
-              href={'/sign-up/terms-of-service'}
+              href={ROUTES.SIGN_UP_TERMS_OF_SERVICE}
               variant={'small-link'}
             >
               {t('termsOfService')}
@@ -36,7 +37,7 @@ export const AgreeToTermsCheckbox = () => {
             &nbsp;{t('and')}&nbsp;
             <Typography
               as={Link}
-              href={'/sign-up/privacy-policy'}
+              href={ROUTES.SIGN_UP_PRIVACY_POLICY}
               variant={'small-link'}
             >
               {t('privacyPolicy')}

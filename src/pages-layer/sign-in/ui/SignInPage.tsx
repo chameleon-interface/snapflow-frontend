@@ -6,6 +6,7 @@ import { FormWrapper } from '@/shared/ui';
 import { LoginForm } from '@/features/auth/login/ui/LoginForm';
 import s from './SignInPage.module.css';
 import { Button, Typography } from 'snapflow-ui-kit';
+import { ROUTES } from '@/shared/config/routes';
 
 export function SignInPage() {
   const t = useTranslations();
@@ -18,7 +19,7 @@ export function SignInPage() {
           {t('Forms.doNotHaveAnAccount')}
         </Typography>
 
-        <Button variant={'text'} as={Link} href={'/sign-up'}>
+        <Button variant={'text'} as={Link} href={ROUTES.SIGN_UP}>
           {t('Auth.signUp')}
         </Button>
       </div>
