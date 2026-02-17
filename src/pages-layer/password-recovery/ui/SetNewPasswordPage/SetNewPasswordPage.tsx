@@ -6,7 +6,6 @@ import { ROUTES } from '@/shared/config';
 import { ExpiredLinkLayout, FormWrapper } from '@/shared/ui';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { useEffect } from 'react';
 import { Button } from 'snapflow-ui-kit';
 import s from '../PasswordRecoveryPage/PasswordRecoveryPage.module.css';
 
@@ -16,11 +15,7 @@ type Props = {
 
 export const SetNewPasswordPage = ({ recoveryCode }: Props) => {
   const t = useTranslations();
-  const { mutate, isSuccess, isError } = useVerifyRecoveryCode();
-
-  useEffect(() => {
-    mutate({ recoveryCode });
-  }, [mutate, recoveryCode]);
+  const { isSuccess, isError } = useVerifyRecoveryCode(recoveryCode);
 
   if (isSuccess) {
     return (
