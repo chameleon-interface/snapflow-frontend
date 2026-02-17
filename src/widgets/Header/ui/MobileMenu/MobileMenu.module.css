@@ -1,0 +1,18 @@
+.menu {
+  min-width: 130px;
+}
+
+.menuButton {
+  padding-inline: 0;
+  color: var(--color-light-100);
+}
+
+.menuButton:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+.menuButton span {
+  margin-right: 0;
+}

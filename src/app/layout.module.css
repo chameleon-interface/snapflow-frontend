@@ -12,13 +12,24 @@
   padding-inline: var(--container-padding);
 }
 
-.main.withSidebar {
+body[data-has-sidebar='true'] .main {
   margin-left: var(--sidebar-width);
+}
+
+@media (width <= 768px) {
+  body[data-has-sidebar='true'] .main {
+    margin-left: 0;
+    padding-bottom: 90px; /* Space for bottom navigation (60px height + 30px extra) */
+  }
 }
 
 @media (width <= 380px) {
   .main {
     padding-bottom: 15px;
+  }
+
+  body[data-has-sidebar='true'] .main {
+    padding-bottom: 75px; /* Adjusted for smaller screens */
   }
 
   .container {

@@ -12,3 +12,23 @@
   padding: 72px 0 36px 60px;
   border-right: 1px solid var(--color-dark-300);
 }
+
+/* Desktop-only: visible above 768px */
+.desktopOnly {
+  display: flex;
+}
+
+/* Mobile-only: visible at 768px and below */
+.mobileOnly {
+  display: none;
+}
+
+@media (width <= 768px) {
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: block;
+  }
+}

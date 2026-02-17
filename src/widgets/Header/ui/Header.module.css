@@ -32,7 +32,39 @@
   gap: 24px;
 }
 
-.buttonWrapper > button {
+.buttonWrapper > a {
   min-width: 100px;
-  padding-inline: 5px;
+  padding-inline: 12px;
+}
+
+.mobileOnly {
+  display: none;
+}
+
+.desktopOnly {
+  display: block;
+}
+
+@media (width <= 768px) {
+  .mobileOnly {
+    display: block;
+  }
+
+  .desktopOnly {
+    display: none;
+  }
+}
+
+@media (width <= 768px) {
+  .header {
+    padding-inline: 15px;
+  }
+
+  .actions {
+    gap: 24px;
+  }
+
+  .buttonWrapper {
+    gap: 12px;
+  }
 }

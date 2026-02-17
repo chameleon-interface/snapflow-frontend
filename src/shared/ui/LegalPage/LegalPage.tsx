@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Button, Typography } from 'snapflow-ui-kit';
 import { ArrowBackIcon } from 'snapflow-ui-kit/icons';
 import { getTranslations } from 'next-intl/server';
+import { ROUTES } from '@/shared/config';
 import s from './LegalPage.module.css';
 
 type Props = {
@@ -13,7 +14,7 @@ type Props = {
 export const LegalPage = async ({
   titleKey,
   sections,
-  backHref = '/sign-up',
+  backHref = ROUTES.SIGN_UP,
 }: Props) => {
   const t = await getTranslations();
 

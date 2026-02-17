@@ -10,7 +10,7 @@ import {
   type RegistrationFormData,
 } from '../../model/schema';
 import { serverErrorMap } from '../../model/serverErrorMap';
-import { handleServerErrors } from '@/shared/lib/forms';
+import { handleServerErrors } from '@/shared/lib';
 import clsx from 'clsx';
 import { useState } from 'react';
 import { useRegistration } from '../../api/useRegistration';

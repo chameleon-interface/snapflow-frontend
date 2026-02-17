@@ -2,7 +2,9 @@
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import { api } from '@/shared/api/instance';
+import { api } from '@/shared/api';
+import { ROUTES } from '@/shared/config';
+import { tokenStorage } from '@/shared/lib';
 
 export const useLogoutMutation = () => {
   const router = useRouter();
@@ -12,12 +14,9 @@ export const useLogoutMutation = () => {
     mutationFn: () => api.post('/auth/logout'),
 
     onSuccess: () => {
-      localStorage.removeItem('accessToken');
-
-      // Invalidate auth queries (prepared for Me query integration)
-      queryClient.invalidateQueries({ queryKey: ['auth', 'me'] });
-
-      router.push('/');
+      tokenStorage.clear();
+      queryClient.resetQueries({ queryKey: ['auth', 'me'] });
+      router.push(ROUTES.HOME);
     },
   });
 };

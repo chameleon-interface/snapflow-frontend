@@ -2,9 +2,11 @@
 
 import { useRouter } from 'next/navigation';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { api } from '@/shared/api/instance';
+import { api } from '@/shared/api';
+import { ROUTES } from '@/shared/config';
 
 import { LoginFormData } from '@/features/auth/login/model/schema';
+import { tokenStorage } from '@/shared/lib';
 
 export const useLoginMutation = () => {
   const router = useRouter();
@@ -15,11 +17,12 @@ export const useLoginMutation = () => {
       api.post<{ accessToken: string }>('auth/login', data),
 
     onSuccess: (response) => {
-      localStorage.setItem('accessToken', response.data.accessToken);
+      tokenStorage.set(response.data.accessToken);
+      queryClient.invalidateQueries({
+        queryKey: ['auth', 'me'],
+      });
 
-      queryClient.invalidateQueries({ queryKey: ['auth', 'me'] });
-
-      router.push('/profile');
+      router.push(ROUTES.PROFILE);
     },
   });
 };
