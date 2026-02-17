@@ -1,18 +1,12 @@
 'use client';
 
-import { useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useMe } from '@/entities/user';
 import { ROUTES } from '@/shared/config/routes';
-import { hasAuthToken } from '@/shared/lib/storage';
 
-export default function AuthLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AuthLayout({ children }: { children: ReactNode }) {
   const { data, isPending } = useMe();
-  const hasToken = hasAuthToken();
   const router = useRouter();
 
   useEffect(() => {
@@ -21,7 +15,7 @@ export default function AuthLayout({
     }
   }, [data, router]);
 
-  if (data || (hasToken && isPending)) {
+  if (isPending || data) {
     return null;
   }
 
