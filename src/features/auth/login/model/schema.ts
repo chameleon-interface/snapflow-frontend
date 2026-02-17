@@ -1,5 +1,5 @@
 import * as z from 'zod';
-import { fields } from '@/shared/lib/validation';
+import { fields } from '@/shared/lib';
 
 export const loginSchema = z.object({
   email: fields.email,

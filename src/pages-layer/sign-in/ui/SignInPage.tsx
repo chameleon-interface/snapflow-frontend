@@ -6,7 +6,7 @@ import { FormWrapper } from '@/shared/ui';
 import { LoginForm } from '@/features/auth/login/ui/LoginForm';
 import s from './SignInPage.module.css';
 import { Button, Typography } from 'snapflow-ui-kit';
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/shared/config';
 
 export function SignInPage() {
   const t = useTranslations();

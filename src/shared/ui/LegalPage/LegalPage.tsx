@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Button, Typography } from 'snapflow-ui-kit';
 import { ArrowBackIcon } from 'snapflow-ui-kit/icons';
 import { getTranslations } from 'next-intl/server';
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/shared/config';
 import s from './LegalPage.module.css';
 
 type Props = {

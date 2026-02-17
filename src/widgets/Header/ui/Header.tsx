@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import { LanguageSwitcher } from '@/features/language-switcher';
 import { MobileMenu } from './MobileMenu/MobileMenu';
 import { useMe } from '@/entities/user';
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/shared/config';
 
 export const Header = () => {
   const t = useTranslations('Auth');

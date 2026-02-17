@@ -7,7 +7,7 @@ import {
   SettingsIcon,
   TrendingUpIcon,
 } from 'snapflow-ui-kit/icons';
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/shared/config';
 import { useLogoutMutation } from '@/features/auth/logout';
 
 /**

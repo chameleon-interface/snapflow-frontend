@@ -5,7 +5,7 @@ import { Checkbox, Typography } from 'snapflow-ui-kit';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import s from './AgreeToTermsCheckbox.module.css';
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/shared/config';
 
 export const AgreeToTermsCheckbox = () => {
   const { control, trigger } = useFormContext();

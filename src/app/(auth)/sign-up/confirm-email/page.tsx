@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { ConfirmEmailPage } from '@/pages-layer/confirm-email';
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/shared/config';
 
 type Props = {
   searchParams: Promise<{ code?: string }>;

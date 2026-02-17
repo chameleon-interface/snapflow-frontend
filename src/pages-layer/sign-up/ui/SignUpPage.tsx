@@ -4,7 +4,7 @@ import s from './SignUpPage.module.css';
 import Link from 'next/link';
 import { RegistrationForm } from '@/features/auth/registration';
 import { FormWrapper } from '@/shared/ui';
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/shared/config';
 
 export async function SignUpPage() {
   const t = await getTranslations();

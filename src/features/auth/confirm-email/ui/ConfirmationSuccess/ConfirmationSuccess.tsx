@@ -2,7 +2,7 @@ import { Button, Typography } from 'snapflow-ui-kit';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/shared/config';
 import s from './ConfirmationSuccess.module.css';
 
 export const ConfirmationSuccess = () => {

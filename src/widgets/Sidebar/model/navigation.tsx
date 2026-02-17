@@ -8,7 +8,7 @@ import {
   TrendingUpIcon,
 } from 'snapflow-ui-kit/icons';
 import { ReactNode } from 'react';
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/shared/config';
 
 export type NavItem = {
   labelKey: string;

@@ -13,10 +13,10 @@ import {
   resendEmailSchema,
 } from '../../model/schema';
 import { serverErrorMap } from '../../model/serverErrorMap';
-import { handleServerErrors } from '@/shared/lib/forms';
+import { handleServerErrors } from '@/shared/lib';
 import { useResendConfirmation } from '../../api/useResendConfirmation';
 import { EmailModal, EmailInput } from '@/shared/ui';
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/shared/config';
 
 export const ResendVerificationForm = () => {
   const t = useTranslations();
