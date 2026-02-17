@@ -1,6 +1,7 @@
 'use client';
 
 import { handleServerErrors } from '@/shared/lib/forms';
+import { ROUTES } from '@/shared/config';
 import { EmailInput, EmailModal } from '@/shared/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useLocale, useTranslations } from 'next-intl';
@@ -145,7 +146,12 @@ export const RequestResetForm = () => {
               {t('PasswordRecovery.sendLink')}
             </Button>
           )}
-          <Button className={s.button} variant="text" as={Link} href="/sign-in">
+          <Button
+            className={s.button}
+            variant="text"
+            as={Link}
+            href={ROUTES.SIGN_IN}
+          >
             {t('PasswordRecovery.backToSignIn')}
           </Button>
         </form>

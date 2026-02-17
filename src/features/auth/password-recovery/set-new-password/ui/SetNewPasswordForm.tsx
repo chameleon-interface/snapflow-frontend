@@ -1,6 +1,7 @@
 'use client';
 
 import { handleServerErrors } from '@/shared/lib/forms';
+import { ROUTES } from '@/shared/config';
 import { PasswordInput } from '@/shared/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
@@ -45,7 +46,7 @@ export const SetNewPasswordForm = ({ recoveryCode }: Props) => {
       {
         onSuccess: () => {
           toastSuccess(t('PasswordRecovery.passwordChangedSuccess'));
-          router.replace('/sign-in');
+          router.replace(ROUTES.SIGN_IN);
         },
         onError: (error) => {
           handleServerErrors({

@@ -2,6 +2,7 @@
 
 import { SetNewPasswordForm } from '@/features/auth/password-recovery';
 import { useVerifyRecoveryCode } from '@/features/auth/password-recovery/verify-recovery-code/api/useVerifyRecoveryCode';
+import { ROUTES } from '@/shared/config';
 import { ExpiredLinkLayout, FormWrapper } from '@/shared/ui';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
@@ -35,7 +36,11 @@ export const SetNewPasswordPage = ({ recoveryCode }: Props) => {
   if (isError) {
     return (
       <ExpiredLinkLayout>
-        <Button className={s.resendButton} as={Link} href="/password-recovery">
+        <Button
+          className={s.resendButton}
+          as={Link}
+          href={ROUTES.PASSWORD_RECOVERY}
+        >
           {t('LinkExpired.resendButton')}
         </Button>
       </ExpiredLinkLayout>
