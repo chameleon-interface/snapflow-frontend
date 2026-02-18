@@ -5,8 +5,7 @@ import Link from 'next/link';
 import { RegistrationForm } from '@/features/auth/registration';
 import { FormWrapper } from '@/shared/ui';
 import { ROUTES } from '@/shared/config';
-import { GoogleOAuthButton } from '@/widgets/google/ui/GoogleOAuthButton';
-import { GitHubOAuthButton } from '@/widgets/github/ui/GitHubOAuthButton';
+import { OAuthButton } from '@/features/auth/oauth';
 
 export async function SignUpPage() {
   const t = await getTranslations();
@@ -14,8 +13,8 @@ export async function SignUpPage() {
   return (
     <FormWrapper title={t('Pages.signUpTitle')}>
       <div className={s.oauthContainer}>
-        <GoogleOAuthButton />
-        <GitHubOAuthButton />
+        <OAuthButton provider={'google'} />
+        <OAuthButton provider={'github'} />
       </div>
       <RegistrationForm />
       <div className={s.footer}>
