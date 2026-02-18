@@ -1,12 +1,10 @@
 'use client';
 
-import { ROUTES } from '@/shared/config';
 import { handleServerErrors } from '@/shared/lib/forms';
 import { EmailInput, EmailModal } from '@/shared/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useLocale, useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
 import { useState } from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { Button, Typography } from 'snapflow-ui-kit';
@@ -154,14 +152,6 @@ export const RequestResetForm = () => {
           </Button>
         </form>
       </FormProvider>
-      <Button
-        className={s.backButton}
-        variant="text"
-        as={Link}
-        href={ROUTES.SIGN_IN}
-      >
-        {t('PasswordRecovery.backToSignIn')}
-      </Button>
     </>
   );
 };
