@@ -1,19 +1,19 @@
 'use client';
 
-import { handleServerErrors } from '@/shared/lib/forms';
 import { ROUTES } from '@/shared/config';
+import { handleServerErrors } from '@/shared/lib/forms';
 import { EmailInput, EmailModal } from '@/shared/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useLocale, useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import { useState } from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { Button, Typography } from 'snapflow-ui-kit';
 import { useRequestReset } from '../api/useRequestReset';
 import { RequestResetFormData, requestResetSchema } from '../model/schema';
 import { serverErrorMap } from '../model/serverErrorMap';
 import s from './RequestResetForm.module.css';
-import { useState } from 'react';
 
 const ReCAPTCHA = dynamic(
   () => import('react-google-recaptcha').then((mod) => mod.default),
@@ -24,6 +24,7 @@ export const RequestResetForm = () => {
   const locale = useLocale();
   const t = useTranslations();
   const [sentEmail, setSentEmail] = useState<string | null>(null);
+  const [recaptchaKey, setRecaptchaKey] = useState(0);
 
   const form = useForm<RequestResetFormData>({
     resolver: zodResolver(requestResetSchema),
@@ -35,30 +36,43 @@ export const RequestResetForm = () => {
     },
   });
 
-  const { handleSubmit, setError, setValue, control, clearErrors, formState } =
-    form;
+  const {
+    handleSubmit,
+    setError,
+    setValue,
+    control,
+    clearErrors,
+    formState,
+    reset,
+  } = form;
 
-  const { mutate, isSuccess, isPending, reset, isError } = useRequestReset();
+  const {
+    mutate,
+    isSuccess,
+    isPending,
+    isError,
+    reset: resetMutation,
+  } = useRequestReset();
   const isButtonDisabled = !formState.isValid || isPending;
+  const isRequestCompleted = isSuccess || isError;
 
-  const handleSendAgain = () => {
+  const handleSendLinkAgain = () => {
     reset();
-    setValue('recaptchaToken', '', {
-      shouldValidate: true,
-      shouldTouch: true,
-    });
-    clearErrors('recaptchaToken');
+    resetMutation();
+    setRecaptchaKey((prev) => prev + 1);
   };
 
   const onSubmit = (data: RequestResetFormData) => {
     mutate(data, {
-      onSuccess: () => setSentEmail(data.email),
+      onSuccess: () => {
+        setSentEmail(data.email);
+      },
       onError: (error) => {
         handleServerErrors({
           error,
           setError,
           serverErrorMap,
-          knownFields: ['email'],
+          knownFields: ['email', 'recaptchaToken'],
         });
       },
     });
@@ -93,7 +107,7 @@ export const RequestResetForm = () => {
                 ) : (
                   <div className={s.recaptcha}>
                     <ReCAPTCHA
-                      key={locale}
+                      key={`${locale}-${recaptchaKey}`}
                       sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
                       onChange={(token) => {
                         setValue('recaptchaToken', token || '', {
@@ -128,34 +142,26 @@ export const RequestResetForm = () => {
               </>
             )}
           />
-          {isSuccess || isError ? (
-            <Button
-              className={s.button}
-              type="button"
-              disabled={isButtonDisabled}
-              onClick={handleSendAgain}
-            >
-              {t('PasswordRecovery.sendLinkAgain')}
-            </Button>
-          ) : (
-            <Button
-              className={s.button}
-              type="submit"
-              disabled={isButtonDisabled}
-            >
-              {t('PasswordRecovery.sendLink')}
-            </Button>
-          )}
           <Button
-            className={s.button}
-            variant="text"
-            as={Link}
-            href={ROUTES.SIGN_IN}
+            className={s.sendLinkButton}
+            type={isRequestCompleted ? 'button' : 'submit'}
+            disabled={isButtonDisabled && !isRequestCompleted}
+            onClick={isRequestCompleted ? handleSendLinkAgain : undefined}
           >
-            {t('PasswordRecovery.backToSignIn')}
+            {isRequestCompleted
+              ? t('PasswordRecovery.sendLinkAgain')
+              : t('PasswordRecovery.sendLink')}
           </Button>
         </form>
       </FormProvider>
+      <Button
+        className={s.backButton}
+        variant="text"
+        as={Link}
+        href={ROUTES.SIGN_IN}
+      >
+        {t('PasswordRecovery.backToSignIn')}
+      </Button>
     </>
   );
 };

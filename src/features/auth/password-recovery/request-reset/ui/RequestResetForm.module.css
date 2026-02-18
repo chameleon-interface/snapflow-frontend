@@ -3,8 +3,9 @@
   color: var(--color-light-900);
 }
 
-.button {
-  margin-top: 24px;
+.sendLinkButton {
+  margin-top: 20px;
+  margin-bottom: -13px;
 }
 
 .successMessage {
