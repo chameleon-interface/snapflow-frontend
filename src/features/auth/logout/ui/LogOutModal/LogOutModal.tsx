@@ -1,10 +1,10 @@
 import { Modal } from 'snapflow-ui-kit/client';
 import { useMe } from '@/entities/user';
 import { useTranslations } from 'next-intl';
-import { Button } from 'snapflow-ui-kit';
-import s from './modalLogOut.module.css';
+import { Button, Typography } from 'snapflow-ui-kit';
+import s from './LogOutModal.module.css';
 
-export const ModalWindow = ({
+export const LogOutModal = ({
   isOpen,
   onClose,
   onConfirm,
@@ -24,17 +24,21 @@ export const ModalWindow = ({
       className={s.modalContainer}
     >
       <div className={s.modalBody}>
-        <p>
+        <Typography variant={'text-16'}>
           {t('Modals.LogoutConfirm.message', { email: user?.email as string })}
-        </p>
+        </Typography>
       </div>
 
       <div className={s.modalFooter}>
-        <Button variant="text" onClick={onClose} className={s.buttonModal}>
-          {t('Modals.LogoutConfirm.no')}
-        </Button>
-        <Button onClick={onConfirm} disabled={false} className={s.buttonModal}>
+        <Button
+          variant="outlined"
+          onClick={onConfirm}
+          className={s.buttonModal}
+        >
           {t('Modals.LogoutConfirm.yes')}
+        </Button>
+        <Button onClick={onClose} className={s.buttonModal}>
+          {t('Modals.LogoutConfirm.no')}
         </Button>
       </div>
     </Modal>
