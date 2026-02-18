@@ -15,6 +15,13 @@ const eslintConfig = defineConfig([
       boundaries,
     },
     settings: {
+      ...boundaries.configs.strict.settings,
+      "boundaries/include": ["src/**/*.{js,jsx,ts,tsx}"],
+      "boundaries/ignore": [
+        "**/*.stories.{js,jsx,ts,tsx}",
+        "**/*.test.{js,jsx,ts,tsx}",
+        "**/*.spec.{js,jsx,ts,tsx}",
+      ],
       "boundaries/elements": [
         { type: "shared", pattern: "src/shared/*", mode: "folder" },
         { type: "entities", pattern: "src/entities/*", mode: "folder" },
@@ -25,6 +32,8 @@ const eslintConfig = defineConfig([
       ],
     },
     rules: {
+      ...boundaries.configs.strict.rules,
+      "boundaries/no-ignored": "off",
       "boundaries/element-types": [
         "error",
         {
@@ -32,7 +41,7 @@ const eslintConfig = defineConfig([
           rules: [
             { from: ["shared"], allow: ["shared"] },
             { from: ["entities"], allow: ["shared", "entities"] },
-            { from: ["features"], allow: ["shared", "entities", "features"] },
+            { from: ["features"], allow: ["shared", "entities"] },
             {
               from: ["widgets"],
               allow: ["shared", "entities", "features", "widgets"],

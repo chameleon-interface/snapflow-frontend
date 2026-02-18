@@ -1,28 +1,34 @@
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Button } from 'snapflow-ui-kit';
-import { navItems } from '@/shared/config/navigation';
+import { navItems } from '../../model';
 import s from './NavMenu.module.css';
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
-export const NavMenu = async () => {
-  const t = await getTranslations('Nav');
+export const NavMenu = () => {
+  const t = useTranslations('Nav');
+  const pathname = usePathname();
 
   return (
     <nav>
       <ul className={s.menu}>
-        {navItems.map(({ labelKey, href, icon }) => (
-          <li key={href}>
-            <Button
-              variant={'text'}
-              as={Link}
-              href={href}
-              icon={icon}
-              className={s.link}
-            >
-              {t(labelKey)}
-            </Button>
-          </li>
-        ))}
+        {navItems.map(({ labelKey, href, icon }) => {
+          const isActive = pathname === href || pathname.startsWith(`${href}/`);
+
+          return (
+            <li key={href}>
+              <Button
+                variant={'text'}
+                as={Link}
+                href={href}
+                icon={icon}
+                className={`${s.link} ${isActive ? s.linkActive : ''}`}
+              >
+                {t(labelKey)}
+              </Button>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

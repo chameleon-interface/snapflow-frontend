@@ -1,0 +1,28 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  max-width: 260px;
+  margin-bottom: 36px;
+}
+
+.form.error {
+  gap: 0;
+}
+
+.form input {
+  padding: 6px 12px;
+}
+
+@media (width <= 480px) {
+  .form {
+    width: 100%;
+    max-width: 330px;
+  }
+
+  .form input,
+  .button {
+    padding-block: 12px;
+  }
+}

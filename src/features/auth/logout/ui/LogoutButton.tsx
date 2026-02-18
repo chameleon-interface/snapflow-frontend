@@ -5,21 +5,36 @@ import { LogOutIcon } from 'snapflow-ui-kit/icons';
 import { useTranslations } from 'next-intl';
 import s from './LogoutButton.module.css';
 
-export const LogoutButton = () => {
-  const t = useTranslations('Auth');
+import { useLogoutMutation } from '../api/useLogoutMutation';
+import { LogOutModal } from '../ui/LogOutModal';
+import { useState } from 'react';
 
-  const handleLogout = () => {
-    // TODO: add logout logic
-  };
+export const LogoutButton = () => {
+  const t = useTranslations();
+  const { mutate, isPending } = useLogoutMutation();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpen = () => setIsModalOpen(true);
+  const handleClose = () => setIsModalOpen(false);
 
   return (
-    <Button
-      className={s.button}
-      icon={<LogOutIcon />}
-      variant={'text'}
-      onClick={handleLogout}
-    >
-      {t('logOut')}
-    </Button>
+    <>
+      <Button
+        icon={<LogOutIcon />}
+        variant="text"
+        onClick={handleOpen}
+        disabled={isPending}
+        className={s.button}
+      >
+        {t('Auth.logOut')}
+      </Button>
+
+      <LogOutModal
+        isOpen={isModalOpen}
+        onClose={handleClose}
+        onConfirm={mutate}
+      />
+    </>
   );
 };

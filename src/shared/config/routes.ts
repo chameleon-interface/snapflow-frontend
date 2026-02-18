@@ -1,0 +1,17 @@
+export const ROUTES = {
+  HOME: '/',
+  SIGN_IN: '/sign-in',
+  SIGN_UP: '/sign-up',
+  SIGN_UP_TERMS_OF_SERVICE: '/sign-up/terms-of-service',
+  SIGN_UP_PRIVACY_POLICY: '/sign-up/privacy-policy',
+  SIGN_UP_CONFIRM_EMAIL: '/sign-up/confirm-email',
+  PASSWORD_RECOVERY: '/password-recovery',
+  SETTINGS: '/settings',
+  STATISTICS: '/statistics',
+  FAVORITES: '/favorites',
+  FEED: '/feed',
+  CREATE: '/create',
+  PROFILE: '/profile',
+  MESSENGER: '/messenger',
+  SEARCH: '/search',
+} as const;

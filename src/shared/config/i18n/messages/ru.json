@@ -1,17 +1,19 @@
 {
   "Auth": {
     "logOut": "Выйти",
-    "logIn": "Войти",
+    "signIn": "Войти",
     "signUp": "Регистрация"
   },
   "Nav": {
     "feed": "Лента",
     "create": "Создать",
     "profile": "Мой профиль",
+    "profileSettings": "Настройки",
     "messenger": "Мессенджер",
     "search": "Поиск",
     "statistics": "Статистика",
-    "favorites": "Избранное"
+    "favorites": "Избранное",
+    "backToSignUp": "Назад к регистрации"
   },
   "Pages": {
     "mainTitle": "Главная страница",
@@ -24,7 +26,73 @@
     "settingsTitle": "Настройки",
     "signInTitle": "Вход",
     "signUpTitle": "Регистрация",
-    "placeholder": "Страница-заглушка."
+    "forgotPasswordTitle": "Восстановление пароля",
+    "createNewPasswordTitle": "Создать новый пароль",
+    "placeholder": "Страница-заглушка.",
+    "privacyPolicy": "Политика конфиденциальности",
+    "termsOfService": "Условия предоставления услуг"
+  },
+  "Forms": {
+    "haveAccount": "Уже есть аккаунт?",
+    "doNotHaveAnAccount": "У вас нет аккаунта?",
+    "forgotPassword": "Забыли пароль",
+    "usernameLabel": "Имя пользователя",
+    "emailLabel": "Email",
+    "passwordLabel": "Пароль",
+    "passwordConfirmationLabel": "Подтверждение пароля",
+    "Registration": {
+      "agreeToTermsPrefix": "Я согласен с",
+      "termsOfService": "Условиями предоставления услуг",
+      "and": "и",
+      "privacyPolicy": "Политикой конфиденциальности",
+      "submit": "Создать аккаунт"
+    }
+  },
+  "Modals": {
+    "EmailSent": {
+      "title": "Email отправлен",
+      "message": "Мы отправили ссылку для подтверждения на {email}"
+    },
+    "LogoutConfirm": {
+      "title": "Подтверждение выхода",
+      "message": "Вы действительно хотите выйти из своего аккаунта \"{email}\"?",
+      "yes": "Да",
+      "no": "Нет"
+    }
+  },
+  "PasswordRecovery": {
+    "description": "Введите ваш email адрес, и мы отправим вам дальнейшие инструкции",
+    "successMessage": "Ссылка была отправлена на email. Если вы не получили письмо, отправьте ссылку снова.",
+    "sendLinkAgain": "Отправить ссылку снова",
+    "sendLink": "Отправить ссылку",
+    "backToSignIn": "Вернуться",
+    "newPasswordLabel": "Новый пароль",
+    "newPasswordPlaceholder": "Введите новый пароль",
+    "passwordConfirmationLabel": "Подтверждение пароля",
+    "passwordConfirmationPlaceholder": "Подтвердите новый пароль",
+    "passwordDescription": "Ваш пароль должен содержать от 6 до 20 символов",
+    "createNewPasswordButton": "Создать новый пароль",
+    "passwordChangedSuccess": "Пароль успешно изменён"
+  },
+  "ConfirmationSuccess": {
+    "title": "Поздравляем!",
+    "description": "Ваш email был подтверждён"
+  },
+  "LinkExpired": {
+    "title": "Срок действия ссылки истек!",
+    "description": "Похоже, что срок действия ссылки истек. Не беспокойтесь, мы можем отправить ссылку снова",
+    "resendButton": "Отправить ссылку снова",
+    "imageAlt": "Ссылка истекла"
+  },
+  "ServerErrors": {
+    "usernameExists": "Пользователь с таким именем уже зарегистрирован",
+    "emailExists": "Пользователь с таким email уже зарегистрирован",
+    "emailAlreadyConfirmed": "Email уже подтверждён",
+    "invalidCredentials": "Неверный email или пароль",
+    "validationError": "Некорректные данные",
+    "emailNotFound": "Пользователь с таким email не найден",
+    "emailNotExists": "Пользователь с таким email не существует",
+    "emailNotRegistered": "Невозможно отправить код - указанный email не зарегистрирован"
   },
   "Validation": {
     "username": {
@@ -39,14 +107,20 @@
     "password": {
       "min": "Минимальное количество символов — 6",
       "max": "Максимальное количество символов — 20",
-      "required": "Пароль должен содержать 0-9, a-z, A-Z, ! \" # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _ { | } ~",
-      "pattern": "Пароль содержит недопустимые символы"
+      "required": "Пароль должен содержать как минимум одну цифру, одну заглавную букву и одну строчную букву",
+      "pattern": "Пароль содержит недопустимые символы",
+      "fieldRequired": "Пароль обязателен"
     },
     "passwordConfirmation": {
-      "mismatch": "Пароли должны совпадать"
+      "mismatch": "Пароли должны совпадать",
+      "required": "Подтвердите пароль"
     },
     "terms": {
       "required": "Необходимо принять условия сервиса"
+    },
+    "recaptcha": {
+      "required": "Пожалуйста, завершите проверку reCAPTCHA",
+      "expired": "Время проверки reCAPTCHA истекло. Пожалуйста, пройдите проверку снова"
     }
   }
 }

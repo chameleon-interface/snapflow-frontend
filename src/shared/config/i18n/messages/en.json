@@ -1,17 +1,19 @@
 {
   "Auth": {
     "logOut": "Log out",
-    "logIn": "Log in",
-    "signUp": "Sign up"
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
   },
   "Nav": {
     "feed": "Feed",
     "create": "Create",
     "profile": "My profile",
+    "profileSettings": "Profile Settings",
     "messenger": "Messenger",
     "search": "Search",
     "statistics": "Statistics",
-    "favorites": "Favorites"
+    "favorites": "Favorites",
+    "backToSignUp": "Back to Sign Up"
   },
   "Pages": {
     "mainTitle": "Main page",
@@ -24,7 +26,74 @@
     "settingsTitle": "Settings",
     "signInTitle": "Sign In",
     "signUpTitle": "Sign Up",
-    "placeholder": "Placeholder page."
+    "forgotPasswordTitle": "Forgot Password",
+    "createNewPasswordTitle": "Create New Password",
+    "placeholder": "Placeholder page.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "Forms": {
+    "haveAccount": "Do you have an account?",
+    "doNotHaveAnAccount": "Don't have an account?",
+    "forgotPassword": "Forgot password",
+    "usernameLabel": "Username",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "passwordConfirmationLabel": "Password confirmation",
+    "Registration": {
+      "agreeToTermsPrefix": "I agree to the",
+      "termsOfService": "Terms of Service",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy",
+      "submit": "Sign Up"
+    }
+  },
+  "Modals": {
+    "EmailSent": {
+      "title": "Email sent",
+      "message": "We have sent a link to confirm your email to {email}"
+    },
+    "LogoutConfirm": {
+      "title": "Log out confirmation",
+      "message": "Are you really want to log out of your account \"{email}\"?",
+      "yes": "Yes",
+      "no": "No"
+    }
+  },
+  "PasswordRecovery": {
+    "description": "Enter your email address and we will send you further instructions",
+    "successMessage": "The link has been sent by email. If you don't receive an email, send the link again.",
+    "sendLinkAgain": "Send Link Again",
+    "sendLink": "Send Link",
+    "backToSignIn": "Back to Sign In",
+    "error": "An error occurred while sending the request. Please try again.",
+    "newPasswordLabel": "New password",
+    "newPasswordPlaceholder": "Enter new password",
+    "passwordConfirmationLabel": "Password confirmation",
+    "passwordConfirmationPlaceholder": "Confirm new password",
+    "passwordDescription": "Your password must be between 6 and 20 characters",
+    "createNewPasswordButton": "Create New Password",
+    "passwordChangedSuccess": "Password successfully changed"
+  },
+  "ConfirmationSuccess": {
+    "title": "Congratulations!",
+    "description": "Your email has been confirmed"
+  },
+  "LinkExpired": {
+    "title": "Email verification link expired!",
+    "description": "Looks like the verification link has expired. Not to worry, we can send the link again",
+    "resendButton": "Resend verification link",
+    "imageAlt": "Link expired"
+  },
+  "ServerErrors": {
+    "usernameExists": "User with this username is already registered",
+    "emailExists": "User with this email is already registered",
+    "emailAlreadyConfirmed": "User with this email already confirmed",
+    "emailNotFound": "User with this email not found",
+    "emailNotRegistered": "It is impossible to send the code - the specified email is not registered",
+    "invalidCredentials": "Invalid email or password",
+    "validationError": "Invalid input data",
+    "emailNotExists": "User with this email doesn't exist"
   },
   "Validation": {
     "username": {
@@ -39,14 +108,20 @@
     "password": {
       "min": "Minimum number of characters 6",
       "max": "Maximum number of characters 20",
-      "required": "Password must contain 0-9, a-z, A-Z, ! \" # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _ { | } ~",
-      "pattern": "Password contains invalid characters"
+      "required": "Password must contain at least one number, one uppercase letter and one lowercase letter",
+      "pattern": "Password contains invalid characters",
+      "fieldRequired": "Password is required"
     },
     "passwordConfirmation": {
-      "mismatch": "Passwords must match"
+      "mismatch": "Passwords must match",
+      "required": "Please confirm your password"
     },
     "terms": {
       "required": "You must agree to the Terms of Service"
+    },
+    "recaptcha": {
+      "required": "Please complete the reCAPTCHA verification",
+      "expired": "reCAPTCHA verification has expired. Please complete the verification again"
     }
   }
 }
