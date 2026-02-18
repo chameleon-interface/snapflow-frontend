@@ -1,0 +1,1 @@
+export { SetNewPasswordPage } from './SetNewPasswordPage';

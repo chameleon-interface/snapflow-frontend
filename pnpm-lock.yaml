@@ -34,6 +34,9 @@ importers:
       react-dom:
         specifier: 19.2.3
         version: 19.2.3(react@19.2.3)
+      react-google-recaptcha:
+        specifier: ^3.1.0
+        version: 3.1.0(react@19.2.3)
       react-hook-form:
         specifier: 7.71.1
         version: 7.71.1(react@19.2.3)
@@ -62,6 +65,9 @@ importers:
       '@types/react-dom':
         specifier: '19'
         version: 19.2.3(@types/react@19.2.9)
+      '@types/react-google-recaptcha':
+        specifier: ^2.1.9
+        version: 2.1.9
       eslint:
         specifier: '9'
         version: 9.39.2
@@ -1477,9 +1483,14 @@ packages:
       }
     engines: { node: '>=10' }
     peerDependencies:
-      '@swc/helpers': '>=0.5.17'
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
     peerDependenciesMeta:
-      '@swc/helpers':
+      '@types/react':
+        optional: true
+      '@types/react-dom':
         optional: true
 
   '@swc/counter@0.1.3':
@@ -1506,7 +1517,11 @@ packages:
         integrity: sha512-5GMGZMYFK9dOvjpdedjJs4hU40EdPuO2AjzObQzP7eOSsikunCfrXaU3oNGXSsvoU9ve1Z1xQZZuDyPi0C1M7Q==,
       }
     peerDependencies:
-      eslint: ^8.57.0 || ^9.0.0
+      '@types/react': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   '@tanstack/query-core@5.90.19':
     resolution:
@@ -1526,8 +1541,11 @@ packages:
         integrity: sha512-nlahjMtd/J1h7IzOOfqeyDh5LNfG0eULwlltPEonYy0QL+nqrBB+nyzJfULV+moL7sZyxc2sHdNJki+vLA9BSA==,
       }
     peerDependencies:
-      '@tanstack/react-query': ^5.90.20
-      react: ^18 || ^19
+      '@types/react': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   '@tanstack/react-query@5.90.19':
     resolution:
@@ -1535,7 +1553,11 @@ packages:
         integrity: sha512-qTZRZ4QyTzQc+M0IzrbKHxSeISUmRB3RPGmao5bT+sI6ayxSRhn0FXEnT5Hg3as8SBFcRosrXXRFB+yAcxVxJQ==,
       }
     peerDependencies:
-      react: ^18 || ^19
+      '@types/react': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   '@tybys/wasm-util@0.10.1':
     resolution:
@@ -1574,6 +1596,12 @@ packages:
       }
     peerDependencies:
       '@types/react': ^19.2.0
+
+  '@types/react-google-recaptcha@2.1.9':
+    resolution:
+      {
+        integrity: sha512-nT31LrBDuoSZJN4QuwtQSF3O89FVHC4jLhM+NtKEmVF5R1e8OY0Jo4//x2Yapn2aNHguwgX5doAq8Zo+Ehd0ug==,
+      }
 
   '@types/react@19.2.9':
     resolution:
@@ -3067,6 +3095,12 @@ packages:
         integrity: sha512-6pEjquH3rqaI6cYAXYPcz9MS4rY6R4ngRgrgfDshRptUZIc3lw0MCIJIGDj9++mfySOuPTHB4nrSW99BCvOPIA==,
       }
 
+  hoist-non-react-statics@3.3.2:
+    resolution:
+      {
+        integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==,
+      }
+
   hookified@1.15.0:
     resolution:
       {
@@ -4052,6 +4086,14 @@ packages:
         integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==,
       }
 
+  react-async-script@1.2.0:
+    resolution:
+      {
+        integrity: sha512-bCpkbm9JiAuMGhkqoAiC0lLkb40DJ0HOEJIku+9JDjxX3Rcs+ztEOG13wbrOskt3n2DTrjshhaQ/iay+SnGg5Q==,
+      }
+    peerDependencies:
+      react: '>=16.4.1'
+
   react-day-picker@9.13.0:
     resolution:
       {
@@ -4068,6 +4110,14 @@ packages:
       }
     peerDependencies:
       react: ^19.2.3
+
+  react-google-recaptcha@3.1.0:
+    resolution:
+      {
+        integrity: sha512-cYW2/DWas8nEKZGD7SCu9BSuVz8iOcOLHChHyi7upUuVhkpkhYG/6N3KDiTQ3XAiZ2UAZkfvYKMfAHOzBOcGEg==,
+      }
+    peerDependencies:
+      react: '>=16.4.1'
 
   react-hook-form@7.71.1:
     resolution:
@@ -5777,6 +5827,10 @@ snapshots:
     dependencies:
       '@types/react': 19.2.9
 
+  '@types/react-google-recaptcha@2.1.9':
+    dependencies:
+      '@types/react': 19.2.9
+
   '@types/react@19.2.9':
     dependencies:
       csstype: 3.2.3
@@ -6822,6 +6876,10 @@ snapshots:
     dependencies:
       hermes-estree: 0.25.1
 
+  hoist-non-react-statics@3.3.2:
+    dependencies:
+      react-is: 16.13.1
+
   hookified@1.15.0: {}
 
   html-tags@5.1.0: {}
@@ -7361,6 +7419,12 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
+  react-async-script@1.2.0(react@19.2.3):
+    dependencies:
+      hoist-non-react-statics: 3.3.2
+      prop-types: 15.8.1
+      react: 19.2.3
+
   react-day-picker@9.13.0(react@19.2.3):
     dependencies:
       '@date-fns/tz': 1.4.1
@@ -7372,6 +7436,12 @@ snapshots:
     dependencies:
       react: 19.2.3
       scheduler: 0.27.0
+
+  react-google-recaptcha@3.1.0(react@19.2.3):
+    dependencies:
+      prop-types: 15.8.1
+      react: 19.2.3
+      react-async-script: 1.2.0(react@19.2.3)
 
   react-hook-form@7.71.1(react@19.2.3):
     dependencies:
