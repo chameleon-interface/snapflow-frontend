@@ -3,10 +3,8 @@
 import { GoogleLogo, GitHubIcon } from 'snapflow-ui-kit/icons';
 import s from './OAuthButton.module.css';
 
-type Provider = 'google' | 'github';
-
 type Props = {
-  provider: Provider;
+  provider: 'google' | 'github';
 };
 export const OAuthButton = ({ provider }: Props) => {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
