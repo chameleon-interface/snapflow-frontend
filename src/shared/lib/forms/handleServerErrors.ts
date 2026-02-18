@@ -62,5 +62,18 @@ export const handleServerErrors = <T extends FieldValues>({
         toastError(message);
       }
     });
+  } else if (errorData.message) {
+    // If extensions is empty, try to match message with known fields
+    const messageLower = errorData.message.toLowerCase();
+    for (const field of knownFields) {
+      const fieldName = String(field).toLowerCase();
+      // Check if message contains field name (case-insensitive)
+      if (messageLower.includes(fieldName)) {
+        setError(field, {
+          message: serverErrorMap[errorData.message] ?? errorData.message,
+        });
+        return; // Set error only for the first matching field
+      }
+    }
   }
 };
