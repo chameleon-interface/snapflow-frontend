@@ -3,12 +3,17 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { mobileNavItems } from '../../model';
+import { getMobileNavItems } from '../../model';
 import s from './BottomNav.module.css';
 
-export const BottomNav = () => {
+type Props = {
+  userId: string;
+};
+
+export const BottomNav = ({ userId }: Props) => {
   const pathname = usePathname();
   const t = useTranslations('Nav');
+  const mobileNavItems = getMobileNavItems(userId);
 
   return (
     <nav className={s.bottomNav} aria-label="Mobile navigation">

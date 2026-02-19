@@ -10,8 +10,8 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (data) {
-      router.replace(ROUTES.HOME);
+    if (data?.userId) {
+      router.replace(ROUTES.PROFILE(data.userId));
     }
   }, [data, router]);
 
