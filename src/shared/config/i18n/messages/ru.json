@@ -26,6 +26,8 @@
     "settingsTitle": "Настройки",
     "signInTitle": "Вход",
     "signUpTitle": "Регистрация",
+    "forgotPasswordTitle": "Восстановление пароля",
+    "createNewPasswordTitle": "Создать новый пароль",
     "placeholder": "Страница-заглушка.",
     "privacyPolicy": "Политика конфиденциальности",
     "termsOfService": "Условия предоставления услуг"
@@ -60,16 +62,17 @@
   },
   "PasswordRecovery": {
     "description": "Введите ваш email адрес, и мы отправим вам дальнейшие инструкции",
-    "successMessage": "Ссылка была отправлена на email. <br /> Если вы не получили письмо, отправьте ссылку снова.",
+    "successMessage": "Ссылка была отправлена на email. Если вы не получили письмо, отправьте ссылку снова.",
     "sendLinkAgain": "Отправить ссылку снова",
     "sendLink": "Отправить ссылку",
-    "backToSignIn": "Вернуться к входу",
+    "backToSignIn": "Вернуться",
     "newPasswordLabel": "Новый пароль",
     "newPasswordPlaceholder": "Введите новый пароль",
     "passwordConfirmationLabel": "Подтверждение пароля",
     "passwordConfirmationPlaceholder": "Подтвердите новый пароль",
     "passwordDescription": "Ваш пароль должен содержать от 6 до 20 символов",
-    "createNewPasswordButton": "Создать новый пароль"
+    "createNewPasswordButton": "Создать новый пароль",
+    "passwordChangedSuccess": "Пароль успешно изменён"
   },
   "ConfirmationSuccess": {
     "title": "Поздравляем!",
@@ -88,6 +91,7 @@
     "invalidCredentials": "Неверный email или пароль",
     "validationError": "Некорректные данные",
     "emailNotFound": "Пользователь с таким email не найден",
+    "emailNotExists": "Пользователь с таким email не существует",
     "emailNotRegistered": "Невозможно отправить код - указанный email не зарегистрирован"
   },
   "Validation": {

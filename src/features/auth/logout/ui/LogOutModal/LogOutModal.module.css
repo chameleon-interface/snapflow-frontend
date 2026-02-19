@@ -1,17 +1,17 @@
 .modalContainer {
   max-width: 400px;
+  margin-inline: 15px;
 }
 
 .modalBody {
-  line-height: 1.6;
   text-align: center;
 }
 
 .modalFooter {
   display: flex;
-  gap: 15px;
-  justify-content: space-evenly;
-  padding-top: 5px;
+  gap: 24px;
+  justify-content: end;
+  padding-top: 36px;
 }
 
 .buttonModal {

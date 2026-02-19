@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import { LoginFormData, loginSchema } from '@/features/auth/login/model/schema';
 import { useLoginMutation } from '@/features/auth/login/api/useLoginMutation';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ROUTES } from '@/shared/config';
 import { Typography } from 'snapflow-ui-kit';
 
 export const LoginForm = () => {
@@ -33,7 +34,7 @@ export const LoginForm = () => {
         <Typography
           variant="text-14"
           as={Link}
-          href="/password-recovery"
+          href={ROUTES.PASSWORD_RECOVERY}
           className={s.forgotPasswordLink}
         >
           {t('Forms.forgotPassword')}
