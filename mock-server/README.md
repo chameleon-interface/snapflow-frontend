@@ -46,14 +46,56 @@ $env:MOCK_DELAY_MS=1000; pnpm start
 Remove-Item Env:MOCK_DELAY_MS
 ```
 
+### Настройка роста users count
+
+Переменная `MOCK_USERS_COUNT_INTERVAL_MS` задает интервал обновления счетчика пользователей.
+
+По умолчанию: `20000` (20 секунд).
+
+Пример для `bash`:
+
+```bash
+MOCK_USERS_COUNT_INTERVAL_MS=5000 pnpm start
+```
+
+Пример для `PowerShell`:
+
+```powershell
+$env:MOCK_USERS_COUNT_INTERVAL_MS=5000; pnpm start
+```
+
 ## Структура данных
 
-### `Profile`
+### `Profile` (TypeScript)
+
+```ts
+type Profile = {
+  id: number;
+  username: string;
+  firstName: string;
+  lastName: string;
+  dateOfBirth: string; // ISO date string, example: "1996-04-12"
+  country: string;
+  city: string;
+  avatar: string;
+  about: string;
+  followersCount: number;
+  followingCount: number;
+  postsCount: number;
+};
+```
+
+Пример объекта:
 
 ```json
 {
   "id": 1,
   "username": "alex.smith",
+  "firstName": "Alex",
+  "lastName": "Smith",
+  "dateOfBirth": "1996-04-12",
+  "country": "USA",
+  "city": "San Francisco",
   "avatar": "https://i.pravatar.cc/150?img=12",
   "about": "Frontend engineer, coffee lover, and street photography enthusiast.",
   "followersCount": 1840,
@@ -62,7 +104,18 @@ Remove-Item Env:MOCK_DELAY_MS
 }
 ```
 
-### `Post`
+### `Post` (TypeScript)
+
+```ts
+type Post = {
+  id: number;
+  profileId: number;
+  photo: string;
+  description: string;
+};
+```
+
+Пример объекта:
 
 ```json
 {
@@ -76,6 +129,23 @@ Remove-Item Env:MOCK_DELAY_MS
 ## Эндпоинты
 
 Базовый URL: `http://localhost:3001`
+
+### Stats
+
+#### `GET /stats/users-count`
+
+Возвращает текущее количество пользователей в mock-сервере.
+Значение автоматически увеличивается на случайное число от `1` до `20`
+каждые `MOCK_USERS_COUNT_INTERVAL_MS` миллисекунд (по умолчанию раз в 20 секунд).
+
+Пример ответа `200`:
+
+```json
+{
+  "usersCount": 2,
+  "increasesEveryMs": 20000
+}
+```
 
 ### Posts (CRUD)
 
@@ -143,13 +213,21 @@ Remove-Item Env:MOCK_DELAY_MS
 - только изображения (`image/*`)
 - размер файла до `20MB`
 
-Пример запроса:
+Пример запроса (axios):
 
-```bash
-curl -X POST http://localhost:3001/posts \
-  -F "profileId=45" \
-  -F "description=New mock post with uploaded file" \
-  -F "photoFile=@./my-photo.jpg"
+```ts
+import axios from 'axios';
+
+const formData = new FormData();
+formData.append('profileId', '45');
+formData.append('description', 'New mock post with uploaded file');
+formData.append('photoFile', fileInput.files[0]);
+
+const { data } = await axios.post('http://localhost:3001/posts', formData, {
+  headers: {
+    'Content-Type': 'multipart/form-data',
+  },
+});
 ```
 
 Пример ответа `201`:
@@ -194,10 +272,83 @@ curl -X POST http://localhost:3001/posts \
 Пример:
 - `DELETE /posts/6` -> `200` (или `204`, в зависимости от клиента)
 
-### Profiles (только GET)
+### Profiles
 
 - `GET /profiles` - получить список профилей
 - `GET /profiles/:id` - получить профиль по `id`
+
+#### `PUT /profiles/:id`
+
+Редактирует поля профиля.
+
+Что принимает:
+- `Content-Type: application/json`
+- можно передавать любые поля из списка:
+  - `username`
+  - `firstName`
+  - `lastName`
+  - `dateOfBirth`
+  - `country`
+  - `city`
+  - `about`
+  - `followersCount`
+  - `followingCount`
+  - `postsCount`
+
+Пример запроса (axios):
+
+```ts
+import axios from 'axios';
+
+const { data } = await axios.put('http://localhost:3001/profiles/45', {
+  firstName: 'Maria',
+  lastName: 'Rivera',
+  city: 'Madrid',
+  about: 'Updated bio',
+});
+```
+
+Пример ответа `200`:
+- обновленный объект профиля
+
+Ошибки:
+- `400` если `id` некорректный или не переданы редактируемые поля
+- `404` если профиль не найден
+
+#### `PUT /profiles/:id/avatar`
+
+Отдельный запрос для установки аватара.
+
+Что принимает:
+- `Content-Type`: только `multipart/form-data`
+- поле файла: `avatarFile` (required, image)
+
+Пример запроса (axios):
+
+```ts
+import axios from 'axios';
+
+const formData = new FormData();
+formData.append('avatarFile', fileInput.files[0]);
+
+const { data } = await axios.put(
+  'http://localhost:3001/profiles/45/avatar',
+  formData,
+  {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  },
+);
+```
+
+Пример ответа `200`:
+- обновленный объект профиля с новым `avatar`
+
+Ошибки:
+- `415` если отправлен не `multipart/form-data`
+- `400` если не передан `avatarFile` или файл не image/слишком большой
+- `404` если профиль не найден
 
 ## Примечания
 
