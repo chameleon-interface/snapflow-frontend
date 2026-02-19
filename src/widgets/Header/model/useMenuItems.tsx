@@ -8,18 +8,15 @@ import {
   TrendingUpIcon,
 } from 'snapflow-ui-kit/icons';
 import { ROUTES } from '@/shared/config';
-import { useLogoutMutation } from '@/features/auth/logout';
 
 /**
  * Hook for creating menu items for mobile menu.
  * Returns auth menu items for unauthorized users and user menu items for authorized users.
  */
-export const useMenuItems = () => {
+export const useMenuItems = (onLogoutClick?: () => void) => {
   const t = useTranslations('Auth');
   const tNav = useTranslations('Nav');
   const router = useRouter();
-
-  const { mutate } = useLogoutMutation();
 
   const authMenuItems = useMemo(
     () => [
@@ -55,10 +52,10 @@ export const useMenuItems = () => {
       {
         label: t('logOut'),
         icon: <LogOutIcon />,
-        onSelect: mutate,
+        onSelect: onLogoutClick,
       },
     ],
-    [tNav, t, router, mutate],
+    [tNav, t, router, onLogoutClick],
   );
 
   return { authMenuItems, userMenuItems };
