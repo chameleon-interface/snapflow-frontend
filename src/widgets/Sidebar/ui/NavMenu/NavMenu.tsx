@@ -1,13 +1,18 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from 'snapflow-ui-kit';
-import { navItems } from '../../model';
+import { getNavItems } from '../../model';
 import s from './NavMenu.module.css';
 import { useTranslations } from 'next-intl';
 
-export const NavMenu = () => {
+type Props = {
+  userId: string;
+};
+
+export const NavMenu = ({ userId }: Props) => {
   const t = useTranslations('Nav');
   const pathname = usePathname();
+  const navItems = getNavItems(userId);
 
   return (
     <nav>

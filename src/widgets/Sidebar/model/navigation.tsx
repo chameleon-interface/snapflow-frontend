@@ -16,20 +16,20 @@ export type NavItem = {
   icon: ReactNode;
 };
 
-export const navItems: NavItem[] = [
+export const getNavItems = (userId: string): NavItem[] => [
   { labelKey: 'feed', href: ROUTES.FEED, icon: <HomeIcon /> },
   { labelKey: 'create', href: ROUTES.CREATE, icon: <PlusSquareIcon /> },
-  { labelKey: 'profile', href: ROUTES.PROFILE, icon: <PersonIcon /> },
+  { labelKey: 'profile', href: ROUTES.PROFILE(userId), icon: <PersonIcon /> },
   { labelKey: 'messenger', href: ROUTES.MESSENGER, icon: <MessageIcon /> },
   { labelKey: 'search', href: ROUTES.SEARCH, icon: <SearchIcon /> },
   { labelKey: 'statistics', href: ROUTES.STATISTICS, icon: <TrendingUpIcon /> },
   { labelKey: 'favorites', href: ROUTES.FAVORITES, icon: <BookMarkIcon /> },
 ];
 
-export const mobileNavItems: NavItem[] = [
+export const getMobileNavItems = (userId: string): NavItem[] => [
   { labelKey: 'feed', href: ROUTES.FEED, icon: <HomeIcon /> },
   { labelKey: 'create', href: ROUTES.CREATE, icon: <PlusSquareIcon /> },
   { labelKey: 'messenger', href: ROUTES.MESSENGER, icon: <MessageIcon /> },
   { labelKey: 'search', href: ROUTES.SEARCH, icon: <SearchIcon /> },
-  { labelKey: 'profile', href: ROUTES.PROFILE, icon: <PersonIcon /> },
+  { labelKey: 'profile', href: ROUTES.PROFILE(userId), icon: <PersonIcon /> },
 ];
