@@ -12,10 +12,10 @@ export const useLogoutMutation = () => {
 
   return useMutation({
     mutationFn: () => api.post('/auth/logout'),
-
-    onSuccess: () => {
+    onMutate: async () => {
+      await queryClient.cancelQueries({ queryKey: ['auth', 'me'] });
       tokenStorage.clear();
-      queryClient.resetQueries({ queryKey: ['auth', 'me'] });
+      queryClient.setQueryData(['auth', 'me'], null);
       router.push(ROUTES.HOME);
     },
   });
