@@ -15,7 +15,7 @@ export const OAuthButton = ({ provider }: Props) => {
   };
   return (
     <a
-      href={`${baseUrl}/auth/${provider}`}
+      href={`${baseUrl}/oauth/${provider}`}
       className={s.oauthButton}
       aria-label={`Sign in with ${provider}`}
     >
