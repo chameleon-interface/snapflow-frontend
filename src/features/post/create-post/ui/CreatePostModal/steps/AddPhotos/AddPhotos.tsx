@@ -25,7 +25,7 @@ export const AddPhotos = ({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    setError(null);
+    queueMicrotask(() => setError(null));
   }, [selectedPhotos]);
 
   return (

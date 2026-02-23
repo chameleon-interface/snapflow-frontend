@@ -36,6 +36,13 @@ export type DraftPostState = {
   filterBySlide: Record<number, string>;
 };
 
+/** Минимальный профиль для шага публикации (данные приходят снаружи фичи) */
+export type PublishProfile = {
+  id: number;
+  username?: string;
+  avatar?: string;
+};
+
 /** Черновик для сохранения в IndexedDB */
 export type StoredDraft = {
   photoBlobs: { blob: Blob; name: string }[];

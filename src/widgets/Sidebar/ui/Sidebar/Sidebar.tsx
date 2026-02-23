@@ -7,11 +7,14 @@ import { BottomNav } from '../BottomNav';
 import { CreatePostModal } from '@/features/post/create-post/ui';
 import s from './Sidebar.module.css';
 import { useMe } from '@/entities/user';
+import { useGetProfileQuery } from '@/features/profile/api';
 
 export const Sidebar = () => {
   const { data, isPending, isError } = useMe();
   const hasSidebar = !isPending && !isError && !!data;
   const [isCreatePostModalOpen, setIsCreatePostModalOpen] = useState(false);
+  const profileId = data?.userId != null ? String(data.userId) : '';
+  const { data: profile } = useGetProfileQuery(profileId);
 
   useEffect(() => {
     if (hasSidebar) {
@@ -55,6 +58,7 @@ export const Sidebar = () => {
       <CreatePostModal
         isOpen={isCreatePostModalOpen}
         onClose={handleCloseCreatePostModal}
+        profile={profile}
       />
     </>
   );

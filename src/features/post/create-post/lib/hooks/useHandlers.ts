@@ -62,14 +62,7 @@ export const useHandlers = ({
     }
     const nextStep = stepState.steps[stepState.currentIndex + 1];
     if (nextStep != null) stepState.setStep(nextStep);
-  }, [
-    stepState.step,
-    stepState.currentIndex,
-    stepState.steps,
-    stepState.setStep,
-    exports.runCroppingNext,
-    exports.runFiltersNext,
-  ]);
+  }, [stepState, exports]);
 
   const handlePreviousStep = useCallback(() => {
     if (stepState.isFirstStep) return;
@@ -82,14 +75,7 @@ export const useHandlers = ({
       photos.setProcessedPhotos([]);
     }
     if (nextStep != null) stepState.setStep(nextStep);
-  }, [
-    stepState.isFirstStep,
-    stepState.currentIndex,
-    stepState.steps,
-    stepState.setStep,
-    photos.setSelectedPhotos,
-    photos.setProcessedPhotos,
-  ]);
+  }, [stepState, photos]);
 
   const handlePublish = useCallback(() => {
     if (!publish.profile?.id || photos.filteredPhotos.length === 0) return;
@@ -104,14 +90,7 @@ export const useHandlers = ({
         publish.doClose();
       },
     });
-  }, [
-    publish.profile?.id,
-    publish.description,
-    publish.doClose,
-    photos.filteredPhotos,
-    createPost,
-    t,
-  ]);
+  }, [publish, photos.filteredPhotos, createPost, t]);
 
   return {
     handleNextStep,

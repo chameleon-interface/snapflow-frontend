@@ -8,10 +8,10 @@ import { useState } from 'react';
 import { Textarea } from 'snapflow-ui-kit';
 import { Input, Typography } from 'snapflow-ui-kit/client';
 import { PinIcon } from 'snapflow-ui-kit/icons';
+import type { PublishProfile } from '@/features/post/create-post/model/types';
 import type { LocationSuggestion } from './LocationSuggestions';
 import { LocationSuggestions } from './LocationSuggestions';
 import styles from './Publish.module.css';
-import type { Profile } from '@/features/profile/model';
 
 const DESCRIPTION_MAX_LENGTH = 500;
 
@@ -29,7 +29,7 @@ type Props = {
   onDescriptionChange: (value: string) => void;
   location: string;
   onLocationChange: (value: string) => void;
-  profile: Profile | undefined;
+  profile: PublishProfile | undefined;
 };
 
 const CarouselSlide = ({ url }: { url: string }) => (

@@ -25,6 +25,8 @@ export const getMaxAllowedInSelection = (
 export const validateFile = (
   file: File,
   selectedNames: Set<string>,
+  // t is passed by caller for future translation of errorKey
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   t: ProcessSelectedFilesOptions['t'],
 ): ValidateFileResult => {
   if (selectedNames.has(file.name)) {

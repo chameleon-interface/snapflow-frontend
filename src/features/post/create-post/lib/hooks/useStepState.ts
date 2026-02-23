@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   CREATE_POST_STEPS,
   type CreatePostStep,
@@ -8,18 +8,8 @@ import {
 
 const STEPS = CREATE_POST_STEPS;
 
-type Params = {
-  selectedPhotosLength: number;
-};
-
-export const useStepState = ({ selectedPhotosLength }: Params) => {
+export const useStepState = () => {
   const [step, setStep] = useState<CreatePostStep>('addPhotos');
-
-  useEffect(() => {
-    if (selectedPhotosLength > 0 && step === 'addPhotos') {
-      setStep('cropping');
-    }
-  }, [selectedPhotosLength, step]);
 
   const currentIndex = STEPS.indexOf(step);
   const isFirstStep = currentIndex === 0;

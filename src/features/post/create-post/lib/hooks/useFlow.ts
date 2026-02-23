@@ -1,7 +1,10 @@
 'use client';
 
 import { useCallback, useState } from 'react';
-import type { CreatePostStep } from '@/features/post/create-post/model/types';
+import type {
+  CreatePostStep,
+  PublishProfile,
+} from '@/features/post/create-post/model/types';
 import { usePhotosState } from './usePhotosState';
 import { useStepState } from './useStepState';
 import { useCreatePostState } from './useCreatePostState';
@@ -9,24 +12,32 @@ import { useExports } from './useExports';
 import { useDraft } from './useDraft';
 import { useHandlers } from './useHandlers';
 import { useCloseModal } from './useCloseModal';
-import { useGetProfileQuery } from '@/features/profile/api';
 
 type Params = {
   onClose: () => void;
+  profile: PublishProfile | undefined;
 };
 
-export const useFlow = ({ onClose }: Params) => {
+export const useFlow = ({ onClose, profile }: Params) => {
   const photos = usePhotosState();
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
   const postState = useCreatePostState({
     photoCount: photos.selectedPhotos.length,
   });
-  const stepState = useStepState({
-    selectedPhotosLength: photos.selectedPhotos.length,
-  });
-  const profileId = '1'; // HARDCODED FOR NOW
-  const { data: profile } = useGetProfileQuery(profileId);
+  const stepState = useStepState();
+
+  const setSelectedPhotos = useCallback(
+    (value: File[] | ((prev: File[]) => File[])) => {
+      photos.setSelectedPhotos(value);
+      const nextFiles =
+        typeof value === 'function' ? value(photos.selectedPhotos) : value;
+      if (nextFiles.length > 0 && stepState.step === 'addPhotos') {
+        stepState.setStep('cropping');
+      }
+    },
+    [photos, stepState],
+  );
 
   const doClose = useCallback(() => {
     photos.setSelectedPhotos([]);
@@ -86,7 +97,7 @@ export const useFlow = ({ onClose }: Params) => {
     stepState,
     exports,
     photos: {
-      setSelectedPhotos: photos.setSelectedPhotos,
+      setSelectedPhotos,
       setProcessedPhotos: photos.setProcessedPhotos,
       filteredPhotos: photos.filteredPhotos,
     },
@@ -99,7 +110,7 @@ export const useFlow = ({ onClose }: Params) => {
   return {
     step: stepState.step,
     selectedPhotos: photos.selectedPhotos,
-    setSelectedPhotos: photos.setSelectedPhotos,
+    setSelectedPhotos,
     processedPhotos: photos.processedPhotos,
     filteredPhotos: photos.filteredPhotos,
     isCroppingExporting: exports.isCroppingExporting,

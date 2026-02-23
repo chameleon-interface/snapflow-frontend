@@ -1,7 +1,10 @@
 'use client';
 
 import { useFlow } from '@/features/post/create-post/lib/hooks/useFlow';
-import type { CreatePostStep } from '@/features/post/create-post/model/types';
+import type {
+  CreatePostStep,
+  PublishProfile,
+} from '@/features/post/create-post/model/types';
 import { clsx } from 'clsx';
 import { useTranslations } from 'next-intl';
 import { Modal } from 'snapflow-ui-kit/client';
@@ -22,6 +25,7 @@ const WIDE_MODAL_STEPS: CreatePostStep[] = ['filters', 'publish'];
 type Props = {
   isOpen: boolean;
   onClose: () => void;
+  profile: PublishProfile | undefined;
 };
 
 const getNextStepLoadingLabel = (
@@ -29,9 +33,9 @@ const getNextStepLoadingLabel = (
   t: (key: string) => string,
 ) => (step === 'filters' ? t('applyingFilters') : t('generatingCropped'));
 
-export const CreatePostModal = ({ isOpen, onClose }: Props) => {
+export const CreatePostModal = ({ isOpen, onClose, profile }: Props) => {
   const t = useTranslations('CreatePost');
-  const flow = useFlow({ onClose });
+  const flow = useFlow({ onClose, profile });
 
   return (
     <Modal

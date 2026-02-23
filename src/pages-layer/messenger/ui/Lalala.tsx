@@ -14,7 +14,11 @@ export const Lalala = () => {
       <Button onClick={handleOpen} aria-label="Добавить публикацию">
         Новая публикация
       </Button>
-      <CreatePostModal isOpen={isModalOpen} onClose={handleClose} />
+      <CreatePostModal
+        isOpen={isModalOpen}
+        onClose={handleClose}
+        profile={undefined}
+      />
     </>
   );
 };

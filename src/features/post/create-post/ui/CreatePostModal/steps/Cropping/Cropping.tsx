@@ -59,7 +59,7 @@ export const Cropping = ({
   const aspectOptions = getAspectOptions(t);
 
   useEffect(() => {
-    setError(null);
+    queueMicrotask(() => setError(null));
   }, [selectedPhotos]);
 
   const currentAspectIndex = aspectAt(currentSlideIndex);

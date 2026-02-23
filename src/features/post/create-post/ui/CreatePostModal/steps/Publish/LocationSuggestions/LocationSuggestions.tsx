@@ -22,6 +22,7 @@ export const LocationSuggestions = ({
         type="button"
         className={styles.suggestion}
         role="option"
+        aria-selected={false}
         tabIndex={0}
         onMouseDown={(e) => e.preventDefault()}
         onClick={() => onSelect(primary, secondary)}

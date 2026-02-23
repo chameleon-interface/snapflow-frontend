@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import type { Area } from 'react-easy-crop';
 import type {
   CropPosition,
@@ -35,10 +35,17 @@ export const useCreatePostState = ({ photoCount }: Params) => {
     {},
   );
 
-  useEffect(() => {
-    if (photoCount === 0) return;
-    setCurrentSlideIndex((prev) => Math.min(prev, photoCount - 1));
-  }, [photoCount]);
+  const clampedSlideIndex =
+    photoCount === 0 ? 0 : Math.min(currentSlideIndex, photoCount - 1);
+  const setCurrentSlideIndexClamped = useCallback(
+    (value: number | ((prev: number) => number)) => {
+      setCurrentSlideIndex((prev) => {
+        const next = typeof value === 'function' ? value(prev) : value;
+        return Math.min(Math.max(0, next), Math.max(0, photoCount - 1));
+      });
+    },
+    [photoCount],
+  );
 
   const handleCropChange = useCallback((index: number, crop: CropPosition) => {
     setCrops((prev) => {
@@ -112,7 +119,7 @@ export const useCreatePostState = ({ photoCount }: Params) => {
 
   const getSnapshot = useCallback(
     (): DraftPostState => ({
-      currentSlideIndex,
+      currentSlideIndex: clampedSlideIndex,
       crops: [...crops],
       zooms: [...zooms],
       croppedAreasPixels: [...croppedAreasPixels],
@@ -120,7 +127,7 @@ export const useCreatePostState = ({ photoCount }: Params) => {
       filterBySlide: { ...filterBySlide },
     }),
     [
-      currentSlideIndex,
+      clampedSlideIndex,
       crops,
       zooms,
       croppedAreasPixels,
@@ -136,8 +143,8 @@ export const useCreatePostState = ({ photoCount }: Params) => {
   const filterAt = (index: number) => filterBySlide[index] ?? DEFAULT_FILTER_ID;
 
   return {
-    currentSlideIndex,
-    setCurrentSlideIndex,
+    currentSlideIndex: clampedSlideIndex,
+    setCurrentSlideIndex: setCurrentSlideIndexClamped,
     cropAt,
     zoomAt,
     aspectAt,
