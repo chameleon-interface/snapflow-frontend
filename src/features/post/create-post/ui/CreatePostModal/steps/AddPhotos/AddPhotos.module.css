@@ -1,8 +1,8 @@
 .content {
-  width: 240px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 240px;
 }
 
 .openDraftButton {
@@ -11,15 +11,15 @@
 }
 
 .error {
-  max-width: none;
   width: 100%;
+  max-width: none;
 }
 
 @media (width <= 480px) {
   .content {
+    gap: 20px;
     width: 100%;
     min-width: 0;
-    gap: 20px;
   }
 }
 

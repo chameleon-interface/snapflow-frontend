@@ -1,7 +1,8 @@
 .slideWrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
   width: 100%;
   min-height: 320px;
   padding: 0 16px;
@@ -9,10 +10,13 @@
 
 .cropBox {
   position: relative;
+
+  overflow: hidden;
+
+  aspect-ratio: 1;
   width: 100%;
   max-width: 400px;
-  aspect-ratio: 1;
   border-radius: 12px;
-  overflow: hidden;
+
   background: var(--color-dark-400);
 }

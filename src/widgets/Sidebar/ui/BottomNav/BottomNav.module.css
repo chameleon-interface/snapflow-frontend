@@ -46,10 +46,10 @@
 
 /* Reset button to match link appearance */
 .button {
-  border: none;
-  background: none;
-  font: inherit;
   cursor: pointer;
+  border: none;
+  font: inherit;
+  background: none;
 }
 
 .link:hover {

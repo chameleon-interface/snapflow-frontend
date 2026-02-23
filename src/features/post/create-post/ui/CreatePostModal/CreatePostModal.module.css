@@ -1,8 +1,8 @@
 .modalContainer {
-  width: 500px;
-  max-height: 90vh;
   display: flex;
   flex-direction: column;
+  width: 500px;
+  max-height: 90vh;
 }
 
 .modalContainerWide {
@@ -12,12 +12,13 @@
 
 .content {
   display: flex;
+  flex: 1;
   flex-direction: column;
+  gap: 24px;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+
   min-height: 0;
-  flex: 1;
 }
 
 @media (width <= 768px) {

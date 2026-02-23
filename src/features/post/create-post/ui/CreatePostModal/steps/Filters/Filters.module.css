@@ -1,36 +1,41 @@
 .wrapper {
+  overflow-x: hidden;
   display: grid;
   grid-template-columns: 1fr 364px;
   grid-template-rows: minmax(280px, 65vh);
   gap: 24px;
+
   width: 100%;
-  overflow-x: hidden;
 }
 
 .carouselSection {
-  min-width: 0;
-  min-height: 0;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  min-height: 0;
 }
 
 .carousel {
-  width: 100%;
-  flex: 1;
-  min-height: 0;
   display: flex;
+  flex: 1;
   flex-direction: column;
+
+  width: 100%;
+  min-height: 0;
 }
 
 .filterPanel {
+  scroll-behavior: smooth;
+
+  overflow: hidden auto;
+
   min-height: 0;
   max-height: 100%;
   padding: 0 16px;
-  background: var(--color-dark-600);
   border-radius: 12px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+
+  background: var(--color-dark-600);
+
   -webkit-overflow-scrolling: touch;
 }
 
@@ -39,13 +44,13 @@
 }
 
 .filterPanel::-webkit-scrollbar-track {
-  background: var(--color-dark-200);
   border-radius: 4px;
+  background: var(--color-dark-200);
 }
 
 .filterPanel::-webkit-scrollbar-thumb {
-  background: var(--color-dark-100);
   border-radius: 4px;
+  background: var(--color-dark-100);
 }
 
 .filterPanel::-webkit-scrollbar-thumb:hover {
@@ -75,19 +80,21 @@
   }
 
   .filterPanel {
-    padding: 16px 12px;
+    overflow: auto hidden;
+
     max-height: none;
+    padding: 16px 12px;
     border-radius: 12px;
-    overflow-x: auto;
-    overflow-y: hidden;
+
     -webkit-overflow-scrolling: touch;
   }
 
   .filterGrid {
     display: flex;
+    grid-template-columns: unset;
     flex-wrap: nowrap;
     gap: 10px;
-    grid-template-columns: unset;
+
     min-width: min-content;
   }
 

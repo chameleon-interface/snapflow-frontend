@@ -5,18 +5,23 @@
 }
 
 .suggestion {
-  padding: 10px 14px;
-  border-radius: 10px;
-  font-size: 14px;
-  color: var(--color-light-200);
-  background: transparent;
-  border: none;
   cursor: pointer;
-  text-align: left;
-  transition: background 0.2s ease;
+
   display: flex;
   flex-direction: column;
   gap: 2px;
+
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+
+  font-size: 14px;
+  color: var(--color-light-200);
+  text-align: left;
+
+  background: transparent;
+
+  transition: background 0.2s ease;
 }
 
 .suggestion:hover,

@@ -3,17 +3,22 @@
 }
 
 .trigger {
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 40px;
   height: 40px;
   padding: 0;
   border: none;
   border-radius: 10px;
-  background-color: var(--color-dark-300);
+
   color: var(--color-light-100);
-  cursor: pointer;
+
+  background-color: var(--color-dark-300);
+
   transition: color 0.2s;
 }
 

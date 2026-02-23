@@ -1,50 +1,56 @@
 .wrapper {
+  overflow-x: hidden;
   display: grid;
   grid-template-columns: 1fr 364px;
   grid-template-rows: minmax(280px, 65vh);
   gap: 24px;
+
   width: 100%;
-  overflow-x: hidden;
 }
 
 .carouselSection {
-  min-width: 0;
-  min-height: 0;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  min-height: 0;
 }
 
 .carousel {
-  width: 100%;
-  flex: 1;
-  min-height: 0;
   display: flex;
+  flex: 1;
   flex-direction: column;
+
+  width: 100%;
+  min-height: 0;
 }
 
 .slideImageWrap {
   position: relative;
-  width: 100%;
-  height: 100%;
-  min-width: 0;
-  min-height: 0;
-  background: var(--color-dark-700);
-  border-radius: 12px;
+
   overflow: hidden;
+
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  border-radius: 12px;
+
+  background: var(--color-dark-700);
 }
 
 .formPanel {
-  min-height: 0;
-  max-height: 100%;
-  padding: 24px 20px;
-  background: var(--color-dark-500);
-  border-radius: 16px;
-  border: 1px solid var(--color-dark-100);
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: hidden scroll;
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  min-height: 0;
+  max-height: 100%;
+  padding: 24px 20px;
+  border: 1px solid var(--color-dark-100);
+  border-radius: 16px;
+
+  background: var(--color-dark-500);
 }
 
 .formPanel::-webkit-scrollbar {
@@ -52,55 +58,60 @@
 }
 
 .formPanel::-webkit-scrollbar-track {
-  background: var(--color-dark-200);
   border-radius: 4px;
+  background: var(--color-dark-200);
 }
 
 .formPanel::-webkit-scrollbar-thumb {
-  background: var(--color-dark-100);
   border-radius: 4px;
+  background: var(--color-dark-100);
 }
 
 .profileRow {
   display: flex;
-  align-items: center;
   gap: 12px;
+  align-items: center;
   padding: 8px 0;
 }
 
 .avatar {
+  flex-shrink: 0;
+
   width: 40px;
   height: 40px;
+  border: 2px solid var(--color-dark-100);
   border-radius: 50%;
+
   background: linear-gradient(
     135deg,
     var(--color-dark-400) 0%,
     var(--color-dark-300) 100%
   );
-  flex-shrink: 0;
-  border: 2px solid var(--color-dark-100);
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.2);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
 }
 
 .avatarPlaceholder {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
   width: 40px;
-  height: 40px;
   min-width: 40px;
+  height: 40px;
   min-height: 40px;
+  border: 2px solid var(--color-dark-100);
   border-radius: 50%;
+
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-light-900);
+
   background: linear-gradient(
     135deg,
     var(--color-dark-400) 0%,
     var(--color-dark-300) 100%
   );
-  flex-shrink: 0;
-  border: 2px solid var(--color-dark-100);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--color-light-900);
 }
 
 .fieldGroup {
@@ -114,17 +125,17 @@
 }
 
 .textareaWrapper textarea {
-  background: var(--color-dark-400);
   border: 1px solid var(--color-dark-100);
   border-radius: 12px;
+  background: var(--color-dark-400);
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
 
 .textareaWrapper textarea:focus {
-  outline: none;
   border-color: var(--color-accent-500);
+  outline: none;
   box-shadow: 0 0 0 1px var(--color-accent-500);
 }
 
@@ -138,17 +149,17 @@
 }
 
 .locationInputWrapper input {
-  background: var(--color-dark-400);
   border: 1px solid var(--color-dark-100);
   border-radius: 12px;
+  background: var(--color-dark-400);
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
 
 .locationInputWrapper input:focus {
-  outline: none;
   border-color: var(--color-accent-500);
+  outline: none;
   box-shadow: 0 0 0 1px var(--color-accent-500);
 }
 
@@ -176,9 +187,9 @@
   }
 
   .formPanel {
-    padding: 16px 12px;
     gap: 16px;
     max-height: none;
+    padding: 16px 12px;
   }
 
   .profileRow {
@@ -192,9 +203,10 @@
 
   .avatarPlaceholder {
     width: 32px;
-    height: 32px;
     min-width: 32px;
+    height: 32px;
     min-height: 32px;
+
     font-size: 14px;
   }
 }
@@ -210,8 +222,8 @@
   }
 
   .formPanel {
-    padding: 12px 10px;
     gap: 14px;
+    padding: 12px 10px;
     border-radius: 10px;
   }
 }
@@ -227,8 +239,8 @@
   }
 
   .formPanel {
-    padding: 10px 8px;
     gap: 12px;
+    padding: 10px 8px;
   }
 
   .profileRow {
@@ -242,9 +254,10 @@
 
   .avatarPlaceholder {
     width: 28px;
-    height: 28px;
     min-width: 28px;
+    height: 28px;
     min-height: 28px;
+
     font-size: 12px;
   }
 }

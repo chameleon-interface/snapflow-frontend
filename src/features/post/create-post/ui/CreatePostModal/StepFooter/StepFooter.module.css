@@ -1,8 +1,9 @@
 .footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+
   margin-top: 24px;
   padding-top: 16px;
   border-top: 1px solid var(--color-dark-300, #333);
@@ -19,11 +20,14 @@
 }
 
 .previousBtn {
-  min-width: 100px;
-  font-weight: 500;
   display: inline-flex;
-  align-items: center;
   gap: 8px;
+  align-items: center;
+
+  min-width: 100px;
+
+  font-weight: 500;
+
   transition:
     transform 0.15s ease,
     box-shadow 0.2s ease;
@@ -31,6 +35,11 @@
 
 .previousBtn .btnIcon {
   order: -1;
+}
+
+.previousBtn:focus-visible {
+  outline: 2px solid var(--color-accent-500, #6366f1);
+  outline-offset: 2px;
 }
 
 .previousBtn:hover:not(:disabled) {
@@ -41,29 +50,18 @@
   transform: translateY(0) scale(0.98);
 }
 
-.previousBtn:focus-visible {
-  outline: 2px solid var(--color-accent-500, #6366f1);
-  outline-offset: 2px;
-}
-
 .nextBtn {
-  min-width: 120px;
-  font-weight: 500;
   display: inline-flex;
-  align-items: center;
   gap: 8px;
+  align-items: center;
+
+  min-width: 120px;
+
+  font-weight: 500;
+
   transition:
     transform 0.15s ease,
     box-shadow 0.2s ease;
-}
-
-.nextBtn:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 0.25);
-}
-
-.nextBtn:active:not(:disabled) {
-  transform: translateY(0) scale(0.98);
 }
 
 .nextBtn:focus-visible {
@@ -71,23 +69,32 @@
   outline-offset: 2px;
 }
 
-.nextBtnPublish:hover:not(:disabled) {
-  box-shadow:
-    0 4px 16px rgb(0 0 0 / 0.3),
-    0 0 20px rgb(99 102 241 / 0.2);
+.nextBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 25%);
+}
+
+.nextBtn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
 }
 
 .nextBtnPublish:focus-visible {
   box-shadow:
     0 0 0 2px var(--color-accent-500, #6366f1),
-    0 0 16px rgb(99 102 241 / 0.25);
+    0 0 16px rgb(99 102 241 / 25%);
+}
+
+.nextBtnPublish:hover:not(:disabled) {
+  box-shadow:
+    0 4px 16px rgb(0 0 0 / 30%),
+    0 0 20px rgb(99 102 241 / 20%);
 }
 
 @media (width <= 480px) {
   .footer {
+    gap: 8px;
     margin-top: 16px;
     padding-top: 12px;
-    gap: 8px;
   }
 
   .footerLeft,
@@ -98,10 +105,10 @@
 
 @media (width <= 380px) {
   .footer {
+    flex-wrap: wrap;
+    gap: 6px;
     margin-top: 12px;
     padding-top: 10px;
-    gap: 6px;
-    flex-wrap: wrap;
   }
 
   .footerLeft,
