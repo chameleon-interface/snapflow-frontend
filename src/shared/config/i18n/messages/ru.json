@@ -172,6 +172,13 @@
     "closeConfirmSaveDraft": "Сохранить черновик"
   },
   "SelectPhotos": {
-    "selectFromComputer": "Выбрать с компьютера"
+    "selectFromComputer": "Выбрать фото"
+  },
+  "Carousel": {
+    "regionLabel": "Карусель",
+    "prevSlide": "Предыдущий слайд",
+    "nextSlide": "Следующий слайд",
+    "slideSelection": "Выбор слайда",
+    "slideNumber": "Слайд {number}"
   }
 }

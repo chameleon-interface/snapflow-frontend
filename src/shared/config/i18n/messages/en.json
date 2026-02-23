@@ -173,6 +173,13 @@
     "closeConfirmSaveDraft": "Save draft"
   },
   "SelectPhotos": {
-    "selectFromComputer": "Select from Computer"
+    "selectFromComputer": "Select photos"
+  },
+  "Carousel": {
+    "regionLabel": "Carousel",
+    "prevSlide": "Previous slide",
+    "nextSlide": "Next slide",
+    "slideSelection": "Slide selection",
+    "slideNumber": "Slide {number}"
   }
 }

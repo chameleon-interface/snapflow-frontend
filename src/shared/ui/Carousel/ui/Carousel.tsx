@@ -1,6 +1,7 @@
 'use client';
 
 import { clsx } from 'clsx';
+import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useState } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from 'snapflow-ui-kit/icons';
 import styles from './Carousel.module.css';
@@ -46,6 +47,8 @@ export const Carousel = ({
     return () => clearInterval(id);
   }, [autoPlayInterval, count, currentIndex, setIndex]);
 
+  const t = useTranslations('Carousel');
+
   if (count === 0) return null;
 
   const handlePrev = () => setIndex(currentIndex - 1);
@@ -57,7 +60,7 @@ export const Carousel = ({
     <div
       className={clsx(styles.root, className)}
       role="region"
-      aria-label="Карусель"
+      aria-label={t('regionLabel')}
     >
       <div className={styles.trackWrapper}>
         <div
@@ -78,7 +81,7 @@ export const Carousel = ({
             type="button"
             className={clsx(styles.arrow, styles.arrowPrev)}
             onClick={handlePrev}
-            aria-label="Предыдущий слайд"
+            aria-label={t('prevSlide')}
             tabIndex={0}
           >
             <ArrowLeftIcon width={24} height={24} aria-hidden />
@@ -87,7 +90,7 @@ export const Carousel = ({
             type="button"
             className={clsx(styles.arrow, styles.arrowNext)}
             onClick={handleNext}
-            aria-label="Следующий слайд"
+            aria-label={t('nextSlide')}
             tabIndex={0}
           >
             <ArrowRightIcon width={24} height={24} aria-hidden />
@@ -96,14 +99,18 @@ export const Carousel = ({
       )}
 
       {count > 1 && (
-        <div className={styles.dots} role="tablist" aria-label="Выбор слайда">
+        <div
+          className={styles.dots}
+          role="tablist"
+          aria-label={t('slideSelection')}
+        >
           {slides.map((_, i) => (
             <button
               key={i}
               type="button"
               role="tab"
               aria-selected={i === currentIndex}
-              aria-label={`Слайд ${i + 1}`}
+              aria-label={t('slideNumber', { number: i + 1 })}
               className={clsx(
                 styles.dot,
                 i === currentIndex && styles.dotActive,
