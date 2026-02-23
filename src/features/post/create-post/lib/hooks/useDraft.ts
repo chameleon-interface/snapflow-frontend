@@ -1,6 +1,8 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { toastError } from 'snapflow-ui-kit/client';
 import type {
   CreatePostStep,
   DraftPostState,
@@ -32,6 +34,7 @@ type Params = {
 };
 
 export const useDraft = ({ doClose, getDraftData, onRestore }: Params) => {
+  const t = useTranslations('CreatePost');
   const [isDraftLoading, setIsDraftLoading] = useState(false);
   const [draftExists, setDraftExists] = useState(false);
 
@@ -54,14 +57,22 @@ export const useDraft = ({ doClose, getDraftData, onRestore }: Params) => {
     }
   }, [onRestore]);
 
-  const handleSaveDraft = useCallback(() => {
+  const handleSaveDraft = useCallback(async () => {
     const { selectedPhotos, step, postStateSnapshot } = getDraftData();
-    if (selectedPhotos.length > 0) {
-      const draft = buildStoredDraft(selectedPhotos, step, postStateSnapshot);
-      saveDraft(draft).then(() => setDraftExists(true));
+    if (selectedPhotos.length === 0) {
+      doClose();
+      return;
     }
-    doClose();
-  }, [getDraftData, doClose]);
+    try {
+      const draft = buildStoredDraft(selectedPhotos, step, postStateSnapshot);
+      await saveDraft(draft);
+      setDraftExists(true);
+      doClose();
+    } catch {
+      toastError(t('draftSaveError'));
+      throw new Error('Draft save failed');
+    }
+  }, [getDraftData, doClose, t]);
 
   const handleDiscard = useCallback(() => {
     clearDraft().then(() => setDraftExists(false));

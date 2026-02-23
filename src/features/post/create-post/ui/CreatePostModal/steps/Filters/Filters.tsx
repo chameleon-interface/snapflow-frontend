@@ -31,7 +31,7 @@ export const Filters = ({
 
   if (photos.length === 0) return null;
 
-  const currentSlideUrl = urls[currentIndex];
+  const currentSlideUrl = urls[currentIndex] ?? urls[0]!;
 
   return (
     <div className={styles.wrapper} role="region" aria-label={t('filters')}>

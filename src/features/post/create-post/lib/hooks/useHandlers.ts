@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react';
 import { useTranslations } from 'next-intl';
-import { toastSuccess } from 'snapflow-ui-kit/client';
+import { toastError, toastSuccess } from 'snapflow-ui-kit/client';
 import { useCreatePostMutation } from '@/features/post/create-post/api/useCreatePostMutation';
 import type {
   CreatePostPayload,
@@ -88,6 +88,9 @@ export const useHandlers = ({
       onSuccess: () => {
         toastSuccess(t('postPublishedSuccess'));
         publish.doClose();
+      },
+      onError: () => {
+        toastError(t('postPublishError'));
       },
     });
   }, [publish, photos.filteredPhotos, createPost, t]);
