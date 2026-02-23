@@ -18,7 +18,7 @@ export const addPhotosToSelection = (
     setSelectedPhotos,
     setError,
     t,
-  }: AddPhotosToSelectionContext
+  }: AddPhotosToSelectionContext,
 ): void => {
   setError(null);
   const dt = new DataTransfer();
@@ -31,7 +31,7 @@ export const addPhotosToSelection = (
       if (!fileList?.length) return;
       const next = [...selectedPhotos, ...Array.from(fileList)].slice(
         0,
-        MAX_PHOTOS_MULTIPLE
+        MAX_PHOTOS_MULTIPLE,
       );
       setSelectedPhotos(next);
     },

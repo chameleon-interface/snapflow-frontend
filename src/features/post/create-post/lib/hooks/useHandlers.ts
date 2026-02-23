@@ -4,7 +4,10 @@ import { useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { toastSuccess } from 'snapflow-ui-kit/client';
 import { useCreatePostMutation } from '@/features/post/create-post/api/useCreatePostMutation';
-import type { CreatePostPayload, CreatePostStep } from '@/features/post/create-post/model/types';
+import type {
+  CreatePostPayload,
+  CreatePostStep,
+} from '@/features/post/create-post/model/types';
 
 type StepStateSlice = {
   step: CreatePostStep;
@@ -45,7 +48,8 @@ export const useHandlers = ({
   publish,
 }: Params) => {
   const t = useTranslations('CreatePost');
-  const { mutate: createPost, isPending: isPublishPending } = useCreatePostMutation();
+  const { mutate: createPost, isPending: isPublishPending } =
+    useCreatePostMutation();
 
   const handleNextStep = useCallback(async () => {
     if (stepState.step === 'cropping') {

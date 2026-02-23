@@ -7,10 +7,7 @@ type Params = {
   doClose: () => void;
 };
 
-export const useCloseModal = ({
-  hasUnsavedContent,
-  doClose,
-}: Params) => {
+export const useCloseModal = ({ hasUnsavedContent, doClose }: Params) => {
   const [isCloseModalOpened, setIsCloseModalOpened] = useState(false);
 
   const handleCloseRequest = useCallback(() => {

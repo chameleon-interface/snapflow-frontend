@@ -56,15 +56,23 @@
   padding: 0;
   border: none;
   border-radius: 50%;
-  background-color: var(--carousel-arrow-bg, color-mix(in srgb, var(--color-dark-900) 70%, transparent));
+  background-color: var(
+    --carousel-arrow-bg,
+    color-mix(in srgb, var(--color-dark-900) 70%, transparent)
+  );
   color: var(--color-light-100);
   cursor: pointer;
-  transition: background-color 0.2s, opacity 0.2s;
+  transition:
+    background-color 0.2s,
+    opacity 0.2s;
   z-index: 2;
 }
 
 .arrow:hover {
-  background-color: var(--carousel-arrow-bg-hover, color-mix(in srgb, var(--color-dark-900) 85%, transparent));
+  background-color: var(
+    --carousel-arrow-bg-hover,
+    color-mix(in srgb, var(--color-dark-900) 85%, transparent)
+  );
 }
 
 .arrow:focus-visible {
@@ -99,7 +107,9 @@
   border-radius: 50%;
   background-color: var(--carousel-dot-inactive, var(--color-dark-100));
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
 }
 
 .dot:hover {

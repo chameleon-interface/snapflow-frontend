@@ -27,7 +27,9 @@ export const Carousel = ({
 
   const [internalIndex, setInternalIndex] = useState(0);
   const isControlled = value !== undefined;
-  const currentIndex = isControlled ? Math.min(Math.max(0, value), count - 1) : internalIndex;
+  const currentIndex = isControlled
+    ? Math.min(Math.max(0, value), count - 1)
+    : internalIndex;
 
   const setIndex = useCallback(
     (next: number) => {
@@ -35,7 +37,7 @@ export const Carousel = ({
       if (!isControlled) setInternalIndex(clamped);
       onValueChange?.(clamped);
     },
-    [count, isControlled, onValueChange]
+    [count, isControlled, onValueChange],
   );
 
   useEffect(() => {
@@ -52,7 +54,11 @@ export const Carousel = ({
   const showArrows = !hideArrowsWhenSingle || count > 1;
 
   return (
-    <div className={clsx(styles.root, className)} role="region" aria-label="Карусель">
+    <div
+      className={clsx(styles.root, className)}
+      role="region"
+      aria-label="Карусель"
+    >
       <div className={styles.trackWrapper}>
         <div
           className={styles.track}
@@ -98,7 +104,10 @@ export const Carousel = ({
               role="tab"
               aria-selected={i === currentIndex}
               aria-label={`Слайд ${i + 1}`}
-              className={clsx(styles.dot, i === currentIndex && styles.dotActive)}
+              className={clsx(
+                styles.dot,
+                i === currentIndex && styles.dotActive,
+              )}
               onClick={() => setIndex(i)}
               tabIndex={i === currentIndex ? 0 : -1}
             />

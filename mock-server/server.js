@@ -124,7 +124,10 @@ server.put('/profiles/:id', (req, res) => {
     return res.status(400).json({ error: 'Invalid profile id' });
   }
 
-  const existingProfile = router.db.get('profiles').find({ id: profileId }).value();
+  const existingProfile = router.db
+    .get('profiles')
+    .find({ id: profileId })
+    .value();
 
   if (!existingProfile) {
     return res.status(404).json({ error: 'Profile not found' });
@@ -180,7 +183,10 @@ server.put('/profiles/:id/avatar', (req, res, next) => {
     return res.status(400).json({ error: 'Invalid profile id' });
   }
 
-  const existingProfile = router.db.get('profiles').find({ id: profileId }).value();
+  const existingProfile = router.db
+    .get('profiles')
+    .find({ id: profileId })
+    .value();
 
   if (!existingProfile) {
     return res.status(404).json({ error: 'Profile not found' });
@@ -188,7 +194,8 @@ server.put('/profiles/:id/avatar', (req, res, next) => {
 
   if (!req.is('multipart/form-data')) {
     return res.status(415).json({
-      error: 'PUT /profiles/:id/avatar supports only multipart/form-data with avatarFile',
+      error:
+        'PUT /profiles/:id/avatar supports only multipart/form-data with avatarFile',
     });
   }
 

@@ -38,7 +38,9 @@ export const CropSlide = ({
         maxZoom={MAX_ZOOM}
         onCropChange={(c) => onCropChange(index, c)}
         onZoomChange={(z) => onZoomChange(index, z)}
-        onCropComplete={(area, areaPixels) => onCropComplete(index, area, areaPixels)}
+        onCropComplete={(area, areaPixels) =>
+          onCropComplete(index, area, areaPixels)
+        }
       />
     </div>
   </div>

@@ -83,7 +83,13 @@ export const Publish = ({
       <div className={styles.formPanel} aria-label={t('publicationDetails')}>
         <div className={styles.profileRow}>
           {profile?.avatar ? (
-            <Image className={styles.avatar} src={profile.avatar} alt={profile?.username ?? ''} width={40} height={40} />
+            <Image
+              className={styles.avatar}
+              src={profile.avatar}
+              alt={profile?.username ?? ''}
+              width={40}
+              height={40}
+            />
           ) : (
             <div className={styles.avatarPlaceholder} aria-hidden>
               {profile?.username?.charAt(0)?.toUpperCase() ?? '?'}

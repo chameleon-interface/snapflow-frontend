@@ -4,7 +4,11 @@ import { useTranslations } from 'next-intl';
 import { useMemo, useRef } from 'react';
 import { Button } from 'snapflow-ui-kit';
 import { ImageIcon } from 'snapflow-ui-kit/icons';
-import { getPhotoNames, mergeSelectedFiles, processSelectedFiles } from '../lib';
+import {
+  getPhotoNames,
+  mergeSelectedFiles,
+  processSelectedFiles,
+} from '../lib';
 import { ACCEPT_IMAGE } from '../model/constants';
 import styles from './SelectPhotos.module.css';
 
@@ -52,7 +56,11 @@ export const SelectPhotos = ({
   };
 
   return (
-    <div role="group" aria-label={t('selectFromComputer')} className={styles.selectPhotos}>
+    <div
+      role="group"
+      aria-label={t('selectFromComputer')}
+      className={styles.selectPhotos}
+    >
       <input
         ref={fileInputRef}
         type="file"

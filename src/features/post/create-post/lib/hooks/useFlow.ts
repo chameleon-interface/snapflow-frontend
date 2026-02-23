@@ -11,7 +11,6 @@ import { useHandlers } from './useHandlers';
 import { useCloseModal } from './useCloseModal';
 import { useGetProfileQuery } from '@/features/profile/api';
 
-
 type Params = {
   onClose: () => void;
 };
@@ -26,7 +25,7 @@ export const useFlow = ({ onClose }: Params) => {
   const stepState = useStepState({
     selectedPhotosLength: photos.selectedPhotos.length,
   });
-  const profileId = "1"; // HARDCODED FOR NOW
+  const profileId = '1'; // HARDCODED FOR NOW
   const { data: profile } = useGetProfileQuery(profileId);
 
   const doClose = useCallback(() => {
@@ -55,7 +54,7 @@ export const useFlow = ({ onClose }: Params) => {
       step: stepState.step,
       postStateSnapshot: postState.getSnapshot(),
     }),
-    [photos.selectedPhotos, stepState.step, postState]
+    [photos.selectedPhotos, stepState.step, postState],
   );
 
   const onRestore = useCallback(
@@ -74,7 +73,7 @@ export const useFlow = ({ onClose }: Params) => {
       }
       stepState.setStep(data.finalStep);
     },
-    [photos, postState, stepState]
+    [photos, postState, stepState],
   );
 
   const draft = useDraft({

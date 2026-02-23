@@ -1,5 +1,9 @@
 import { get, set, del } from 'idb-keyval';
-import type { StoredDraft, DraftPostState, CreatePostStep } from '@/features/post/create-post/model/types';
+import type {
+  StoredDraft,
+  DraftPostState,
+  CreatePostStep,
+} from '@/features/post/create-post/model/types';
 
 const DRAFT_KEY = 'create-post-draft';
 
@@ -24,7 +28,7 @@ export const clearDraft = async (): Promise<void> => {
 export const buildStoredDraft = (
   selectedPhotos: File[],
   step: CreatePostStep,
-  postState: DraftPostState
+  postState: DraftPostState,
 ): StoredDraft => ({
   photoBlobs: selectedPhotos.map((f) => ({ blob: f, name: f.name })),
   step,

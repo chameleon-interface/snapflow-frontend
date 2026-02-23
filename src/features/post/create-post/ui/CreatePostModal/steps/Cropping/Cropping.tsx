@@ -68,7 +68,7 @@ export const Cropping = ({
     (index: number) => {
       onAspectSelect(currentSlideIndex, index);
     },
-    [currentSlideIndex, onAspectSelect]
+    [currentSlideIndex, onAspectSelect],
   );
 
   const handleRemovePhoto = useCallback(
@@ -78,7 +78,7 @@ export const Cropping = ({
       setSelectedPhotos?.(next);
       if (next.length === 0) onPhotosEmpty?.();
     },
-    [selectedPhotos, setSelectedPhotos, onPhotosEmpty, onRemovePhotoAt]
+    [selectedPhotos, setSelectedPhotos, onPhotosEmpty, onRemovePhotoAt],
   );
 
   const handleAddPhotos = useCallback(
@@ -91,7 +91,7 @@ export const Cropping = ({
         t: tValidation,
       });
     },
-    [selectedPhotos, setSelectedPhotos, tValidation]
+    [selectedPhotos, setSelectedPhotos, tValidation],
   );
 
   if (selectedPhotos.length === 0) return null;
@@ -107,45 +107,45 @@ export const Cropping = ({
         />
       )}
       <div className={styles.content}>
-      <Carousel
-        className={styles.carousel}
-        hideArrowsWhenSingle
-        value={currentSlideIndex}
-        onValueChange={setCurrentSlideIndex}
-      >
-        {urls.map((url, index) => (
-          <CropSlide
-            key={url}
-            imageUrl={url}
-            index={index}
-            crop={cropAt(index)}
-            zoom={zoomAt(index)}
-            aspect={ASPECT_RATIOS[aspectAt(index)].value}
-            onCropChange={onCropChange}
-            onZoomChange={onZoomChange}
-            onCropComplete={onCropComplete}
-          />
-        ))}
-      </Carousel>
+        <Carousel
+          className={styles.carousel}
+          hideArrowsWhenSingle
+          value={currentSlideIndex}
+          onValueChange={setCurrentSlideIndex}
+        >
+          {urls.map((url, index) => (
+            <CropSlide
+              key={url}
+              imageUrl={url}
+              index={index}
+              crop={cropAt(index)}
+              zoom={zoomAt(index)}
+              aspect={ASPECT_RATIOS[aspectAt(index)].value}
+              onCropChange={onCropChange}
+              onZoomChange={onZoomChange}
+              onCropComplete={onCropComplete}
+            />
+          ))}
+        </Carousel>
 
-      <CroppingToolbar
-        aspectOptions={aspectOptions}
-        selectedAspectIndex={currentAspectIndex}
-        onAspectSelect={handleAspectSelect}
-        zoom={zoomAt(currentSlideIndex)}
-        zoomMin={MIN_ZOOM}
-        zoomMax={MAX_ZOOM}
-        zoomStep={ZOOM_STEP}
-        onZoomChange={(z) => onZoomChange(currentSlideIndex, z)}
-        photos={selectedPhotos}
-        previewUrls={urls}
-        currentSlideIndex={currentSlideIndex}
-        onSelectSlide={setCurrentSlideIndex}
-        onRemovePhoto={handleRemovePhoto}
-        onAddPhotos={handleAddPhotos}
-        maxPhotos={MAX_PHOTOS_MULTIPLE}
-      />
-    </div>
+        <CroppingToolbar
+          aspectOptions={aspectOptions}
+          selectedAspectIndex={currentAspectIndex}
+          onAspectSelect={handleAspectSelect}
+          zoom={zoomAt(currentSlideIndex)}
+          zoomMin={MIN_ZOOM}
+          zoomMax={MAX_ZOOM}
+          zoomStep={ZOOM_STEP}
+          onZoomChange={(z) => onZoomChange(currentSlideIndex, z)}
+          photos={selectedPhotos}
+          previewUrls={urls}
+          currentSlideIndex={currentSlideIndex}
+          onSelectSlide={setCurrentSlideIndex}
+          onRemovePhoto={handleRemovePhoto}
+          onAddPhotos={handleAddPhotos}
+          maxPhotos={MAX_PHOTOS_MULTIPLE}
+        />
+      </div>
     </>
   );
 };

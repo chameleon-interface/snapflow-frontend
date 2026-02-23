@@ -29,7 +29,10 @@ export const GalleryThumbnail = ({
 
   return (
     <div
-      className={clsx(styles.thumbnailWrap, isActive && styles.thumbnailWrapActive)}
+      className={clsx(
+        styles.thumbnailWrap,
+        isActive && styles.thumbnailWrapActive,
+      )}
       role="button"
       tabIndex={0}
       aria-label={t('gallery')}

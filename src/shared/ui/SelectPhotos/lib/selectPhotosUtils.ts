@@ -4,7 +4,7 @@ export const getPhotoNames = (photos: File[]): string[] =>
 export const mergeSelectedFiles = (
   files: FileList,
   currentPhotos: File[],
-  multiple: boolean
+  multiple: boolean,
 ): File[] => {
   const list = Array.from(files);
   return multiple ? [...currentPhotos, ...list] : list;

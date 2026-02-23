@@ -1,7 +1,10 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import type { CreatePostStep, DraftPostState } from '@/features/post/create-post/model/types';
+import type {
+  CreatePostStep,
+  DraftPostState,
+} from '@/features/post/create-post/model/types';
 import type { RestoreDraftResult } from '../utils/restoreDraftExports';
 import {
   hasDraft as checkHasDraft,
@@ -18,7 +21,9 @@ type GetDraftData = () => {
   postStateSnapshot: DraftPostState;
 };
 
-type OnRestore = (result: RestoreDraftResult & { postState: DraftPostState }) => void;
+type OnRestore = (
+  result: RestoreDraftResult & { postState: DraftPostState },
+) => void;
 
 type Params = {
   doClose: () => void;
@@ -26,11 +31,7 @@ type Params = {
   onRestore: OnRestore;
 };
 
-export const useDraft = ({
-  doClose,
-  getDraftData,
-  onRestore,
-}: Params) => {
+export const useDraft = ({ doClose, getDraftData, onRestore }: Params) => {
   const [isDraftLoading, setIsDraftLoading] = useState(false);
   const [draftExists, setDraftExists] = useState(false);
 

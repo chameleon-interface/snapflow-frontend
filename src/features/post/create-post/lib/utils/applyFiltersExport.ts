@@ -11,7 +11,7 @@ const loadImage = (url: string): Promise<HTMLImageElement> =>
 const applyFilterToImage = async (
   imageUrl: string,
   filterId: string,
-  fileName: string
+  fileName: string,
 ): Promise<File> => {
   const image = await loadImage(imageUrl);
   const canvas = document.createElement('canvas');
@@ -35,14 +35,14 @@ const applyFilterToImage = async (
         resolve(new File([blob], `${baseName}.jpg`, { type: blob.type }));
       },
       'image/jpeg',
-      0.92
+      0.92,
     );
   });
 };
 
 export const applyFiltersExport = async (
   files: File[],
-  filterAt: (index: number) => string
+  filterAt: (index: number) => string,
 ): Promise<File[]> => {
   const urls = files.map((f) => URL.createObjectURL(f));
   try {
@@ -53,7 +53,7 @@ export const applyFiltersExport = async (
       const filtered = await applyFilterToImage(
         urls[i]!,
         filterAt(i),
-        file.name
+        file.name,
       );
       results.push(filtered);
     }

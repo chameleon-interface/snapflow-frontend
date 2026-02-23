@@ -3,7 +3,7 @@ import { getCroppedImages } from './getCroppedImage';
 
 export const runCroppingExport = async (
   files: File[],
-  croppedAreasPixels: (Area | null)[]
+  croppedAreasPixels: (Area | null)[],
 ): Promise<File[]> => {
   const urls = files.map((f) => URL.createObjectURL(f));
   try {

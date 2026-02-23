@@ -36,21 +36,26 @@ export const useExports = ({
     try {
       const files = await runCroppingExport(
         selectedPhotos,
-        postState.croppedAreasPixels
+        postState.croppedAreasPixels,
       );
       setProcessedPhotos(files);
       setStep('filters');
     } finally {
       setIsCroppingExporting(false);
     }
-  }, [selectedPhotos, postState.croppedAreasPixels, setProcessedPhotos, setStep]);
+  }, [
+    selectedPhotos,
+    postState.croppedAreasPixels,
+    setProcessedPhotos,
+    setStep,
+  ]);
 
   const runFiltersNext = useCallback(async () => {
     setIsFiltersExporting(true);
     try {
       const files = await applyFiltersExport(
         processedPhotos,
-        postState.filterAt
+        postState.filterAt,
       );
       setFilteredPhotos(files);
       setStep('publish');

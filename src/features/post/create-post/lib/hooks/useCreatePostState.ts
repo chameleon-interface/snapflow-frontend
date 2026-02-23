@@ -2,7 +2,10 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import type { Area } from 'react-easy-crop';
-import type { CropPosition, DraftPostState } from '@/features/post/create-post/model/types';
+import type {
+  CropPosition,
+  DraftPostState,
+} from '@/features/post/create-post/model/types';
 import { reindexRecordAfterRemove } from '../utils/reindexRecordAfterRemove';
 import {
   DEFAULT_ASPECT_INDEX,
@@ -23,10 +26,14 @@ export const useCreatePostState = ({ photoCount }: Params) => {
   const [crops, setCrops] = useState<CropPosition[]>([]);
   const [zooms, setZooms] = useState<number[]>([]);
   const [croppedAreasPixels, setCroppedAreasPixels] = useState<(Area | null)[]>(
-    []
+    [],
   );
-  const [aspectByIndex, setAspectByIndex] = useState<Record<number, number>>({});
-  const [filterBySlide, setFilterBySlide] = useState<Record<number, string>>({});
+  const [aspectByIndex, setAspectByIndex] = useState<Record<number, number>>(
+    {},
+  );
+  const [filterBySlide, setFilterBySlide] = useState<Record<number, string>>(
+    {},
+  );
 
   useEffect(() => {
     if (photoCount === 0) return;
@@ -57,23 +64,26 @@ export const useCreatePostState = ({ photoCount }: Params) => {
         return next;
       });
     },
-    []
+    [],
   );
 
   const handleAspectSelect = useCallback(
     (slideIndex: number, aspectIndex: number) => {
       setAspectByIndex((prev) => ({ ...prev, [slideIndex]: aspectIndex }));
     },
-    []
+    [],
   );
 
-  const handleFilterSelect = useCallback((slideIndex: number, filterId: string) => {
-    setFilterBySlide((prev) => ({ ...prev, [slideIndex]: filterId }));
-  }, []);
+  const handleFilterSelect = useCallback(
+    (slideIndex: number, filterId: string) => {
+      setFilterBySlide((prev) => ({ ...prev, [slideIndex]: filterId }));
+    },
+    [],
+  );
 
   const removePhotoAt = useCallback((index: number) => {
     setCurrentSlideIndex((prev) =>
-      prev >= index && prev > 0 ? prev - 1 : prev
+      prev >= index && prev > 0 ? prev - 1 : prev,
     );
     setCrops((prev) => prev.filter((_, i) => i !== index));
     setZooms((prev) => prev.filter((_, i) => i !== index));
@@ -100,14 +110,24 @@ export const useCreatePostState = ({ photoCount }: Params) => {
     setFilterBySlide({ ...state.filterBySlide });
   }, []);
 
-  const getSnapshot = useCallback((): DraftPostState => ({
-    currentSlideIndex,
-    crops: [...crops],
-    zooms: [...zooms],
-    croppedAreasPixels: [...croppedAreasPixels],
-    aspectByIndex: { ...aspectByIndex },
-    filterBySlide: { ...filterBySlide },
-  }), [currentSlideIndex, crops, zooms, croppedAreasPixels, aspectByIndex, filterBySlide]);
+  const getSnapshot = useCallback(
+    (): DraftPostState => ({
+      currentSlideIndex,
+      crops: [...crops],
+      zooms: [...zooms],
+      croppedAreasPixels: [...croppedAreasPixels],
+      aspectByIndex: { ...aspectByIndex },
+      filterBySlide: { ...filterBySlide },
+    }),
+    [
+      currentSlideIndex,
+      crops,
+      zooms,
+      croppedAreasPixels,
+      aspectByIndex,
+      filterBySlide,
+    ],
+  );
 
   const cropAt = (index: number) => crops[index] ?? DEFAULT_CROP;
   const zoomAt = (index: number) => zooms[index] ?? DEFAULT_ZOOM;

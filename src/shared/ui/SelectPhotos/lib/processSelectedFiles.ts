@@ -20,7 +20,7 @@ export const processSelectedFiles = (
     onFilesProcessed,
     onError,
     t,
-  }: ProcessSelectedFilesOptions
+  }: ProcessSelectedFilesOptions,
 ): void => {
   if (!files?.length) {
     onFilesProcessed(null);
@@ -48,7 +48,11 @@ export const processSelectedFiles = (
     const result = validateFile(file, names, t);
 
     if (!result.valid) {
-      onError(result.errorValues ? t(result.errorKey, result.errorValues) : t(result.errorKey));
+      onError(
+        result.errorValues
+          ? t(result.errorKey, result.errorValues)
+          : t(result.errorKey),
+      );
       return;
     }
 

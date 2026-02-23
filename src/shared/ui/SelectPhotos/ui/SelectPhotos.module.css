@@ -46,7 +46,9 @@
   border-radius: 50%;
   background: rgb(255 255 255 / 0.06);
   color: var(--color-dark-200, #555);
-  transition: color 0.2s ease, background 0.2s ease;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
 }
 
 .photoPlaceholder:hover .iconWrap {

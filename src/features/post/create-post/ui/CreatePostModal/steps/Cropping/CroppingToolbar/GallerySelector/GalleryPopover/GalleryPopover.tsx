@@ -36,11 +36,7 @@ export const GalleryPopover = ({
   const canAdd = photos.length < maxPhotos;
 
   return (
-    <div
-      className={styles.popover}
-      role="dialog"
-      aria-label={t('gallery')}
-    >
+    <div className={styles.popover} role="dialog" aria-label={t('gallery')}>
       <div className={styles.thumbnailsScroll}>
         <div className={styles.thumbnails}>
           {previewUrls.map((url, index) => (

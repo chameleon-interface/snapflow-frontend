@@ -3,7 +3,10 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { api } from '@/shared/api';
 
-import type { CreatePostPayload, CreatePostResponse } from '@/features/post/create-post/model/types';
+import type {
+  CreatePostPayload,
+  CreatePostResponse,
+} from '@/features/post/create-post/model/types';
 
 const buildFormData = (payload: CreatePostPayload): FormData => {
   const formData = new FormData();
@@ -21,9 +24,13 @@ export const useCreatePostMutation = () => {
   return useMutation({
     mutationFn: (payload: CreatePostPayload) => {
       const formData = buildFormData(payload);
-      return api.post<CreatePostResponse>('http://localhost:3001/posts', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
+      return api.post<CreatePostResponse>(
+        'http://localhost:3001/posts',
+        formData,
+        {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        },
+      );
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['Posts'] });

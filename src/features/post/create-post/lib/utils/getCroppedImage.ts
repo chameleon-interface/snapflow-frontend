@@ -14,7 +14,7 @@ const createImage = (url: string): Promise<HTMLImageElement> =>
 export const getCroppedImage = async (
   imageUrl: string,
   area: Area,
-  fileName: string
+  fileName: string,
 ): Promise<File> => {
   const image = await createImage(imageUrl);
   const canvas = document.createElement('canvas');
@@ -46,7 +46,7 @@ export const getCroppedImage = async (
         resolve(file);
       },
       'image/jpeg',
-      0.92
+      0.92,
     );
   });
 };
@@ -69,15 +69,14 @@ const getFullImageArea = async (imageUrl: string): Promise<Area> => {
 export const getCroppedImages = async (
   files: File[],
   urls: string[],
-  croppedAreasPixels: (Area | null)[]
+  croppedAreasPixels: (Area | null)[],
 ): Promise<File[]> => {
   const results: File[] = [];
   for (let i = 0; i < files.length; i++) {
     const url = urls[i];
     const file = files[i];
     if (!url || !file) continue;
-    const area =
-      croppedAreasPixels[i] ?? (await getFullImageArea(url));
+    const area = croppedAreasPixels[i] ?? (await getFullImageArea(url));
     const baseName = file.name.replace(/\.[^.]+$/, '') || 'image';
     const cropped = await getCroppedImage(url, area, `${baseName}.jpg`);
     results.push(cropped);

@@ -15,7 +15,12 @@ export type CreatePostResponse = {
 };
 
 /** Шаги создания поста */
-export const CREATE_POST_STEPS = ['addPhotos', 'cropping', 'filters', 'publish'] as const;
+export const CREATE_POST_STEPS = [
+  'addPhotos',
+  'cropping',
+  'filters',
+  'publish',
+] as const;
 export type CreatePostStep = (typeof CREATE_POST_STEPS)[number];
 
 /** Позиция кропа (x, y в долях) */

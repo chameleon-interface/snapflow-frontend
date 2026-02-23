@@ -1,7 +1,10 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { CREATE_POST_STEPS, type CreatePostStep } from '@/features/post/create-post/model/types';
+import {
+  CREATE_POST_STEPS,
+  type CreatePostStep,
+} from '@/features/post/create-post/model/types';
 
 const STEPS = CREATE_POST_STEPS;
 

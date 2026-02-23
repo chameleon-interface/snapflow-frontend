@@ -11,23 +11,12 @@ type Props = {
   onChange: (value: number) => void;
 };
 
-export const ZoomPopover = ({
-  value,
-  min,
-  max,
-  step,
-  onChange,
-}: Props) => {
+export const ZoomPopover = ({ value, min, max, step, onChange }: Props) => {
   const t = useTranslations('CreatePost');
-  const progressPercent =
-    max > min ? ((value - min) / (max - min)) * 100 : 0;
+  const progressPercent = max > min ? ((value - min) / (max - min)) * 100 : 0;
 
   return (
-    <div
-      className={styles.popover}
-      role="dialog"
-      aria-label={t('zoomDialog')}
-    >
+    <div className={styles.popover} role="dialog" aria-label={t('zoomDialog')}>
       <div
         className={styles.sliderWrapper}
         style={{ ['--slider-progress' as string]: `${progressPercent}%` }}

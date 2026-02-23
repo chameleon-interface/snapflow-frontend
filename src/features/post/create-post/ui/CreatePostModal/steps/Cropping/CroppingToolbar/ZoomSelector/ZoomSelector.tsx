@@ -15,13 +15,7 @@ type Props = {
   onChange: (value: number) => void;
 };
 
-export const ZoomSelector = ({
-  value,
-  min,
-  max,
-  step,
-  onChange,
-}: Props) => {
+export const ZoomSelector = ({ value, min, max, step, onChange }: Props) => {
   const t = useTranslations('CreatePost');
   const { isOpen, toggle, wrapperRef, triggerRef } = usePopover();
 

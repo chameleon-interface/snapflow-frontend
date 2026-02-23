@@ -10,12 +10,12 @@ type Props = {
   ariaLabel: string;
 };
 
-export const LocationSuggestions = ({ suggestions, onSelect, ariaLabel }: Props) => (
-  <div
-    className={styles.suggestions}
-    role="listbox"
-    aria-label={ariaLabel}
-  >
+export const LocationSuggestions = ({
+  suggestions,
+  onSelect,
+  ariaLabel,
+}: Props) => (
+  <div className={styles.suggestions} role="listbox" aria-label={ariaLabel}>
     {suggestions.map(({ primary, secondary }) => (
       <button
         key={`${primary}-${secondary}`}

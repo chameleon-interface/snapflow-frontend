@@ -26,7 +26,7 @@ type Props = {
 
 const getNextStepLoadingLabel = (
   step: CreatePostStep,
-  t: (key: string) => string
+  t: (key: string) => string,
 ) => (step === 'filters' ? t('applyingFilters') : t('generatingCropped'));
 
 export const CreatePostModal = ({ isOpen, onClose }: Props) => {
@@ -40,7 +40,7 @@ export const CreatePostModal = ({ isOpen, onClose }: Props) => {
       title={t(STEP_TITLE_KEYS[flow.step])}
       className={clsx(
         styles.modalContainer,
-        WIDE_MODAL_STEPS.includes(flow.step) && styles.modalContainerWide
+        WIDE_MODAL_STEPS.includes(flow.step) && styles.modalContainerWide,
       )}
     >
       <div className={styles.content}>

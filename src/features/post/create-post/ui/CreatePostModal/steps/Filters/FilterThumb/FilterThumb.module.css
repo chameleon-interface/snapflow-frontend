@@ -32,7 +32,9 @@
   border-radius: 8px;
   overflow: hidden;
   border: 2px solid transparent;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .thumbSelected .imageWrap {

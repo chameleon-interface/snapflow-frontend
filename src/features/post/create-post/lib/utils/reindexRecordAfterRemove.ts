@@ -1,6 +1,6 @@
 export const reindexRecordAfterRemove = <T>(
   record: Record<number, T>,
-  removeIndex: number
+  removeIndex: number,
 ): Record<number, T> => {
   const next: Record<number, T> = {};
   Object.entries(record).forEach(([key, value]) => {
