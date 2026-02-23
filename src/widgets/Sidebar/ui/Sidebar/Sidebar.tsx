@@ -30,13 +30,13 @@ export const Sidebar = () => {
     <>
       {/* Desktop Sidebar */}
       <aside className={`${s.sidebar} ${s.desktopOnly}`}>
-        <NavMenu />
+        <NavMenu userId={data.userId} />
         <LogoutButton />
       </aside>
 
       {/* Mobile Bottom Navigation */}
       <div className={s.mobileOnly}>
-        <BottomNav />
+        <BottomNav userId={data.userId} />
       </div>
     </>
   );
