@@ -1,0 +1,49 @@
+.modalContainer {
+  width: 500px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalContainerWide {
+  width: 90%;
+  max-width: 900px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-height: 0;
+  flex: 1;
+}
+
+@media (width <= 768px) {
+  .modalContainer {
+    width: calc(100% - 32px);
+    max-height: 92vh;
+  }
+
+  .modalContainerWide {
+    width: calc(100% - 32px);
+    max-width: none;
+  }
+
+  .content {
+    gap: 16px;
+  }
+}
+
+@media (width <= 380px) {
+  .modalContainer,
+  .modalContainerWide {
+    width: calc(100% - 16px);
+    max-height: 94vh;
+  }
+
+  .content {
+    gap: 12px;
+  }
+}

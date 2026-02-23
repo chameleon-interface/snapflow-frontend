@@ -1,0 +1,146 @@
+.popover {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  left: auto;
+  max-width: min(340px, calc(100vw - 32px));
+  padding: 12px;
+  background-color: var(--color-dark-300);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.thumbnailsScroll {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+}
+
+.thumbnailsScroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.thumbnailsScroll::-webkit-scrollbar-track {
+  background: var(--color-dark-200);
+  border-radius: 4px;
+}
+
+.thumbnailsScroll::-webkit-scrollbar-thumb {
+  background: var(--color-dark-100);
+  border-radius: 4px;
+}
+
+.thumbnailsScroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-500);
+}
+
+.thumbnailsScroll::-webkit-scrollbar-thumb:active {
+  background: var(--color-accent-600, var(--color-accent-500));
+}
+
+.thumbnails {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  padding: 2px 0;
+}
+
+.thumbnailWrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--color-dark-200);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.thumbnailWrap:hover {
+  border-color: var(--color-accent-500);
+}
+
+.thumbnailWrapActive {
+  border-color: var(--color-accent-500);
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.removeBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  border-radius: 0 10px 0 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--color-light-100);
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.removeBtn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.removeBtn:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 1px;
+}
+
+.addBtn {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-light-100);
+  color: var(--color-dark-300);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s;
+}
+
+.addBtn:hover {
+  transform: scale(1.05);
+}
+
+.addBtn:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+.hiddenInput {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}

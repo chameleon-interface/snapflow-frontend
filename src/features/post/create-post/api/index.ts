@@ -1,0 +1,1 @@
+export { useCreatePostMutation } from './useCreatePostMutation';

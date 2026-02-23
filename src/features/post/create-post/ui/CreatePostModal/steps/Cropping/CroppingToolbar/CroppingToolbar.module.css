@@ -1,0 +1,53 @@
+.toolbar {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+.toolbar > * {
+  pointer-events: auto;
+}
+
+.toolbarControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.toolbarControlsLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toolbarButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-dark-300);
+  color: var(--color-light-100);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.toolbarButton:hover {
+  color: var(--color-accent-500);
+}
+
+.toolbarButton:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}

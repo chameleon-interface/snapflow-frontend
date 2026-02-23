@@ -44,6 +44,14 @@
   transition: color 0.2s ease;
 }
 
+/* Reset button to match link appearance */
+.button {
+  border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
 .link:hover {
   color: var(--color-accent-500);
 }

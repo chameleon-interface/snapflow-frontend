@@ -1,0 +1,120 @@
+.root {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  border-radius: 12px;
+  background-color: var(--color-dark-500);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.trackWrapper {
+  overflow: hidden;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+.track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+/* Стрелки — полупрозрачный тёмный фон, белые иконки */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--carousel-arrow-bg, color-mix(in srgb, var(--color-dark-900) 70%, transparent));
+  color: var(--color-light-100);
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s;
+  z-index: 2;
+}
+
+.arrow:hover {
+  background-color: var(--carousel-arrow-bg-hover, color-mix(in srgb, var(--color-dark-900) 85%, transparent));
+}
+
+.arrow:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+.arrowPrev {
+  left: 12px;
+}
+
+.arrowNext {
+  right: 12px;
+}
+
+/* Точки пагинации */
+.dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--carousel-dot-inactive, var(--color-dark-100));
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.dot:hover {
+  background-color: var(--carousel-dot-inactive-hover, var(--color-dark-300));
+}
+
+.dot:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+.dotActive {
+  background-color: var(--carousel-dot-active, var(--color-accent-500));
+}
+
+.dotActive:hover {
+  background-color: var(--carousel-dot-active, var(--color-accent-500));
+}

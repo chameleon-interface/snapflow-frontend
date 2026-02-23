@@ -1,0 +1,76 @@
+.wrapper {
+  position: relative;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-dark-300);
+  color: var(--color-light-100);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.trigger:hover,
+.triggerActive {
+  color: var(--color-accent-500);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+.aspectOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-light-100);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-align: left;
+}
+
+.aspectOption:hover {
+  background-color: var(--color-dark-200);
+}
+
+.aspectOption:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: -2px;
+}
+
+.aspectOptionLabel {
+  flex: 1;
+}
+
+.aspectOptionCheck {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent-500);
+}
+
+.aspectOptionCheckEmpty {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-dark-100);
+  border-radius: 6px;
+  box-sizing: border-box;
+}

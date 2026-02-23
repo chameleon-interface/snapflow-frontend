@@ -1,0 +1,27 @@
+.error {
+  max-width: none;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+}
+
+.carousel {
+  width: 100%;
+}
+
+@media (width <= 768px) {
+  .content {
+    min-height: 240px;
+  }
+}
+
+@media (width <= 380px) {
+  .content {
+    min-height: 200px;
+  }
+}
