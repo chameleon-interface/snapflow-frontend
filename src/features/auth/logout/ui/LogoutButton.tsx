@@ -1,13 +1,13 @@
 ﻿'use client';
 
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { Button } from 'snapflow-ui-kit';
 import { LogOutIcon } from 'snapflow-ui-kit/icons';
-import { useTranslations } from 'next-intl';
 import s from './LogoutButton.module.css';
 
 import { useLogoutMutation } from '@/features/auth/logout';
-import { LogOutModal } from '../ui/LogOutModal';
+import { LogoutModal } from './LogoutModal';
 
 export const LogoutButton = () => {
   const t = useTranslations();
@@ -27,7 +27,7 @@ export const LogoutButton = () => {
         {t('Auth.logOut')}
       </Button>
 
-      <LogOutModal
+      <LogoutModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onConfirm={mutate}

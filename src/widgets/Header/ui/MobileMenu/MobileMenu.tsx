@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl';
 import { useMe } from '@/entities/user';
 import { useMenuItems } from '../../model';
 import { useLogoutMutation } from '@/features/auth/logout';
-import { LogOutModal } from '@/features/auth/logout/ui/LogOutModal';
+import { LogoutModal } from '@/features/auth/logout/ui/LogoutModal';
 import s from './MobileMenu.module.css';
 
 export const MobileMenu = () => {
@@ -36,7 +36,7 @@ export const MobileMenu = () => {
         />
       </DropdownMenu>
 
-      <LogOutModal
+      <LogoutModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onConfirm={mutate}
