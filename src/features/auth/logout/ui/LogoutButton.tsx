@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -7,7 +7,7 @@ import { LogOutIcon } from 'snapflow-ui-kit/icons';
 import s from './LogoutButton.module.css';
 
 import { useLogoutMutation } from '@/features/auth/logout';
-import { LogoutModal } from './LogoutModal';
+import { LogoutModal } from '@/features/auth/logout/ui/LogoutModal';
 
 export const LogoutButton = () => {
   const t = useTranslations();
