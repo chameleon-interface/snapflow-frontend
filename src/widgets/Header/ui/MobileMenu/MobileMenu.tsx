@@ -7,7 +7,7 @@ import { Button } from 'snapflow-ui-kit';
 import { useTranslations } from 'next-intl';
 import { useMe } from '@/entities/user';
 import { useMenuItems } from '../../model';
-import { LogoutModal, useLogoutMutation } from '@/features/auth/logout';
+import { LogOutModal, useLogoutMutation } from '@/features/auth/logout';
 import s from './MobileMenu.module.css';
 
 export const MobileMenu = () => {
@@ -35,7 +35,7 @@ export const MobileMenu = () => {
         />
       </DropdownMenu>
 
-      <LogoutModal
+      <LogOutModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onConfirm={mutate}
