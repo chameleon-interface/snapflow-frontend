@@ -8,7 +8,7 @@ type Props = {
   onConfirm: () => void;
 };
 
-export const LogOutModal = ({ isOpen, onClose, onConfirm }: Props) => {
+export const LogoutModal = ({ isOpen, onClose, onConfirm }: Props) => {
   const t = useTranslations();
   const { data: user } = useMe();
 
