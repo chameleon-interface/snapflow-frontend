@@ -7,7 +7,7 @@ import { LogOutIcon } from 'snapflow-ui-kit/icons';
 import s from './LogoutButton.module.css';
 
 import { useLogoutMutation } from '@/features/auth/logout';
-import { LogoutModal } from '@/features/auth/logout/ui/LogoutModal';
+import { LogoutModal } from '@/features/auth/logout';
 
 export const LogoutButton = () => {
   const t = useTranslations();

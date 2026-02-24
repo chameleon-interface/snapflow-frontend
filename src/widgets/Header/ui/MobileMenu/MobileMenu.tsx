@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl';
 import { useMe } from '@/entities/user';
 import { useMenuItems } from '../../model';
 import { useLogoutMutation } from '@/features/auth/logout';
-import { LogoutModal } from '@/features/auth/logout/ui/LogoutModal';
+import { LogoutModal } from '@/features/auth/logout';
 import s from './MobileMenu.module.css';
 
 export const MobileMenu = () => {
