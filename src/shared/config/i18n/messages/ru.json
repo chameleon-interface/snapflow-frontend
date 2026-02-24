@@ -32,6 +32,45 @@
     "privacyPolicy": "Политика конфиденциальности",
     "termsOfService": "Условия предоставления услуг"
   },
+  "Settings": {
+    "tabsAria": "Settings tabs",
+    "tabs": {
+      "info": "General information",
+      "devices": "Devices",
+      "subscriptions": "Account Management",
+      "payments": "My payments"
+    },
+    "selectProfilePhoto": "Select Profile Photo",
+    "saveChanges": "Save Changes",
+    "fields": {
+      "username": "Username",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "dateOfBirth": "Date of birth",
+      "country": "Select your country",
+      "city": "Select your city",
+      "about": "About me"
+    },
+    "placeholders": {
+      "country": "Country",
+      "city": "City",
+      "about": "Tell users about yourself"
+    },
+    "stubs": {
+      "devices": {
+        "title": "Devices",
+        "description": "Device management settings will be added in the next iteration."
+      },
+      "subscriptions": {
+        "title": "Account Management",
+        "description": "Subscription and account controls will be added in the next iteration."
+      },
+      "payments": {
+        "title": "My payments",
+        "description": "Payment history and billing settings will be added in the next iteration."
+      }
+    }
+  },
   "Forms": {
     "haveAccount": "Уже есть аккаунт?",
     "doNotHaveAnAccount": "У вас нет аккаунта?",
@@ -121,6 +160,24 @@
     "recaptcha": {
       "required": "Пожалуйста, завершите проверку reCAPTCHA",
       "expired": "Время проверки reCAPTCHA истекло. Пожалуйста, пройдите проверку снова"
+    },
+    "settings": {
+      "firstName": {
+        "min": "First name is required",
+        "max": "Maximum number of characters 50",
+        "pattern": "First name can only contain Latin and Cyrillic letters"
+      },
+      "lastName": {
+        "min": "Last name is required",
+        "max": "Maximum number of characters 50",
+        "pattern": "Last name can only contain Latin and Cyrillic letters"
+      },
+      "dateOfBirth": {
+        "pattern": "Use calendar date in dd.mm.yyyy format"
+      },
+      "about": {
+        "max": "Maximum number of characters 200"
+      }
     }
   }
 }
