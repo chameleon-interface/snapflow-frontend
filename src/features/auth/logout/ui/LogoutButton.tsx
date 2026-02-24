@@ -7,7 +7,7 @@ import { LogOutIcon } from 'snapflow-ui-kit/icons';
 import s from './LogoutButton.module.css';
 
 import { useLogoutMutation } from '@/features/auth/logout';
-import { LogoutModal } from '@/features/auth/logout';
+import { LogOutModal } from '@/features/auth/logout';
 
 export const LogoutButton = () => {
   const t = useTranslations();
@@ -27,7 +27,7 @@ export const LogoutButton = () => {
         {t('Auth.logOut')}
       </Button>
 
-      <LogoutModal
+      <LogOutModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onConfirm={mutate}
