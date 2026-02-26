@@ -14,7 +14,8 @@
     "format:write": "prettier \"**/*.{js,ts,jsx,tsx,css,scss,json,md,yml,yaml}\" --write",
     "format:check": "prettier \"**/*.{js,ts,jsx,tsx,css,scss,json,md,yml,yaml}\" --check",
     "stylelint": "stylelint \"**/*.{css,scss,module.css,module.scss}\"",
-    "stylelint:fix": "stylelint \"**/*.{css,scss,module.css,module.scss}\" --fix"
+    "stylelint:fix": "stylelint \"**/*.{css,scss,module.css,module.scss}\" --fix",
+    "i18n:validate": "node scripts/run-i18n-validate.mjs"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
