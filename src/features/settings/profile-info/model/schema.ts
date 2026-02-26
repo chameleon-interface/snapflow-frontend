@@ -30,3 +30,5 @@ export const settingsSchema = z.object({
   city: z.string(),
   about: z.string().max(200, 'Validation.settings.about.max'),
 });
+
+export type SettingsFormValues = z.infer<typeof settingsSchema>;

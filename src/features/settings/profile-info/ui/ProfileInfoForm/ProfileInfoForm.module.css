@@ -5,49 +5,11 @@
   align-items: start;
 }
 
-.photoColumn {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  align-items: center;
-
-  padding-top: 24px;
-}
-
-.avatarPlaceholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  aspect-ratio: 1;
-  width: 192px;
-  border-radius: 50%;
-
-  color: var(--color-light-100);
-
-  background-color: var(--color-dark-500);
-}
-
-.avatarPlaceholder svg {
-  width: 48px;
-  height: 48px;
-}
-
-.photoButton {
-  width: 100%;
-  padding: 5px 23px;
-}
-
-.photoButtonLabel {
-  color: var(--color-accent-500);
-}
-
-.photoButton:hover .photoButtonLabel {
-  color: var(--color-accent-100);
-}
-
-.photoButton:active .photoButtonLabel {
-  color: var(--color-accent-500);
+.formFieldset {
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 .formColumn {
@@ -81,24 +43,11 @@
   .infoLayout {
     grid-template-columns: 1fr;
   }
-
-  .photoColumn {
-    align-items: center;
-  }
-
-  .photoButton {
-    max-width: 202px;
-  }
 }
 
 @media (width <= 768px) {
   .formColumn {
     gap: 12px;
-  }
-
-  .photoButton {
-    max-width: 100%;
-    padding-block: 11px;
   }
 
   .selectRow {

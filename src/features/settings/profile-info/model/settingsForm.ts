@@ -1,15 +1,7 @@
-export type SettingsFormValues = {
-  username: string;
-  firstName: string;
-  lastName: string;
-  dateOfBirth: string;
-  country: string;
-  city: string;
-  about: string;
-};
+import type { SettingsFormValues } from './schema';
 
 export const DEFAULT_SETTINGS_FORM_VALUES: SettingsFormValues = {
-  username: 'Usertest',
+  username: '',
   firstName: '',
   lastName: '',
   dateOfBirth: '',
