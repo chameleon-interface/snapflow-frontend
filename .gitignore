@@ -47,6 +47,7 @@ next-env.d.ts
 # ai
 CLAUDE.md
 AGENTS.md
+GEMINI.md
 .claude
 .ai
 .serena
