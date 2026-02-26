@@ -1,5 +1,3 @@
-'use client';
-
 import { clsx, Modal } from 'snapflow-ui-kit/client';
 import { Button, Typography } from 'snapflow-ui-kit';
 import styles from './InfoModal.module.css';
