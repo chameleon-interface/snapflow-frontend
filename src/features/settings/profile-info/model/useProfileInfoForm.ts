@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslations } from 'next-intl';
 import {
   SubmitHandler,
   useForm,
@@ -9,6 +10,7 @@ import {
 import { useGetProfileById, useMe, useUpdateProfile } from '@/entities/user';
 import { DEFAULT_SETTINGS_FORM_VALUES } from './settingsForm';
 import { settingsSchema, type SettingsFormValues } from './schema';
+import { toastSuccess } from 'snapflow-ui-kit/client';
 
 type UseProfileInfoFormResult = {
   form: UseFormReturn<SettingsFormValues>;
@@ -21,6 +23,7 @@ type UseProfileInfoFormResult = {
 };
 
 export const useProfileInfoForm = (): UseProfileInfoFormResult => {
+  const t = useTranslations('Settings');
   const { data: me } = useMe();
   const profileId = Number(me!.userId);
   const {
@@ -71,7 +74,11 @@ export const useProfileInfoForm = (): UseProfileInfoFormResult => {
   const city = useWatch({ control, name: 'city' });
 
   const onSubmit: SubmitHandler<SettingsFormValues> = (data) => {
-    mutate(data);
+    mutate(data, {
+      onSuccess: () => {
+        toastSuccess(t('settingsSaved'));
+      },
+    });
   };
 
   const isFormLoading = isProfilePending || isProfileFetching || isPending;

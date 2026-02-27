@@ -32,22 +32,43 @@
     "termsOfService": "Условия предоставления услуг"
   },
   "Settings": {
-    "tabsAria": "Settings tabs",
-    "selectProfilePhoto": "Select Profile Photo",
-    "saveChanges": "Save Changes",
+    "tabsAria": "Вкладки настроек",
+    "tabs": {
+      "info": "Общая информация",
+      "devices": "Устройства",
+      "subscriptions": "Управление аккаунтом",
+      "payments": "Мои платежи"
+    },
+    "selectProfilePhoto": "Выберите фото профиля",
+    "saveChanges": "Сохранить изменения",
+    "settingsSaved": "Ваши настройки сохранены!",
     "fields": {
-      "username": "Username",
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "dateOfBirth": "Date of birth",
-      "country": "Select your country",
-      "city": "Select your city",
-      "about": "About me"
+      "username": "Имя пользователя",
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "dateOfBirth": "Дата рождения",
+      "country": "Выберите страну",
+      "city": "Выберите город",
+      "about": "Обо мне"
     },
     "placeholders": {
-      "country": "Country",
-      "city": "City",
-      "about": "Tell users about yourself"
+      "country": "Страна",
+      "city": "Город",
+      "about": "Расскажите о себе"
+    },
+    "stubs": {
+      "devices": {
+        "title": "Устройства",
+        "description": "Настройки управления устройствами будут добавлены в следующей итерации."
+      },
+      "subscriptions": {
+        "title": "Управление аккаунтом",
+        "description": "Управление подпиской и аккаунтом будет добавлено в следующей итерации."
+      },
+      "payments": {
+        "title": "Мои платежи",
+        "description": "История платежей и настройки биллинга будут добавлены в следующей итерации."
+      }
     }
   },
   "Forms": {

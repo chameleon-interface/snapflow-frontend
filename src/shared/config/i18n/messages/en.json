@@ -33,8 +33,15 @@
   },
   "Settings": {
     "tabsAria": "Settings tabs",
+    "tabs": {
+      "info": "General information",
+      "devices": "Devices",
+      "subscriptions": "Account Management",
+      "payments": "My payments"
+    },
     "selectProfilePhoto": "Select Profile Photo",
     "saveChanges": "Save Changes",
+    "settingsSaved": "Your settings are saved!",
     "fields": {
       "username": "Username",
       "firstName": "First Name",
@@ -48,6 +55,20 @@
       "country": "Country",
       "city": "City",
       "about": "Tell users about yourself"
+    },
+    "stubs": {
+      "devices": {
+        "title": "Devices",
+        "description": "Device management settings will be added in the next iteration."
+      },
+      "subscriptions": {
+        "title": "Account Management",
+        "description": "Subscription and account controls will be added in the next iteration."
+      },
+      "payments": {
+        "title": "My payments",
+        "description": "Payment history and billing settings will be added in the next iteration."
+      }
     }
   },
   "Forms": {
