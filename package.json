@@ -9,7 +9,7 @@
     "build": "next build",
     "build:production": "next build",
     "start": "next start",
-    "lint": "eslint . --max-warnings 0",
+    "lint": "eslint . --max-warnings 0 --no-warn-ignored",
     "lint:fix": "eslint . --fix",
     "format:write": "prettier \"**/*.{js,ts,jsx,tsx,css,scss,json,md,yml,yaml}\" --write",
     "format:check": "prettier \"**/*.{js,ts,jsx,tsx,css,scss,json,md,yml,yaml}\" --check",
