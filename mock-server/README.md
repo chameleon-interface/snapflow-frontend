@@ -161,6 +161,7 @@ type Post = {
 ```
 
 Поля:
+
 - `id` - number, генерируется сервером
 - `profileId` - number, id профиля автора
 - `photo` - string, URL сохраненного файла в `/uploads`
@@ -188,6 +189,7 @@ type Post = {
 Возвращает один пост по id.
 
 Пример:
+
 - `GET /posts/1` -> `200` + объект поста
 - `GET /posts/999999` -> `404`
 
@@ -196,6 +198,7 @@ type Post = {
 Фильтрует посты по автору.
 
 Пример:
+
 - `GET /posts?profileId=45` -> `200` + массив постов профиля `45`
 
 #### `POST /posts`
@@ -203,6 +206,7 @@ type Post = {
 Создает пост с загрузкой файла.
 
 Что принимает:
+
 - `Content-Type`: только `multipart/form-data`
 - поля формы:
   - `profileId` (required, number)
@@ -210,6 +214,7 @@ type Post = {
   - `photoFile` (required, image file)
 
 Ограничения:
+
 - только изображения (`image/*`)
 - размер файла до `20MB`
 
@@ -242,6 +247,7 @@ const { data } = await axios.post('http://localhost:3001/posts', formData, {
 ```
 
 Ошибки:
+
 - `415` если отправлен не `multipart/form-data`
 - `400` если нет `photoFile`/невалидный файл/превышен лимит
 
@@ -250,6 +256,7 @@ const { data } = await axios.post('http://localhost:3001/posts', formData, {
 Полностью обновляет пост.
 
 Что принимает:
+
 - `Content-Type: application/json`
 - тело:
 
@@ -263,6 +270,7 @@ const { data } = await axios.post('http://localhost:3001/posts', formData, {
 ```
 
 Пример ответа `200`:
+
 - обновленный объект поста
 
 #### `DELETE /posts/:id`
@@ -270,6 +278,7 @@ const { data } = await axios.post('http://localhost:3001/posts', formData, {
 Удаляет пост по id.
 
 Пример:
+
 - `DELETE /posts/6` -> `200` (или `204`, в зависимости от клиента)
 
 ### Profiles
@@ -282,6 +291,7 @@ const { data } = await axios.post('http://localhost:3001/posts', formData, {
 Редактирует поля профиля.
 
 Что принимает:
+
 - `Content-Type: application/json`
 - можно передавать любые поля из списка:
   - `username`
@@ -309,9 +319,11 @@ const { data } = await axios.put('http://localhost:3001/profiles/45', {
 ```
 
 Пример ответа `200`:
+
 - обновленный объект профиля
 
 Ошибки:
+
 - `400` если `id` некорректный или не переданы редактируемые поля
 - `404` если профиль не найден
 
@@ -320,6 +332,7 @@ const { data } = await axios.put('http://localhost:3001/profiles/45', {
 Отдельный запрос для установки аватара.
 
 Что принимает:
+
 - `Content-Type`: только `multipart/form-data`
 - поле файла: `avatarFile` (required, image)
 
@@ -343,9 +356,11 @@ const { data } = await axios.put(
 ```
 
 Пример ответа `200`:
+
 - обновленный объект профиля с новым `avatar`
 
 Ошибки:
+
 - `415` если отправлен не `multipart/form-data`
 - `400` если не передан `avatarFile` или файл не image/слишком большой
 - `404` если профиль не найден
