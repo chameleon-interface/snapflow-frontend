@@ -1,3 +1,11 @@
 #!/bin/sh
 pnpm lint-staged
+
+STAGED_FILES="$(git diff --cached --name-only)"
+if echo "$STAGED_FILES" | grep -E '^(src/shared/config/i18n/messages/|scripts/check-i18n-|scripts/run-i18n-validate\.mjs|package\.json|pnpm-lock\.yaml)' > /dev/null; then
+  pnpm i18n:validate
+else
+  echo "Skip i18n:validate (no i18n-related changes in staged files)"
+fi
+
 pnpm build

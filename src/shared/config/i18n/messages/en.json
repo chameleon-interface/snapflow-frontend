@@ -23,7 +23,6 @@
     "messengerTitle": "Messenger",
     "searchTitle": "Search",
     "statisticsTitle": "Statistics",
-    "settingsTitle": "Settings",
     "signInTitle": "Sign In",
     "signUpTitle": "Sign Up",
     "forgotPasswordTitle": "Forgot Password",
@@ -34,12 +33,6 @@
   },
   "Settings": {
     "tabsAria": "Settings tabs",
-    "tabs": {
-      "info": "General information",
-      "devices": "Devices",
-      "subscriptions": "Account Management",
-      "payments": "My payments"
-    },
     "selectProfilePhoto": "Select Profile Photo",
     "saveChanges": "Save Changes",
     "fields": {
@@ -55,20 +48,6 @@
       "country": "Country",
       "city": "City",
       "about": "Tell users about yourself"
-    },
-    "stubs": {
-      "devices": {
-        "title": "Devices",
-        "description": "Device management settings will be added in the next iteration."
-      },
-      "subscriptions": {
-        "title": "Account Management",
-        "description": "Subscription and account controls will be added in the next iteration."
-      },
-      "payments": {
-        "title": "My payments",
-        "description": "Payment history and billing settings will be added in the next iteration."
-      }
     }
   },
   "Forms": {
@@ -105,11 +84,7 @@
     "sendLinkAgain": "Send Link Again",
     "sendLink": "Send Link",
     "backToSignIn": "Back to Sign In",
-    "error": "An error occurred while sending the request. Please try again.",
     "newPasswordLabel": "New password",
-    "newPasswordPlaceholder": "Enter new password",
-    "passwordConfirmationLabel": "Password confirmation",
-    "passwordConfirmationPlaceholder": "Confirm new password",
     "passwordDescription": "Your password must be between 6 and 20 characters",
     "createNewPasswordButton": "Create New Password",
     "passwordChangedSuccess": "Password successfully changed"
@@ -130,8 +105,6 @@
     "emailAlreadyConfirmed": "User with this email already confirmed",
     "emailNotFound": "User with this email not found",
     "emailNotRegistered": "It is impossible to send the code - the specified email is not registered",
-    "invalidCredentials": "Invalid email or password",
-    "validationError": "Invalid input data",
     "emailNotExists": "User with this email doesn't exist"
   },
   "Validation": {
@@ -172,9 +145,6 @@
       "about": {
         "max": "Maximum number of characters 200"
       }
-    },
-    "terms": {
-      "required": "You must agree to the Terms of Service"
     },
     "recaptcha": {
       "required": "Please complete the reCAPTCHA verification",

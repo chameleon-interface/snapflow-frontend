@@ -15,11 +15,21 @@ pnpm dev
 
 Приложение будет доступно на `http://localhost:3000`.
 
+## Скрипты
+
+- `pnpm dev` - запуск dev-сервера
+- `pnpm build` - production-сборка
+- `pnpm build:production` - alias для production-сборки
+- `pnpm start` - запуск production-сервера
+- `pnpm lint` / `pnpm lint:fix` - проверка и автоисправление ESLint
+- `pnpm format:check` / `pnpm format:write` - проверка и форматирование Prettier
+- `pnpm stylelint` / `pnpm stylelint:fix` - проверка и автоисправление стилей
+
 ## Технологический стек
 
 - **Фреймворк:** Next.js 16 (App Router), React 19
 - **Язык:** TypeScript
-- **Состояние и формы:** TanStack Query, React Hook Form
+- **Состояние, формы и валидация:** TanStack Query, React Hook Form, Zod
 - **Качество кода:** ESLint (flat config), Prettier, Stylelint
 - **Git-хуки:** Husky + lint-staged
 
@@ -29,11 +39,11 @@ pnpm dev
 src/
   app/          Next.js routing shell (segments, layouts)
   pages-layer/  FSD-страницы (сборка UI из widgets/features)
-  widgets/    крупные блоки интерфейса
-  features/   пользовательские сценарии
-  entities/   доменные сущности
-  shared/     общие компоненты, утилиты, стили
-public/       статические ассеты
+  widgets/      крупные блоки интерфейса
+  features/     пользовательские сценарии
+  entities/     доменные сущности
+  shared/       общие компоненты, утилиты, стили
+public/         статические ассеты
 ```
 
 Ключевые конфиги в корне: `next.config.ts`, `tsconfig.json`, `eslint.config.mjs`,
@@ -42,12 +52,15 @@ public/       статические ассеты
 `pages-layer` назван так, чтобы не конфликтовать с Next.js Pages Router
 (`src/pages`).
 
-## Маршруты (плейсхолдеры)
+## Маршруты
 
 Маршруты находятся в `src/app/<route>/page.tsx` и рендерят FSD-страницы из
 `src/pages-layer/<route>/ui`.
 
-- **Auth:** `/sign-up`, `/sign-in`
-- **Профиль и настройки:** `/profile`, `/settings`
-- **Лента и коммуникации:** `/feed`, `/messenger`, `/search`
-- **Дополнительно:** `/statistics`, `/favorites`
+- **Главная:** `/`
+- **Auth:** `/sign-in`, `/sign-up`, `/sign-up/confirm-email`,
+  `/sign-up/privacy-policy`, `/sign-up/terms-of-service`,
+  `/password-recovery`, `/password-recovery/set-new-password`
+- **Основные:** `/feed`, `/messenger`, `/search`, `/favorites`,
+  `/statistics`, `/settings`
+- **Профиль:** `/profile/[id]`

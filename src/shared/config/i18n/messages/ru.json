@@ -23,7 +23,6 @@
     "messengerTitle": "Мессенджер",
     "searchTitle": "Поиск",
     "statisticsTitle": "Статистика",
-    "settingsTitle": "Настройки",
     "signInTitle": "Вход",
     "signUpTitle": "Регистрация",
     "forgotPasswordTitle": "Восстановление пароля",
@@ -34,12 +33,6 @@
   },
   "Settings": {
     "tabsAria": "Settings tabs",
-    "tabs": {
-      "info": "General information",
-      "devices": "Devices",
-      "subscriptions": "Account Management",
-      "payments": "My payments"
-    },
     "selectProfilePhoto": "Select Profile Photo",
     "saveChanges": "Save Changes",
     "fields": {
@@ -55,20 +48,6 @@
       "country": "Country",
       "city": "City",
       "about": "Tell users about yourself"
-    },
-    "stubs": {
-      "devices": {
-        "title": "Devices",
-        "description": "Device management settings will be added in the next iteration."
-      },
-      "subscriptions": {
-        "title": "Account Management",
-        "description": "Subscription and account controls will be added in the next iteration."
-      },
-      "payments": {
-        "title": "My payments",
-        "description": "Payment history and billing settings will be added in the next iteration."
-      }
     }
   },
   "Forms": {
@@ -106,9 +85,6 @@
     "sendLink": "Отправить ссылку",
     "backToSignIn": "Вернуться",
     "newPasswordLabel": "Новый пароль",
-    "newPasswordPlaceholder": "Введите новый пароль",
-    "passwordConfirmationLabel": "Подтверждение пароля",
-    "passwordConfirmationPlaceholder": "Подтвердите новый пароль",
     "passwordDescription": "Ваш пароль должен содержать от 6 до 20 символов",
     "createNewPasswordButton": "Создать новый пароль",
     "passwordChangedSuccess": "Пароль успешно изменён"
@@ -127,8 +103,6 @@
     "usernameExists": "Пользователь с таким именем уже зарегистрирован",
     "emailExists": "Пользователь с таким email уже зарегистрирован",
     "emailAlreadyConfirmed": "Email уже подтверждён",
-    "invalidCredentials": "Неверный email или пароль",
-    "validationError": "Некорректные данные",
     "emailNotFound": "Пользователь с таким email не найден",
     "emailNotExists": "Пользователь с таким email не существует",
     "emailNotRegistered": "Невозможно отправить код - указанный email не зарегистрирован"
@@ -153,9 +127,6 @@
     "passwordConfirmation": {
       "mismatch": "Пароли должны совпадать",
       "required": "Подтвердите пароль"
-    },
-    "terms": {
-      "required": "Необходимо принять условия сервиса"
     },
     "recaptcha": {
       "required": "Пожалуйста, завершите проверку reCAPTCHA",
