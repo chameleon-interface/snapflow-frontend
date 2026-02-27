@@ -6,3 +6,4 @@ export { UsernameInput } from './form/UsernameInput';
 export { EmailModal } from './EmailModal';
 export { ExpiredLinkLayout } from './ExpiredLinkLayout';
 export { QueryProgressBar } from './QueryProgressBar';
+export { SplashScreenGate } from './SplashScreen';
