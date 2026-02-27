@@ -1,3 +1,10 @@
+.oauthContainer {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .footer {
   display: flex;
   flex-direction: column;
