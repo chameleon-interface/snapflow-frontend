@@ -3,10 +3,6 @@
   margin-inline: 15px;
 }
 
-.modalBody {
-  text-align: center;
-}
-
 .modalFooter {
   display: flex;
   gap: 24px;
@@ -31,8 +27,8 @@
 
   .modalFooter {
     flex-direction: column;
-    gap: 12px;
-    padding-top: 12px;
+    gap: 24px;
+    padding-top: 30px;
   }
 
   .buttonModal {

@@ -1,0 +1,17 @@
+.modalContainer {
+  max-width: 400px;
+  margin-inline: 15px;
+}
+
+.modalBody {
+  padding-top: 0;
+}
+
+.modalFooter {
+  display: flex;
+  padding-top: 54px;
+}
+
+.button {
+  width: 100%;
+}

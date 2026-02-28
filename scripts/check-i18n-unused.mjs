@@ -81,13 +81,28 @@ const extractTranslationCalls = (content, translatorName) => {
   let match = callRegex.exec(content);
   while (match) {
     const key = match[2];
-    if (!key.includes('${')) {
-      calls.push(key);
-    }
+    calls.push(key);
     match = callRegex.exec(content);
   }
 
   return calls;
+};
+
+const escapeRegExp = (value) =>
+  value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const addTemplateMatches = (allKeys, usedKeys, keyTemplate) => {
+  if (!keyTemplate.includes('${')) return;
+
+  const parts = keyTemplate.split(/\$\{[^}]+\}/g).map(escapeRegExp);
+  const wildcardPattern = parts.join('[^.]+');
+  const matcher = new RegExp(`^${wildcardPattern}$`);
+
+  for (const key of allKeys) {
+    if (matcher.test(key)) {
+      usedKeys.add(key);
+    }
+  }
 };
 
 const extractDynamicCallIdentifiers = (content, translatorName) => {
@@ -158,6 +173,15 @@ const run = async () => {
       const calls = extractTranslationCalls(content, translatorName);
 
       for (const callKey of calls) {
+        if (callKey.includes('${')) {
+          if (namespace) {
+            addTemplateMatches(allKeys, usedKeys, `${namespace}.${callKey}`);
+          } else {
+            addTemplateMatches(allKeys, usedKeys, callKey);
+          }
+          continue;
+        }
+
         if (allKeys.has(callKey)) {
           usedKeys.add(callKey);
           continue;
