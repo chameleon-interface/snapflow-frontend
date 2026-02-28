@@ -43,7 +43,7 @@
     "react-google-recaptcha": "^3.1.0",
     "react-hook-form": "7.71.1",
     "react-hot-toast": "2.6.0",
-    "snapflow-ui-kit": "1.2.5",
+    "snapflow-ui-kit": "1.2.6",
     "zod": "4.3.6"
   },
   "devDependencies": {
