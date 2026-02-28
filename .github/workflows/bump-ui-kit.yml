@@ -31,10 +31,17 @@ jobs:
           pnpm add -E snapflow-ui-kit@"$V"
           pnpm install --frozen-lockfile
 
+      - name: Set git identity
+        run: |
+          git config --global user.name "chameleon-interface"
+          git config --global user.email "chameleon-interface@users.noreply.github.com"
+
       - uses: peter-evans/create-pull-request@v6
         id: cpr
         with:
           token: ${{ secrets.BOT_TOKEN }}
+          author: 'chameleon-interface <chameleon-interface@users.noreply.github.com>'
+          committer: 'chameleon-interface <chameleon-interface@users.noreply.github.com>'
           commit-message: 'chore: bump snapflow-ui-kit to v${{ github.event.client_payload.version }}'
           title: 'chore: bump snapflow-ui-kit to v${{ github.event.client_payload.version }}'
           branch: 'chore/bump-ui-kit-${{ github.event.client_payload.version }}'
