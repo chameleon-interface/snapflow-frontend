@@ -11,6 +11,8 @@ import { useGetProfileById, useMe, useUpdateProfile } from '@/entities/user';
 import { DEFAULT_SETTINGS_FORM_VALUES } from './settingsForm';
 import { settingsSchema, type SettingsFormValues } from './schema';
 import { toastSuccess } from 'snapflow-ui-kit/client';
+import { formatIso8601ToDdMmYyyy } from './dateOfBirthFormatters';
+import { prepareProfileInfoPayload } from './prepareProfileInfoPayload';
 
 type UseProfileInfoFormResult = {
   form: UseFormReturn<SettingsFormValues>;
@@ -59,13 +61,13 @@ export const useProfileInfoForm = (): UseProfileInfoFormResult => {
     }
 
     reset({
-      username: profile.username,
-      firstName: profile.firstName,
-      lastName: profile.lastName,
-      dateOfBirth: profile.dateOfBirth,
-      country: profile.country,
-      city: profile.city,
-      about: profile.about,
+      username: profile.username ?? '',
+      firstName: profile.firstName ?? '',
+      lastName: profile.lastName ?? '',
+      dateOfBirth: formatIso8601ToDdMmYyyy(profile.dateOfBirth),
+      country: profile.country ?? '',
+      city: profile.city ?? '',
+      aboutMe: profile.aboutMe ?? '',
     });
   }, [profile, reset]);
 
@@ -74,7 +76,7 @@ export const useProfileInfoForm = (): UseProfileInfoFormResult => {
   const city = useWatch({ control, name: 'city' });
 
   const onSubmit: SubmitHandler<SettingsFormValues> = (data) => {
-    mutate(data, {
+    mutate(prepareProfileInfoPayload(data), {
       onSuccess: () => {
         toastSuccess(t('settingsSaved'));
       },

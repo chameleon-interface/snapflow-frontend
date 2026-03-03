@@ -98,10 +98,10 @@ export const ProfileInfoForm = () => {
 
           <Textarea
             label={t('fields.about')}
-            errorMessage={getError(errors.about?.message)}
+            errorMessage={getError(errors.aboutMe?.message)}
             minHeight={120}
             placeholder={t('placeholders.about')}
-            {...register('about')}
+            {...register('aboutMe')}
           />
 
           <div className={s.actions}>

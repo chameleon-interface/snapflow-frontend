@@ -157,20 +157,21 @@
     },
     "settings": {
       "firstName": {
-        "min": "First name is required",
-        "max": "Maximum number of characters 50",
-        "pattern": "First name can only contain Latin and Cyrillic letters"
+        "min": "Имя обязательно",
+        "max": "Максимальное количество символов - 50",
+        "pattern": "Имя может содержать только латинские и кириллические буквы"
       },
       "lastName": {
-        "min": "Last name is required",
-        "max": "Maximum number of characters 50",
-        "pattern": "Last name can only contain Latin and Cyrillic letters"
+        "min": "Фамилия обязательна",
+        "max": "Максимальное количество символов - 50",
+        "pattern": "Фамилия может содержать только латинские и кириллические буквы"
       },
       "dateOfBirth": {
-        "pattern": "Use calendar date in dd.mm.yyyy format"
+        "format": "Используйте формат даты dd.mm.yyyy",
+        "invalidDate": "Введите корректную календарную дату"
       },
-      "about": {
-        "max": "Maximum number of characters 200"
+      "aboutMe": {
+        "max": "Максимальное количество символов - 200"
       }
     }
   }

@@ -1,5 +1,9 @@
 import * as z from 'zod';
 import { fields } from '@/shared/lib/validation';
+import {
+  isDdMmYyyyDateInFuture,
+  isValidDdMmYyyyDate,
+} from './dateOfBirthFormatters';
 
 const namePattern = /^[A-Za-z\u0400-\u04FF]+$/;
 const datePattern = /^\d{2}\.\d{2}\.\d{4}$/;
@@ -16,19 +20,30 @@ export const settingsSchema = z.object({
     .min(1, 'Validation.settings.lastName.min')
     .max(50, 'Validation.settings.lastName.max')
     .regex(namePattern, 'Validation.settings.lastName.pattern'),
-  dateOfBirth: z.string().refine(
-    (value) => {
-      if (value.length === 0) {
-        return true;
-      }
+  dateOfBirth: z.string().superRefine((value, ctx) => {
+    if (value.length === 0) {
+      return;
+    }
 
-      return datePattern.test(value);
-    },
-    { message: 'Validation.settings.dateOfBirth.pattern' },
-  ),
+    if (!datePattern.test(value)) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'Validation.settings.dateOfBirth.format',
+      });
+
+      return;
+    }
+
+    if (!isValidDdMmYyyyDate(value) || isDdMmYyyyDateInFuture(value)) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'Validation.settings.dateOfBirth.invalidDate',
+      });
+    }
+  }),
   country: z.string(),
   city: z.string(),
-  about: z.string().max(200, 'Validation.settings.about.max'),
+  aboutMe: z.string().max(200, 'Validation.settings.aboutMe.max'),
 });
 
 export type SettingsFormValues = z.infer<typeof settingsSchema>;

@@ -7,7 +7,7 @@ export const DEFAULT_SETTINGS_FORM_VALUES: SettingsFormValues = {
   dateOfBirth: '',
   country: '',
   city: '',
-  about: '',
+  aboutMe: '',
 };
 
 export const COUNTRY_OPTIONS = [

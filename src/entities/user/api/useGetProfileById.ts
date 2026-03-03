@@ -1,16 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import type { UserProfile } from './types';
-
-const mockApiUrl = 'http://localhost:3001';
+import { api } from '@/shared/api';
 
 export const useGetProfileById = (profileId: number) => {
   return useQuery({
-    queryKey: ['profiles', profileId],
+    queryKey: ['profile', profileId],
     queryFn: async () => {
-      const response = await axios.get<UserProfile>(
-        `${mockApiUrl}/profiles/${profileId}`,
-      );
+      const response = await api.get<UserProfile>(`users/profile/${profileId}`);
 
       return response.data;
     },

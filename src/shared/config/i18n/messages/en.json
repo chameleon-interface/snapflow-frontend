@@ -163,9 +163,10 @@
         "pattern": "Last name can only contain Latin and Cyrillic letters"
       },
       "dateOfBirth": {
-        "pattern": "Use calendar date in dd.mm.yyyy format"
+        "format": "Use date format dd.mm.yyyy",
+        "invalidDate": "Enter a valid calendar date"
       },
-      "about": {
+      "aboutMe": {
         "max": "Maximum number of characters 200"
       }
     },
