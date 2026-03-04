@@ -4,16 +4,10 @@ import { useTranslations } from 'next-intl';
 import { Button } from 'snapflow-ui-kit';
 import { DatePicker, Input, Select, Textarea } from 'snapflow-ui-kit/client';
 import { useMediaQuery } from '@/shared/lib/hooks/useMediaQuery';
-import { CITY_OPTIONS, COUNTRY_OPTIONS } from '../../model/settingsForm';
 import { useProfileInfoForm } from '../../model/useProfileInfoForm';
 import { ProfileAvatarSection } from '../ProfileAvatarSection/ProfileAvatarSection';
+import { useProfileLocationFields } from './useProfileLocationFields';
 import s from './ProfileInfoForm.module.css';
-
-const setValueConfig = {
-  shouldDirty: true,
-  shouldTouch: true,
-  shouldValidate: true,
-} as const;
 
 export const ProfileInfoForm = () => {
   const t = useTranslations('Settings');
@@ -23,16 +17,33 @@ export const ProfileInfoForm = () => {
     form: {
       handleSubmit,
       register,
-      setValue,
       formState: { errors },
     },
     onSubmit,
+    onDateOfBirthChange,
+    onCountryChange,
+    onCityChange,
     dateOfBirth,
     country,
     city,
     isFormLoading,
     isSaveDisabled,
   } = useProfileInfoForm();
+  const {
+    cityOptions,
+    countryOptions,
+    cityDisabled,
+    isCitiesFetching,
+    setCitySearchQuery,
+    handleCountryChange,
+    handleCityChange,
+  } = useProfileLocationFields({
+    country,
+    city,
+    isFormLoading,
+    onCountryChange,
+    onCityChange,
+  });
 
   const getError = (errorMessage?: string) =>
     errorMessage ? tCommon(errorMessage) : undefined;
@@ -75,24 +86,32 @@ export const ProfileInfoForm = () => {
             label={t('fields.dateOfBirth')}
             error={getError(errors.dateOfBirth?.message)}
             value={dateOfBirth}
-            onChange={(value) => setValue('dateOfBirth', value, setValueConfig)}
+            onChange={onDateOfBirthChange}
           />
 
           <div className={s.selectRow}>
             <Select
               label={t('fields.country')}
               placeholder={t('placeholders.country')}
-              options={COUNTRY_OPTIONS}
+              options={countryOptions}
+              searchable
               value={country || undefined}
-              onChange={(value) => setValue('country', value, setValueConfig)}
+              onChange={handleCountryChange}
             />
 
             <Select
               label={t('fields.city')}
               placeholder={t('placeholders.city')}
-              options={CITY_OPTIONS}
+              options={cityOptions}
+              searchable
+              searchMode="remote"
+              filterOptions={false}
+              onSearchChange={setCitySearchQuery}
+              searchDebounceMs={300}
+              isLoading={isCitiesFetching}
+              disabled={cityDisabled}
               value={city || undefined}
-              onChange={(value) => setValue('city', value, setValueConfig)}
+              onChange={handleCityChange}
             />
           </div>
 

@@ -17,12 +17,21 @@ import { prepareProfileInfoPayload } from './prepareProfileInfoPayload';
 type UseProfileInfoFormResult = {
   form: UseFormReturn<SettingsFormValues>;
   onSubmit: SubmitHandler<SettingsFormValues>;
+  onDateOfBirthChange: (value: string) => void;
+  onCountryChange: (value: string) => void;
+  onCityChange: (value: string) => void;
   dateOfBirth: string;
   country: string;
   city: string;
   isFormLoading: boolean;
   isSaveDisabled: boolean;
 };
+
+const setValueConfig = {
+  shouldDirty: true,
+  shouldTouch: true,
+  shouldValidate: true,
+} as const;
 
 export const useProfileInfoForm = (): UseProfileInfoFormResult => {
   const t = useTranslations('Settings');
@@ -44,8 +53,10 @@ export const useProfileInfoForm = (): UseProfileInfoFormResult => {
 
   const {
     control,
+    getValues,
     register,
     reset,
+    setValue,
     formState: { isDirty, isValid },
   } = form;
 
@@ -75,6 +86,25 @@ export const useProfileInfoForm = (): UseProfileInfoFormResult => {
   const country = useWatch({ control, name: 'country' });
   const city = useWatch({ control, name: 'city' });
 
+  const onDateOfBirthChange = (value: string) => {
+    setValue('dateOfBirth', value, setValueConfig);
+  };
+
+  const onCountryChange = (value: string) => {
+    const previousCountry = getValues('country');
+
+    if (value === previousCountry) {
+      return;
+    }
+
+    setValue('country', value, setValueConfig);
+    setValue('city', '', setValueConfig);
+  };
+
+  const onCityChange = (value: string) => {
+    setValue('city', value, setValueConfig);
+  };
+
   const onSubmit: SubmitHandler<SettingsFormValues> = (data) => {
     mutate(prepareProfileInfoPayload(data), {
       onSuccess: () => {
@@ -89,6 +119,9 @@ export const useProfileInfoForm = (): UseProfileInfoFormResult => {
   return {
     form,
     onSubmit,
+    onDateOfBirthChange,
+    onCountryChange,
+    onCityChange,
     dateOfBirth,
     country,
     city,

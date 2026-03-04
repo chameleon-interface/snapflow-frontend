@@ -6,6 +6,7 @@ const withNextIntl = createNextIntlPlugin({
 });
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: ['@countrystatecity/countries'],
   images: {
     remotePatterns: [
       {
