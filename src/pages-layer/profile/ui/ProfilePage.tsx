@@ -1,40 +1,19 @@
-// import { getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
+import { ProfileContent } from './ProfileContent';
+import { Profile } from './types';
 
 export async function ProfilePage() {
-  // const t = await getTranslations('Pages');
+  await getTranslations('Pages');
 
-  return (
-    <section>
-      <section>
-        <section>{/*<img src="#" alt="photo avatar" />*/}</section>
-        <section>
-          <div>
-            <span>username</span>
-            <button>profile settings</button>
-          </div>
-          <div>
-            <div>
-              <span>folowingcounter</span>
-              <span>folowing</span>
-            </div>
-            <div>
-              <span>folowers counter</span>
-              <span>folowers</span>
-            </div>
-            <div>
-              <span>publicationscounter</span>
-              <span>publications</span>
-            </div>
-          </div>
-          <div>
-            <span>text about user</span>
-          </div>
-        </section>
-      </section>
+  const profileId = 45;
 
-      <section>
-        {/*здесь будут посты точнее их фото которые получим с сервера*/}
-      </section>
-    </section>
-  );
+  const res = await fetch(`http://localhost:3001/profiles/${profileId}`, {
+    cache: 'no-store',
+  });
+
+  if (!res.ok) throw new Error('Failed to load profile');
+
+  const profile: Profile = await res.json();
+
+  return <ProfileContent profile={profile} />;
 }

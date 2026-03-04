@@ -30,7 +30,13 @@
     "createNewPasswordTitle": "Создать новый пароль",
     "placeholder": "Страница-заглушка.",
     "privacyPolicy": "Политика конфиденциальности",
-    "termsOfService": "Условия предоставления услуг"
+    "termsOfService": "Условия предоставления услуг",
+    "profileFollowing": "Подписки",
+    "profileFollowers": "Подписчики",
+    "profilePublications": "Публикации",
+    "profileSettings": "Настройки профиля",
+    "noPosts": "У вас пока нет публикаций",
+    "allPostsLoaded": "Вы просмотрели все публикации"
   },
   "Forms": {
     "haveAccount": "Уже есть аккаунт?",

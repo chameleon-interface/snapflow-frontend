@@ -30,7 +30,13 @@
     "createNewPasswordTitle": "Create New Password",
     "placeholder": "Placeholder page.",
     "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service"
+    "termsOfService": "Terms of Service",
+    "profileFollowing": "Following",
+    "profileFollowers": "Followers",
+    "profilePublications": "Publications",
+    "profileSettings": "Profile Settings",
+    "noPosts": "You have no posts yet",
+    "allPostsLoaded": "You have viewed all posts"
   },
   "Forms": {
     "haveAccount": "Do you have an account?",
