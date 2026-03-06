@@ -10,7 +10,7 @@
   justify-content: center;
 
   opacity: 1;
-  background-color: #000;
+  background-color: var(--color-dark-900);
 
   transition: opacity 500ms ease;
 }
@@ -30,7 +30,7 @@
   font-size: clamp(36px, 7vw, 72px);
   font-weight: 700;
   line-height: 1;
-  color: #fff;
+  color: var(--color-light-100);
   letter-spacing: 0.02em;
 }
 
