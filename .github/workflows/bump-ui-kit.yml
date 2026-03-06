@@ -54,6 +54,6 @@ jobs:
         run: |
           gh pr merge ${{ steps.cpr.outputs.pull-request-number }} \
             --repo "${GITHUB_REPOSITORY}" \
-            --squash \
+            --merge \
             --delete-branch \
             --admin
