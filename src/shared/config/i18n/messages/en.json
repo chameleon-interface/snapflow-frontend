@@ -163,20 +163,13 @@
     "publishing": "Publishing...",
     "postPublishedSuccess": "Post published",
     "postPublishError": "Failed to publish. Please try again.",
-    "closeConfirmTitle": "Close",
-    "closeConfirmMessage": "Do you really want to close the creation of a publication?",
-    "closeConfirmSubMessage": "If you close everything will be deleted",
-    "closeConfirmDiscard": "Discard",
-    "closeConfirmSaveDraft": "Save draft"
+    "closeModalTitle": "Close",
+    "closeModalMessage": "Do you really want to close the creation of a publication?",
+    "closeModalSubMessage": "Unsaved changes will be lost",
+    "closeModalDiscard": "Discard",
+    "closeModalSaveDraft": "Save draft"
   },
   "SelectPhotos": {
     "selectFromComputer": "Select photos"
-  },
-  "Carousel": {
-    "regionLabel": "Carousel",
-    "prevSlide": "Previous slide",
-    "nextSlide": "Next slide",
-    "slideSelection": "Slide selection",
-    "slideNumber": "Slide {number}"
   }
 }

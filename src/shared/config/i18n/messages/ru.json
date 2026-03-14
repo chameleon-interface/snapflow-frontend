@@ -162,20 +162,13 @@
     "publishing": "Публикация...",
     "postPublishedSuccess": "Публикация успешно создана",
     "postPublishError": "Не удалось опубликовать. Попробуйте позже.",
-    "closeConfirmTitle": "Закрыть",
-    "closeConfirmMessage": "Вы действительно хотите отменить создание публикации?",
-    "closeConfirmSubMessage": "Если вы отмените, все будет удалено",
-    "closeConfirmDiscard": "Отменить",
-    "closeConfirmSaveDraft": "Сохранить черновик"
+    "closeModalTitle": "Закрыть",
+    "closeModalMessage": "Вы действительно хотите отменить создание публикации?",
+    "closeModalSubMessage": "Несохранённые изменения будут потеряны",
+    "closeModalDiscard": "Отменить",
+    "closeModalSaveDraft": "Сохранить черновик"
   },
   "SelectPhotos": {
     "selectFromComputer": "Выбрать фото"
-  },
-  "Carousel": {
-    "regionLabel": "Карусель",
-    "prevSlide": "Предыдущий слайд",
-    "nextSlide": "Следующий слайд",
-    "slideSelection": "Выбор слайда",
-    "slideNumber": "Слайд {number}"
   }
 }

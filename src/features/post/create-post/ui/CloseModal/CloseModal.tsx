@@ -41,15 +41,15 @@ export const CloseModal = ({
     <Modal
       open={isOpen}
       onClose={onClose}
-      title={t('closeConfirmTitle')}
+      title={t('closeModalTitle')}
       className={styles.modalContainer}
     >
       <div className={styles.body}>
         <Typography variant="text-16" className={styles.message}>
-          {t('closeConfirmMessage')}
+          {t('closeModalMessage')}
         </Typography>
         <Typography variant="text-14" className={styles.subMessage}>
-          {t('closeConfirmSubMessage')}
+          {t('closeModalSubMessage')}
         </Typography>
       </div>
 
@@ -58,17 +58,17 @@ export const CloseModal = ({
           variant="outlined"
           onClick={handleDiscard}
           className={styles.button}
-          aria-label={t('closeConfirmDiscard')}
+          aria-label={t('closeModalDiscard')}
         >
-          {t('closeConfirmDiscard')}
+          {t('closeModalDiscard')}
         </Button>
         <Button
           onClick={handleSaveDraft}
           className={styles.button}
-          aria-label={t('closeConfirmSaveDraft')}
+          aria-label={t('closeModalSaveDraft')}
           disabled={isSaving}
         >
-          {isSaving ? '...' : t('closeConfirmSaveDraft')}
+          {isSaving ? '...' : t('closeModalSaveDraft')}
         </Button>
       </div>
     </Modal>
