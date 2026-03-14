@@ -22,6 +22,11 @@
 
   width: 100%;
   min-height: 0;
+  aspect-ratio: unset;
+}
+
+.carousel :global([class*='slide']) img {
+  object-fit: contain;
 }
 
 .slideImageWrap {
@@ -33,7 +38,7 @@
   min-width: 0;
   height: 100%;
   min-height: 0;
-  border-radius: 12px;
+  border-radius: 2px;
 
   background: var(--color-dark-700);
 }
@@ -48,7 +53,7 @@
   max-height: 100%;
   padding: 24px 20px;
   border: 1px solid var(--color-dark-100);
-  border-radius: 16px;
+  border-radius: 2px;
 
   background: var(--color-dark-500);
 }
@@ -58,12 +63,12 @@
 }
 
 .formPanel::-webkit-scrollbar-track {
-  border-radius: 4px;
+  border-radius: 2px;
   background: var(--color-dark-200);
 }
 
 .formPanel::-webkit-scrollbar-thumb {
-  border-radius: 4px;
+  border-radius: 2px;
   background: var(--color-dark-100);
 }
 
@@ -126,7 +131,7 @@
 
 .textareaWrapper textarea {
   border: 1px solid var(--color-dark-100);
-  border-radius: 12px;
+  border-radius: 2px;
   background: var(--color-dark-400);
   transition:
     border-color 0.2s ease,
@@ -150,7 +155,7 @@
 
 .locationInputWrapper input {
   border: 1px solid var(--color-dark-100);
-  border-radius: 12px;
+  border-radius: 2px;
   background: var(--color-dark-400);
   transition:
     border-color 0.2s ease,
@@ -224,7 +229,7 @@
   .formPanel {
     gap: 14px;
     padding: 12px 10px;
-    border-radius: 10px;
+    border-radius: 2px;
   }
 }
 

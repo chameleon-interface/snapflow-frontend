@@ -14,14 +14,4 @@ export type {
   CreatePostStep,
   CREATE_POST_STEPS,
   DraftPostState,
-  StoredDraft,
 } from '@/features/post/create-post/model/types';
-export { restoreDraftExports } from './restoreDraftExports';
-export type { RestoreDraftResult } from './restoreDraftExports';
-export {
-  hasDraft,
-  saveDraft,
-  loadDraft,
-  clearDraft,
-  buildStoredDraft,
-} from './draftStorage';

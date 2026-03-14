@@ -1,15 +1,11 @@
 'use client';
 
 import { useCallback, useState } from 'react';
-import type {
-  CreatePostStep,
-  PublishProfile,
-} from '@/features/post/create-post/model/types';
+import type { PublishProfile } from '@/features/post/create-post/model/types';
 import { usePhotosState } from './usePhotosState';
 import { useStepState } from './useStepState';
 import { useCreatePostState } from './useCreatePostState';
 import { useExports } from './useExports';
-import { useDraft } from './useDraft';
 import { useHandlers } from './useHandlers';
 import { useCloseModal } from './useCloseModal';
 
@@ -59,40 +55,6 @@ export const useFlow = ({ onClose, profile }: Params) => {
     setStep: stepState.setStep,
   });
 
-  const getDraftData = useCallback(
-    () => ({
-      selectedPhotos: photos.selectedPhotos,
-      step: stepState.step,
-      postStateSnapshot: postState.getSnapshot(),
-    }),
-    [photos.selectedPhotos, stepState.step, postState],
-  );
-
-  const onRestore = useCallback(
-    (data: {
-      files: File[];
-      processedPhotos: File[];
-      filteredPhotos?: File[];
-      finalStep: CreatePostStep;
-      postState: Parameters<typeof postState.hydrate>[0];
-    }) => {
-      photos.setSelectedPhotos(data.files);
-      postState.hydrate(data.postState);
-      photos.setProcessedPhotos(data.processedPhotos);
-      if (data.filteredPhotos != null) {
-        photos.setFilteredPhotos(data.filteredPhotos);
-      }
-      stepState.setStep(data.finalStep);
-    },
-    [photos, postState, stepState],
-  );
-
-  const draft = useDraft({
-    doClose,
-    getDraftData,
-    onRestore,
-  });
-
   const handlers = useHandlers({
     stepState,
     exports,
@@ -107,6 +69,14 @@ export const useFlow = ({ onClose, profile }: Params) => {
   const hasUnsavedContent = photos.selectedPhotos.length > 0;
   const closeModal = useCloseModal({ hasUnsavedContent, doClose });
 
+  const handleSaveDraftStub = useCallback(() => {
+    doClose();
+  }, [doClose]);
+
+  const handleOpenDraftStub = useCallback(() => {
+    // TODO: заглушка — открытие черновика
+  }, []);
+
   return {
     step: stepState.step,
     selectedPhotos: photos.selectedPhotos,
@@ -115,15 +85,12 @@ export const useFlow = ({ onClose, profile }: Params) => {
     filteredPhotos: photos.filteredPhotos,
     isCroppingExporting: exports.isCroppingExporting,
     isFiltersExporting: exports.isFiltersExporting,
-    isDraftLoading: draft.isDraftLoading,
-    draftExists: draft.draftExists,
-    loadDraftAndRestore: draft.loadDraftAndRestore,
-    onOpenDraft: draft.loadDraftAndRestore,
     isFirstStep: stepState.isFirstStep,
     isLastStep: stepState.isLastStep,
-    handleSaveDraft: draft.handleSaveDraft,
+    handleSaveDraft: handleSaveDraftStub,
     handleCloseRequest: closeModal.handleCloseRequest,
-    handleDiscard: draft.handleDiscard,
+    handleDiscard: doClose,
+    onOpenDraft: handleOpenDraftStub,
     isCloseModalOpened: closeModal.isCloseModalOpened,
     setIsCloseModalOpened: closeModal.setIsCloseModalOpened,
     goToAddPhotos: stepState.goToAddPhotos,

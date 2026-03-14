@@ -16,7 +16,7 @@
   aspect-ratio: 1;
   width: 100%;
   max-width: 400px;
-  border-radius: 12px;
+  border-radius: 2px;
 
   background: var(--color-dark-400);
 }

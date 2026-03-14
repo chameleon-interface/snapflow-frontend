@@ -68,7 +68,7 @@ export const CloseModal = ({
           aria-label={t('closeConfirmSaveDraft')}
           disabled={isSaving}
         >
-          {isSaving ? t('savingDraft') : t('closeConfirmSaveDraft')}
+          {isSaving ? '...' : t('closeConfirmSaveDraft')}
         </Button>
       </div>
     </Modal>

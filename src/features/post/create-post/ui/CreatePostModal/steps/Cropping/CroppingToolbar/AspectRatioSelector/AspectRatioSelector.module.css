@@ -13,7 +13,7 @@
   height: 40px;
   padding: 0;
   border: none;
-  border-radius: 10px;
+  border-radius: 2px;
 
   color: var(--color-light-100);
 
@@ -42,7 +42,7 @@
   width: 100%;
   padding: 10px 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: 2px;
 
   font-size: 14px;
   color: var(--color-light-100);
@@ -84,5 +84,5 @@
   width: 18px;
   height: 18px;
   border: 2px solid var(--color-dark-100);
-  border-radius: 6px;
+  border-radius: 2px;
 }

@@ -42,10 +42,3 @@ export type PublishProfile = {
   username?: string;
   avatar?: string;
 };
-
-/** Черновик для сохранения в IndexedDB */
-export type StoredDraft = {
-  photoBlobs: { blob: Blob; name: string }[];
-  step: CreatePostStep;
-  postState: DraftPostState;
-};

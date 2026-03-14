@@ -9,7 +9,7 @@
   min-width: 0;
   padding: 0;
   border: none;
-  border-radius: 10px;
+  border-radius: 2px;
 
   background: none;
 
@@ -33,7 +33,7 @@
   aspect-ratio: 1;
   width: 100%;
   border: 2px solid transparent;
-  border-radius: 8px;
+  border-radius: 2px;
 
   transition:
     border-color 0.15s ease,

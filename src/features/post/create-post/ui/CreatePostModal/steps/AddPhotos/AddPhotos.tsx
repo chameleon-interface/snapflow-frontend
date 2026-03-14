@@ -9,16 +9,12 @@ import styles from './AddPhotos.module.css';
 type Props = {
   selectedPhotos: File[];
   setSelectedPhotos: (photos: File[]) => void;
-  draftExists?: boolean;
-  isDraftLoading?: boolean;
   onOpenDraft?: () => void;
 };
 
 export const AddPhotos = ({
   selectedPhotos,
   setSelectedPhotos,
-  draftExists = false,
-  isDraftLoading = false,
   onOpenDraft,
 }: Props) => {
   const t = useTranslations('CreatePost');
@@ -45,17 +41,14 @@ export const AddPhotos = ({
           onError={setError}
           multiple
         />
-        {draftExists && (
-          <Button
-            className={styles.openDraftButton}
-            variant="outlined"
-            onClick={() => onOpenDraft?.()}
-            disabled={isDraftLoading}
-            aria-label={t('openDraft')}
-          >
-            {isDraftLoading ? t('openingDraft') : t('openDraft')}
-          </Button>
-        )}
+        <Button
+          className={styles.openDraftButton}
+          variant="outlined"
+          onClick={() => onOpenDraft?.()}
+          aria-label={t('openDraft')}
+        >
+          {t('openDraft')}
+        </Button>
       </div>
     </>
   );

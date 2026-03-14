@@ -7,4 +7,3 @@ export { EmailModal } from './EmailModal';
 export { ExpiredLinkLayout } from './ExpiredLinkLayout';
 export { QueryProgressBar } from './QueryProgressBar';
 export { SelectPhotos } from './SelectPhotos/ui';
-export { Carousel } from './Carousel/ui';

@@ -5,7 +5,7 @@ import {
   getFilterStyle,
   useFileObjectUrls,
 } from '@/features/post/create-post/lib';
-import { Carousel } from '@/shared/ui';
+import { Carousel } from 'snapflow-ui-kit/client';
 import { useTranslations } from 'next-intl';
 import { FilterSlide } from './FilterSlide';
 import { FilterThumb } from './FilterThumb';

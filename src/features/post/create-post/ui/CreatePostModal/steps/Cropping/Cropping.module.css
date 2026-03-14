@@ -12,6 +12,12 @@
 
 .carousel {
   width: 100%;
+  aspect-ratio: unset;
+  min-height: 0;
+}
+
+.carousel :global([class*='slide']) img {
+  object-fit: contain;
 }
 
 @media (width <= 768px) {

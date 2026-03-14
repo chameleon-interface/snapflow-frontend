@@ -11,8 +11,6 @@ export const StepContent = (p: Props) => {
       <AddPhotos
         selectedPhotos={p.selectedPhotos}
         setSelectedPhotos={p.setSelectedPhotos}
-        draftExists={p.draftExists}
-        isDraftLoading={p.isDraftLoading}
         onOpenDraft={p.onOpenDraft}
       />
     );
