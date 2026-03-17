@@ -11,6 +11,8 @@
 .carouselSection {
   display: flex;
   flex-direction: column;
+
+  aspect-ratio: 4 / 3;
   min-width: 0;
   min-height: 0;
 }
@@ -20,9 +22,10 @@
   flex: 1;
   flex-direction: column;
 
+  aspect-ratio: 4 / 3;
+  aspect-ratio: unset;
   width: 100%;
   min-height: 0;
-  aspect-ratio: unset;
 }
 
 .carousel :global([class*='slide']) img {
@@ -32,8 +35,8 @@
 .filterPanel {
   scroll-behavior: smooth;
 
-  overflow: hidden auto;
-
+  overflow: auto;
+  aspect-ratio: 4 / 3;
   min-height: 0;
   max-height: 100%;
   padding: 0 16px;

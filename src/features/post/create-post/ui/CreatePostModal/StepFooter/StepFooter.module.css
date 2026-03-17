@@ -6,7 +6,7 @@
 
   margin-top: 24px;
   padding-top: 16px;
-  border-top: 1px solid var(--color-dark-300, #333);
+  border-top: 1px solid var(--color-dark-300);
 }
 
 .footerLeft,
@@ -38,7 +38,7 @@
 }
 
 .previousBtn:focus-visible {
-  outline: 2px solid var(--color-accent-500, #6366f1);
+  outline: 2px solid var(--color-accent-500);
   outline-offset: 2px;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .nextBtn:focus-visible {
-  outline: 2px solid var(--color-accent-500, #6366f1);
+  outline: 2px solid var(--color-accent-500);
   outline-offset: 2px;
 }
 
@@ -80,14 +80,14 @@
 
 .nextBtnPublish:focus-visible {
   box-shadow:
-    0 0 0 2px var(--color-accent-500, #6366f1),
-    0 0 16px rgb(99 102 241 / 25%);
+    0 0 0 2px var(--color-accent-500),
+    0 0 16px color-mix(in srgb, var(--color-accent-500) 25%, transparent);
 }
 
 .nextBtnPublish:hover:not(:disabled) {
   box-shadow:
     0 4px 16px rgb(0 0 0 / 30%),
-    0 0 20px rgb(99 102 241 / 20%);
+    0 0 20px color-mix(in srgb, var(--color-accent-500) 20%, transparent);
 }
 
 @media (width <= 480px) {

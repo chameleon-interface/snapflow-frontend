@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { toastError, toastSuccess } from 'snapflow-ui-kit/client';
+import { toastSuccess } from 'snapflow-ui-kit/client';
 import type {
   CreatePostPayload,
   PublishProfile,
@@ -13,6 +13,7 @@ import { useStepState } from './useStepState';
 import { useCreatePostState } from './useCreatePostState';
 import { useExports } from './useExports';
 import { useCreatePostMutation } from '../../api/useCreatePostMutation';
+import { useCreateDraftMutation } from '../../api/useCreateDraftMutation';
 import { useCloseModal } from './useCloseModal';
 
 type Params = {
@@ -32,6 +33,7 @@ export const useFlow = ({ onClose, profile }: Params) => {
 
   const { mutate: createPost, isPending: isCreatePostPending } =
     useCreatePostMutation();
+  const { mutateAsync: createDraft } = useCreateDraftMutation();
   const { mutateAsync: uploadMedia, isPending: isUploadPending } =
     useUploadMediaMutation();
 
@@ -77,7 +79,8 @@ export const useFlow = ({ onClose, profile }: Params) => {
       return;
     }
     const nextStep = stepState.steps[stepState.currentIndex + 1];
-    if (nextStep != null) stepState.setStep(nextStep);
+    if (nextStep !== null && nextStep !== undefined)
+      stepState.setStep(nextStep);
   }, [stepState, exports]);
 
   const handlePreviousStep = useCallback(() => {
@@ -90,31 +93,30 @@ export const useFlow = ({ onClose, profile }: Params) => {
     if (nextStep === 'cropping') {
       photos.setCroppedPhotos([]);
     }
-    if (nextStep != null) stepState.setStep(nextStep);
+    if (nextStep !== null && nextStep !== undefined)
+      stepState.setStep(nextStep);
   }, [stepState, photos]);
 
   const handlePublish = useCallback(async () => {
     if (!profile?.id || photos.readyToUploadPhotos.length === 0) return;
 
-    try {
-      const fileIds = await uploadMedia(photos.readyToUploadPhotos);
-      const payload: CreatePostPayload = {
-        description,
-        fileIds,
-      };
+    const fileIds = await uploadMedia(photos.readyToUploadPhotos).catch(() => {
+      return null;
+    });
 
-      createPost(payload, {
-        onSuccess: () => {
-          toastSuccess(t('postPublishedSuccess'));
-          doClose();
-        },
-        onError: () => {
-          toastError(t('postPublishError'));
-        },
-      });
-    } catch {
-      toastError(t('postPublishError'));
-    }
+    if (fileIds === null) return;
+
+    const payload: CreatePostPayload = {
+      description,
+      fileIds,
+    };
+
+    createPost(payload, {
+      onSuccess: () => {
+        toastSuccess(t('postPublishedSuccess'));
+        doClose();
+      },
+    });
   }, [
     profile?.id,
     photos.readyToUploadPhotos,
@@ -128,12 +130,38 @@ export const useFlow = ({ onClose, profile }: Params) => {
   const hasUnsavedContent = photos.originalPhotos.length > 0;
   const closeModal = useCloseModal({ hasUnsavedContent, doClose });
 
-  const handleSaveDraftStub = useCallback(() => {
-    doClose();
-  }, [doClose]);
+  const handleSaveDraft = useCallback(async () => {
+    if (!profile?.id || photos.readyToUploadPhotos.length === 0) return;
 
-  const handleOpenDraftStub = useCallback(() => {
-    // TODO: заглушка — открытие черновика
+    const fileIds = await uploadMedia(photos.readyToUploadPhotos).catch(() => {
+      return null;
+    });
+
+    if (fileIds === null) return;
+
+    const payload: CreatePostPayload = {
+      description,
+      fileIds,
+    };
+
+    await createDraft(payload, {
+      onSuccess: () => {
+        toastSuccess(t('draftSaveSuccess'));
+        doClose();
+      },
+    });
+  }, [
+    profile?.id,
+    photos.readyToUploadPhotos,
+    description,
+    uploadMedia,
+    createDraft,
+    t,
+    doClose,
+  ]);
+
+  const handleOpenDraft = useCallback(() => {
+    // TODO: заглушка — открытие черновика будет реализовано позже
   }, []);
 
   return {
@@ -146,10 +174,10 @@ export const useFlow = ({ onClose, profile }: Params) => {
     isFiltersExporting: exports.isFiltersExporting,
     isFirstStep: stepState.isFirstStep,
     isLastStep: stepState.isLastStep,
-    handleSaveDraft: handleSaveDraftStub,
+    handleSaveDraft,
     handleCloseRequest: closeModal.handleCloseRequest,
     handleDiscard: doClose,
-    onOpenDraft: handleOpenDraftStub,
+    onOpenDraft: handleOpenDraft,
     isCloseModalOpened: closeModal.isCloseModalOpened,
     setIsCloseModalOpened: closeModal.setIsCloseModalOpened,
     goToAddPhotos: stepState.goToAddPhotos,

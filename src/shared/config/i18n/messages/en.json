@@ -167,7 +167,10 @@
     "closeModalMessage": "Do you really want to close the creation of a publication?",
     "closeModalSubMessage": "Unsaved changes will be lost",
     "closeModalDiscard": "Discard",
-    "closeModalSaveDraft": "Save draft"
+    "closeModalSaveDraft": "Save draft",
+    "draftSaveSuccess": "Draft saved",
+    "draftSaveError": "Failed to save draft. Please try again.",
+    "draftOpenError": "Failed to open draft. Please try again."
   },
   "SelectPhotos": {
     "selectFromComputer": "Select photos"

@@ -12,11 +12,11 @@
 }
 
 .message {
-  color: var(--color-text-primary, inherit);
+  color: var(--color-light-100);
 }
 
 .subMessage {
-  color: var(--color-text-secondary, #666);
+  color: var(--color-light-900);
 }
 
 .footer {

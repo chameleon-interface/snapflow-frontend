@@ -33,7 +33,7 @@ export const uploadFileToStorage = async (
 ): Promise<void> => {
   await axios.put(uploadUrl, file, {
     headers: {
-      'Content-Type': file.type || 'application/octet-stream',
+      'Content-Type': file.type,
     },
   });
 };

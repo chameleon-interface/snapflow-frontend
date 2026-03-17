@@ -5,6 +5,7 @@
   grid-template-rows: minmax(280px, 65vh);
   gap: 24px;
 
+  aspect-ratio: 4 / 3;
   width: 100%;
 }
 
@@ -20,9 +21,9 @@
   flex: 1;
   flex-direction: column;
 
+  aspect-ratio: unset;
   width: 100%;
   min-height: 0;
-  aspect-ratio: unset;
 }
 
 .carousel :global([class*='slide']) img {
@@ -44,11 +45,11 @@
 }
 
 .formPanel {
-  overflow: hidden scroll;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   gap: 24px;
-
+  aspect-ratio: 4 / 3;
   min-height: 0;
   max-height: 100%;
   padding: 24px 20px;

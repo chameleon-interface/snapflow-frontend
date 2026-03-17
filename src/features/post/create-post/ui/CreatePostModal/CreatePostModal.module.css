@@ -1,13 +1,15 @@
 .modalContainer {
   display: flex;
   flex-direction: column;
-  width: 500px;
+
+  width: clamp(320px, 42vw, 520px);
+  max-width: calc(100vw - 32px);
   max-height: 90vh;
 }
 
 .modalContainerWide {
-  width: 90%;
-  max-width: 900px;
+  width: min(960px, calc(100vw - 32px));
+  max-width: none;
 }
 
 .content {
@@ -23,13 +25,11 @@
 
 @media (width <= 768px) {
   .modalContainer {
-    width: calc(100% - 32px);
     max-height: 92vh;
   }
 
   .modalContainerWide {
-    width: calc(100% - 32px);
-    max-width: none;
+    width: calc(100vw - 32px);
   }
 
   .content {
@@ -40,7 +40,8 @@
 @media (width <= 380px) {
   .modalContainer,
   .modalContainerWide {
-    width: calc(100% - 16px);
+    width: calc(100vw - 16px);
+    max-width: calc(100vw - 16px);
     max-height: 94vh;
   }
 

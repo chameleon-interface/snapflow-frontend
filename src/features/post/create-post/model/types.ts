@@ -13,7 +13,7 @@ export type PostMedia = {
   position: number;
 };
 
-export type CreatePostResponse = {
+export type PostWithMedia = {
   id: number;
   description: string;
   profileId: number;

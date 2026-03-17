@@ -166,7 +166,10 @@
     "closeModalMessage": "Вы действительно хотите отменить создание публикации?",
     "closeModalSubMessage": "Несохранённые изменения будут потеряны",
     "closeModalDiscard": "Отменить",
-    "closeModalSaveDraft": "Сохранить черновик"
+    "closeModalSaveDraft": "Сохранить черновик",
+    "draftSaveSuccess": "Черновик сохранён",
+    "draftSaveError": "Не удалось сохранить черновик. Попробуйте позже.",
+    "draftOpenError": "Не удалось открыть черновик. Попробуйте позже."
   },
   "SelectPhotos": {
     "selectFromComputer": "Выбрать фото"
