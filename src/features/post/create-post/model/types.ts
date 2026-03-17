@@ -1,17 +1,26 @@
 import type { Area } from 'react-easy-crop';
 
-/** Payload для API создания поста. location пока не поддерживается бэкендом. */
 export type CreatePostPayload = {
-  profileId: number;
   description: string;
-  photoFile: File[];
+  fileIds: string[];
+};
+
+export type PostMedia = {
+  id: number;
+  url: string;
+  mimeType: string;
+  size: number;
+  position: number;
 };
 
 export type CreatePostResponse = {
   id: number;
-  profileId: number;
-  photos: string[];
   description: string;
+  profileId: number;
+  username: string;
+  status: 'PUBLISHED' | 'DRAFT';
+  createdAt: string;
+  postMedias: PostMedia[];
 };
 
 /** Шаги создания поста */

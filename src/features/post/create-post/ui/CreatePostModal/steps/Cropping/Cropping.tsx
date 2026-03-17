@@ -22,8 +22,8 @@ import { CropSlide } from './CropSlide';
 import { CroppingToolbar } from './CroppingToolbar';
 
 type Props = {
-  selectedPhotos: File[];
-  setSelectedPhotos?: (photos: File[]) => void;
+  originalPhotos: File[];
+  setOriginalPhotos?: (photos: File[]) => void;
   onPhotosEmpty?: () => void;
   currentSlideIndex: number;
   setCurrentSlideIndex: (index: number) => void;
@@ -38,8 +38,8 @@ type Props = {
 };
 
 export const Cropping = ({
-  selectedPhotos,
-  setSelectedPhotos,
+  originalPhotos,
+  setOriginalPhotos,
   onPhotosEmpty,
   currentSlideIndex,
   setCurrentSlideIndex,
@@ -55,12 +55,12 @@ export const Cropping = ({
   const t = useTranslations('CreatePost');
   const tValidation = useTranslations('Validation.selectPhotos');
   const [error, setError] = useState<string | null>(null);
-  const urls = useFileObjectUrls(selectedPhotos);
+  const urls = useFileObjectUrls(originalPhotos);
   const aspectOptions = getAspectOptions(t);
 
   useEffect(() => {
     queueMicrotask(() => setError(null));
-  }, [selectedPhotos]);
+  }, [originalPhotos]);
 
   const currentAspectIndex = aspectAt(currentSlideIndex);
 
@@ -74,27 +74,27 @@ export const Cropping = ({
   const handleRemovePhoto = useCallback(
     (index: number) => {
       onRemovePhotoAt?.(index);
-      const next = getPhotosAfterRemove(selectedPhotos, index);
-      setSelectedPhotos?.(next);
+      const next = getPhotosAfterRemove(originalPhotos, index);
+      setOriginalPhotos?.(next);
       if (next.length === 0) onPhotosEmpty?.();
     },
-    [selectedPhotos, setSelectedPhotos, onPhotosEmpty, onRemovePhotoAt],
+    [originalPhotos, setOriginalPhotos, onPhotosEmpty, onRemovePhotoAt],
   );
 
   const handleAddPhotos = useCallback(
     (files: File[]) => {
-      if (!setSelectedPhotos) return;
+      if (!setOriginalPhotos) return;
       addPhotosToSelection(files, {
-        selectedPhotos,
-        setSelectedPhotos,
+        originalPhotos,
+        setOriginalPhotos,
         setError,
         t: tValidation,
       });
     },
-    [selectedPhotos, setSelectedPhotos, tValidation],
+    [originalPhotos, setOriginalPhotos, tValidation],
   );
 
-  if (selectedPhotos.length === 0) return null;
+  if (originalPhotos.length === 0) return null;
 
   return (
     <>
@@ -137,7 +137,7 @@ export const Cropping = ({
           zoomMax={MAX_ZOOM}
           zoomStep={ZOOM_STEP}
           onZoomChange={(z) => onZoomChange(currentSlideIndex, z)}
-          photos={selectedPhotos}
+          photos={originalPhotos}
           previewUrls={urls}
           currentSlideIndex={currentSlideIndex}
           onSelectSlide={setCurrentSlideIndex}

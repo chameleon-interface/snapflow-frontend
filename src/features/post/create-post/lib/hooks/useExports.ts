@@ -12,20 +12,20 @@ type PostStateSlice = {
 };
 
 type Params = {
-  selectedPhotos: File[];
-  processedPhotos: File[];
+  originalPhotos: File[];
+  croppedPhotos: File[];
   postState: PostStateSlice;
-  setProcessedPhotos: (files: File[] | ((prev: File[]) => File[])) => void;
-  setFilteredPhotos: (files: File[] | ((prev: File[]) => File[])) => void;
+  setCroppedPhotos: (files: File[] | ((prev: File[]) => File[])) => void;
+  setReadyToUploadPhotos: (files: File[] | ((prev: File[]) => File[])) => void;
   setStep: (step: CreatePostStep) => void;
 };
 
 export const useExports = ({
-  selectedPhotos,
-  processedPhotos,
+  originalPhotos,
+  croppedPhotos,
   postState,
-  setProcessedPhotos,
-  setFilteredPhotos,
+  setCroppedPhotos,
+  setReadyToUploadPhotos,
   setStep,
 }: Params) => {
   const [isCroppingExporting, setIsCroppingExporting] = useState(false);
@@ -35,34 +35,26 @@ export const useExports = ({
     setIsCroppingExporting(true);
     try {
       const files = await runCroppingExport(
-        selectedPhotos,
+        originalPhotos,
         postState.croppedAreasPixels,
       );
-      setProcessedPhotos(files);
+      setCroppedPhotos(files);
       setStep('filters');
     } finally {
       setIsCroppingExporting(false);
     }
-  }, [
-    selectedPhotos,
-    postState.croppedAreasPixels,
-    setProcessedPhotos,
-    setStep,
-  ]);
+  }, [originalPhotos, postState.croppedAreasPixels, setCroppedPhotos, setStep]);
 
   const runFiltersNext = useCallback(async () => {
     setIsFiltersExporting(true);
     try {
-      const files = await applyFiltersExport(
-        processedPhotos,
-        postState.filterAt,
-      );
-      setFilteredPhotos(files);
+      const files = await applyFiltersExport(croppedPhotos, postState.filterAt);
+      setReadyToUploadPhotos(files);
       setStep('publish');
     } finally {
       setIsFiltersExporting(false);
     }
-  }, [processedPhotos, postState.filterAt, setFilteredPhotos, setStep]);
+  }, [croppedPhotos, postState.filterAt, setReadyToUploadPhotos, setStep]);
 
   return {
     runCroppingNext,

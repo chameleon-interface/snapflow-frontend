@@ -9,8 +9,8 @@ export const StepContent = (p: Props) => {
   if (p.step === 'addPhotos') {
     return (
       <AddPhotos
-        selectedPhotos={p.selectedPhotos}
-        setSelectedPhotos={p.setSelectedPhotos}
+        originalPhotos={p.originalPhotos}
+        setOriginalPhotos={p.setOriginalPhotos}
         onOpenDraft={p.onOpenDraft}
       />
     );
@@ -18,8 +18,8 @@ export const StepContent = (p: Props) => {
   if (p.step === 'cropping') {
     return (
       <Cropping
-        selectedPhotos={p.selectedPhotos}
-        setSelectedPhotos={p.setSelectedPhotos}
+        originalPhotos={p.originalPhotos}
+        setOriginalPhotos={p.setOriginalPhotos}
         onPhotosEmpty={p.goToAddPhotos}
         currentSlideIndex={p.currentSlideIndex}
         setCurrentSlideIndex={p.setCurrentSlideIndex}
@@ -37,7 +37,7 @@ export const StepContent = (p: Props) => {
   if (p.step === 'filters') {
     return (
       <Filters
-        photos={p.processedPhotos}
+        photos={p.croppedPhotos}
         currentIndex={p.currentSlideIndex}
         onSlideChange={p.setCurrentSlideIndex}
         filterAt={p.filterAt}
@@ -48,7 +48,7 @@ export const StepContent = (p: Props) => {
   if (p.step === 'publish') {
     return (
       <Publish
-        photos={p.filteredPhotos}
+        photos={p.readyToUploadPhotos}
         description={p.description}
         onDescriptionChange={p.setDescription}
         location={p.location}

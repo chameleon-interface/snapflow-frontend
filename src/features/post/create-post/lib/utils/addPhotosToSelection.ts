@@ -5,8 +5,8 @@ import {
 import { MAX_PHOTOS_MULTIPLE } from '@/shared/ui/SelectPhotos/model/constants';
 
 export type AddPhotosToSelectionContext = {
-  selectedPhotos: File[];
-  setSelectedPhotos: (photos: File[]) => void;
+  originalPhotos: File[];
+  setOriginalPhotos: (photos: File[]) => void;
   setError: (message: string | null) => void;
   t: (key: string, values?: Record<string, string | number>) => string;
 };
@@ -14,8 +14,8 @@ export type AddPhotosToSelectionContext = {
 export const addPhotosToSelection = (
   files: File[],
   {
-    selectedPhotos,
-    setSelectedPhotos,
+    originalPhotos,
+    setOriginalPhotos,
     setError,
     t,
   }: AddPhotosToSelectionContext,
@@ -25,15 +25,15 @@ export const addPhotosToSelection = (
   files.forEach((f) => dt.items.add(f));
   processSelectedFiles(dt.files, {
     multiple: true,
-    alreadySelectedCount: selectedPhotos.length,
-    alreadySelectedNames: getPhotoNames(selectedPhotos),
+    alreadySelectedCount: originalPhotos.length,
+    alreadySelectedNames: getPhotoNames(originalPhotos),
     onFilesProcessed: (fileList) => {
       if (!fileList?.length) return;
-      const next = [...selectedPhotos, ...Array.from(fileList)].slice(
+      const next = [...originalPhotos, ...Array.from(fileList)].slice(
         0,
         MAX_PHOTOS_MULTIPLE,
       );
-      setSelectedPhotos(next);
+      setOriginalPhotos(next);
     },
     onError: setError,
     t,

@@ -7,14 +7,14 @@ import { Alert, Button } from 'snapflow-ui-kit';
 import styles from './AddPhotos.module.css';
 
 type Props = {
-  selectedPhotos: File[];
-  setSelectedPhotos: (photos: File[]) => void;
+  originalPhotos: File[];
+  setOriginalPhotos: (photos: File[]) => void;
   onOpenDraft?: () => void;
 };
 
 export const AddPhotos = ({
-  selectedPhotos,
-  setSelectedPhotos,
+  originalPhotos,
+  setOriginalPhotos,
   onOpenDraft,
 }: Props) => {
   const t = useTranslations('CreatePost');
@@ -22,7 +22,7 @@ export const AddPhotos = ({
 
   useEffect(() => {
     queueMicrotask(() => setError(null));
-  }, [selectedPhotos]);
+  }, [originalPhotos]);
 
   return (
     <>
@@ -36,8 +36,8 @@ export const AddPhotos = ({
       )}
       <div className={styles.content}>
         <SelectPhotos
-          photos={selectedPhotos}
-          onSelectPhotos={setSelectedPhotos}
+          photos={originalPhotos}
+          onSelectPhotos={setOriginalPhotos}
           onError={setError}
           multiple
         />

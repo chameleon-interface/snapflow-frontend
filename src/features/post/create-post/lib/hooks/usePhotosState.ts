@@ -3,16 +3,16 @@
 import { useState } from 'react';
 
 export const usePhotosState = () => {
-  const [selectedPhotos, setSelectedPhotos] = useState<File[]>([]);
-  const [processedPhotos, setProcessedPhotos] = useState<File[]>([]);
-  const [filteredPhotos, setFilteredPhotos] = useState<File[]>([]);
+  const [originalPhotos, setOriginalPhotos] = useState<File[]>([]);
+  const [croppedPhotos, setCroppedPhotos] = useState<File[]>([]);
+  const [readyToUploadPhotos, setReadyToUploadPhotos] = useState<File[]>([]);
 
   return {
-    selectedPhotos,
-    setSelectedPhotos,
-    processedPhotos,
-    setProcessedPhotos,
-    filteredPhotos,
-    setFilteredPhotos,
+    originalPhotos,
+    setOriginalPhotos,
+    croppedPhotos,
+    setCroppedPhotos,
+    readyToUploadPhotos,
+    setReadyToUploadPhotos,
   };
 };

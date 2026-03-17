@@ -6,8 +6,8 @@ export type Profile = {
   dateOfBirth: string;
   country: string;
   city: string;
-  avatar: string;
-  about: string;
+  avatarUrl: string;
+  aboutMe: string;
   followersCount: number;
   followingCount: number;
   postsCount: number;

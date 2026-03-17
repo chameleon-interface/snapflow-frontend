@@ -11,9 +11,7 @@ export const useGetProfileQuery = (id: string | undefined) => {
   return useQuery({
     queryKey: profileQueryKey(id ?? ''),
     queryFn: async () => {
-      const { data } = await api.get<Profile>(
-        `http://localhost:3001/profiles/${id}`,
-      );
+      const { data } = await api.get<Profile>(`/users/profile/${id}`);
       return data;
     },
     enabled: !!id,

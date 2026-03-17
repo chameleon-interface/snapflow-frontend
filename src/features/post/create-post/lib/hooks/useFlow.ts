@@ -1,12 +1,18 @@
 'use client';
 
 import { useCallback, useState } from 'react';
-import type { PublishProfile } from '@/features/post/create-post/model/types';
+import { useTranslations } from 'next-intl';
+import { toastError, toastSuccess } from 'snapflow-ui-kit/client';
+import type {
+  CreatePostPayload,
+  PublishProfile,
+} from '@/features/post/create-post/model/types';
+import { useUploadMediaMutation } from '@/shared/api/media/useUploadMediaMutation';
 import { usePhotosState } from './usePhotosState';
 import { useStepState } from './useStepState';
 import { useCreatePostState } from './useCreatePostState';
 import { useExports } from './useExports';
-import { useHandlers } from './useHandlers';
+import { useCreatePostMutation } from '../../api/useCreatePostMutation';
 import { useCloseModal } from './useCloseModal';
 
 type Params = {
@@ -15,19 +21,25 @@ type Params = {
 };
 
 export const useFlow = ({ onClose, profile }: Params) => {
+  const t = useTranslations('CreatePost');
   const photos = usePhotosState();
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
   const postState = useCreatePostState({
-    photoCount: photos.selectedPhotos.length,
+    photoCount: photos.originalPhotos.length,
   });
   const stepState = useStepState();
 
-  const setSelectedPhotos = useCallback(
+  const { mutate: createPost, isPending: isCreatePostPending } =
+    useCreatePostMutation();
+  const { mutateAsync: uploadMedia, isPending: isUploadPending } =
+    useUploadMediaMutation();
+
+  const setOriginalPhotos = useCallback(
     (value: File[] | ((prev: File[]) => File[])) => {
-      photos.setSelectedPhotos(value);
+      photos.setOriginalPhotos(value);
       const nextFiles =
-        typeof value === 'function' ? value(photos.selectedPhotos) : value;
+        typeof value === 'function' ? value(photos.originalPhotos) : value;
       if (nextFiles.length > 0 && stepState.step === 'addPhotos') {
         stepState.setStep('cropping');
       }
@@ -36,9 +48,9 @@ export const useFlow = ({ onClose, profile }: Params) => {
   );
 
   const doClose = useCallback(() => {
-    photos.setSelectedPhotos([]);
-    photos.setProcessedPhotos([]);
-    photos.setFilteredPhotos([]);
+    photos.setOriginalPhotos([]);
+    photos.setCroppedPhotos([]);
+    photos.setReadyToUploadPhotos([]);
     setDescription('');
     setLocation('');
     stepState.setStep('addPhotos');
@@ -47,26 +59,73 @@ export const useFlow = ({ onClose, profile }: Params) => {
   }, [onClose, postState, photos, stepState]);
 
   const exports = useExports({
-    selectedPhotos: photos.selectedPhotos,
-    processedPhotos: photos.processedPhotos,
+    originalPhotos: photos.originalPhotos,
+    croppedPhotos: photos.croppedPhotos,
     postState,
-    setProcessedPhotos: photos.setProcessedPhotos,
-    setFilteredPhotos: photos.setFilteredPhotos,
+    setCroppedPhotos: photos.setCroppedPhotos,
+    setReadyToUploadPhotos: photos.setReadyToUploadPhotos,
     setStep: stepState.setStep,
   });
 
-  const handlers = useHandlers({
-    stepState,
-    exports,
-    photos: {
-      setSelectedPhotos,
-      setProcessedPhotos: photos.setProcessedPhotos,
-      filteredPhotos: photos.filteredPhotos,
-    },
-    publish: { profile, description, doClose },
-  });
+  const handleNextStep = useCallback(async () => {
+    if (stepState.step === 'cropping') {
+      await exports.runCroppingNext();
+      return;
+    }
+    if (stepState.step === 'filters') {
+      await exports.runFiltersNext();
+      return;
+    }
+    const nextStep = stepState.steps[stepState.currentIndex + 1];
+    if (nextStep != null) stepState.setStep(nextStep);
+  }, [stepState, exports]);
 
-  const hasUnsavedContent = photos.selectedPhotos.length > 0;
+  const handlePreviousStep = useCallback(() => {
+    if (stepState.isFirstStep) return;
+    const nextStep = stepState.steps[stepState.currentIndex - 1];
+    if (nextStep === 'addPhotos') {
+      photos.setOriginalPhotos([]);
+      photos.setCroppedPhotos([]);
+    }
+    if (nextStep === 'cropping') {
+      photos.setCroppedPhotos([]);
+    }
+    if (nextStep != null) stepState.setStep(nextStep);
+  }, [stepState, photos]);
+
+  const handlePublish = useCallback(async () => {
+    if (!profile?.id || photos.readyToUploadPhotos.length === 0) return;
+
+    try {
+      const fileIds = await uploadMedia(photos.readyToUploadPhotos);
+      const payload: CreatePostPayload = {
+        description,
+        fileIds,
+      };
+
+      createPost(payload, {
+        onSuccess: () => {
+          toastSuccess(t('postPublishedSuccess'));
+          doClose();
+        },
+        onError: () => {
+          toastError(t('postPublishError'));
+        },
+      });
+    } catch {
+      toastError(t('postPublishError'));
+    }
+  }, [
+    profile?.id,
+    photos.readyToUploadPhotos,
+    description,
+    uploadMedia,
+    createPost,
+    t,
+    doClose,
+  ]);
+
+  const hasUnsavedContent = photos.originalPhotos.length > 0;
   const closeModal = useCloseModal({ hasUnsavedContent, doClose });
 
   const handleSaveDraftStub = useCallback(() => {
@@ -79,10 +138,10 @@ export const useFlow = ({ onClose, profile }: Params) => {
 
   return {
     step: stepState.step,
-    selectedPhotos: photos.selectedPhotos,
-    setSelectedPhotos,
-    processedPhotos: photos.processedPhotos,
-    filteredPhotos: photos.filteredPhotos,
+    originalPhotos: photos.originalPhotos,
+    setOriginalPhotos,
+    croppedPhotos: photos.croppedPhotos,
+    readyToUploadPhotos: photos.readyToUploadPhotos,
     isCroppingExporting: exports.isCroppingExporting,
     isFiltersExporting: exports.isFiltersExporting,
     isFirstStep: stepState.isFirstStep,
@@ -100,7 +159,10 @@ export const useFlow = ({ onClose, profile }: Params) => {
     setLocation,
     profile,
     ...postState,
-    ...handlers,
+    handleNextStep,
+    handlePreviousStep,
+    handlePublish,
+    isPublishPending: isUploadPending || isCreatePostPending,
   };
 };
 
