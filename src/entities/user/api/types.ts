@@ -18,7 +18,7 @@ export type UploadProfileAvatarResponse = {
 
 export type UserProfile = UpdateProfileDto & {
   id: number;
-  avatar: string;
+  avatarUrl: string;
   followersCount: number;
   followingCount: number;
   postsCount: number;

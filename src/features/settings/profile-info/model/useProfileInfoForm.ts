@@ -125,7 +125,7 @@ export const useProfileInfoForm = (): UseProfileInfoFormResult => {
     onCountryChange,
     onCityChange,
     profileId,
-    avatarUrl: profile?.avatar ?? '',
+    avatarUrl: profile?.avatarUrl ?? '',
     dateOfBirth,
     country,
     city,

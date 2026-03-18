@@ -32,7 +32,7 @@ export const useUploadProfileAvatar = (profileId: string) => {
         ['profile', profileId],
         (currentProfile) =>
           currentProfile
-            ? { ...currentProfile, avatar: publicUrl }
+            ? { ...currentProfile, avatarUrl: publicUrl }
             : currentProfile,
       );
     },
