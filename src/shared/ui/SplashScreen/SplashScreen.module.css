@@ -1,0 +1,113 @@
+.overlay {
+  pointer-events: all;
+
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 1;
+  background-color: var(--color-dark-900);
+
+  transition: opacity 500ms ease;
+}
+
+.fadeOut {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.title {
+  display: inline-flex;
+  align-items: center;
+
+  margin: 0;
+
+  font-family: var(--font-inter), sans-serif;
+  font-size: clamp(36px, 7vw, 72px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-light-100);
+  letter-spacing: 0.02em;
+}
+
+.cursor {
+  width: 0.08em;
+  height: 1em;
+  margin-left: 0.02em;
+
+  opacity: 1;
+  background: currentcolor;
+
+  animation: blink 0.9s steps(1, end) infinite;
+}
+
+.loadingDots {
+  transform: translateY(1px);
+
+  overflow: hidden;
+  display: inline-flex;
+  gap: 0.02em;
+  align-items: baseline;
+
+  width: 0;
+  margin-left: 0;
+
+  opacity: 0;
+
+  transition:
+    width 260ms ease,
+    margin-left 260ms ease,
+    opacity 260ms ease,
+    transform 260ms ease;
+}
+
+.loadingDotsVisible {
+  transform: translateY(0);
+
+  width: 1.35em;
+  margin-left: 0.04em;
+
+  opacity: 1;
+
+  transition-delay: 1000ms;
+}
+
+.dot {
+  opacity: 0.2;
+  animation: dot-pulse 1.2s ease-in-out infinite;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes dot-pulse {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+
+  40% {
+    opacity: 1;
+  }
+}

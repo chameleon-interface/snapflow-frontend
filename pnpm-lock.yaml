@@ -47,8 +47,8 @@ importers:
         specifier: 2.6.0
         version: 2.6.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       snapflow-ui-kit:
-        specifier: 1.2.7
-        version: 1.2.7(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: 1.2.8
+        version: 1.2.8(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       zod:
         specifier: 4.3.6
         version: 4.3.6
@@ -4418,10 +4418,10 @@ packages:
       }
     engines: { node: '>=18' }
 
-  snapflow-ui-kit@1.2.7:
+  snapflow-ui-kit@1.2.8:
     resolution:
       {
-        integrity: sha512-AaDrTH6Cu5G5uSRpOXi6+rdQv+jBsAVsB1zjE1oIRb1Ilftc3qkWig1TvMdq22f16MVkqrWGmQyd+wWJ5OTAoQ==,
+        integrity: sha512-PsTLaJiBmRMi5wNoSSg011NOeF7pdt0LwnWu5sKIBi26ucWdNN7mlqpwlG2da9Vm0j5RjcV79MpOd4lQjs/13w==,
       }
     peerDependencies:
       react: 19.2.3
@@ -7673,7 +7673,7 @@ snapshots:
       ansi-styles: 6.2.3
       is-fullwidth-code-point: 5.1.0
 
-  snapflow-ui-kit@1.2.7(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  snapflow-ui-kit@1.2.8(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       '@radix-ui/react-dropdown-menu': 2.1.16(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       clsx: 2.1.1
