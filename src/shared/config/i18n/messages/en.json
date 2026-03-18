@@ -40,8 +40,10 @@
       "payments": "My payments"
     },
     "selectProfilePhoto": "Select Profile Photo",
+    "profileAvatar": "Profile avatar",
     "saveChanges": "Save Changes",
     "settingsSaved": "Your settings are saved!",
+    "avatarUpdated": "Avatar updated successfully!",
     "fields": {
       "username": "Username",
       "firstName": "First Name",

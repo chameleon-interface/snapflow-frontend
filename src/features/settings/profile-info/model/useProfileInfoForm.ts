@@ -20,6 +20,8 @@ type UseProfileInfoFormResult = {
   onDateOfBirthChange: (value: string) => void;
   onCountryChange: (value: string) => void;
   onCityChange: (value: string) => void;
+  profileId: string;
+  avatarUrl: string;
   dateOfBirth: string;
   country: string;
   city: string;
@@ -36,7 +38,7 @@ const setValueConfig = {
 export const useProfileInfoForm = (): UseProfileInfoFormResult => {
   const t = useTranslations('Settings');
   const { data: me } = useMe();
-  const profileId = Number(me!.userId);
+  const profileId = me?.userId ?? '';
   const {
     data: profile,
     isPending: isProfilePending,
@@ -122,6 +124,8 @@ export const useProfileInfoForm = (): UseProfileInfoFormResult => {
     onDateOfBirthChange,
     onCountryChange,
     onCityChange,
+    profileId,
+    avatarUrl: profile?.avatar ?? '',
     dateOfBirth,
     country,
     city,

@@ -8,6 +8,14 @@ export type UpdateProfileDto = {
   aboutMe: string | null;
 };
 
+export type UploadProfileAvatarDto = {
+  avatar: File;
+};
+
+export type UploadProfileAvatarResponse = {
+  publicUrl: string;
+};
+
 export type UserProfile = UpdateProfileDto & {
   id: number;
   avatar: string;

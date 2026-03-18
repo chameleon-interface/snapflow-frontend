@@ -40,8 +40,10 @@
       "payments": "Мои платежи"
     },
     "selectProfilePhoto": "Выберите фото профиля",
+    "profileAvatar": "Аватар профиля",
     "saveChanges": "Сохранить изменения",
     "settingsSaved": "Ваши настройки сохранены!",
+    "avatarUpdated": "Аватар успешно обновлен!",
     "fields": {
       "username": "Имя пользователя",
       "firstName": "Имя",

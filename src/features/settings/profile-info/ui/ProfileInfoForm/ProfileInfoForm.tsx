@@ -23,6 +23,8 @@ export const ProfileInfoForm = () => {
     onDateOfBirthChange,
     onCountryChange,
     onCityChange,
+    profileId,
+    avatarUrl,
     dateOfBirth,
     country,
     city,
@@ -57,6 +59,8 @@ export const ProfileInfoForm = () => {
         <ProfileAvatarSection
           isMobile={isMobile}
           label={t('selectProfilePhoto')}
+          profileId={profileId}
+          avatarUrl={avatarUrl}
         />
 
         <div className={s.formColumn}>
