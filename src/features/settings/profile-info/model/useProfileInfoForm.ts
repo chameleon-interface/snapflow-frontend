@@ -7,7 +7,7 @@ import {
   UseFormReturn,
   useWatch,
 } from 'react-hook-form';
-import { useGetProfileById, useMe, useUpdateProfile } from '@/entities/user';
+import { useGetMyProfile, useMe, useUpdateProfile } from '@/entities/user';
 import { DEFAULT_SETTINGS_FORM_VALUES } from './settingsForm';
 import { settingsSchema, type SettingsFormValues } from './schema';
 import { toastSuccess } from 'snapflow-ui-kit/client';
@@ -43,8 +43,8 @@ export const useProfileInfoForm = (): UseProfileInfoFormResult => {
     data: profile,
     isPending: isProfilePending,
     isFetching: isProfileFetching,
-  } = useGetProfileById(profileId);
-  const { mutate, isPending } = useUpdateProfile(profileId);
+  } = useGetMyProfile();
+  const { mutate, isPending } = useUpdateProfile();
 
   const form = useForm<SettingsFormValues>({
     resolver: zodResolver(settingsSchema),

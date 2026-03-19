@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import type { UpdateProfileDto } from './types';
 import { api } from '@/shared/api';
 
-export const useUpdateProfile = (profileId: string) => {
+export const useUpdateProfile = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -10,7 +10,7 @@ export const useUpdateProfile = (profileId: string) => {
       await api.put<void>('users/profile/', body);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['profile', profileId] });
+      queryClient.invalidateQueries({ queryKey: ['my-profile'] });
     },
   });
 };

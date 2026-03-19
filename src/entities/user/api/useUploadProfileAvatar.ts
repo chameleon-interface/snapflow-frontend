@@ -6,7 +6,7 @@ import type {
 } from './types';
 import { api } from '@/shared/api';
 
-export const useUploadProfileAvatar = (profileId: string) => {
+export const useUploadProfileAvatar = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -29,7 +29,7 @@ export const useUploadProfileAvatar = (profileId: string) => {
     },
     onSuccess: ({ publicUrl }) => {
       queryClient.setQueryData<UserProfile | undefined>(
-        ['profile', profileId],
+        ['my-profile'],
         (currentProfile) =>
           currentProfile
             ? { ...currentProfile, avatarUrl: publicUrl }

@@ -18,9 +18,9 @@ export const useProfileAvatarSection = ({
   const t = useTranslations('Settings');
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const { mutate: uploadAvatar, isPending: isUploadPending } =
-    useUploadProfileAvatar(profileId);
+    useUploadProfileAvatar();
   const { mutate: deleteAvatar, isPending: isDeletePending } =
-    useDeleteProfileAvatar(profileId);
+    useDeleteProfileAvatar();
   const isPending = isUploadPending || isDeletePending;
 
   const handleButtonClick = () => {
