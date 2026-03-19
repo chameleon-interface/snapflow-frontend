@@ -3,7 +3,6 @@ import {
   MAX_FILE_SIZE_BYTES,
   MAX_PHOTOS_MULTIPLE,
 } from '../model/constants';
-import type { ProcessSelectedFilesOptions } from './processSelectedFiles';
 
 type ValidateFileResult =
   | { valid: true }
@@ -25,9 +24,6 @@ export const getMaxAllowedInSelection = (
 export const validateFile = (
   file: File,
   selectedNames: Set<string>,
-  // t is passed by caller for future translation of errorKey
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  t: ProcessSelectedFilesOptions['t'],
 ): ValidateFileResult => {
   if (selectedNames.has(file.name)) {
     return {

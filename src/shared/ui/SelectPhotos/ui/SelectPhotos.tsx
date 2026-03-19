@@ -8,6 +8,7 @@ import {
   getPhotoNames,
   mergeSelectedFiles,
   processSelectedFiles,
+  type ValidationError,
 } from '../lib';
 import { ACCEPT_IMAGE } from '../model/constants';
 import styles from './SelectPhotos.module.css';
@@ -49,8 +50,16 @@ export const SelectPhotos = ({
       alreadySelectedCount: photos.length,
       alreadySelectedNames,
       onFilesProcessed: applySelectedFiles,
-      onError,
-      t: tValidation,
+      onError: (error: ValidationError | null) => {
+        if (!error) {
+          onError(null);
+          return;
+        }
+
+        // `error.key` is a leaf key under `Validation.selectPhotos`.
+        // `error.values` contains exactly the placeholders required by that key.
+        onError(tValidation(error.key, error.values));
+      },
     });
     e.target.value = '';
   };

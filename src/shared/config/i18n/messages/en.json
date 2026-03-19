@@ -49,15 +49,17 @@
     }
   },
   "Modals": {
+    "Confirm": {
+      "yes": "Yes",
+      "no": "No"
+    },
     "EmailSent": {
       "title": "Email sent",
       "message": "We have sent a link to confirm your email to {email}"
     },
     "LogoutConfirm": {
-      "title": "Log out confirmation",
-      "message": "Are you really want to log out of your account \"{email}\"?",
-      "yes": "Yes",
-      "no": "No"
+      "title": "Log out",
+      "message": "Are you really want to log out of your account \"{email}\"?"
     }
   },
   "PasswordRecovery": {
@@ -66,11 +68,7 @@
     "sendLinkAgain": "Send Link Again",
     "sendLink": "Send Link",
     "backToSignIn": "Back to Sign In",
-    "error": "An error occurred while sending the request. Please try again.",
     "newPasswordLabel": "New password",
-    "newPasswordPlaceholder": "Enter new password",
-    "passwordConfirmationLabel": "Password confirmation",
-    "passwordConfirmationPlaceholder": "Confirm new password",
     "passwordDescription": "Your password must be between 6 and 20 characters",
     "createNewPasswordButton": "Create New Password",
     "passwordChangedSuccess": "Password successfully changed"
@@ -91,8 +89,6 @@
     "emailAlreadyConfirmed": "User with this email already confirmed",
     "emailNotFound": "User with this email not found",
     "emailNotRegistered": "It is impossible to send the code - the specified email is not registered",
-    "invalidCredentials": "Invalid email or password",
-    "validationError": "Invalid input data",
     "emailNotExists": "User with this email doesn't exist"
   },
   "Validation": {
@@ -115,9 +111,6 @@
     "passwordConfirmation": {
       "mismatch": "Passwords must match",
       "required": "Please confirm your password"
-    },
-    "terms": {
-      "required": "You must agree to the Terms of Service"
     },
     "recaptcha": {
       "required": "Please complete the reCAPTCHA verification",
@@ -162,15 +155,12 @@
     "publishButton": "Publish",
     "publishing": "Publishing...",
     "postPublishedSuccess": "Post published",
-    "postPublishError": "Failed to publish. Please try again.",
     "closeModalTitle": "Close",
     "closeModalMessage": "Do you really want to close the creation of a publication?",
     "closeModalSubMessage": "Unsaved changes will be lost",
     "closeModalDiscard": "Discard",
     "closeModalSaveDraft": "Save draft",
-    "draftSaveSuccess": "Draft saved",
-    "draftSaveError": "Failed to save draft. Please try again.",
-    "draftOpenError": "Failed to open draft. Please try again."
+    "draftSaveSuccess": "Draft saved"
   },
   "SelectPhotos": {
     "selectFromComputer": "Select photos"

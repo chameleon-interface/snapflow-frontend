@@ -11,14 +11,14 @@ import styles from './CreatePostModal.module.css';
 import { StepContent } from './StepContent';
 import { StepFooter } from './StepFooter';
 
+const WIDE_MODAL_STEPS: CreatePostStep[] = ['filters', 'publish'];
+
 const STEP_TITLE_KEYS: Record<CreatePostStep, string> = {
   addPhotos: 'stepTitleAddPhotos',
   cropping: 'stepTitleCropping',
   filters: 'stepTitleFilters',
   publish: 'stepTitlePublish',
 };
-
-const WIDE_MODAL_STEPS: CreatePostStep[] = ['filters', 'publish'];
 
 type Props = {
   isOpen: boolean;

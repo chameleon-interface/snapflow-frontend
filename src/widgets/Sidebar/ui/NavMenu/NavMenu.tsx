@@ -24,6 +24,8 @@ export const NavMenu = ({
     <nav>
       <ul className={s.menu}>
         {navItems.map((item) => {
+          const label = t(item.labelKey);
+
           if (isNavItemLink(item)) {
             const isActive =
               !isCreatePostModalOpen &&
@@ -38,7 +40,7 @@ export const NavMenu = ({
                   icon={item.icon}
                   className={`${s.link} ${isActive ? s.linkActive : ''}`}
                 >
-                  {t(item.labelKey)}
+                  {label}
                 </Button>
               </li>
             );
@@ -52,9 +54,9 @@ export const NavMenu = ({
                   icon={item.icon}
                   className={`${s.link} ${isCreatePostModalOpen ? s.linkActive : ''}`}
                   onClick={onOpenCreatePostModal}
-                  aria-label={t(item.labelKey)}
+                  aria-label={label}
                 >
-                  {t(item.labelKey)}
+                  {label}
                 </Button>
               </li>
             );

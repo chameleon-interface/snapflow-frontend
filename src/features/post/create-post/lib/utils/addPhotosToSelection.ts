@@ -1,6 +1,7 @@
 import {
   getPhotoNames,
   processSelectedFiles,
+  type ValidationError,
 } from '@/shared/ui/SelectPhotos/lib';
 import { MAX_PHOTOS_MULTIPLE } from '@/shared/ui/SelectPhotos/model/constants';
 
@@ -35,7 +36,12 @@ export const addPhotosToSelection = (
       );
       setOriginalPhotos(next);
     },
-    onError: setError,
-    t,
+    onError: (error: ValidationError | null) => {
+      if (!error) {
+        setError(null);
+        return;
+      }
+      setError(t(error.key, error.values));
+    },
   });
 };

@@ -49,15 +49,17 @@
     }
   },
   "Modals": {
+    "Confirm": {
+      "yes": "Да",
+      "no": "Нет"
+    },
     "EmailSent": {
       "title": "Email отправлен",
       "message": "Мы отправили ссылку для подтверждения на {email}"
     },
     "LogoutConfirm": {
       "title": "Подтверждение выхода",
-      "message": "Вы действительно хотите выйти из своего аккаунта \"{email}\"?",
-      "yes": "Да",
-      "no": "Нет"
+      "message": "Вы действительно хотите выйти из своего аккаунта \"{email}\"?"
     }
   },
   "PasswordRecovery": {
@@ -67,9 +69,6 @@
     "sendLink": "Отправить ссылку",
     "backToSignIn": "Вернуться",
     "newPasswordLabel": "Новый пароль",
-    "newPasswordPlaceholder": "Введите новый пароль",
-    "passwordConfirmationLabel": "Подтверждение пароля",
-    "passwordConfirmationPlaceholder": "Подтвердите новый пароль",
     "passwordDescription": "Ваш пароль должен содержать от 6 до 20 символов",
     "createNewPasswordButton": "Создать новый пароль",
     "passwordChangedSuccess": "Пароль успешно изменён"
@@ -88,8 +87,6 @@
     "usernameExists": "Пользователь с таким именем уже зарегистрирован",
     "emailExists": "Пользователь с таким email уже зарегистрирован",
     "emailAlreadyConfirmed": "Email уже подтверждён",
-    "invalidCredentials": "Неверный email или пароль",
-    "validationError": "Некорректные данные",
     "emailNotFound": "Пользователь с таким email не найден",
     "emailNotExists": "Пользователь с таким email не существует",
     "emailNotRegistered": "Невозможно отправить код - указанный email не зарегистрирован"
@@ -114,9 +111,6 @@
     "passwordConfirmation": {
       "mismatch": "Пароли должны совпадать",
       "required": "Подтвердите пароль"
-    },
-    "terms": {
-      "required": "Необходимо принять условия сервиса"
     },
     "recaptcha": {
       "required": "Пожалуйста, завершите проверку reCAPTCHA",
@@ -161,15 +155,12 @@
     "publishButton": "Опубликовать",
     "publishing": "Публикация...",
     "postPublishedSuccess": "Публикация успешно создана",
-    "postPublishError": "Не удалось опубликовать. Попробуйте позже.",
     "closeModalTitle": "Закрыть",
     "closeModalMessage": "Вы действительно хотите отменить создание публикации?",
     "closeModalSubMessage": "Несохранённые изменения будут потеряны",
     "closeModalDiscard": "Отменить",
     "closeModalSaveDraft": "Сохранить черновик",
-    "draftSaveSuccess": "Черновик сохранён",
-    "draftSaveError": "Не удалось сохранить черновик. Попробуйте позже.",
-    "draftOpenError": "Не удалось открыть черновик. Попробуйте позже."
+    "draftSaveSuccess": "Черновик сохранён"
   },
   "SelectPhotos": {
     "selectFromComputer": "Выбрать фото"

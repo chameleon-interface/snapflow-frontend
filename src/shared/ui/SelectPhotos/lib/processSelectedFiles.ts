@@ -2,13 +2,19 @@ import { MAX_PHOTOS_MULTIPLE } from '../model/constants';
 import { filesToFileList } from './fileListUtils';
 import { getMaxAllowedInSelection, validateFile } from './validation';
 
+export type ValidationErrorValues = Record<string, string | number>;
+
+export type ValidationError = {
+  key: string;
+  values?: ValidationErrorValues;
+};
+
 export type ProcessSelectedFilesOptions = {
   multiple: boolean;
   alreadySelectedCount?: number;
   alreadySelectedNames?: string[];
   onFilesProcessed: (files: FileList | null) => void;
-  onError: (message: string) => void;
-  t: (key: string, values?: Record<string, string | number>) => string;
+  onError: (error: ValidationError | null) => void;
 };
 
 export const processSelectedFiles = (
@@ -19,7 +25,6 @@ export const processSelectedFiles = (
     alreadySelectedNames = [],
     onFilesProcessed,
     onError,
-    t,
   }: ProcessSelectedFilesOptions,
 ): void => {
   if (!files?.length) {
@@ -31,12 +36,15 @@ export const processSelectedFiles = (
 
   const totalLimit = multiple ? MAX_PHOTOS_MULTIPLE : 1;
   if (maxAllowed === 0) {
-    onError(t('errorLimitReached', { limit: totalLimit }));
+    onError({ key: 'errorLimitReached', values: { limit: totalLimit } });
     return;
   }
 
   if (files.length > maxAllowed) {
-    onError(t('errorMaxCount', { limit: maxAllowed, count: files.length }));
+    onError({
+      key: 'errorMaxCount',
+      values: { limit: maxAllowed, count: files.length },
+    });
     return;
   }
 
@@ -45,14 +53,10 @@ export const processSelectedFiles = (
 
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
-    const result = validateFile(file, names, t);
+    const result = validateFile(file, names);
 
     if (!result.valid) {
-      onError(
-        result.errorValues
-          ? t(result.errorKey, result.errorValues)
-          : t(result.errorKey),
-      );
+      onError({ key: result.errorKey, values: result.errorValues });
       return;
     }
 

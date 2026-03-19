@@ -56,7 +56,9 @@ export const Cropping = ({
   const tValidation = useTranslations('Validation.selectPhotos');
   const [error, setError] = useState<string | null>(null);
   const urls = useFileObjectUrls(originalPhotos);
-  const aspectOptions = getAspectOptions(t);
+  const aspectOptions = getAspectOptions().map((labelKey) => ({
+    label: labelKey === 'aspectOriginal' ? t('aspectOriginal') : labelKey,
+  }));
 
   useEffect(() => {
     queueMicrotask(() => setError(null));
