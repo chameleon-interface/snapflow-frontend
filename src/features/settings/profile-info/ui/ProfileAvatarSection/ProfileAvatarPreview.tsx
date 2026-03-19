@@ -18,9 +18,9 @@ export const ProfileAvatarPreview = ({
   onDelete,
 }: ProfileAvatarPreviewProps) => {
   return (
-    <div className={s.avatarPlaceholder}>
-      {avatarUrl ? (
-        <>
+    <div className={s.avatarPreview}>
+      <div className={s.avatarPlaceholder}>
+        {avatarUrl ? (
           <Image
             src={avatarUrl}
             alt={alt}
@@ -28,19 +28,22 @@ export const ProfileAvatarPreview = ({
             fill
             sizes="192px"
           />
-          <button
-            type="button"
-            className={s.deleteAvatarButton}
-            onClick={onDelete}
-            disabled={isPending}
-            aria-label={deleteLabel}
-          >
-            <CloseIcon />
-          </button>
-        </>
-      ) : (
-        <ImageIcon />
-      )}
+        ) : (
+          <ImageIcon />
+        )}
+      </div>
+
+      {avatarUrl ? (
+        <button
+          type="button"
+          className={s.deleteAvatarButton}
+          onClick={onDelete}
+          disabled={isPending}
+          aria-label={deleteLabel}
+        >
+          <CloseIcon />
+        </button>
+      ) : null}
     </div>
   );
 };
