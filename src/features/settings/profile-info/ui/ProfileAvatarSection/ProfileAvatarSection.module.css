@@ -35,6 +35,39 @@
   object-fit: cover;
 }
 
+.deleteAvatarButton {
+  cursor: pointer;
+
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  right: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--color-light-100);
+  border-radius: 50%;
+
+  color: var(--color-light-100);
+
+  background-color: var(--color-danger-500);
+}
+
+.deleteAvatarButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.deleteAvatarButton:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
 .photoButton {
   width: 100%;
   padding: 5px 23px;

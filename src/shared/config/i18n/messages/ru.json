@@ -41,9 +41,11 @@
     },
     "selectProfilePhoto": "Выберите фото профиля",
     "profileAvatar": "Аватар профиля",
+    "deleteAvatar": "Удалить аватар",
     "saveChanges": "Сохранить изменения",
     "settingsSaved": "Ваши настройки сохранены!",
     "avatarUpdated": "Аватар успешно обновлен!",
+    "avatarDeleted": "Аватар успешно удален!",
     "fields": {
       "username": "Имя пользователя",
       "firstName": "Имя",
