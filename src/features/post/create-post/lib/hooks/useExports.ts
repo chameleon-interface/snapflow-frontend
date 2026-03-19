@@ -38,7 +38,10 @@ export const useExports = ({
         originalPhotos,
         postState.croppedAreasPixels,
       );
+      // Guard: не продвигаться дальше, если нечего показывать.
+      // Это защищает от "пустых" шагов при удалении фото или фейле экспорта.
       setCroppedPhotos(files);
+      if (files.length === 0) return;
       setStep('filters');
     } finally {
       setIsCroppingExporting(false);
@@ -49,7 +52,9 @@ export const useExports = ({
     setIsFiltersExporting(true);
     try {
       const files = await applyFiltersExport(croppedPhotos, postState.filterAt);
+      // Guard: если после фильтров пусто — не переходить в publish.
       setReadyToUploadPhotos(files);
+      if (files.length === 0) return;
       setStep('publish');
     } finally {
       setIsFiltersExporting(false);

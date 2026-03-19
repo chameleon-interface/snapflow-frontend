@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Textarea } from 'snapflow-ui-kit';
 import { Input, Typography } from 'snapflow-ui-kit/client';
 import { PinIcon } from 'snapflow-ui-kit/icons';
-import type { PublishProfile } from '@/features/post/create-post/model/types';
+import type { MyProfileResponse } from '@/shared/api/my-profile/types';
 import type { LocationSuggestion } from './LocationSuggestions';
 import { LocationSuggestions } from './LocationSuggestions';
 import styles from './Publish.module.css';
@@ -29,7 +29,7 @@ type Props = {
   onDescriptionChange: (value: string) => void;
   location: string;
   onLocationChange: (value: string) => void;
-  profile: PublishProfile | undefined;
+  profile: MyProfileResponse | undefined;
 };
 
 const CarouselSlide = ({ url }: { url: string }) => (
@@ -82,20 +82,20 @@ export const Publish = ({
 
       <div className={styles.formPanel} aria-label={t('publicationDetails')}>
         <div className={styles.profileRow}>
-          {profile?.avatar ? (
+          {profile?.avatarUrl ? (
             <Image
               className={styles.avatar}
-              src={profile.avatar}
+              src={profile.avatarUrl}
               alt={profile?.username ?? ''}
               width={40}
               height={40}
             />
           ) : (
             <div className={styles.avatarPlaceholder} aria-hidden>
-              {profile?.username?.charAt(0)?.toUpperCase() ?? '?'}
+              {(profile?.username ?? '?').charAt(0)?.toUpperCase()}
             </div>
           )}
-          <Typography variant="text-16">{profile?.username}</Typography>
+          <Typography variant="text-16">{profile?.username ?? '?'}</Typography>
         </div>
 
         <div className={styles.fieldGroup}>

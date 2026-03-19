@@ -3,27 +3,26 @@
 import { useCallback, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { toastSuccess } from 'snapflow-ui-kit/client';
-import type {
-  CreatePostPayload,
-  PublishProfile,
-} from '@/features/post/create-post/model/types';
+import type { CreatePostPayload } from '@/features/post/create-post/model/types';
 import { useUploadMediaMutation } from '@/shared/api/media/useUploadMediaMutation';
 import { usePhotosState } from './usePhotosState';
 import { useStepState } from './useStepState';
 import { useCreatePostState } from './useCreatePostState';
 import { useExports } from './useExports';
+import { applyFiltersExport } from '../utils/applyFiltersExport';
+import { runCroppingExport } from '../utils/runCroppingExport';
 import { useCreatePostMutation } from '../../api/useCreatePostMutation';
 import { useCreateDraftMutation } from '../../api/useCreateDraftMutation';
 import { useCloseModal } from './useCloseModal';
 
 type Params = {
   onClose: () => void;
-  profile: PublishProfile | undefined;
 };
 
-export const useFlow = ({ onClose, profile }: Params) => {
+export const useFlow = ({ onClose }: Params) => {
   const t = useTranslations('CreatePost');
   const photos = usePhotosState();
+
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
   const postState = useCreatePostState({
@@ -71,17 +70,26 @@ export const useFlow = ({ onClose, profile }: Params) => {
 
   const handleNextStep = useCallback(async () => {
     if (stepState.step === 'cropping') {
+      // не идем в filters, если нечего кропить.
+      if (photos.originalPhotos.length === 0) return;
       await exports.runCroppingNext();
       return;
     }
     if (stepState.step === 'filters') {
+      // не идем в publish, если нечего показывать после фильтров.
+      if (photos.croppedPhotos.length === 0) return;
       await exports.runFiltersNext();
       return;
     }
     const nextStep = stepState.steps[stepState.currentIndex + 1];
     if (nextStep !== null && nextStep !== undefined)
       stepState.setStep(nextStep);
-  }, [stepState, exports]);
+  }, [
+    stepState,
+    exports,
+    photos.originalPhotos.length,
+    photos.croppedPhotos.length,
+  ]);
 
   const handlePreviousStep = useCallback(() => {
     if (stepState.isFirstStep) return;
@@ -97,43 +105,85 @@ export const useFlow = ({ onClose, profile }: Params) => {
       stepState.setStep(nextStep);
   }, [stepState, photos]);
 
-  const handlePublish = useCallback(async () => {
-    if (!profile?.id || photos.readyToUploadPhotos.length === 0) return;
+  const handlePublish = useCallback(
+    async (profileId: string | undefined) => {
+      if (!profileId || photos.readyToUploadPhotos.length === 0) return;
 
-    const fileIds = await uploadMedia(photos.readyToUploadPhotos).catch(() => {
-      return null;
-    });
+      const fileIds = await uploadMedia(photos.readyToUploadPhotos).catch(
+        () => {
+          return null;
+        },
+      );
 
-    if (fileIds === null) return;
+      if (fileIds === null) return;
 
-    const payload: CreatePostPayload = {
+      const payload: CreatePostPayload = {
+        description,
+        fileIds,
+      };
+
+      createPost(payload, {
+        onSuccess: () => {
+          toastSuccess(t('postPublishedSuccess'));
+          doClose();
+        },
+      });
+    },
+    [
+      photos.readyToUploadPhotos,
       description,
-      fileIds,
-    };
-
-    createPost(payload, {
-      onSuccess: () => {
-        toastSuccess(t('postPublishedSuccess'));
-        doClose();
-      },
-    });
-  }, [
-    profile?.id,
-    photos.readyToUploadPhotos,
-    description,
-    uploadMedia,
-    createPost,
-    t,
-    doClose,
-  ]);
+      uploadMedia,
+      createPost,
+      t,
+      doClose,
+    ],
+  );
 
   const hasUnsavedContent = photos.originalPhotos.length > 0;
   const closeModal = useCloseModal({ hasUnsavedContent, doClose });
 
-  const handleSaveDraft = useCallback(async () => {
-    if (!profile?.id || photos.readyToUploadPhotos.length === 0) return;
+  const getReadyToUploadFilesForDraft = useCallback(async () => {
+    if (photos.originalPhotos.length === 0) return null;
 
-    const fileIds = await uploadMedia(photos.readyToUploadPhotos).catch(() => {
+    if (stepState.step === 'publish') {
+      if (photos.readyToUploadPhotos.length === 0) return null;
+      return photos.readyToUploadPhotos;
+    }
+
+    if (stepState.step === 'filters') {
+      if (photos.croppedPhotos.length === 0) return null;
+      const ready = await applyFiltersExport(
+        photos.croppedPhotos,
+        postState.filterAt,
+      );
+      photos.setReadyToUploadPhotos(ready);
+      return ready;
+    }
+
+    if (stepState.step === 'cropping') {
+      const cropped = await runCroppingExport(
+        photos.originalPhotos,
+        postState.croppedAreasPixels,
+      );
+      photos.setCroppedPhotos(cropped);
+      const ready = await applyFiltersExport(cropped, postState.filterAt);
+      photos.setReadyToUploadPhotos(ready);
+      return ready;
+    }
+
+    return null;
+  }, [
+    photos,
+    stepState.step,
+    postState.croppedAreasPixels,
+    postState.filterAt,
+  ]);
+
+  const handleSaveDraft = useCallback(async () => {
+    const filesToUpload = await getReadyToUploadFilesForDraft();
+    if (!filesToUpload || filesToUpload.length === 0) return;
+
+    const fileIds = await uploadMedia(filesToUpload).catch(() => {
       return null;
     });
 
@@ -151,9 +201,8 @@ export const useFlow = ({ onClose, profile }: Params) => {
       },
     });
   }, [
-    profile?.id,
-    photos.readyToUploadPhotos,
     description,
+    getReadyToUploadFilesForDraft,
     uploadMedia,
     createDraft,
     t,
@@ -185,12 +234,11 @@ export const useFlow = ({ onClose, profile }: Params) => {
     setDescription,
     location,
     setLocation,
-    profile,
     ...postState,
     handleNextStep,
     handlePreviousStep,
     handlePublish,
-    isPublishPending: isUploadPending || isCreatePostPending,
+    isPublishMutationPending: isUploadPending || isCreatePostPending,
   };
 };
 

@@ -1,9 +1,12 @@
 'use client';
 
 import type { CreatePostFlowState } from '@/features/post/create-post/lib/hooks/useFlow';
+import type { MyProfileResponse } from '@/shared/api/my-profile/types';
 import { AddPhotos, Cropping, Filters, Publish } from '../steps';
 
-type Props = CreatePostFlowState;
+type Props = CreatePostFlowState & {
+  publishProfile: MyProfileResponse | undefined;
+};
 
 export const StepContent = (p: Props) => {
   if (p.step === 'addPhotos') {
@@ -53,7 +56,7 @@ export const StepContent = (p: Props) => {
         onDescriptionChange={p.setDescription}
         location={p.location}
         onLocationChange={p.setLocation}
-        profile={p.profile}
+        profile={p.publishProfile}
       />
     );
   }

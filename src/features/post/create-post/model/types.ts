@@ -13,14 +13,21 @@ export type PostMedia = {
   position: number;
 };
 
-export type PostWithMedia = {
+type BasePostResponse = {
   id: number;
   description: string;
   profileId: number;
   username: string;
-  status: 'PUBLISHED' | 'DRAFT';
   createdAt: string;
   postMedias: PostMedia[];
+};
+
+export type CreatePostResponse = BasePostResponse & {
+  status: 'PUBLISHED';
+};
+
+export type CreateDraftResponse = BasePostResponse & {
+  status: 'DRAFT';
 };
 
 /** Шаги создания поста */
@@ -43,11 +50,4 @@ export type DraftPostState = {
   croppedAreasPixels: (Area | null)[];
   aspectByIndex: Record<number, number>;
   filterBySlide: Record<number, string>;
-};
-
-/** Минимальный профиль для шага публикации (данные приходят снаружи фичи) */
-export type PublishProfile = {
-  id: number;
-  username?: string;
-  avatar?: string;
 };

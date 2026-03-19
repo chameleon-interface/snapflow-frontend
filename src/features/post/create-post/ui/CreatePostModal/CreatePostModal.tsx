@@ -1,10 +1,8 @@
 'use client';
 
 import { useFlow } from '@/features/post/create-post/lib/hooks/useFlow';
-import type {
-  CreatePostStep,
-  PublishProfile,
-} from '@/features/post/create-post/model/types';
+import type { CreatePostStep } from '@/features/post/create-post/model/types';
+import { useGetMyProfileQuery } from '@/shared/api';
 import { clsx } from 'clsx';
 import { useTranslations } from 'next-intl';
 import { Modal } from 'snapflow-ui-kit/client';
@@ -25,7 +23,6 @@ const WIDE_MODAL_STEPS: CreatePostStep[] = ['filters', 'publish'];
 type Props = {
   isOpen: boolean;
   onClose: () => void;
-  profile: PublishProfile | undefined;
 };
 
 const getNextStepLoadingLabel = (
@@ -33,9 +30,19 @@ const getNextStepLoadingLabel = (
   t: (key: string) => string,
 ) => (step === 'filters' ? t('applyingFilters') : t('generatingCropped'));
 
-export const CreatePostModal = ({ isOpen, onClose, profile }: Props) => {
+export const CreatePostModal = ({ isOpen, onClose }: Props) => {
   const t = useTranslations('CreatePost');
-  const flow = useFlow({ onClose, profile });
+  const flow = useFlow({ onClose });
+
+  const profileQuery = useGetMyProfileQuery({
+    enabled: isOpen,
+  });
+
+  const publishProfile = profileQuery.data;
+
+  const isPublishStepLoading =
+    flow.step === 'publish' &&
+    (profileQuery.isPending || flow.isPublishMutationPending);
 
   return (
     <Modal
@@ -48,7 +55,7 @@ export const CreatePostModal = ({ isOpen, onClose, profile }: Props) => {
       )}
     >
       <div className={styles.content}>
-        <StepContent {...flow} />
+        <StepContent {...flow} publishProfile={publishProfile} />
       </div>
 
       {flow.step !== 'addPhotos' && (
@@ -57,11 +64,13 @@ export const CreatePostModal = ({ isOpen, onClose, profile }: Props) => {
           isLastStep={flow.isLastStep}
           onPrevious={flow.handlePreviousStep}
           onNext={flow.handleNextStep}
-          onPublish={flow.handlePublish}
+          onPublish={() => {
+            void flow.handlePublish(profileQuery.data?.id);
+          }}
           isNextLoading={
             flow.isCroppingExporting ||
             flow.isFiltersExporting ||
-            flow.isPublishPending
+            isPublishStepLoading
           }
           nextStepLoadingLabel={getNextStepLoadingLabel(flow.step, t)}
           publishLoadingLabel={t('publishing')}

@@ -5,7 +5,7 @@ import { api } from '@/shared/api';
 
 import type {
   CreatePostPayload,
-  PostWithMedia,
+  CreatePostResponse,
 } from '@/features/post/create-post/model/types';
 
 export const useCreatePostMutation = () => {
@@ -13,7 +13,7 @@ export const useCreatePostMutation = () => {
 
   return useMutation({
     mutationFn: (payload: CreatePostPayload) => {
-      return api.post<PostWithMedia>('/posts', payload);
+      return api.post<CreatePostResponse>('/posts', payload);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['Posts'] });

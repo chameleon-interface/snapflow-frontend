@@ -9,5 +9,6 @@
   border-radius: 2px;
 
   background-color: var(--color-dark-300);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 40%);
+  box-shadow: 0 4px 12px
+    color-mix(in srgb, var(--color-dark-900) 40%, transparent);
 }

@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  width: clamp(240px, 32vw, 360px);
-  max-width: 100%;
+  width: 240px;
 }
 
 .openDraftButton {
@@ -16,7 +15,7 @@
   max-width: none;
 }
 
-@media (width <= 480px) {
+@media (width <=480px) {
   .content {
     gap: 20px;
     width: 100%;
@@ -24,7 +23,7 @@
   }
 }
 
-@media (width <= 380px) {
+@media (width <=380px) {
   .content {
     gap: 16px;
   }

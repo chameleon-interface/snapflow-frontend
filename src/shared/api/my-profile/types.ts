@@ -1,5 +1,5 @@
-export type Profile = {
-  id: number;
+export type MyProfileResponse = {
+  id: string;
   username: string;
   firstName: string;
   lastName: string;
@@ -8,7 +8,4 @@ export type Profile = {
   city: string;
   avatarUrl: string;
   aboutMe: string;
-  followersCount: number;
-  followingCount: number;
-  postsCount: number;
 };

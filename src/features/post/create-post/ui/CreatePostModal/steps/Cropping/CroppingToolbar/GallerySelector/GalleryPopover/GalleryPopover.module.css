@@ -14,7 +14,8 @@
   border-radius: 2px;
 
   background-color: var(--color-dark-300);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 40%);
+  box-shadow: 0 4px 12px
+    color-mix(in srgb, var(--color-dark-900) 40%, transparent);
 }
 
 .thumbnailsScroll {
@@ -112,13 +113,13 @@
   line-height: 1;
   color: var(--color-light-100);
 
-  background-color: rgb(0 0 0 / 60%);
+  background-color: color-mix(in srgb, var(--color-dark-900) 60%, transparent);
 
   transition: background-color 0.2s;
 }
 
 .removeBtn:hover {
-  background-color: rgb(0 0 0 / 80%);
+  background-color: color-mix(in srgb, var(--color-dark-900) 80%, transparent);
 }
 
 .removeBtn:focus-visible {
