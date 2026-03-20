@@ -6,7 +6,7 @@ type GlobalErrorHandlerMeta = {
   meta?: { globalErrorHandler?: boolean | string };
 };
 
-export function globalMutationErrorHandler(
+export function handleGlobalReactQueryMutationError(
   error: Error,
   _variables: unknown,
   _onMutateResult: unknown,
@@ -20,6 +20,14 @@ export function globalMutationErrorHandler(
     return;
   }
 
+  handleGlobalReactQueryError(error);
+}
+
+export function handleGlobalReactQueryError(error: Error): void {
+  showErrorToast(error);
+}
+
+function showErrorToast(error: Error): void {
   if (!axios.isAxiosError(error)) {
     toastError(error.message || 'Something went wrong');
     return;
