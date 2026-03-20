@@ -46,6 +46,10 @@
     "settingsSaved": "Ваши настройки сохранены!",
     "avatarUpdated": "Аватар успешно обновлен!",
     "avatarDeleted": "Аватар успешно удален!",
+    "avatarCropModal": {
+      "title": "Добавить фото профиля",
+      "save": "Сохранить"
+    },
     "fields": {
       "username": "Имя пользователя",
       "firstName": "Имя",

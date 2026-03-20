@@ -2,8 +2,9 @@
 
 import { useTranslations } from 'next-intl';
 import { Button, Typography } from 'snapflow-ui-kit';
+import { useProfileAvatarSection } from '../../model';
+import { ProfileAvatarCropModal } from './ProfileAvatarCropModal';
 import { ProfileAvatarPreview } from './ProfileAvatarPreview';
-import { useProfileAvatarSection } from './useProfileAvatarSection';
 import s from './ProfileAvatarSection.module.css';
 
 type ProfileAvatarSectionProps = {
@@ -23,9 +24,18 @@ export const ProfileAvatarSection = ({
   const {
     fileInputRef,
     isPending,
+    isCropModalOpen,
+    avatarToCropUrl,
+    crop,
+    zoom,
     handleButtonClick,
     handleAvatarChange,
     handleDeleteAvatar,
+    handleCropModalClose,
+    handleCropChange,
+    handleCropComplete,
+    handleCropSave,
+    handleZoomChange,
   } = useProfileAvatarSection({
     profileId,
     avatarUrl,
@@ -63,6 +73,21 @@ export const ProfileAvatarSection = ({
           {label}
         </Typography>
       </Button>
+
+      <ProfileAvatarCropModal
+        open={isCropModalOpen}
+        imageSrc={avatarToCropUrl}
+        crop={crop}
+        zoom={zoom}
+        isPending={isPending}
+        onCropChange={handleCropChange}
+        onZoomChange={handleZoomChange}
+        onCropComplete={handleCropComplete}
+        onClose={handleCropModalClose}
+        onSave={handleCropSave}
+        title={t('avatarCropModal.title')}
+        saveLabel={t('avatarCropModal.save')}
+      />
     </div>
   );
 };

@@ -1,0 +1,60 @@
+.modal {
+  width: min(492px, calc(100vw - 32px));
+}
+
+.modal > div {
+  padding: 24px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cropperViewport {
+  position: relative;
+
+  overflow: hidden;
+
+  width: 100%;
+  min-height: 332px;
+  border: 1px solid var(--color-dark-100);
+
+  background: rgb(0 0 0 / 72%);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.actionButton {
+  min-width: 96px;
+}
+
+@media (width <= 768px) {
+  .modal {
+    width: calc(100vw - 24px);
+  }
+
+  .modal > div,
+  .modal > header {
+    padding-inline: 16px;
+  }
+
+  .cropperViewport {
+    min-height: 260px;
+  }
+}
+
+@media (width <= 480px) {
+  .actions {
+    flex-direction: column-reverse;
+  }
+
+  .actionButton {
+    width: 100%;
+  }
+}

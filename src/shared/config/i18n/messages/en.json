@@ -46,6 +46,10 @@
     "settingsSaved": "Your settings are saved!",
     "avatarUpdated": "Avatar updated successfully!",
     "avatarDeleted": "Avatar deleted successfully!",
+    "avatarCropModal": {
+      "title": "Add a Profile Photo",
+      "save": "Save"
+    },
     "fields": {
       "username": "Username",
       "firstName": "First Name",
