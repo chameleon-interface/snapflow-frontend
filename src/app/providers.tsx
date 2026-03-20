@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
 import { SplashScreenGate } from '@/shared/ui/SplashScreen';
+import { globalMutationErrorHandler } from '@/shared/lib/errors/globalMutationErrorHandler';
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(
@@ -15,6 +16,10 @@ export default function Providers({ children }: { children: React.ReactNode }) {
             retry: false,
             refetchOnWindowFocus: false,
             staleTime: 5 * 60 * 1000,
+          },
+          mutations: {
+            retry: false,
+            onError: globalMutationErrorHandler,
           },
         },
       }),
