@@ -2,6 +2,8 @@
 
 import { ChangeEvent, useRef } from 'react';
 import type { Area, Point } from 'react-easy-crop';
+import { useTranslations } from 'next-intl';
+import { toastError } from 'snapflow-ui-kit/client';
 import { getCroppedAvatarFile } from '../lib/getCroppedAvatarFile';
 import {
   DEFAULT_CROP,
@@ -9,6 +11,8 @@ import {
   useAvatarCropDraft,
 } from './useAvatarCropDraft';
 import { useAvatarUploadActions } from './useAvatarUploadActions';
+
+const MAX_AVATAR_SIZE_BYTES = 10 * 1024 * 1024;
 
 type UseProfileAvatarSectionParams = {
   profileId: string;
@@ -19,6 +23,7 @@ export const useProfileAvatarSection = ({
   profileId,
   avatarUrl,
 }: UseProfileAvatarSectionParams) => {
+  const t = useTranslations('Settings');
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const {
@@ -47,7 +52,20 @@ export const useProfileAvatarSection = ({
   };
 
   const handleAvatarChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const avatar = event.target.files?.[0];
+
     if (profileId.length === 0) {
+      event.target.value = '';
+      return;
+    }
+
+    if (!avatar) {
+      event.target.value = '';
+      return;
+    }
+
+    if (avatar.size > MAX_AVATAR_SIZE_BYTES) {
+      toastError(t('avatarTooLarge'));
       event.target.value = '';
       return;
     }

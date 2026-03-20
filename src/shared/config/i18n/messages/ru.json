@@ -46,6 +46,7 @@
     "settingsSaved": "Ваши настройки сохранены!",
     "avatarUpdated": "Аватар успешно обновлен!",
     "avatarDeleted": "Аватар успешно удален!",
+    "avatarTooLarge": "Размер аватарки не должен превышать 10 MB.",
     "avatarCropModal": {
       "title": "Добавить фото профиля",
       "save": "Сохранить"
