@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  MutationCache,
   QueryCache,
   QueryClient,
   QueryClientProvider,
@@ -10,8 +11,8 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
 import { SplashScreenGate } from '@/shared/ui/SplashScreen';
 import {
-  handleGlobalReactQueryError,
-  handleGlobalReactQueryMutationError,
+  shouldSkipGlobalErrorHandler,
+  showApiErrorToast,
 } from '@/shared/lib/errors/globalReactQueryErrorHandler';
 
 export default function Providers({ children }: { children: React.ReactNode }) {
@@ -19,7 +20,16 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     () =>
       new QueryClient({
         queryCache: new QueryCache({
-          onError: handleGlobalReactQueryError,
+          onError: (error, query) => {
+            if (shouldSkipGlobalErrorHandler(query.meta)) return;
+            showApiErrorToast(error);
+          },
+        }),
+        mutationCache: new MutationCache({
+          onError: (error, _variables, _context, mutation) => {
+            if (shouldSkipGlobalErrorHandler(mutation.options.meta)) return;
+            showApiErrorToast(error);
+          },
         }),
         defaultOptions: {
           queries: {
@@ -29,7 +39,6 @@ export default function Providers({ children }: { children: React.ReactNode }) {
           },
           mutations: {
             retry: false,
-            onError: handleGlobalReactQueryMutationError,
           },
         },
       }),

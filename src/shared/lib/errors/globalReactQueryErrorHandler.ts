@@ -1,33 +1,19 @@
-import type { ApiErrorResponse } from '@/shared/api';
 import { toastError } from 'snapflow-ui-kit/client';
 import axios from 'axios';
 
 type GlobalErrorHandlerMeta = {
-  meta?: { globalErrorHandler?: boolean | string };
+  globalErrorHandler?: boolean | string;
 };
 
-export function handleGlobalReactQueryMutationError(
-  error: Error,
-  _variables: unknown,
-  _onMutateResult: unknown,
-  context: GlobalErrorHandlerMeta,
-): void {
-  const { meta } = context;
-  if (
-    meta?.globalErrorHandler === false ||
-    meta?.globalErrorHandler === 'off'
-  ) {
-    return;
-  }
-
-  handleGlobalReactQueryError(error);
+export function shouldSkipGlobalErrorHandler(
+  meta: GlobalErrorHandlerMeta | undefined | null,
+): boolean {
+  return (
+    meta?.globalErrorHandler === false || meta?.globalErrorHandler === 'off'
+  );
 }
 
-export function handleGlobalReactQueryError(error: Error): void {
-  showErrorToast(error);
-}
-
-function showErrorToast(error: Error): void {
+export function showApiErrorToast(error: Error): void {
   if (!axios.isAxiosError(error)) {
     toastError(error.message || 'Something went wrong');
     return;
@@ -38,33 +24,35 @@ function showErrorToast(error: Error): void {
     return;
   }
 
-  const data = error.response.data;
-
-  if (isValidApiError(data)) {
-    if (data.message) {
-      toastError(data.message);
-    } else if (data.extensions?.length) {
-      const messages = data.extensions
-        .map((ext) => ext.message)
-        .filter(Boolean)
-        .join(' ');
-      toastError(messages);
-    } else {
-      toastError('Something went wrong');
-    }
-  } else {
-    toastError(error.message || 'Something went wrong');
+  const backendMessage = extractBackendErrorMessage(error.response.data);
+  if (backendMessage) {
+    toastError(backendMessage);
+    return;
   }
+
+  toastError(error.message || 'Something went wrong');
 }
 
-function isValidApiError(data: unknown): data is ApiErrorResponse {
-  if (!data || typeof data !== 'object') return false;
+function extractBackendErrorMessage(data: unknown): string | null {
+  if (!data || typeof data !== 'object') return null;
 
-  const candidate = data as Partial<ApiErrorResponse>;
+  const record = data as Record<string, unknown>;
 
-  return (
-    'message' in candidate &&
-    typeof candidate.message === 'string' &&
-    (!candidate.extensions || Array.isArray(candidate.extensions))
-  );
+  if (typeof record.message === 'string' && record.message.trim()) {
+    return record.message;
+  }
+
+  if (Array.isArray(record.extensions)) {
+    const messages = record.extensions
+      .map((ext) => {
+        if (!ext || typeof ext !== 'object') return '';
+        const m = (ext as Record<string, unknown>).message;
+        return typeof m === 'string' ? m : '';
+      })
+      .filter(Boolean);
+
+    if (messages.length) return messages.join(' ');
+  }
+
+  return null;
 }

@@ -17,5 +17,7 @@ export const useMe = () => {
     staleTime: 15 * 60 * 1000,
     refetchOnMount: false,
     retryOnMount: false,
+    // 401/404 here often means "not logged in" — not a global failure toast
+    meta: { globalErrorHandler: false },
   });
 };
