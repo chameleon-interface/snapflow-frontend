@@ -6,20 +6,23 @@ export type CreatePostPayload = {
 };
 
 export type PostMedia = {
-  id: number;
+  postMediaId: number;
+  fileId: string;
   url: string;
-  mimeType: string;
-  size: number;
-  position: number;
 };
 
-type BasePostResponse = {
+export type PostOwner = {
+  ownerId: number;
+  username: string;
+  avatarUrl: string;
+};
+
+export type BasePostResponse = {
   id: number;
   description: string;
-  profileId: number;
-  username: string;
   createdAt: string;
   postMedias: PostMedia[];
+  owner: PostOwner;
 };
 
 export type CreatePostResponse = BasePostResponse & {
