@@ -1,30 +1,28 @@
 import axios from 'axios';
-import { api } from '../instance';
 import {
-  ConfirmUploadsRequest,
-  GetUploadUrlsRequest,
-  GetUploadUrlsResponse,
-  UploadUrlItem,
-} from './types';
+  filesMediaControllerConfirmUploads,
+  filesMediaControllerGenerateUploadUrls,
+} from '@/shared/api/generated/endpoints/files-media/files-media';
+import type {
+  ConfirmUploadInputDto,
+  GenerateUploadUrlsInputDto,
+  GenerateUploadUrlViewDto,
+  MimeType,
+} from '@/shared/api/generated/model';
 
 export const getUploadUrls = async (
   files: File[],
-): Promise<UploadUrlItem[]> => {
+): Promise<GenerateUploadUrlViewDto[]> => {
   if (files.length === 0) return [];
 
-  const payload: GetUploadUrlsRequest = {
+  const payload: GenerateUploadUrlsInputDto = {
     files: files.map((file) => ({
-      mimeType: file.type,
+      mimeType: file.type as MimeType,
       size: file.size,
     })),
   };
 
-  const { data } = await api.post<GetUploadUrlsResponse>(
-    '/media/upload-url',
-    payload,
-  );
-
-  return data;
+  return filesMediaControllerGenerateUploadUrls(payload);
 };
 
 export const uploadFileToStorage = async (
@@ -41,9 +39,9 @@ export const uploadFileToStorage = async (
 export const confirmUploads = async (fileIds: string[]): Promise<void> => {
   if (fileIds.length === 0) return;
 
-  const payload: ConfirmUploadsRequest = { fileIds };
+  const payload: ConfirmUploadInputDto = { fileIds };
 
-  await api.post('/media/confirm-uploads', payload);
+  await filesMediaControllerConfirmUploads(payload);
 };
 
 export const uploadMedia = async (files: File[]): Promise<string[]> => {

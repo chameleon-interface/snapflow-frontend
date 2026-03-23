@@ -1,38 +1,5 @@
 import type { Area } from 'react-easy-crop';
 
-export type CreatePostPayload = {
-  description: string;
-  fileIds: string[];
-};
-
-export type PostMedia = {
-  postMediaId: number;
-  fileId: string;
-  url: string;
-};
-
-export type PostOwner = {
-  ownerId: number;
-  username: string;
-  avatarUrl: string;
-};
-
-export type BasePostResponse = {
-  id: number;
-  description: string;
-  createdAt: string;
-  postMedias: PostMedia[];
-  owner: PostOwner;
-};
-
-export type CreatePostResponse = BasePostResponse & {
-  status: 'PUBLISHED';
-};
-
-export type CreateDraftResponse = BasePostResponse & {
-  status: 'DRAFT';
-};
-
 /** Шаги создания поста */
 export const CREATE_POST_STEPS = [
   'addPhotos',
