@@ -2,12 +2,11 @@
 
 import { useMutation } from '@tanstack/react-query';
 import { postsControllerCreateDraft } from '@/shared/api/generated/endpoints/posts/posts';
-
-import type { CreatePostPayload } from '@/features/post/create-post/model/types';
+import type { CreatePostInputDto } from '@/shared/api/generated/model';
 
 export const useCreateDraftMutation = () => {
   return useMutation({
-    mutationFn: (payload: CreatePostPayload) =>
+    mutationFn: (payload: CreatePostInputDto) =>
       postsControllerCreateDraft(payload),
   });
 };

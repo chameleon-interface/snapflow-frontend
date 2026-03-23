@@ -3,15 +3,19 @@ import {
   filesMediaControllerConfirmUploads,
   filesMediaControllerGenerateUploadUrls,
 } from '@/shared/api/generated/endpoints/files-media/files-media';
-import type { MimeType } from '@/shared/api/generated/model';
-import type { UploadUrlItem } from './types';
+import type {
+  ConfirmUploadInputDto,
+  GenerateUploadUrlsInputDto,
+  GenerateUploadUrlViewDto,
+  MimeType,
+} from '@/shared/api/generated/model';
 
 export const getUploadUrls = async (
   files: File[],
-): Promise<UploadUrlItem[]> => {
+): Promise<GenerateUploadUrlViewDto[]> => {
   if (files.length === 0) return [];
 
-  const payload = {
+  const payload: GenerateUploadUrlsInputDto = {
     files: files.map((file) => ({
       mimeType: file.type as MimeType,
       size: file.size,
@@ -35,7 +39,9 @@ export const uploadFileToStorage = async (
 export const confirmUploads = async (fileIds: string[]): Promise<void> => {
   if (fileIds.length === 0) return;
 
-  await filesMediaControllerConfirmUploads({ fileIds });
+  const payload: ConfirmUploadInputDto = { fileIds };
+
+  await filesMediaControllerConfirmUploads(payload);
 };
 
 export const uploadMedia = async (files: File[]): Promise<string[]> => {

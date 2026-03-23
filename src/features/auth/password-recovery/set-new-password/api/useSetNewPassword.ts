@@ -1,13 +1,9 @@
 import { useMutation } from '@tanstack/react-query';
 import { authControllerNewPassword } from '@/shared/api/generated/endpoints/auth/auth';
-
-type NewPasswordDTO = {
-  newPassword: string;
-  recoveryCode: string;
-};
+import type { NewPasswordInputDto } from '@/shared/api/generated/model';
 
 export const useSetNewPassword = () => {
   return useMutation({
-    mutationFn: (body: NewPasswordDTO) => authControllerNewPassword(body),
+    mutationFn: (body: NewPasswordInputDto) => authControllerNewPassword(body),
   });
 };
