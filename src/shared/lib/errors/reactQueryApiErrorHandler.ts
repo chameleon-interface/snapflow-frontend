@@ -1,26 +1,35 @@
 import { toastError } from 'snapflow-ui-kit/client';
 import axios from 'axios';
 
-type GlobalErrorHandlerMeta = {
-  globalErrorHandler?: boolean | string;
+export type ReactQueryApiErrorSkipMeta = {
+  globalErrorHandler?: boolean;
 };
 
-export function shouldSkipGlobalErrorHandler(
-  meta: GlobalErrorHandlerMeta | undefined | null,
-): boolean {
-  return (
-    meta?.globalErrorHandler === false || meta?.globalErrorHandler === 'off'
-  );
+export type ReactQueryApiErrorToastMessages = {
+  genericError: string;
+  networkError: string;
+};
+
+export function createReactQueryApiErrorHandler(
+  messages: ReactQueryApiErrorToastMessages,
+): (error: Error, meta?: ReactQueryApiErrorSkipMeta | null) => void {
+  return (error: Error, meta?: ReactQueryApiErrorSkipMeta | null): void => {
+    if (meta?.globalErrorHandler === false) return;
+    showApiErrorToast(error, messages);
+  };
 }
 
-export function showApiErrorToast(error: Error): void {
+function showApiErrorToast(
+  error: Error,
+  messages: ReactQueryApiErrorToastMessages,
+): void {
   if (!axios.isAxiosError(error)) {
-    toastError(error.message || 'Something went wrong');
+    toastError(error.message || messages.genericError);
     return;
   }
 
   if (!error.response) {
-    toastError('Network error. Please check your connection.');
+    toastError(messages.networkError);
     return;
   }
 
@@ -30,7 +39,7 @@ export function showApiErrorToast(error: Error): void {
     return;
   }
 
-  toastError(error.message || 'Something went wrong');
+  toastError(error.message || messages.genericError);
 }
 
 function extractBackendErrorMessage(data: unknown): string | null {

@@ -116,5 +116,9 @@
       "required": "Please complete the reCAPTCHA verification",
       "expired": "reCAPTCHA verification has expired. Please complete the verification again"
     }
+  },
+  "Common": {
+    "somethingWentWrong": "Something went wrong",
+    "networkError": "Network error. Please check your connection."
   }
 }
