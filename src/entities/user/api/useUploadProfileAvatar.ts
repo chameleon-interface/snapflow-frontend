@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import type {
+  GetMyProfileResponse,
   UploadProfileAvatarDto,
   UploadProfileAvatarResponse,
-  UserProfile,
 } from './types';
 import { api } from '@/shared/api';
 
@@ -23,7 +23,7 @@ export const useUploadProfileAvatar = () => {
       return response.data;
     },
     onSuccess: ({ publicUrl }) => {
-      queryClient.setQueryData<UserProfile | undefined>(
+      queryClient.setQueryData<GetMyProfileResponse | undefined>(
         ['my-profile'],
         (currentProfile) =>
           currentProfile
