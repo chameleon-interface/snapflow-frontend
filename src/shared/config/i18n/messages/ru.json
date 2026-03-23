@@ -115,10 +115,57 @@
     "recaptcha": {
       "required": "Пожалуйста, завершите проверку reCAPTCHA",
       "expired": "Время проверки reCAPTCHA истекло. Пожалуйста, пройдите проверку снова"
+    },
+    "selectPhotos": {
+      "errorMaxCount": "Еще можно выбрать не более {limit} фото, выбрано {count}",
+      "errorLimitReached": "Достигнут лимит фото - {limit}",
+      "errorFileSize": "Размер фото не должен превышать 20 МБ",
+      "errorFormat": "Формат загружаемого фото должен быть PNG или JPEG",
+      "errorDuplicate": "Это фото уже выбрано - {name}"
     }
   },
   "Common": {
     "somethingWentWrong": "Что-то пошло не так",
     "networkError": "Ошибка сети. Проверьте подключение."
+  "CreatePost": {
+    "stepTitleAddPhotos": "Добавить фото",
+    "stepTitleCropping": "Обрезка",
+    "stepTitleFilters": "Фильтры",
+    "stepTitlePublish": "Публикация",
+    "previousStep": "Назад",
+    "nextStep": "Далее",
+    "generatingCropped": "Подготовка...",
+    "applyingFilters": "Применение фильтров...",
+    "openDraft": "Открыть черновик",
+    "gallery": "Галерея",
+    "addPhoto": "Добавить фото",
+    "removePhoto": "Удалить фото",
+    "aspectOriginal": "Оригинал",
+    "filters": "Фильтры",
+    "filterChoice": "Выбор фильтра",
+    "aspectRatio": "Соотношение сторон",
+    "aspectRatioChoice": "Выбор соотношения сторон",
+    "zoom": "Масштаб",
+    "zoomDialog": "Масштабирование",
+    "zoomImage": "Масштаб изображения",
+    "publish": "Публикация",
+    "publicationDetails": "Детали публикации",
+    "addPublicationDescriptions": "Описание",
+    "descriptionPlaceholder": "Опишите публикацию...",
+    "addLocation": "Местоположение",
+    "locationPlaceholder": "Добавить местоположение",
+    "locationSuggestions": "Варианты местоположения",
+    "publishButton": "Опубликовать",
+    "publishing": "Публикация...",
+    "postPublishedSuccess": "Публикация успешно создана",
+    "closeModalTitle": "Закрыть",
+    "closeModalMessage": "Вы действительно хотите отменить создание публикации?",
+    "closeModalSubMessage": "Несохранённые изменения будут потеряны",
+    "closeModalDiscard": "Отменить",
+    "closeModalSaveDraft": "Сохранить черновик",
+    "draftSaveSuccess": "Черновик сохранён"
+  },
+  "SelectPhotos": {
+    "selectFromComputer": "Выбрать фото"
   }
 }

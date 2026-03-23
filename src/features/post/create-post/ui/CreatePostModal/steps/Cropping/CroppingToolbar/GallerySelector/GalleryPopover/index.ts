@@ -1,0 +1,1 @@
+export { GalleryPopover } from './GalleryPopover';

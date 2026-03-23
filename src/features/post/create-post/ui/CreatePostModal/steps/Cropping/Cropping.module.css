@@ -1,0 +1,33 @@
+.error {
+  width: 100%;
+  max-width: none;
+  margin-bottom: 16px;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+}
+
+.carousel {
+  aspect-ratio: unset;
+  width: 100%;
+  min-height: 0;
+}
+
+.carousel :global([class*='slide']) img {
+  object-fit: contain;
+}
+
+@media (width <= 768px) {
+  .content {
+    min-height: 240px;
+  }
+}
+
+@media (width <= 380px) {
+  .content {
+    min-height: 200px;
+  }
+}

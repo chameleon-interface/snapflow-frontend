@@ -9,3 +9,4 @@ export { ConfirmModal } from './modals/ConfirmModal';
 export { EmailModal } from './modals/EmailModal';
 export { InfoModal } from './modals/InfoModal';
 export { SplashScreenGate } from './SplashScreen';
+export { SelectPhotos } from './SelectPhotos/ui';

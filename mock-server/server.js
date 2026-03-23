@@ -74,6 +74,9 @@ server.get('/stats/users-count', (req, res) => {
   });
 });
 
+const MAX_POST_PHOTOS = 10;
+const MIN_POST_PHOTOS = 1;
+
 server.post('/posts', (req, res, next) => {
   if (!req.is('multipart/form-data')) {
     return res.status(415).json({
@@ -81,18 +84,21 @@ server.post('/posts', (req, res, next) => {
     });
   }
 
-  return upload.single('photoFile')(req, res, (error) => {
+  return upload.array('photoFile', MAX_POST_PHOTOS)(req, res, (error) => {
     if (error) {
       return next(error);
     }
 
-    if (!req.file) {
+    const files = req.files ?? [];
+    if (files.length < MIN_POST_PHOTOS || files.length > MAX_POST_PHOTOS) {
       return res.status(400).json({
-        error: 'photoFile is required for multipart/form-data requests',
+        error: `photoFile: from ${MIN_POST_PHOTOS} to ${MAX_POST_PHOTOS} images required`,
       });
     }
 
-    req.body.photo = `http://localhost:${port}/uploads/${req.file.filename}`;
+    req.body.photos = files.map(
+      (file) => `http://localhost:${port}/uploads/${file.filename}`,
+    );
     return next();
   });
 });

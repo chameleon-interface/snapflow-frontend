@@ -1,0 +1,22 @@
+.slideWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 320px;
+  padding: 0 16px;
+}
+
+.cropBox {
+  position: relative;
+
+  overflow: hidden;
+
+  aspect-ratio: 1;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 2px;
+
+  background: var(--color-dark-400);
+}

@@ -1,4 +1,4 @@
-﻿# Mock Server
+# Mock Server
 
 Локальный mock API для фронтенда на базе `json-server`.
 
@@ -110,18 +110,19 @@ type Profile = {
 type Post = {
   id: number;
   profileId: number;
-  photo: string;
+  /** Массив URL фото (1–10). Старые посты в posts.json могут иметь поле photo (одно фото). */
+  photos: string[];
   description: string;
 };
 ```
 
-Пример объекта:
+Пример объекта (новый формат):
 
 ```json
 {
   "id": 1,
   "profileId": 45,
-  "photo": "http://localhost:3001/uploads/post-1700000000000-123456789.jpg",
+  "photos": ["http://localhost:3001/uploads/post-1700000000000-123456789.jpg"],
   "description": "Early morning walk before work. The city is quiet and beautiful."
 }
 ```
@@ -155,7 +156,7 @@ type Post = {
 {
   "id": 6,
   "profileId": 45,
-  "photo": "http://localhost:3001/uploads/post-1771505821823-500771166.jpg",
+  "photos": ["http://localhost:3001/uploads/post-1771505821823-500771166.jpg"],
   "description": "New mock post"
 }
 ```
@@ -164,7 +165,7 @@ type Post = {
 
 - `id` - number, генерируется сервером
 - `profileId` - number, id профиля автора
-- `photo` - string, URL сохраненного файла в `/uploads`
+- `photos` - string[], массив URL фото (1–10) в `/uploads`
 - `description` - string
 
 #### `GET /posts`
@@ -178,7 +179,7 @@ type Post = {
   {
     "id": 1,
     "profileId": 45,
-    "photo": "http://localhost:3001/uploads/post-1.jpg",
+    "photos": ["http://localhost:3001/uploads/post-1.jpg"],
     "description": "Post 1"
   }
 ]
@@ -203,7 +204,7 @@ type Post = {
 
 #### `POST /posts`
 
-Создает пост с загрузкой файла.
+Создает пост с загрузкой от 1 до 10 фото.
 
 Что принимает:
 
@@ -211,12 +212,13 @@ type Post = {
 - поля формы:
   - `profileId` (required, number)
   - `description` (required, string)
-  - `photoFile` (required, image file)
+  - `photoFile` (required, от 1 до 10 image files — одно и то же имя поля, несколько файлов)
 
 Ограничения:
 
 - только изображения (`image/*`)
-- размер файла до `20MB`
+- размер каждого файла до `20MB`
+- количество файлов: от 1 до 10
 
 Пример запроса (axios):
 
@@ -226,7 +228,7 @@ import axios from 'axios';
 const formData = new FormData();
 formData.append('profileId', '45');
 formData.append('description', 'New mock post with uploaded file');
-formData.append('photoFile', fileInput.files[0]);
+photos.forEach((file) => formData.append('photoFile', file));
 
 const { data } = await axios.post('http://localhost:3001/posts', formData, {
   headers: {
@@ -241,7 +243,10 @@ const { data } = await axios.post('http://localhost:3001/posts', formData, {
 {
   "id": 6,
   "profileId": 45,
-  "photo": "http://localhost:3001/uploads/post-1771505821823-500771166.jpg",
+  "photos": [
+    "http://localhost:3001/uploads/post-1771505821823-500771166.jpg",
+    "http://localhost:3001/uploads/post-1771505821824-500771167.jpg"
+  ],
   "description": "New mock post with uploaded file"
 }
 ```
@@ -249,7 +254,7 @@ const { data } = await axios.post('http://localhost:3001/posts', formData, {
 Ошибки:
 
 - `415` если отправлен не `multipart/form-data`
-- `400` если нет `photoFile`/невалидный файл/превышен лимит
+- `400` если нет `photoFile` / не 1–10 файлов / невалидный файл / превышен лимит
 
 #### `PUT /posts/:id`
 
@@ -264,7 +269,7 @@ const { data } = await axios.post('http://localhost:3001/posts', formData, {
 {
   "id": 6,
   "profileId": 45,
-  "photo": "http://localhost:3001/uploads/post-1771505821823-500771166.jpg",
+  "photos": ["http://localhost:3001/uploads/post-1771505821823-500771166.jpg"],
   "description": "Updated description"
 }
 ```
