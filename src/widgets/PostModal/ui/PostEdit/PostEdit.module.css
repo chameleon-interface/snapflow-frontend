@@ -1,0 +1,86 @@
+.root {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(280px, 360px);
+  gap: 16px;
+  align-items: start;
+}
+
+.previewSection {
+  overflow: hidden;
+  min-height: 320px;
+  border-radius: 8px;
+  background: var(--color-dark-700);
+}
+
+.previewImage,
+.previewFallback {
+  width: 100%;
+  min-height: 320px;
+}
+
+.previewImage {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.previewFallback {
+  background: var(--color-dark-700);
+}
+
+.formSection {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  min-height: 100%;
+  padding: 0 16px 16px;
+}
+
+.descriptionArea {
+  flex: 1;
+  padding: 0;
+  border-radius: 2px;
+}
+
+.descriptionInput :global(textarea) {
+  border: 1px solid var(--color-dark-100) !important;
+  border-radius: 2px;
+  background-color: var(--color-dark-900);
+}
+
+.descriptionInput :global(textarea:focus),
+.descriptionInput :global(textarea:focus-visible) {
+  border: 1px solid var(--color-dark-100) !important;
+  border-radius: 2px;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.descriptionCounter {
+  display: flex;
+  justify-content: flex-end;
+  color: var(--color-light-900);
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.saveButton {
+  align-self: flex-end;
+}
+
+@media (width <= 900px) {
+  .root {
+    grid-template-columns: 1fr;
+  }
+
+  .previewSection,
+  .previewImage,
+  .previewFallback {
+    min-height: 240px;
+  }
+}

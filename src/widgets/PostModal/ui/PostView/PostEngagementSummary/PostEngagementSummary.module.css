@@ -1,0 +1,64 @@
+.actionsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 16px;
+  border-top: 1px solid var(--color-dark-100);
+}
+
+.actionsLeft {
+  display: flex;
+  gap: 6px;
+}
+
+.iconButton {
+  padding: 0;
+  color: var(--color-light-100);
+}
+
+.iconButton span {
+  margin-right: 0;
+}
+
+.infoSection {
+  padding: 0 16px 12px;
+  border-bottom: 1px solid var(--color-dark-100);
+}
+
+.likesRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.likesAvatars {
+  display: flex;
+  align-items: center;
+}
+
+.likesAvatar,
+.likesAvatarAlt {
+  width: 20px;
+  height: 20px;
+  margin-left: -6px;
+  border: 1px solid var(--color-dark-300);
+  border-radius: 50%;
+}
+
+.likesAvatar {
+  background: linear-gradient(135deg, #f2b36f, #d75a7f);
+}
+
+.likesAvatarAlt {
+  background: linear-gradient(135deg, #79c7ff, #4d6dff);
+}
+
+.likesAvatars > :first-child {
+  margin-left: 0;
+}
+
+.publishDate {
+  margin-top: 6px;
+  color: var(--color-light-900);
+}

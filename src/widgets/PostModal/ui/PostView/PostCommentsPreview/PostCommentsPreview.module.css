@@ -1,0 +1,70 @@
+.root {
+  overflow: hidden;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 18px;
+
+  padding: 20px 16px;
+}
+
+.commentItem {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.commentBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.commentText {
+  display: block;
+}
+
+.commentAuthor {
+  font-weight: 700;
+}
+
+.commentMeta {
+  margin-top: 4px;
+  color: var(--color-light-900);
+}
+
+.commentActionIcon,
+.commentActionIconActive {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--color-light-900);
+}
+
+.commentActionIconActive {
+  color: var(--color-danger-300);
+}
+
+.commentPlaceholderAvatar {
+  flex-shrink: 0;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+
+  background: var(--color-dark-100);
+}
+
+.commentPlaceholderLine,
+.commentPlaceholderLineShort {
+  height: 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-light-100) 20%, transparent);
+}
+
+.commentPlaceholderLine {
+  width: 100%;
+}
+
+.commentPlaceholderLineShort {
+  width: 72%;
+  margin-top: 8px;
+}

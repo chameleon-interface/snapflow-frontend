@@ -18,6 +18,9 @@
   "Pages": {
     "mainTitle": "Main page",
     "feedTitle": "Feed",
+    "feedDemoStatus": "Feed UI preview enabled.",
+    "feedDemoMockReady": "Debug mode opens a local mock post for UI testing.",
+    "feedDemoOpen": "Open Post Modal",
     "favoritesTitle": "Favorites",
     "profileTitle": "Profile",
     "messengerTitle": "Messenger",
@@ -60,6 +63,19 @@
     "LogoutConfirm": {
       "title": "Log out",
       "message": "Are you really want to log out of your account \"{email}\"?"
+    },
+    "Post": {
+      "editTitle": "Edit Post",
+      "editAction": "Edit Post",
+      "deleteAction": "Delete Post",
+      "descriptionLabel": "Add publication descriptions",
+      "saveChanges": "Save Changes",
+      "deleteTitle": "Delete Post",
+      "deleteMessage": "Are you sure you want to delete this post?",
+      "deleteSuccess": "Post deleted successfully",
+      "closeTitle": "Close Post",
+      "closeMessage": "Do you really want to finish editing? If you close the changes you have made will not be saved.",
+      "editSuccess": "Post updated successfully"
     }
   },
   "PasswordRecovery": {

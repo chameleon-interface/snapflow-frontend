@@ -1,0 +1,39 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 16px 16px;
+  border-bottom: 1px solid var(--color-dark-100);
+}
+
+.actionsMenu {
+  overflow: hidden;
+  padding-block: 0;
+}
+
+.actionsButton {
+  padding-inline: 0;
+}
+
+.actionsButton span {
+  margin-right: 0;
+}
+
+.actionsMenu :global([data-radix-popper-content-wrapper]) {
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.actionsMenu :global([role='menuitem']) {
+  min-height: 53px;
+}
+
+.actionsMenu :global([role='menuitem']:first-child),
+.actionsMenu :global([role='menuitem']:last-child) {
+  margin-block: 0;
+}
+
+.actionsMenu :global([role='menuitem'][data-highlighted]) {
+  box-shadow: none;
+}

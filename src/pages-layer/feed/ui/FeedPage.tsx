@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { FeedPageClient } from './FeedPageClient';
 
 export async function FeedPage() {
   const t = await getTranslations('Pages');
@@ -6,7 +7,7 @@ export async function FeedPage() {
   return (
     <main>
       <h1>{t('feedTitle')}</h1>
-      <p>{t('placeholder')}</p>
+      <FeedPageClient />
     </main>
   );
 }
