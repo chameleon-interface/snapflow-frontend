@@ -1,0 +1,14 @@
+.popover {
+  position: absolute;
+  z-index: 10;
+  bottom: calc(100% + 8px);
+  left: 0;
+
+  min-width: 160px;
+  padding: 4px;
+  border-radius: 2px;
+
+  background-color: var(--color-dark-300);
+  box-shadow: 0 4px 12px
+    color-mix(in srgb, var(--color-dark-900) 40%, transparent);
+}

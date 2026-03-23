@@ -19,11 +19,14 @@ importers:
       axios:
         specifier: 1.13.5
         version: 1.13.5
+      cc-gram:
+        specifier: 1.2.10
+        version: 1.2.10
       clsx:
         specifier: 2.1.1
         version: 2.1.1
       disposable-email-domains:
-        specifier: ^1.0.62
+        specifier: 1.0.62
         version: 1.0.62
       next:
         specifier: 16.1.6
@@ -38,10 +41,10 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(react@19.2.3)
       react-easy-crop:
-        specifier: ^5.5.6
+        specifier: 5.5.6
         version: 5.5.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-google-recaptcha:
-        specifier: ^3.1.0
+        specifier: 3.1.0
         version: 3.1.0(react@19.2.3)
       react-hook-form:
         specifier: 7.71.1
@@ -72,7 +75,7 @@ importers:
         specifier: '19'
         version: 19.2.3(@types/react@19.2.9)
       '@types/react-google-recaptcha':
-        specifier: ^2.1.9
+        specifier: 2.1.9
         version: 2.1.9
       eslint:
         specifier: '9'
@@ -84,7 +87,7 @@ importers:
         specifier: 10.1.8
         version: 10.1.8(eslint@9.39.2)
       eslint-plugin-boundaries:
-        specifier: ^5.3.1
+        specifier: 5.3.1
         version: 5.3.1(@typescript-eslint/parser@8.53.1(eslint@9.39.2)(typescript@5.9.3))(eslint@9.39.2)
       husky:
         specifier: 9.1.7
@@ -2132,6 +2135,13 @@ packages:
       {
         integrity: sha512-LWcNtSyZrakjECqmpP4qdg0MMGdN368D7X8XvvAqOcqMv0RxnlqVKZl2V6/mBR68oYMxOZPLw/gO7DuisMHUvQ==,
       }
+
+  cc-gram@1.2.10:
+    resolution:
+      {
+        integrity: sha512-lOvkOs2rVpZH7xU4+bABGKJkylRT0P26zItCuh2SZYZ4hz0tSzrDYdQ2ZeKYwq7VGUmEVxIQbTVa7RyYSWy4dg==,
+      }
+    engines: { node: ^20.19.0 || ^22.12.0 || >=24.0.0 }
 
   chalk@4.1.2:
     resolution:
@@ -6186,6 +6196,8 @@ snapshots:
   callsites@3.1.0: {}
 
   caniuse-lite@1.0.30001765: {}
+
+  cc-gram@1.2.10: {}
 
   chalk@4.1.2:
     dependencies:

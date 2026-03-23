@@ -183,6 +183,54 @@
     "recaptcha": {
       "required": "Please complete the reCAPTCHA verification",
       "expired": "reCAPTCHA verification has expired. Please complete the verification again"
+    },
+    "selectPhotos": {
+      "errorMaxCount": "You can still select no more than {limit} photos, selected {count}",
+      "errorLimitReached": "Photo limit reached - {limit}",
+      "errorFileSize": "Photo size must not exceed 20 MB",
+      "errorFormat": "The format of the uploaded photo must be PNG or JPEG",
+      "errorDuplicate": "This photo is already selected - {name}"
     }
+  },
+  "CreatePost": {
+    "stepTitleAddPhotos": "Add Photo",
+    "stepTitleCropping": "Cropping",
+    "stepTitleFilters": "Filters",
+    "stepTitlePublish": "Publish",
+    "previousStep": "Previous",
+    "nextStep": "Next",
+    "generatingCropped": "Preparing...",
+    "applyingFilters": "Applying filters...",
+    "openDraft": "Open Draft",
+    "gallery": "Gallery",
+    "addPhoto": "Add photo",
+    "removePhoto": "Remove photo",
+    "aspectOriginal": "Original",
+    "filters": "Filters",
+    "filterChoice": "Filter choice",
+    "aspectRatio": "Aspect ratio",
+    "aspectRatioChoice": "Aspect ratio choice",
+    "zoom": "Zoom",
+    "zoomDialog": "Zoom",
+    "zoomImage": "Image zoom",
+    "publish": "Publish",
+    "publicationDetails": "Publication details",
+    "addPublicationDescriptions": "Description",
+    "descriptionPlaceholder": "Describe your post...",
+    "addLocation": "Location",
+    "locationPlaceholder": "Add location",
+    "locationSuggestions": "Location suggestions",
+    "publishButton": "Publish",
+    "publishing": "Publishing...",
+    "postPublishedSuccess": "Post published",
+    "closeModalTitle": "Close",
+    "closeModalMessage": "Do you really want to close the creation of a publication?",
+    "closeModalSubMessage": "Unsaved changes will be lost",
+    "closeModalDiscard": "Discard",
+    "closeModalSaveDraft": "Save draft",
+    "draftSaveSuccess": "Draft saved"
+  },
+  "SelectPhotos": {
+    "selectFromComputer": "Select photos"
   }
 }

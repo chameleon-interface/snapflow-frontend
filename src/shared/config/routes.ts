@@ -10,7 +10,6 @@ export const ROUTES = {
   STATISTICS: '/statistics',
   FAVORITES: '/favorites',
   FEED: '/feed',
-  CREATE: '/create',
   PROFILE: (id: string) => `/profile/${id}`,
   MESSENGER: '/messenger',
   SEARCH: '/search',

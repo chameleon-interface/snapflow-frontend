@@ -1,0 +1,1 @@
+export { useGetMyProfileQuery } from './useGetMyProfileQuery';
