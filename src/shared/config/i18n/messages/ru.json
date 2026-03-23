@@ -127,6 +127,7 @@
   "Common": {
     "somethingWentWrong": "Что-то пошло не так",
     "networkError": "Ошибка сети. Проверьте подключение."
+  },
   "CreatePost": {
     "stepTitleAddPhotos": "Добавить фото",
     "stepTitleCropping": "Обрезка",
@@ -168,4 +169,4 @@
   "SelectPhotos": {
     "selectFromComputer": "Выбрать фото"
   }
-}
+
