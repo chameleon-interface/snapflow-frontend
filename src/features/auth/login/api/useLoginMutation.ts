@@ -1,7 +1,7 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { api } from '@/shared/api';
+import { authControllerLogin } from '@/shared/api/generated/endpoints/auth/auth';
 
 import { LoginFormData } from '@/features/auth/login/model/schema';
 import { tokenStorage } from '@/shared/lib';
@@ -10,11 +10,10 @@ export const useLoginMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: LoginFormData) =>
-      api.post<{ accessToken: string }>('auth/login', data),
+    mutationFn: (data: LoginFormData) => authControllerLogin(data),
 
     onSuccess: (response) => {
-      tokenStorage.set(response.data.accessToken);
+      tokenStorage.set(response.accessToken);
       queryClient.invalidateQueries({
         queryKey: ['auth', 'me'],
       });

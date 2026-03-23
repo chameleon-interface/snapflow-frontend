@@ -1,5 +1,5 @@
-import { api } from '@/shared/api';
 import { useMutation } from '@tanstack/react-query';
+import { authControllerNewPassword } from '@/shared/api/generated/endpoints/auth/auth';
 
 type NewPasswordDTO = {
   newPassword: string;
@@ -8,7 +8,6 @@ type NewPasswordDTO = {
 
 export const useSetNewPassword = () => {
   return useMutation({
-    mutationFn: (body: NewPasswordDTO) =>
-      api.post<void>('/auth/new-password', body),
+    mutationFn: (body: NewPasswordDTO) => authControllerNewPassword(body),
   });
 };
