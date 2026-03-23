@@ -18,11 +18,6 @@ export const useUploadProfileAvatar = () => {
       const response = await api.post<UploadProfileAvatarResponse>(
         'users/profile/avatar',
         formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        },
       );
 
       return response.data;

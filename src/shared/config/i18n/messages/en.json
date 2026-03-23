@@ -47,6 +47,7 @@
     "avatarUpdated": "Avatar updated successfully!",
     "avatarDeleted": "Avatar deleted successfully!",
     "avatarTooLarge": "Avatar image must be 10 MB or smaller.",
+    "avatarCropFailed": "Failed to process avatar image. Please try again.",
     "avatarCropModal": {
       "title": "Add a Profile Photo",
       "save": "Save"

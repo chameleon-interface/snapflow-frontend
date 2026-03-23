@@ -98,13 +98,17 @@ export const useProfileAvatarSection = ({
       return;
     }
 
-    const croppedAvatar = await getCroppedAvatarFile({
-      imageSrc: cropDraft.imageSrc,
-      cropAreaPixels: cropDraft.croppedAreaPixels,
-      fileName: cropDraft.fileName,
-    });
+    try {
+      const croppedAvatar = await getCroppedAvatarFile({
+        imageSrc: cropDraft.imageSrc,
+        cropAreaPixels: cropDraft.croppedAreaPixels,
+        fileName: cropDraft.fileName,
+      });
 
-    uploadCroppedAvatar(croppedAvatar, resetCropDraft);
+      uploadCroppedAvatar(croppedAvatar, resetCropDraft);
+    } catch {
+      toastError(t('avatarCropFailed'));
+    }
   };
 
   return {
