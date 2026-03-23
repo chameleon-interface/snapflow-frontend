@@ -12,7 +12,7 @@ import { Toaster } from 'react-hot-toast';
 import { SplashScreenGate } from '@/shared/ui/SplashScreen';
 import { useTranslations } from 'next-intl';
 import {
-  createReactQueryApiErrorHandler,
+  reactQueryApiErrorHandler,
   type ReactQueryApiErrorToastMessages,
   type ReactQueryApiErrorSkipMeta,
 } from '@/shared/lib/errors/reactQueryApiErrorHandler';
@@ -23,24 +23,23 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     genericError: tCommon('somethingWentWrong'),
     networkError: tCommon('networkError'),
   };
-  const handleReactQueryApiError = createReactQueryApiErrorHandler(messages);
   const [queryClient] = useState(
     () =>
       new QueryClient({
         queryCache: new QueryCache({
           onError: (error, query) => {
-            handleReactQueryApiError(
-              error,
-              query.meta as ReactQueryApiErrorSkipMeta | undefined,
-            );
+            const meta = query.meta as ReactQueryApiErrorSkipMeta | undefined;
+            if (meta?.globalErrorHandler === false) return;
+            reactQueryApiErrorHandler(error, messages);
           },
         }),
         mutationCache: new MutationCache({
           onError: (error, _variables, _context, mutation) => {
-            handleReactQueryApiError(
-              error,
-              mutation.options.meta as ReactQueryApiErrorSkipMeta | undefined,
-            );
+            const meta = mutation.options.meta as
+              | ReactQueryApiErrorSkipMeta
+              | undefined;
+            if (meta?.globalErrorHandler === false) return;
+            reactQueryApiErrorHandler(error, messages);
           },
         }),
         defaultOptions: {

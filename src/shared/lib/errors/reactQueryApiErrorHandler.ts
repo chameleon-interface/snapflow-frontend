@@ -10,16 +10,7 @@ export type ReactQueryApiErrorToastMessages = {
   networkError: string;
 };
 
-export function createReactQueryApiErrorHandler(
-  messages: ReactQueryApiErrorToastMessages,
-): (error: Error, meta?: ReactQueryApiErrorSkipMeta | null) => void {
-  return (error: Error, meta?: ReactQueryApiErrorSkipMeta | null): void => {
-    if (meta?.globalErrorHandler === false) return;
-    showApiErrorToast(error, messages);
-  };
-}
-
-function showApiErrorToast(
+export function reactQueryApiErrorHandler(
   error: Error,
   messages: ReactQueryApiErrorToastMessages,
 ): void {
