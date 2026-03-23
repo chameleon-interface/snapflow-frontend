@@ -127,6 +127,7 @@
   "Common": {
     "somethingWentWrong": "Something went wrong",
     "networkError": "Network error. Please check your connection."
+  },
   "CreatePost": {
     "stepTitleAddPhotos": "Add Photo",
     "stepTitleCropping": "Cropping",
@@ -168,4 +169,4 @@
   "SelectPhotos": {
     "selectFromComputer": "Select photos"
   }
-}
+
