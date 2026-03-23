@@ -1,0 +1,51 @@
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+
+  width: clamp(320px, 42vw, 520px);
+  max-width: calc(100vw - 32px);
+  max-height: 90vh;
+}
+
+.modalContainerWide {
+  width: min(960px, calc(100vw - 32px));
+  max-width: none;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 0;
+}
+
+@media (width <= 768px) {
+  .modalContainer {
+    max-height: 92vh;
+  }
+
+  .modalContainerWide {
+    width: calc(100vw - 32px);
+  }
+
+  .content {
+    gap: 16px;
+  }
+}
+
+@media (width <= 380px) {
+  .modalContainer,
+  .modalContainerWide {
+    width: calc(100vw - 16px);
+    max-width: calc(100vw - 16px);
+    max-height: 94vh;
+  }
+
+  .content {
+    gap: 12px;
+  }
+}
