@@ -3,7 +3,7 @@
 import { useCallback, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { toastSuccess } from 'snapflow-ui-kit/client';
-import type { CreatePostPayload } from '@/features/post/create-post/model/types';
+import type { CreatePostInputDto } from '@/shared/api/generated/model';
 import { useUploadMediaMutation } from '@/shared/api/media/useUploadMediaMutation';
 import { usePhotosState } from './usePhotosState';
 import { useStepState } from './useStepState';
@@ -130,7 +130,7 @@ export const useFlow = ({ onClose }: Params) => {
 
       if (fileIds === null) return;
 
-      const payload: CreatePostPayload = {
+      const payload: CreatePostInputDto = {
         description,
         fileIds,
       };
@@ -202,7 +202,7 @@ export const useFlow = ({ onClose }: Params) => {
 
     if (fileIds === null) return;
 
-    const payload: CreatePostPayload = {
+    const payload: CreatePostInputDto = {
       description,
       fileIds,
     };
@@ -237,7 +237,9 @@ export const useFlow = ({ onClose }: Params) => {
         photos.setCroppedPhotos([]);
         photos.setReadyToUploadPhotos([]);
         postState.reset();
-        setDescription(draft.description ?? '');
+        const draftDescription =
+          typeof draft.description === 'string' ? draft.description : '';
+        setDescription(draftDescription);
         stepState.setStep('cropping');
       } finally {
         setIsOpeningDraft(false);

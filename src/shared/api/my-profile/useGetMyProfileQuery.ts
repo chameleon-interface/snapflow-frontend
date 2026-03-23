@@ -1,10 +1,10 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { api } from '@/shared/api';
-import { MyProfileResponse } from './types';
+import { profileControllerGetProfile } from '@/shared/api/generated/endpoints/profile/profile';
+import type { ProfileViewDto } from '@/shared/api/generated/model';
 
-export const myProfileQueryKey = () => ['my-profile'] as const;
+export const myProfileQueryKey = () => ['MyProfile'] as const;
 
 type UseGetMyProfileQueryOptions = {
   enabled?: boolean;
@@ -13,12 +13,9 @@ type UseGetMyProfileQueryOptions = {
 export const useGetMyProfileQuery = (options?: UseGetMyProfileQueryOptions) => {
   const { enabled = true } = options ?? {};
 
-  return useQuery({
+  return useQuery<ProfileViewDto>({
     queryKey: myProfileQueryKey(),
-    queryFn: async () => {
-      const { data } = await api.get<MyProfileResponse>(`/users/profile`);
-      return data;
-    },
+    queryFn: () => profileControllerGetProfile(),
     enabled,
   });
 };

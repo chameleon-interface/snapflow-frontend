@@ -1,10 +1,9 @@
 'use client';
 
+import { postsControllerGetMyDrafts } from '@/shared/api/generated/endpoints/posts/posts';
 import { useQuery } from '@tanstack/react-query';
-import { api } from '@/shared/api';
-import type { CreateDraftResponse } from '@/features/post/create-post/model/types';
 
-export const openDraftQueryKey = () => ['post', 'drafts'] as const;
+export const openDraftQueryKey = () => ['Drafts'] as const;
 
 type UseOpenDraftQueryOptions = {
   enabled?: boolean;
@@ -15,10 +14,7 @@ export const useOpenDraftQuery = (options?: UseOpenDraftQueryOptions) => {
 
   return useQuery({
     queryKey: openDraftQueryKey(),
-    queryFn: async () => {
-      const { data } = await api.get<CreateDraftResponse[]>('/posts/drafts');
-      return data;
-    },
+    queryFn: () => postsControllerGetMyDrafts(),
     enabled,
   });
 };

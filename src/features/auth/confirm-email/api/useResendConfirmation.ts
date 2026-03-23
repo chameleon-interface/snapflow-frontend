@@ -1,9 +1,8 @@
 import { useMutation } from '@tanstack/react-query';
-import { api } from '@/shared/api';
+import { authControllerResendingEmail } from '@/shared/api/generated/endpoints/auth/auth';
 
 export const useResendConfirmation = () => {
   return useMutation({
-    mutationFn: (email: string) =>
-      api.post<void>('/auth/registration-email-resending', { email }),
+    mutationFn: (email: string) => authControllerResendingEmail({ email }),
   });
 };

@@ -1,22 +1,19 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { api } from '@/shared/api';
+import { postsControllerCreatePost } from '@/shared/api/generated/endpoints/posts/posts';
+import type { CreatePostInputDto } from '@/shared/api/generated/model';
 
-import type {
-  CreatePostPayload,
-  CreatePostResponse,
-} from '@/features/post/create-post/model/types';
+export const postsQueryKey = () => ['Posts'] as const;
 
 export const useCreatePostMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (payload: CreatePostPayload) => {
-      return api.post<CreatePostResponse>('/posts', payload);
-    },
+    mutationFn: (payload: CreatePostInputDto) =>
+      postsControllerCreatePost(payload),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['Posts'] });
+      queryClient.invalidateQueries({ queryKey: postsQueryKey() });
     },
   });
 };

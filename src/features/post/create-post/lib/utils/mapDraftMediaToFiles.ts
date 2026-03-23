@@ -1,4 +1,4 @@
-import type { PostMedia } from '@/features/post/create-post/model/types';
+import type { PostMediaViewDto } from '@/shared/api/generated/model';
 import { downloadBlobByUrl } from '@/shared/api';
 
 const getExtensionFromMimeType = (mimeType: string) => {
@@ -6,7 +6,7 @@ const getExtensionFromMimeType = (mimeType: string) => {
   return extension || 'jpg';
 };
 
-export const mapDraftMediaToFiles = async (postMedias: PostMedia[]) => {
+export const mapDraftMediaToFiles = async (postMedias: PostMediaViewDto[]) => {
   return Promise.all(
     postMedias.map(async (media, index) => {
       const blob = await downloadBlobByUrl(media.url);
