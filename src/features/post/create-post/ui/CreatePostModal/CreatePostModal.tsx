@@ -82,6 +82,7 @@ export const CreatePostModal = ({ isOpen, onClose }: Props) => {
         onClose={() => flow.setIsCloseModalOpened(false)}
         onDiscard={flow.handleDiscard}
         onSaveDraft={flow.handleSaveDraft}
+        isSavingDraft={flow.isSaveDraftPending}
       />
     </Modal>
   );

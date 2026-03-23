@@ -160,6 +160,7 @@
     "closeModalSubMessage": "Несохранённые изменения будут потеряны",
     "closeModalDiscard": "Отменить",
     "closeModalSaveDraft": "Сохранить черновик",
+    "savingDraft": "Сохранение...",
     "draftSaveSuccess": "Черновик сохранён"
   },
   "SelectPhotos": {
