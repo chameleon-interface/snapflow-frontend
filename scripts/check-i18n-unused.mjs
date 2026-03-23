@@ -107,8 +107,23 @@ const addTemplateMatches = (allKeys, usedKeys, keyTemplate) => {
 
 const extractDynamicCallIdentifiers = (content, translatorName) => {
   const identifiers = new Set();
+
+  // Important:
+  // We use dynamic namespaces only to loosen static analysis when the translator
+  // is called with non-literal arguments (e.g. t(item.labelKey), t(MAP[step])).
+  //
+  // Previously we matched only plain identifiers: `t(foo)`.
+  // In our codebase we also have member access and index access.
   const dynamicCallRegex = new RegExp(
-    `\\b${translatorName}\\(\\s*([A-Za-z_$][\\w$]*)\\s*(?:,|\\))`,
+    `\\b${translatorName}\\(\\s*` +
+      // base identifier (must start with identifier, not a string literal)
+      `([A-Za-z_$][\\w$]*` +
+      // dotted / optional-dotted chain: a.b / a?.b / a.b?.c ...
+      `(?:\\??\\.[A-Za-z_$][\\w$]*)*` +
+      // index access: a[b] / a[foo.bar]
+      `(?:\\[[^\\]]*\\])*` +
+      `)` +
+      `\\s*(?:,|\\))`,
     'g',
   );
 

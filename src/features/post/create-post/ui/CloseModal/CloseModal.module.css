@@ -1,0 +1,50 @@
+.modalContainer {
+  width: 440px;
+  max-width: calc(100vw - 32px);
+  margin-inline: 15px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.message {
+  color: var(--color-light-100);
+}
+
+.subMessage {
+  color: var(--color-light-900);
+}
+
+.footer {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding-top: 24px;
+}
+
+.button {
+  min-width: 160px;
+  padding-inline: 20px;
+}
+
+@media (width <= 480px) {
+  .modalContainer {
+    width: 100%;
+    max-width: calc(100vw - 24px);
+    margin-inline: 12px;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 16px;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
