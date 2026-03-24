@@ -37,8 +37,8 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={inter.variable}>
       <body>
-        <Providers>
-          <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Providers>
             <Header />
             <QueryProgressBar />
             <Sidebar />
@@ -46,8 +46,8 @@ export default async function RootLayout({
               <div className={s.container}>{children}</div>
             </main>
             <div id="modal-root"></div>
-          </NextIntlClientProvider>
-        </Providers>
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

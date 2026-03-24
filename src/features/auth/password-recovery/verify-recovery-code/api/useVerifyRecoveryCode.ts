@@ -1,13 +1,13 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { api } from '@/shared/api';
+import { authControllerCheckPasswordRecoveryCode } from '@/shared/api/generated/endpoints/auth/auth';
 
 export const useVerifyRecoveryCode = (recoveryCode: string) => {
   return useQuery({
     queryKey: ['auth', 'check-password-recovery-code', recoveryCode],
     queryFn: async () => {
-      await api.post<void>('/auth/check-password-recovery-code', {
+      await authControllerCheckPasswordRecoveryCode({
         recoveryCode,
       });
       return true;

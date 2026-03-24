@@ -1,17 +1,12 @@
 'use client';
 
-import { api } from '@/shared/api';
 import { useMutation } from '@tanstack/react-query';
-
-import type {
-  CreatePostPayload,
-  CreateDraftResponse,
-} from '@/features/post/create-post/model/types';
+import { postsControllerCreateDraft } from '@/shared/api/generated/endpoints/posts/posts';
+import type { CreatePostInputDto } from '@/shared/api/generated/model';
 
 export const useCreateDraftMutation = () => {
   return useMutation({
-    mutationFn: (payload: CreatePostPayload) => {
-      return api.post<CreateDraftResponse>('/posts/draft', payload);
-    },
+    mutationFn: (payload: CreatePostInputDto) =>
+      postsControllerCreateDraft(payload),
   });
 };

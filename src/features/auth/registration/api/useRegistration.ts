@@ -1,15 +1,10 @@
 import { useMutation } from '@tanstack/react-query';
-import { api } from '@/shared/api';
-
-type RegistrationUserInputDto = {
-  username: string;
-  email: string;
-  password: string;
-};
+import { authControllerRegistration } from '@/shared/api/generated/endpoints/auth/auth';
+import type { RegistrationUserInputDto } from '@/shared/api/generated/model';
 
 export const useRegistration = () => {
   return useMutation({
     mutationFn: (body: RegistrationUserInputDto) =>
-      api.post<void>('/auth/registration', body),
+      authControllerRegistration(body),
   });
 };

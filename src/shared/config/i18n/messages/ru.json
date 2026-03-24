@@ -192,6 +192,10 @@
       "errorDuplicate": "Это фото уже выбрано - {name}"
     }
   },
+  "Common": {
+    "somethingWentWrong": "Что-то пошло не так",
+    "networkError": "Ошибка сети. Проверьте подключение."
+  },
   "CreatePost": {
     "stepTitleAddPhotos": "Добавить фото",
     "stepTitleCropping": "Обрезка",
