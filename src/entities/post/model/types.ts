@@ -1,8 +1,12 @@
-export type PostMedia = {
-  postMediaId: number;
-  fileId: string;
-  url: string;
-};
+import type {
+  PostMediaViewDto,
+  PostsControllerGetProfilePostsParams,
+  PostsPageViewDto,
+  PostViewDto,
+  PostViewDtoStatus,
+} from '@/shared/api/generated/model';
+
+export type PostMedia = PostMediaViewDto;
 
 export type PostOwner = {
   ownerId: number;
@@ -10,29 +14,23 @@ export type PostOwner = {
   avatarUrl: string | null;
 };
 
-export type ProfilePost = {
-  id: number;
+export type ProfilePost = Omit<
+  PostViewDto,
+  'description' | 'status' | 'owner'
+> & {
   description: string;
-  status: 'DRAFT' | 'PUBLISHED';
-  createdAt: string;
-  postMedias: PostMedia[];
   owner: PostOwner;
+  status: PostViewDtoStatus;
 };
 
 export type Post = ProfilePost;
 
-export type PostsPage = {
-  pagesCount: number;
-  page: number;
-  pageSize: number;
-  totalCount: number;
+export type PostsPage = Omit<PostsPageViewDto, 'items'> & {
   items: ProfilePost[];
 };
 
-export type GetProfilePostsInput = {
+export type GetProfilePostsInput = PostsControllerGetProfilePostsParams & {
   userId: number;
-  pageNumber?: number;
-  pageSize?: number;
 };
 
 export type UpdatePostInput = {
