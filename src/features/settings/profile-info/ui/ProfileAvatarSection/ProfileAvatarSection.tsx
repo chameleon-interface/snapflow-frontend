@@ -1,8 +1,16 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { usePhotoPicker } from '@/shared/lib';
+import { HiddenFileInput } from '@/shared/ui';
 import { Button, Typography } from 'snapflow-ui-kit';
-import { useProfileAvatarSection } from '../../model';
+import { toastError } from 'snapflow-ui-kit/client';
+import {
+  AVATAR_ACCEPT,
+  AVATAR_ACCEPTED_TYPES,
+  AVATAR_MAX_FILE_SIZE_BYTES,
+  useProfileAvatarSection,
+} from '../../model';
 import { ProfileAvatarCropModal } from './ProfileAvatarCropModal';
 import { ProfileAvatarPreview } from './ProfileAvatarPreview';
 import s from './ProfileAvatarSection.module.css';
@@ -21,15 +29,14 @@ export const ProfileAvatarSection = ({
   avatarUrl,
 }: ProfileAvatarSectionProps) => {
   const t = useTranslations('Settings');
+  const tValidation = useTranslations('Validation.selectPhotos');
   const {
-    fileInputRef,
     isPending,
     isCropModalOpen,
     avatarToCropUrl,
     crop,
     zoom,
-    handleButtonClick,
-    handleAvatarChange,
+    handleAvatarSelect,
     handleDeleteAvatar,
     handleCropModalClose,
     handleCropChange,
@@ -39,6 +46,22 @@ export const ProfileAvatarSection = ({
   } = useProfileAvatarSection({
     profileId,
     avatarUrl,
+  });
+  const isSelectDisabled = isPending || profileId.length === 0;
+  const { fileInputRef, openFileDialog, handleFileChange } = usePhotoPicker({
+    photos: [],
+    onSelectPhotos: handleAvatarSelect,
+    onError: (error) => {
+      if (error) {
+        toastError(error);
+      }
+    },
+    multiple: false,
+    disabled: isSelectDisabled,
+    maxFileSizeBytes: AVATAR_MAX_FILE_SIZE_BYTES,
+    accept: AVATAR_ACCEPT,
+    acceptedTypes: AVATAR_ACCEPTED_TYPES,
+    mapError: (error) => tValidation(error.key, error.values),
   });
 
   return (
@@ -51,20 +74,19 @@ export const ProfileAvatarSection = ({
         onDelete={handleDeleteAvatar}
       />
 
-      <input
-        ref={fileInputRef}
-        type="file"
-        accept="image/*"
-        hidden
-        onChange={handleAvatarChange}
+      <HiddenFileInput
+        inputRef={fileInputRef}
+        accept={AVATAR_ACCEPT}
+        multiple={false}
+        onChange={handleFileChange}
       />
 
       <Button
         type="button"
         variant="outlined"
         className={s.photoButton}
-        onClick={handleButtonClick}
-        disabled={isPending || profileId.length === 0}
+        onClick={openFileDialog}
+        disabled={isSelectDisabled}
       >
         <Typography
           variant={isMobile ? 'text-14-bold' : 'h3'}

@@ -39,14 +39,13 @@
       "subscriptions": "Управление аккаунтом",
       "payments": "Мои платежи"
     },
-    "selectProfilePhoto": "Выберите фото профиля",
+    "selectProfilePhoto": "Выберите фото",
     "profileAvatar": "Аватар профиля",
     "deleteAvatar": "Удалить аватар",
     "saveChanges": "Сохранить изменения",
     "settingsSaved": "Ваши настройки сохранены!",
     "avatarUpdated": "Аватар успешно обновлен!",
     "avatarDeleted": "Аватар успешно удален!",
-    "avatarTooLarge": "Размер аватарки не должен превышать 10 MB.",
     "avatarCropFailed": "Не удалось обработать аватар. Попробуйте снова.",
     "avatarCropModal": {
       "title": "Добавить фото профиля",
@@ -234,8 +233,5 @@
     "closeModalSaveDraft": "Сохранить черновик",
     "savingDraft": "Сохранение...",
     "draftSaveSuccess": "Черновик сохранён"
-  },
-  "SelectPhotos": {
-    "selectFromComputer": "Выбрать фото"
   }
 }

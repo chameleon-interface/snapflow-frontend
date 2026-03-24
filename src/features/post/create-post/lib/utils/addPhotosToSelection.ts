@@ -1,9 +1,9 @@
 import {
   getPhotoNames,
   processSelectedFiles,
+  MAX_PHOTOS_MULTIPLE,
   type ValidationError,
-} from '@/shared/ui/SelectPhotos/lib';
-import { MAX_PHOTOS_MULTIPLE } from '@/shared/ui/SelectPhotos/model/constants';
+} from '@/shared/lib';
 
 export type AddPhotosToSelectionContext = {
   originalPhotos: File[];

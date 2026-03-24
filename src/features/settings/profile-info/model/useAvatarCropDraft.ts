@@ -35,11 +35,8 @@ export const useAvatarCropDraft = () => {
     setCropDraft(null);
   };
 
-  const openCropDraft = (event: ChangeEvent<HTMLInputElement>) => {
-    const avatar = event.target.files?.[0];
-
+  const openCropDraftByFile = (avatar: File | null) => {
     if (!avatar) {
-      event.target.value = '';
       return false;
     }
 
@@ -59,9 +56,14 @@ export const useAvatarCropDraft = () => {
       croppedAreaPixels: null,
     });
 
-    event.target.value = '';
-
     return true;
+  };
+
+  const openCropDraft = (event: ChangeEvent<HTMLInputElement>) => {
+    const avatar = event.target.files?.[0] ?? null;
+    const isOpened = openCropDraftByFile(avatar);
+    event.target.value = '';
+    return isOpened;
   };
 
   const setCrop = (nextCrop: Point) => {
@@ -101,6 +103,7 @@ export const useAvatarCropDraft = () => {
     cropDraft,
     isCropModalOpen: cropDraft !== null,
     openCropDraft,
+    openCropDraftByFile,
     resetCropDraft,
     setCrop,
     setZoom,
