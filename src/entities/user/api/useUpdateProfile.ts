@@ -1,14 +1,13 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import type { UpdateProfileDto } from './types';
-import { api } from '@/shared/api';
+import { profileControllerUpdateProfile } from '@/shared/api/generated/endpoints/profile/profile';
+import type { UpdateProfileInputDto } from '@/shared/api/generated/model';
 
 export const useUpdateProfile = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (body: UpdateProfileDto) => {
-      await api.put<void>('users/profile/', body);
-    },
+    mutationFn: (body: UpdateProfileInputDto) =>
+      profileControllerUpdateProfile(body),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['my-profile'] });
     },
