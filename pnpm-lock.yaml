@@ -252,12 +252,6 @@ packages:
         integrity: sha512-JsXDL70gQ+1Vc2W/KUFfkAJzgb4puKwwKehNLuB+HrNKWf91O736kGfxn4KujXCCSuh6mRRL4XEB0PkAFjWS0A==,
       }
 
-  '@countrystatecity/countries@1.0.5':
-    resolution:
-      {
-        integrity: sha512-AsxLm46eYTnP+lLKKk8o2ShJslVX4pAh762Kjux/40sVBEVH152PSgevlBEUxRawNXrccCbA8CQYLAJj5s9Tyw==,
-      }
-
   '@commander-js/extra-typings@14.0.0':
     resolution:
       {
@@ -265,6 +259,12 @@ packages:
       }
     peerDependencies:
       commander: ~14.0.0
+
+  '@countrystatecity/countries@1.0.5':
+    resolution:
+      {
+        integrity: sha512-AsxLm46eYTnP+lLKKk8o2ShJslVX4pAh762Kjux/40sVBEVH152PSgevlBEUxRawNXrccCbA8CQYLAJj5s9Tyw==,
+      }
 
   '@csstools/css-parser-algorithms@4.0.0':
     resolution:
@@ -5901,11 +5901,11 @@ snapshots:
       hashery: 1.4.0
       keyv: 5.6.0
 
-  '@countrystatecity/countries@1.0.5': {}
-
   '@commander-js/extra-typings@14.0.0(commander@14.0.2)':
     dependencies:
       commander: 14.0.2
+
+  '@countrystatecity/countries@1.0.5': {}
 
   '@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0)':
     dependencies:
