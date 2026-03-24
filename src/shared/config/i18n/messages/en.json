@@ -124,6 +124,10 @@
       "errorDuplicate": "This photo is already selected - {name}"
     }
   },
+  "Common": {
+    "somethingWentWrong": "Something went wrong",
+    "networkError": "Network error. Please check your connection."
+  },
   "CreatePost": {
     "stepTitleAddPhotos": "Add Photo",
     "stepTitleCropping": "Cropping",
