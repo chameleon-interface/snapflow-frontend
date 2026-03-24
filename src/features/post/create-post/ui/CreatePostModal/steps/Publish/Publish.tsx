@@ -1,6 +1,7 @@
 'use client';
 
 import { useFileObjectUrls } from '@/features/post/create-post/lib';
+import type { ProfileViewDto } from '@/shared/api/generated/model';
 import { Carousel } from 'snapflow-ui-kit/client';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -8,7 +9,6 @@ import { useState } from 'react';
 import { Textarea } from 'snapflow-ui-kit';
 import { Input, Typography } from 'snapflow-ui-kit/client';
 import { PinIcon } from 'snapflow-ui-kit/icons';
-import type { MyProfileResponse } from '@/shared/api/my-profile/types';
 import type { LocationSuggestion } from './LocationSuggestions';
 import { LocationSuggestions } from './LocationSuggestions';
 import styles from './Publish.module.css';
@@ -29,7 +29,7 @@ type Props = {
   onDescriptionChange: (value: string) => void;
   location: string;
   onLocationChange: (value: string) => void;
-  profile: MyProfileResponse | undefined;
+  profile: ProfileViewDto | undefined;
 };
 
 const CarouselSlide = ({ url }: { url: string }) => (
