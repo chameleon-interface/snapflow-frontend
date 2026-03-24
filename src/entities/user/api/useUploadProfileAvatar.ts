@@ -1,27 +1,19 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { profileControllerUploadAvatar } from '@/shared/api/generated/endpoints/profile/profile';
 import type {
-  UploadProfileAvatarDto,
-  UploadProfileAvatarResponse,
-} from './types';
-import { api } from '@/shared/api';
-import type { ProfileViewDto } from '@/shared/api/generated/model';
+  AvatarViewDto,
+  ProfileControllerUploadAvatarBody,
+  ProfileViewDto,
+} from '@/shared/api/generated/model';
 
 export const useUploadProfileAvatar = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async ({ avatar }: UploadProfileAvatarDto) => {
-      const formData = new FormData();
-
-      formData.append('avatar', avatar);
-
-      const response = await api.post<UploadProfileAvatarResponse>(
-        'users/profile/avatar',
-        formData,
-      );
-
-      return response.data;
-    },
+    mutationFn: ({
+      avatar,
+    }: ProfileControllerUploadAvatarBody): Promise<AvatarViewDto> =>
+      profileControllerUploadAvatar({ avatar }),
     onSuccess: ({ publicUrl }) => {
       queryClient.setQueryData<ProfileViewDto | undefined>(
         ['my-profile'],
