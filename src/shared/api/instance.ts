@@ -56,6 +56,10 @@ api.interceptors.response.use(
       return Promise.reject(error);
     }
 
+    if (shouldSkipRefresh(originalRequest.url)) {
+      return Promise.reject(error);
+    }
+
     if (isRefreshing) {
       return new Promise<string>((resolve, reject) => {
         failedQueue.push({ resolve, reject });
@@ -89,3 +93,21 @@ api.interceptors.response.use(
     }
   },
 );
+
+function shouldSkipRefresh(url: unknown): boolean {
+  if (typeof url !== 'string') return false;
+
+  const normalized = url.replace(/^\//, '').toLowerCase();
+
+  if (normalized === 'auth/refresh-token') return true;
+
+  return (
+    normalized === 'auth/login' ||
+    normalized === 'auth/registration' ||
+    normalized === 'auth/registration-confirmation' ||
+    normalized === 'auth/registration-email-resending' ||
+    normalized === 'auth/password-recovery' ||
+    normalized === 'auth/check-password-recovery-code' ||
+    normalized === 'auth/new-password'
+  );
+}

@@ -23,7 +23,6 @@
     "messengerTitle": "Messenger",
     "searchTitle": "Search",
     "statisticsTitle": "Statistics",
-    "settingsTitle": "Settings",
     "signInTitle": "Sign In",
     "signUpTitle": "Sign Up",
     "forgotPasswordTitle": "Forgot Password",
@@ -31,6 +30,56 @@
     "placeholder": "Placeholder page.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
+  },
+  "Settings": {
+    "tabsAria": "Settings tabs",
+    "tabs": {
+      "info": "General information",
+      "devices": "Devices",
+      "subscriptions": "Account Management",
+      "payments": "My payments"
+    },
+    "selectProfilePhoto": "Select Profile Photo",
+    "profileAvatar": "Profile avatar",
+    "deleteAvatar": "Delete avatar",
+    "saveChanges": "Save Changes",
+    "settingsSaved": "Your settings are saved!",
+    "avatarUpdated": "Avatar updated successfully!",
+    "avatarDeleted": "Avatar deleted successfully!",
+    "avatarTooLarge": "Avatar image must be 10 MB or smaller.",
+    "avatarCropFailed": "Failed to process avatar image. Please try again.",
+    "avatarCropModal": {
+      "title": "Add a Profile Photo",
+      "save": "Save"
+    },
+    "fields": {
+      "username": "Username",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "dateOfBirth": "Date of birth",
+      "country": "Select your country",
+      "city": "Select your city",
+      "about": "About me"
+    },
+    "placeholders": {
+      "country": "Country",
+      "city": "City",
+      "about": "Tell users about yourself"
+    },
+    "stubs": {
+      "devices": {
+        "title": "Devices",
+        "description": "Device management settings will be added in the next iteration."
+      },
+      "subscriptions": {
+        "title": "Account Management",
+        "description": "Subscription and account controls will be added in the next iteration."
+      },
+      "payments": {
+        "title": "My payments",
+        "description": "Payment history and billing settings will be added in the next iteration."
+      }
+    }
   },
   "Forms": {
     "haveAccount": "Do you have an account?",
@@ -112,6 +161,25 @@
       "mismatch": "Passwords must match",
       "required": "Please confirm your password"
     },
+    "settings": {
+      "firstName": {
+        "min": "First name is required",
+        "max": "Maximum number of characters 50",
+        "pattern": "First name can only contain Latin and Cyrillic letters"
+      },
+      "lastName": {
+        "min": "Last name is required",
+        "max": "Maximum number of characters 50",
+        "pattern": "Last name can only contain Latin and Cyrillic letters"
+      },
+      "dateOfBirth": {
+        "format": "Use date format dd.mm.yyyy",
+        "invalidDate": "Enter a valid calendar date"
+      },
+      "aboutMe": {
+        "max": "Maximum number of characters 200"
+      }
+    },
     "recaptcha": {
       "required": "Please complete the reCAPTCHA verification",
       "expired": "reCAPTCHA verification has expired. Please complete the verification again"
@@ -123,6 +191,10 @@
       "errorFormat": "The format of the uploaded photo must be PNG or JPEG",
       "errorDuplicate": "This photo is already selected - {name}"
     }
+  },
+  "Common": {
+    "somethingWentWrong": "Something went wrong",
+    "networkError": "Network error. Please check your connection."
   },
   "CreatePost": {
     "stepTitleAddPhotos": "Add Photo",
