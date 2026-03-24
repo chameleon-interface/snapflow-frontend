@@ -1,8 +1,8 @@
 'use client';
 
+import { useGetMyProfile } from '@/entities/user';
 import { useFlow } from '@/features/post/create-post/lib/hooks/useFlow';
 import type { CreatePostStep } from '@/features/post/create-post/model/types';
-import { useGetMyProfileQuery } from '@/shared/api';
 import { clsx } from 'clsx';
 import { useTranslations } from 'next-intl';
 import { Modal } from 'snapflow-ui-kit/client';
@@ -34,7 +34,7 @@ export const CreatePostModal = ({ isOpen, onClose }: Props) => {
   const t = useTranslations('CreatePost');
   const flow = useFlow({ onClose });
 
-  const profileQuery = useGetMyProfileQuery({
+  const profileQuery = useGetMyProfile({
     enabled: isOpen,
   });
 
