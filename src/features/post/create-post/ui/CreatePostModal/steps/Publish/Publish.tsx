@@ -1,7 +1,7 @@
 'use client';
 
-import type { GetMyProfileResponse } from '@/entities/user/api/types';
 import { useFileObjectUrls } from '@/features/post/create-post/lib';
+import type { ProfileViewDto } from '@/shared/api/generated/model';
 import { Carousel } from 'snapflow-ui-kit/client';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -29,7 +29,7 @@ type Props = {
   onDescriptionChange: (value: string) => void;
   location: string;
   onLocationChange: (value: string) => void;
-  profile: GetMyProfileResponse | undefined;
+  profile: ProfileViewDto | undefined;
 };
 
 const CarouselSlide = ({ url }: { url: string }) => (

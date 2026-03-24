@@ -15,11 +15,3 @@ export type UploadProfileAvatarDto = {
 export type UploadProfileAvatarResponse = {
   publicUrl: string;
 };
-
-export type GetMyProfileResponse = UpdateProfileDto & {
-  id: string;
-  avatarUrl: string;
-  followersCount: number;
-  followingCount: number;
-  postsCount: number;
-};

@@ -1,11 +1,11 @@
 'use client';
 
-import type { GetMyProfileResponse } from '@/entities/user/api/types';
 import type { CreatePostFlowState } from '@/features/post/create-post/lib/hooks/useFlow';
+import type { ProfileViewDto } from '@/shared/api/generated/model';
 import { AddPhotos, Cropping, Filters, Publish } from '../steps';
 
 type Props = CreatePostFlowState & {
-  publishProfile: GetMyProfileResponse | undefined;
+  publishProfile: ProfileViewDto | undefined;
 };
 
 export const StepContent = (p: Props) => {

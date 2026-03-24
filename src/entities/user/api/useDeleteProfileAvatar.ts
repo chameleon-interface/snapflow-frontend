@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import type { GetMyProfileResponse } from './types';
 import { api } from '@/shared/api';
+import type { ProfileViewDto } from '@/shared/api/generated/model';
 
 export const useDeleteProfileAvatar = () => {
   const queryClient = useQueryClient();
@@ -10,11 +10,11 @@ export const useDeleteProfileAvatar = () => {
       await api.delete<void>('users/profile/avatar');
     },
     onSuccess: () => {
-      queryClient.setQueryData<GetMyProfileResponse | undefined>(
+      queryClient.setQueryData<ProfileViewDto | undefined>(
         ['my-profile'],
         (currentProfile) =>
           currentProfile
-            ? { ...currentProfile, avatarUrl: '' }
+            ? { ...currentProfile, avatarUrl: null }
             : currentProfile,
       );
     },
