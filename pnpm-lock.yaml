@@ -53,8 +53,8 @@ importers:
         specifier: 2.6.0
         version: 2.6.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       snapflow-ui-kit:
-        specifier: 1.2.8
-        version: 1.2.8(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: 1.2.9
+        version: 1.2.9(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       zod:
         specifier: 4.3.6
         version: 4.3.6
@@ -252,12 +252,6 @@ packages:
         integrity: sha512-JsXDL70gQ+1Vc2W/KUFfkAJzgb4puKwwKehNLuB+HrNKWf91O736kGfxn4KujXCCSuh6mRRL4XEB0PkAFjWS0A==,
       }
 
-  '@countrystatecity/countries@1.0.5':
-    resolution:
-      {
-        integrity: sha512-AsxLm46eYTnP+lLKKk8o2ShJslVX4pAh762Kjux/40sVBEVH152PSgevlBEUxRawNXrccCbA8CQYLAJj5s9Tyw==,
-      }
-
   '@commander-js/extra-typings@14.0.0':
     resolution:
       {
@@ -265,6 +259,12 @@ packages:
       }
     peerDependencies:
       commander: ~14.0.0
+
+  '@countrystatecity/countries@1.0.5':
+    resolution:
+      {
+        integrity: sha512-AsxLm46eYTnP+lLKKk8o2ShJslVX4pAh762Kjux/40sVBEVH152PSgevlBEUxRawNXrccCbA8CQYLAJj5s9Tyw==,
+      }
 
   '@csstools/css-parser-algorithms@4.0.0':
     resolution:
@@ -5152,10 +5152,10 @@ packages:
       }
     engines: { node: '>=18' }
 
-  snapflow-ui-kit@1.2.8:
+  snapflow-ui-kit@1.2.9:
     resolution:
       {
-        integrity: sha512-PsTLaJiBmRMi5wNoSSg011NOeF7pdt0LwnWu5sKIBi26ucWdNN7mlqpwlG2da9Vm0j5RjcV79MpOd4lQjs/13w==,
+        integrity: sha512-NVqWqqYaSx9+Sly4uLYGCqDIChJvlflYZ8t0GPdPDuZV2m0sE3Spz/mORuW3ylZqQdHwYRFLo8Ye37Wle14PSA==,
       }
     peerDependencies:
       react: 19.2.3
@@ -5901,11 +5901,11 @@ snapshots:
       hashery: 1.4.0
       keyv: 5.6.0
 
-  '@countrystatecity/countries@1.0.5': {}
-
   '@commander-js/extra-typings@14.0.0(commander@14.0.2)':
     dependencies:
       commander: 14.0.2
+
+  '@countrystatecity/countries@1.0.5': {}
 
   '@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0)':
     dependencies:
@@ -8968,7 +8968,7 @@ snapshots:
       ansi-styles: 6.2.3
       is-fullwidth-code-point: 5.1.0
 
-  snapflow-ui-kit@1.2.8(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  snapflow-ui-kit@1.2.9(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       '@radix-ui/react-dropdown-menu': 2.1.16(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       clsx: 2.1.1
