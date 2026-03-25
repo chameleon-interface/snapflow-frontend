@@ -1,6 +1,6 @@
 import type { UpdateProfileInputDto } from '@/shared/api/generated/model';
 import { convertDdMmYyyyToIso8601 } from './dateOfBirthFormatters';
-import type { SettingsFormValues } from './schema';
+import type { SettingsFormValues } from '../model/schema';
 
 /**
  * Normalizes profile form payload for API:

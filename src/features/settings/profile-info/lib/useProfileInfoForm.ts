@@ -8,8 +8,8 @@ import {
   useWatch,
 } from 'react-hook-form';
 import { useGetMyProfile, useMe, useUpdateProfile } from '@/entities/user';
-import { DEFAULT_SETTINGS_FORM_VALUES } from './settingsForm';
-import { settingsSchema, type SettingsFormValues } from './schema';
+import { DEFAULT_SETTINGS_FORM_VALUES } from '../model/settingsForm';
+import { settingsSchema, type SettingsFormValues } from '../model/schema';
 import { toastSuccess } from 'snapflow-ui-kit/client';
 import { formatIso8601ToDdMmYyyy } from './dateOfBirthFormatters';
 import { prepareProfileInfoPayload } from './prepareProfileInfoPayload';
