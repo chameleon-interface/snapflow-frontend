@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { Button } from 'snapflow-ui-kit';
 import { DatePicker, Input, Select, Textarea } from 'snapflow-ui-kit/client';
 import { useMediaQuery } from '@/shared/lib/hooks/useMediaQuery';
-import { useProfileInfoForm } from '../../model/useProfileInfoForm';
+import { useProfileInfoForm } from '../../lib';
 import { ProfileAvatarSection } from '../ProfileAvatarSection/ProfileAvatarSection';
 import { useProfileLocationFields } from './useProfileLocationFields';
 import s from './ProfileInfoForm.module.css';

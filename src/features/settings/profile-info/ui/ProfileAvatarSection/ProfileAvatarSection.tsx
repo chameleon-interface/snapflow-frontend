@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { Button, Typography } from 'snapflow-ui-kit';
-import { useProfileAvatarSection } from '../../model';
+import { useProfileAvatarSection } from '../../lib';
 import { ProfileAvatarCropModal } from './ProfileAvatarCropModal';
 import { ProfileAvatarPreview } from './ProfileAvatarPreview';
 import s from './ProfileAvatarSection.module.css';

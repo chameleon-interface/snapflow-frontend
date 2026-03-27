@@ -30,6 +30,10 @@
   gap: 24px;
 }
 
+.selectRow button {
+  border-color: var(--color-dark-100);
+}
+
 .actions {
   display: flex;
   justify-content: flex-end;
