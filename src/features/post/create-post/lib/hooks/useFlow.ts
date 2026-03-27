@@ -28,6 +28,7 @@ export const useFlow = ({ onClose }: Params) => {
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
   const [isOpeningDraft, setIsOpeningDraft] = useState(false);
+  const [isSaveDraftInProgress, setIsSaveDraftInProgress] = useState(false);
   const postState = useCreatePostState({
     photoCount: photos.originalPhotos.length,
   });
@@ -193,26 +194,33 @@ export const useFlow = ({ onClose }: Params) => {
   ]);
 
   const handleSaveDraft = useCallback(async () => {
-    const filesToUpload = await getReadyToUploadFilesForDraft();
-    if (!filesToUpload || filesToUpload.length === 0) return;
+    if (isSaveDraftInProgress) return;
 
-    const fileIds = await uploadMediaForDraft(filesToUpload).catch(() => {
-      return null;
-    });
+    setIsSaveDraftInProgress(true);
+    try {
+      const filesToUpload = await getReadyToUploadFilesForDraft();
+      if (!filesToUpload || filesToUpload.length === 0) return;
 
-    if (fileIds === null) return;
+      const fileIds = await uploadMediaForDraft(filesToUpload).catch(() => {
+        return null;
+      });
 
-    const payload: CreatePostInputDto = {
-      description,
-      fileIds,
-    };
+      if (fileIds === null) return;
 
-    await createDraft(payload, {
-      onSuccess: () => {
-        toastSuccess(t('draftSaveSuccess'));
-        doClose();
-      },
-    });
+      const payload: CreatePostInputDto = {
+        description,
+        fileIds,
+      };
+
+      await createDraft(payload, {
+        onSuccess: () => {
+          toastSuccess(t('draftSaveSuccess'));
+          doClose();
+        },
+      });
+    } finally {
+      setIsSaveDraftInProgress(false);
+    }
   }, [
     description,
     getReadyToUploadFilesForDraft,
@@ -220,6 +228,7 @@ export const useFlow = ({ onClose }: Params) => {
     createDraft,
     t,
     doClose,
+    isSaveDraftInProgress,
   ]);
 
   const handleOpenDraft = useCallback(() => {
@@ -277,7 +286,8 @@ export const useFlow = ({ onClose }: Params) => {
     handlePreviousStep,
     handlePublish,
     isPublishMutationPending: isUploadPublishPending || isCreatePostPending,
-    isSaveDraftPending: isUploadDraftPending || isCreateDraftPending,
+    isSaveDraftPending:
+      isSaveDraftInProgress || isUploadDraftPending || isCreateDraftPending,
   };
 };
 
