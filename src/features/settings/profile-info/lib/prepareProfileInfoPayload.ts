@@ -15,7 +15,7 @@ export const prepareProfileInfoPayload = (
     username: values.username,
     firstName: values.firstName,
     lastName: values.lastName,
-    dateOfBirth: convertDdMmYyyyToIso8601(values.dateOfBirth),
+    dateOfBirth: convertDdMmYyyyToIso8601(values.dateOfBirth || null),
     country: values.country || null,
     city: values.city || null,
     aboutMe: values.aboutMe || null,
