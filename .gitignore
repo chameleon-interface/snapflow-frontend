@@ -21,6 +21,7 @@
 /build
 
 # misc
+mock-server
 .idea
 .vscode
 *.code-workspace

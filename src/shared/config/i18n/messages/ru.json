@@ -23,7 +23,6 @@
     "messengerTitle": "Мессенджер",
     "searchTitle": "Поиск",
     "statisticsTitle": "Статистика",
-    "settingsTitle": "Настройки",
     "signInTitle": "Вход",
     "signUpTitle": "Регистрация",
     "forgotPasswordTitle": "Восстановление пароля",
@@ -31,6 +30,56 @@
     "placeholder": "Страница-заглушка.",
     "privacyPolicy": "Политика конфиденциальности",
     "termsOfService": "Условия предоставления услуг"
+  },
+  "Settings": {
+    "tabsAria": "Вкладки настроек",
+    "tabs": {
+      "info": "Общая информация",
+      "devices": "Устройства",
+      "subscriptions": "Управление аккаунтом",
+      "payments": "Мои платежи"
+    },
+    "selectProfilePhoto": "Выберите фото",
+    "profileAvatar": "Аватар профиля",
+    "deleteAvatar": "Удалить аватар",
+    "saveChanges": "Сохранить изменения",
+    "settingsSaved": "Ваши настройки сохранены!",
+    "avatarUpdated": "Аватар успешно обновлен!",
+    "avatarDeleted": "Аватар успешно удален!",
+    "avatarTooLarge": "Размер аватарки не должен превышать 10 MB.",
+    "avatarCropFailed": "Не удалось обработать аватар. Попробуйте снова.",
+    "avatarCropModal": {
+      "title": "Добавить фото профиля",
+      "save": "Сохранить"
+    },
+    "fields": {
+      "username": "Имя пользователя",
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "dateOfBirth": "Дата рождения",
+      "country": "Выберите страну",
+      "city": "Выберите город",
+      "about": "Обо мне"
+    },
+    "placeholders": {
+      "country": "Страна",
+      "city": "Город",
+      "about": "Расскажите о себе"
+    },
+    "stubs": {
+      "devices": {
+        "title": "Устройства",
+        "description": "Настройки управления устройствами будут добавлены в следующей итерации."
+      },
+      "subscriptions": {
+        "title": "Управление аккаунтом",
+        "description": "Управление подпиской и аккаунтом будет добавлено в следующей итерации."
+      },
+      "payments": {
+        "title": "Мои платежи",
+        "description": "История платежей и настройки биллинга будут добавлены в следующей итерации."
+      }
+    }
   },
   "Forms": {
     "haveAccount": "Уже есть аккаунт?",
@@ -49,15 +98,17 @@
     }
   },
   "Modals": {
+    "Confirm": {
+      "yes": "Да",
+      "no": "Нет"
+    },
     "EmailSent": {
       "title": "Email отправлен",
       "message": "Мы отправили ссылку для подтверждения на {email}"
     },
     "LogoutConfirm": {
       "title": "Подтверждение выхода",
-      "message": "Вы действительно хотите выйти из своего аккаунта \"{email}\"?",
-      "yes": "Да",
-      "no": "Нет"
+      "message": "Вы действительно хотите выйти из своего аккаунта \"{email}\"?"
     }
   },
   "PasswordRecovery": {
@@ -113,6 +164,77 @@
     "recaptcha": {
       "required": "Пожалуйста, завершите проверку reCAPTCHA",
       "expired": "Время проверки reCAPTCHA истекло. Пожалуйста, пройдите проверку снова"
+    },
+    "settings": {
+      "firstName": {
+        "min": "Имя обязательно",
+        "max": "Максимальное количество символов - 50",
+        "pattern": "Имя может содержать только латинские и кириллические буквы"
+      },
+      "lastName": {
+        "min": "Фамилия обязательна",
+        "max": "Максимальное количество символов - 50",
+        "pattern": "Фамилия может содержать только латинские и кириллические буквы"
+      },
+      "dateOfBirth": {
+        "format": "Используйте формат даты dd.mm.yyyy",
+        "invalidDate": "Введите корректную календарную дату"
+      },
+      "aboutMe": {
+        "max": "Максимальное количество символов - 200"
+      }
+    },
+    "selectPhotos": {
+      "errorMaxCount": "Еще можно выбрать не более {limit} фото, выбрано {count}",
+      "errorLimitReached": "Достигнут лимит фото - {limit}",
+      "errorFileSize": "Размер фото не должен превышать 20 МБ",
+      "errorFormat": "Формат загружаемого фото должен быть PNG или JPEG",
+      "errorDuplicate": "Это фото уже выбрано - {name}"
     }
+  },
+  "Common": {
+    "somethingWentWrong": "Что-то пошло не так",
+    "networkError": "Ошибка сети. Проверьте подключение."
+  },
+  "CreatePost": {
+    "stepTitleAddPhotos": "Добавить фото",
+    "stepTitleCropping": "Обрезка",
+    "stepTitleFilters": "Фильтры",
+    "stepTitlePublish": "Публикация",
+    "previousStep": "Назад",
+    "nextStep": "Далее",
+    "generatingCropped": "Подготовка...",
+    "applyingFilters": "Применение фильтров...",
+    "openDraft": "Открыть черновик",
+    "gallery": "Галерея",
+    "addPhoto": "Добавить фото",
+    "removePhoto": "Удалить фото",
+    "aspectOriginal": "Оригинал",
+    "filters": "Фильтры",
+    "filterChoice": "Выбор фильтра",
+    "aspectRatio": "Соотношение сторон",
+    "aspectRatioChoice": "Выбор соотношения сторон",
+    "zoom": "Масштаб",
+    "zoomDialog": "Масштабирование",
+    "zoomImage": "Масштаб изображения",
+    "publish": "Публикация",
+    "publicationDetails": "Детали публикации",
+    "addPublicationDescriptions": "Описание",
+    "descriptionPlaceholder": "Опишите публикацию...",
+    "addLocation": "Местоположение",
+    "locationPlaceholder": "Добавить местоположение",
+    "locationSuggestions": "Варианты местоположения",
+    "publishButton": "Опубликовать",
+    "publishing": "Публикация...",
+    "postPublishedSuccess": "Публикация успешно создана",
+    "closeModalTitle": "Закрыть",
+    "closeModalMessage": "Вы действительно хотите отменить создание публикации?",
+    "closeModalSubMessage": "Несохранённые изменения будут потеряны",
+    "closeModalDiscard": "Отменить",
+    "closeModalSaveDraft": "Сохранить черновик",
+    "draftSaveSuccess": "Черновик сохранён"
+  },
+  "SelectPhotos": {
+    "selectFromComputer": "Выбрать фото"
   }
 }

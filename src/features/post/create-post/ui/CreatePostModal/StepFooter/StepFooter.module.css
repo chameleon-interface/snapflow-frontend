@@ -1,0 +1,124 @@
+.footer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-dark-300);
+}
+
+.footerLeft,
+.footerRight {
+  display: flex;
+  gap: 12px;
+}
+
+.btnIcon {
+  flex-shrink: 0;
+}
+
+.previousBtn {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+
+  min-width: 100px;
+
+  font-weight: 500;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.previousBtn .btnIcon {
+  order: -1;
+}
+
+.previousBtn:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+.previousBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.previousBtn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+.nextBtn {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+
+  min-width: 120px;
+
+  font-weight: 500;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.nextBtn:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+.nextBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px
+    color-mix(in srgb, var(--color-dark-900) 25%, transparent);
+}
+
+.nextBtn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+.nextBtnPublish:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--color-accent-500),
+    0 0 16px color-mix(in srgb, var(--color-accent-500) 25%, transparent);
+}
+
+.nextBtnPublish:hover:not(:disabled) {
+  box-shadow:
+    0 4px 16px color-mix(in srgb, var(--color-dark-900) 30%, transparent),
+    0 0 20px color-mix(in srgb, var(--color-accent-500) 20%, transparent);
+}
+
+@media (width <= 480px) {
+  .footer {
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 12px;
+  }
+
+  .footerLeft,
+  .footerRight {
+    gap: 8px;
+  }
+}
+
+@media (width <= 380px) {
+  .footer {
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+    padding-top: 10px;
+  }
+
+  .footerLeft,
+  .footerRight {
+    gap: 6px;
+  }
+
+  .footerRight {
+    flex: 1;
+    justify-content: flex-end;
+  }
+}

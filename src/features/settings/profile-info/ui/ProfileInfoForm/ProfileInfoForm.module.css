@@ -1,0 +1,71 @@
+.infoLayout {
+  display: grid;
+  grid-template-columns: 202px minmax(0, 1fr);
+  gap: 30px;
+  align-items: start;
+}
+
+.formFieldset {
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.formColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.formColumn input,
+.formColumn textarea {
+  padding: 5px 11px;
+  color: var(--color-light-100);
+}
+
+.selectRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.selectRow button {
+  border-color: var(--color-dark-100);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.actions button {
+  min-width: 160px;
+}
+
+@media (width <= 1024px) {
+  .infoLayout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (width <= 768px) {
+  .formColumn {
+    gap: 12px;
+  }
+
+  .selectRow {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .actions {
+    justify-content: stretch;
+  }
+
+  .actions button {
+    width: 100%;
+    margin-top: 36px;
+    padding-block: 11px;
+  }
+}

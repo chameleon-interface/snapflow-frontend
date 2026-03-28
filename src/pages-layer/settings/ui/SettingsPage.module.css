@@ -1,0 +1,68 @@
+.page {
+  width: 100%;
+  min-width: 0;
+}
+
+.tabs {
+  scrollbar-width: none;
+
+  overflow: auto hidden;
+  overscroll-behavior-x: contain;
+  display: flex;
+  align-items: stretch;
+
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  margin-bottom: 25px;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tabs .tab {
+  flex: 1 1 25%;
+
+  box-sizing: border-box;
+  width: auto;
+  min-width: max-content;
+  padding-inline: 16px;
+
+  white-space: nowrap;
+}
+
+.content {
+  width: 100%;
+  min-width: 0;
+}
+
+.stub {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  max-width: 620px;
+  padding: 24px;
+  border: 1px solid var(--color-dark-300);
+
+  background-color: var(--color-dark-500);
+}
+
+.stubText {
+  color: var(--color-light-900);
+}
+
+@media (width <= 1024px) {
+  .tabs .tab {
+    padding-inline: 12px;
+  }
+}
+
+@media (width <= 380px) {
+  .tabs .tab {
+    padding-inline: 16px;
+  }
+}
