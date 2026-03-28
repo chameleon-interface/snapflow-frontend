@@ -31,32 +31,3 @@
   gap: 8px;
   align-items: center;
 }
-
-.toolbarButton {
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: none;
-  border-radius: 2px;
-
-  color: var(--color-light-100);
-
-  background-color: var(--color-dark-300);
-
-  transition: color 0.2s;
-}
-
-.toolbarButton:hover {
-  color: var(--color-accent-500);
-}
-
-.toolbarButton:focus-visible {
-  outline: 2px solid var(--color-accent-500);
-  outline-offset: 2px;
-}

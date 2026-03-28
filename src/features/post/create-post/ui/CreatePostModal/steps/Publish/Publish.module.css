@@ -1,26 +1,6 @@
-.wrapper {
-  overflow-x: hidden;
-  display: grid;
-  grid-template-columns: 1fr 364px;
-  grid-template-rows: minmax(280px, 65vh);
-  gap: 24px;
+.publishShell {
+  --publish-card-radius: 12px;
 
-  width: 100%;
-}
-
-.carouselSection {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  min-height: 0;
-}
-
-.carousel {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-
-  width: 100%;
   min-height: 0;
 }
 
@@ -33,7 +13,7 @@
   min-width: 0;
   height: 100%;
   min-height: 0;
-  border-radius: 12px;
+  border-radius: var(--publish-card-radius);
 
   background: var(--color-dark-700);
 }
@@ -48,23 +28,9 @@
   max-height: 100%;
   padding: 24px 20px;
   border: 1px solid var(--color-dark-100);
-  border-radius: 16px;
+  border-radius: var(--publish-card-radius);
 
   background: var(--color-dark-500);
-}
-
-.formPanel::-webkit-scrollbar {
-  width: 6px;
-}
-
-.formPanel::-webkit-scrollbar-track {
-  border-radius: 4px;
-  background: var(--color-dark-200);
-}
-
-.formPanel::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background: var(--color-dark-100);
 }
 
 .profileRow {
@@ -125,19 +91,19 @@
   width: 100%;
 }
 
-.textareaWrapper textarea {
+.textareaWrapper textarea,
+.locationInputWrapper input {
   border: 1px solid var(--color-dark-100);
-  border-radius: 12px;
+  border-radius: 0;
   background: var(--color-dark-400);
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
 
-.textareaWrapper textarea:focus {
-  border-color: var(--color-accent-500);
+.textareaWrapper textarea:focus:not(:focus-visible) {
   outline: none;
-  box-shadow: 0 0 0 1px var(--color-accent-500);
+  box-shadow: none;
 }
 
 .locationInputWrapper {
@@ -145,23 +111,22 @@
 }
 
 .locationInputWrapper > div {
+  overflow: hidden;
   border: none;
+  border-radius: 0;
   box-shadow: none;
 }
 
-.locationInputWrapper input {
-  border: 1px solid var(--color-dark-100);
-  border-radius: 12px;
-  background: var(--color-dark-400);
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+.locationInputWrapper input:focus-visible {
+  border: 1px solid var(--color-light-100) !important;
+  color: var(--color-light-100);
+  outline: none;
+  box-shadow: none;
 }
 
-.locationInputWrapper input:focus {
-  border-color: var(--color-accent-500);
+.locationInputWrapper input:focus:not(:focus-visible) {
   outline: none;
-  box-shadow: 0 0 0 1px var(--color-accent-500);
+  box-shadow: none;
 }
 
 .charCount {
@@ -177,16 +142,6 @@
 }
 
 @media (width <=768px) {
-  .wrapper {
-    grid-template-columns: 1fr;
-    grid-template-rows: minmax(200px, 45vh) minmax(0, 1fr);
-    gap: 16px;
-  }
-
-  .carouselSection {
-    min-height: 200px;
-  }
-
   .formPanel {
     gap: 16px;
     max-height: none;
@@ -213,32 +168,13 @@
 }
 
 @media (width <=480px) {
-  .wrapper {
-    grid-template-rows: minmax(180px, 40vh) minmax(0, 1fr);
-    gap: 12px;
-  }
-
-  .carouselSection {
-    min-height: 180px;
-  }
-
   .formPanel {
     gap: 14px;
     padding: 12px 10px;
-    border-radius: 10px;
   }
 }
 
 @media (width <=380px) {
-  .wrapper {
-    grid-template-rows: minmax(160px, 38vh) minmax(0, 1fr);
-    gap: 10px;
-  }
-
-  .carouselSection {
-    min-height: 160px;
-  }
-
   .formPanel {
     gap: 12px;
     padding: 10px 8px;
@@ -261,4 +197,86 @@
 
     font-size: 12px;
   }
+}
+
+.twoColumnRoot {
+  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: 1fr 364px;
+  grid-template-rows: minmax(280px, 65vh);
+  gap: 24px;
+
+  width: 100%;
+}
+
+.carouselColumn {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.carouselFlex {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 0;
+}
+
+@media (width <= 768px) {
+  .twoColumnRoot {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(200px, 45vh) minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .carouselColumn {
+    min-height: 200px;
+  }
+}
+
+@media (width <= 480px) {
+  .twoColumnRoot {
+    grid-template-rows: minmax(180px, 40vh) minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .carouselColumn {
+    min-height: 180px;
+  }
+}
+
+@media (width <= 380px) {
+  .twoColumnRoot {
+    grid-template-rows: minmax(160px, 38vh) minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .carouselColumn {
+    min-height: 160px;
+  }
+}
+
+.thinVertical::-webkit-scrollbar {
+  width: 6px;
+}
+
+.thinVertical::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background: var(--color-dark-200);
+}
+
+.thinVertical::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: var(--color-dark-100);
+}
+
+.thinVertical::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-500);
+}
+
+.thinVertical::-webkit-scrollbar-thumb:active {
+  background: var(--color-accent-600, var(--color-accent-500));
 }

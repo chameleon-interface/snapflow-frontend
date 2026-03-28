@@ -2,6 +2,7 @@
 
 import { useFileObjectUrls } from '@/features/post/create-post/lib';
 import { Carousel } from 'snapflow-ui-kit/client';
+import { clsx } from 'clsx';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -66,10 +67,13 @@ export const Publish = ({
   if (photos.length === 0) return null;
 
   return (
-    <div className={styles.wrapper} aria-label={t('publish')}>
-      <div className={styles.carouselSection}>
+    <div
+      className={clsx(styles.twoColumnRoot, styles.publishShell)}
+      aria-label={t('publish')}
+    >
+      <div className={styles.carouselColumn}>
         <Carousel
-          className={styles.carousel}
+          className={styles.carouselFlex}
           value={carouselIndex}
           onValueChange={setCarouselIndex}
           hideArrowsWhenSingle
@@ -80,7 +84,10 @@ export const Publish = ({
         </Carousel>
       </div>
 
-      <div className={styles.formPanel} aria-label={t('publicationDetails')}>
+      <div
+        className={clsx(styles.formPanel, styles.thinVertical)}
+        aria-label={t('publicationDetails')}
+      >
         <div className={styles.profileRow}>
           {profile?.avatarUrl ? (
             <Image

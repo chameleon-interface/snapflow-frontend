@@ -85,6 +85,18 @@
   border-color: var(--color-accent-500);
 }
 
+.thumbnailWrap:focus-visible {
+  outline: none;
+}
+
+.thumbnailWrap:focus-visible:not(.thumbnailWrapActive) {
+  border-color: var(--color-accent-500);
+}
+
+.thumbnailWrap:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .thumbnail {
   display: block;
   width: 100%;
@@ -123,8 +135,12 @@
 }
 
 .removeBtn:focus-visible {
-  outline: 2px solid var(--color-accent-500);
-  outline-offset: 1px;
+  outline: 2px solid var(--color-accent-700);
+  box-shadow: none;
+}
+
+.removeBtn:focus:not(:focus-visible) {
+  outline: none;
 }
 
 .addBtn {
@@ -155,8 +171,12 @@
 }
 
 .addBtn:focus-visible {
-  outline: 2px solid var(--color-accent-500);
-  outline-offset: 2px;
+  outline: 2px solid var(--color-accent-700);
+  box-shadow: none;
+}
+
+.addBtn:focus:not(:focus-visible) {
+  outline: none;
 }
 
 .hiddenInput {

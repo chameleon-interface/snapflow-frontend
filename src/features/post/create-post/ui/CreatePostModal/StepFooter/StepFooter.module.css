@@ -19,12 +19,15 @@
   flex-shrink: 0;
 }
 
+/* outlined в ui-kit: 1px → 2px при :focus-visible; держим 2px + padding −1px — без скачка */
 .previousBtn {
   display: inline-flex;
   gap: 8px;
   align-items: center;
 
   min-width: 100px;
+  padding: 5px 23px !important;
+  border-width: 2px !important;
 
   font-weight: 500;
 
@@ -38,8 +41,13 @@
 }
 
 .previousBtn:focus-visible {
-  outline: 2px solid var(--color-accent-500);
-  outline-offset: 2px;
+  border-color: transparent !important;
+  outline: 2px solid var(--color-accent-700);
+  box-shadow: none;
+}
+
+.previousBtn:focus:not(:focus-visible) {
+  outline: none;
 }
 
 .previousBtn:hover:not(:disabled) {
@@ -65,8 +73,12 @@
 }
 
 .nextBtn:focus-visible {
-  outline: 2px solid var(--color-accent-500);
-  outline-offset: 2px;
+  outline: 2px solid var(--color-accent-700);
+  box-shadow: none;
+}
+
+.nextBtn:focus:not(:focus-visible) {
+  outline: none;
 }
 
 .nextBtn:hover:not(:disabled) {
@@ -80,9 +92,12 @@
 }
 
 .nextBtnPublish:focus-visible {
-  box-shadow:
-    0 0 0 2px var(--color-accent-500),
-    0 0 16px color-mix(in srgb, var(--color-accent-500) 25%, transparent);
+  outline: 2px solid var(--color-accent-700);
+  box-shadow: none;
+}
+
+.nextBtnPublish:focus:not(:focus-visible) {
+  outline: none;
 }
 
 .nextBtnPublish:hover:not(:disabled) {
