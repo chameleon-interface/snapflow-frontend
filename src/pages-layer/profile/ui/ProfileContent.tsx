@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Button } from 'snapflow-ui-kit/client';
 import s from './ProfilePage.module.css';
 import { ProfilePosts } from './ProfilePosts';
-import { Profile } from './types';
+import { Profile } from '../types/types';
 
 type Props = {
   profile: Profile;

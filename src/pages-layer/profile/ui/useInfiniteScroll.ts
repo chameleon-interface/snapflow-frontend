@@ -9,7 +9,7 @@ type FetchResult<T> = {
 
 export function useInfiniteScroll<T>(
   fetcher: (page: number) => Promise<FetchResult<T>>,
-  limit: number
+  limit: number,
 ) {
   const [items, setItems] = useState<T[]>([]);
   const [page, setPage] = useState(1);
@@ -20,14 +20,12 @@ export function useInfiniteScroll<T>(
   const totalRef = useRef<number | null>(null);
   const isFetchingRef = useRef(false);
 
-
   useEffect(() => {
     setItems([]);
     setPage(1);
     setHasMore(true);
     totalRef.current = null;
   }, [fetcher]);
-
 
   useEffect(() => {
     let cancelled = false;
@@ -47,8 +45,12 @@ export function useInfiniteScroll<T>(
 
         setItems((prev) => [...prev, ...res.data]);
 
-        const loadedItems = page * limit;
-        if (loadedItems >= res.total) {
+        // const loadedItems = page * limit;
+        // if (loadedItems >= res.total) {
+        //   setHasMore(false);
+        // }
+
+        if (res.data.length < limit) {
           setHasMore(false);
         }
       } catch (error) {
@@ -68,21 +70,16 @@ export function useInfiniteScroll<T>(
     };
   }, [page, fetcher, limit, hasMore]);
 
-
   useEffect(() => {
     if (!hasMore) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (
-          entries[0].isIntersecting &&
-          !loading &&
-          !isFetchingRef.current
-        ) {
+        if (entries[0].isIntersecting && !loading && !isFetchingRef.current) {
           setPage((prev) => prev + 1);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     const current = observerRef.current;
