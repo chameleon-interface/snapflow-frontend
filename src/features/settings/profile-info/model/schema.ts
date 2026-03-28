@@ -3,7 +3,7 @@ import { fields } from '@/shared/lib/validation';
 import {
   isDdMmYyyyDateInFuture,
   isValidDdMmYyyyDate,
-} from './dateOfBirthFormatters';
+} from '../lib/dateOfBirthFormatters';
 
 const namePattern = /^[A-Za-z\u0400-\u04FF]+$/;
 const datePattern = /^\d{2}\.\d{2}\.\d{4}$/;

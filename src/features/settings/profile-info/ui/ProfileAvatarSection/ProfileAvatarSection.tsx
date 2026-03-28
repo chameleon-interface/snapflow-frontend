@@ -9,8 +9,8 @@ import {
   AVATAR_ACCEPT,
   AVATAR_ACCEPTED_TYPES,
   AVATAR_MAX_FILE_SIZE_BYTES,
-  useProfileAvatarSection,
 } from '../../model';
+import { useProfileAvatarSection } from '../../lib';
 import { ProfileAvatarCropModal } from './ProfileAvatarCropModal';
 import { ProfileAvatarPreview } from './ProfileAvatarPreview';
 import s from './ProfileAvatarSection.module.css';

@@ -3,7 +3,7 @@
 import type { Area, Point } from 'react-easy-crop';
 import { useTranslations } from 'next-intl';
 import { toastError } from 'snapflow-ui-kit/client';
-import { getCroppedAvatarFile } from '../lib/getCroppedAvatarFile';
+import { getCroppedAvatarFile } from './getCroppedAvatarFile';
 import {
   DEFAULT_CROP,
   DEFAULT_ZOOM,
