@@ -2,7 +2,7 @@
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import { api } from '@/shared/api';
+import { authControllerLogout } from '@/shared/api/generated/endpoints/auth/auth';
 import { ROUTES } from '@/shared/config';
 import { tokenStorage } from '@/shared/lib';
 
@@ -11,7 +11,7 @@ export const useLogoutMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: () => api.post('/auth/logout'),
+    mutationFn: () => authControllerLogout(),
     onMutate: async () => {
       await queryClient.cancelQueries({ queryKey: ['auth', 'me'] });
       tokenStorage.clear();

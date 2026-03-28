@@ -1,0 +1,30 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 240px;
+}
+
+.openDraftButton {
+  width: 100%;
+  font-weight: 500;
+}
+
+.error {
+  width: 100%;
+  max-width: none;
+}
+
+@media (width <=480px) {
+  .content {
+    gap: 20px;
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (width <=380px) {
+  .content {
+    gap: 16px;
+  }
+}

@@ -1,0 +1,1 @@
+export { FilterThumb } from './FilterThumb';

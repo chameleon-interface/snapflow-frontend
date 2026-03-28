@@ -1,0 +1,171 @@
+.popover {
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  bottom: calc(100% + 8px);
+  left: auto;
+
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  max-width: min(340px, calc(100vw - 32px));
+  padding: 12px;
+  border-radius: 2px;
+
+  background-color: var(--color-dark-300);
+  box-shadow: 0 4px 12px
+    color-mix(in srgb, var(--color-dark-900) 40%, transparent);
+}
+
+.thumbnailsScroll {
+  scroll-behavior: smooth;
+
+  overflow: auto hidden;
+  flex: 1;
+
+  min-width: 0;
+  padding-bottom: 4px;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.thumbnailsScroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.thumbnailsScroll::-webkit-scrollbar-track {
+  border-radius: 2px;
+  background: var(--color-dark-200);
+}
+
+.thumbnailsScroll::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: var(--color-dark-100);
+}
+
+.thumbnailsScroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-500);
+}
+
+.thumbnailsScroll::-webkit-scrollbar-thumb:active {
+  background: var(--color-accent-600, var(--color-accent-500));
+}
+
+.thumbnails {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  padding: 2px 0;
+}
+
+.thumbnailWrap {
+  cursor: pointer;
+
+  position: relative;
+
+  overflow: hidden;
+  flex-shrink: 0;
+
+  width: 80px;
+  height: 80px;
+  border: 2px solid transparent;
+  border-radius: 2px;
+
+  background-color: var(--color-dark-200);
+
+  transition: border-color 0.2s;
+}
+
+.thumbnailWrap:hover {
+  border-color: var(--color-accent-500);
+}
+
+.thumbnailWrapActive {
+  border-color: var(--color-accent-500);
+}
+
+.thumbnail {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.removeBtn {
+  cursor: pointer;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  border-radius: 0 2px;
+
+  font-size: 12px;
+  line-height: 1;
+  color: var(--color-light-100);
+
+  background-color: color-mix(in srgb, var(--color-dark-900) 60%, transparent);
+
+  transition: background-color 0.2s;
+}
+
+.removeBtn:hover {
+  background-color: color-mix(in srgb, var(--color-dark-900) 80%, transparent);
+}
+
+.removeBtn:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 1px;
+}
+
+.addBtn {
+  cursor: pointer;
+
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+
+  font-size: 18px;
+  line-height: 1;
+  color: var(--color-dark-300);
+
+  background-color: var(--color-light-100);
+
+  transition: transform 0.15s;
+}
+
+.addBtn:hover {
+  transform: scale(1.05);
+}
+
+.addBtn:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+.hiddenInput {
+  pointer-events: none;
+
+  position: absolute;
+
+  width: 0;
+  height: 0;
+
+  opacity: 0;
+}
