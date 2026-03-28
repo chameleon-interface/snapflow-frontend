@@ -67,10 +67,7 @@ export const Publish = ({
   if (photos.length === 0) return null;
 
   return (
-    <div
-      className={clsx(styles.twoColumnRoot, styles.publishShell)}
-      aria-label={t('publish')}
-    >
+    <div className={styles.twoColumnRoot} aria-label={t('publish')}>
       <div className={styles.carouselColumn}>
         <Carousel
           className={styles.carouselFlex}

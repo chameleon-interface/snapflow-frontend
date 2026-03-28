@@ -93,7 +93,6 @@
   display: none;
 }
 
-/* outlined в ui-kit при :focus-visible меняет border 1px → 2px; держим 2px всегда + padding −1px, чтобы не было скачка */
 .openDraftButton {
   width: 100%;
   padding: 5px 23px !important;

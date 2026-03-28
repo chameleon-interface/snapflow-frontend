@@ -1,9 +1,3 @@
-.publishShell {
-  --publish-card-radius: 12px;
-
-  min-height: 0;
-}
-
 .slideImageWrap {
   position: relative;
 
@@ -13,7 +7,6 @@
   min-width: 0;
   height: 100%;
   min-height: 0;
-  border-radius: var(--publish-card-radius);
 
   background: var(--color-dark-700);
 }
