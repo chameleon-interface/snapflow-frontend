@@ -1,13 +1,10 @@
 'use client';
 
-import { useCallback } from 'react';
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-
 import s from './ProfilePage.module.css';
-import { useInfiniteScroll } from './useInfiniteScroll';
-import type { Post } from '../types/types';
-import { getPosts } from '../api/posts.api';
+import { useProfilePostsInfinite } from './useProfilePostsInfinite';
 
 type Props = {
   profileId: number;
@@ -15,23 +12,40 @@ type Props = {
 
 export function ProfilePosts({ profileId }: Props) {
   const t = useTranslations('Pages');
-  const limit = 8;
+  const observerRef = useRef<HTMLDivElement | null>(null);
+  const { posts, fetchNextPage, hasNextPage, isFetchingNextPage, isPending } =
+    useProfilePostsInfinite(profileId);
 
-  const fetchPosts = useCallback(
-    (page: number) => getPosts(page, limit, profileId),
-    [profileId, limit],
-  );
+  useEffect(() => {
+    const node = observerRef.current;
 
-  const {
-    items: posts,
-    hasMore,
-    observerRef,
-  } = useInfiniteScroll<Post>(fetchPosts, limit);
+    if (!node || !hasNextPage) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting && !isFetchingNextPage) {
+          void fetchNextPage();
+        }
+      },
+      { threshold: 0.5 },
+    );
+
+    observer.observe(node);
+
+    return () => {
+      observer.unobserve(node);
+      observer.disconnect();
+    };
+  }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
 
   return (
     <>
       <section className={s.posts}>
-        {posts.length === 0 && <p className={s.noPosts}>{t('noPosts')}</p>}
+        {!isPending && posts.length === 0 && (
+          <p className={s.noPosts}>{t('noPosts')}</p>
+        )}
 
         {posts.map((post) => (
           <article key={post.id} className={s.post}>
@@ -46,9 +60,9 @@ export function ProfilePosts({ profileId }: Props) {
         ))}
       </section>
 
-      {hasMore && <div ref={observerRef} className={s.observer} />}
+      {hasNextPage && <div ref={observerRef} className={s.observer} />}
 
-      {!hasMore && posts.length > 0 && (
+      {!hasNextPage && posts.length > 0 && (
         <p className={s.endMessage}>{t('allPostsLoaded')}</p>
       )}
     </>

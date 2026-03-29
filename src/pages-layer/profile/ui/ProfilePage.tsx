@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { ProfileContent } from './ProfileContent';
-import { getProfile } from '../api/profile.api';
+import { getProfile } from '../api/profile';
 import type { Profile } from '../types/types';
 
 type Props = {
