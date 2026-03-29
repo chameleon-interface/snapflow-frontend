@@ -1,0 +1,54 @@
+.digitsRow {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+
+  border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
+
+  background-color: var(--color-dark-700);
+}
+
+.digitBlock {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.digit {
+  padding: clamp(6px, 1.4vw, 11px) clamp(5px, 1.2vw, 11px);
+  font-size: clamp(0.75rem, 0.35rem + 2vw, 1.5rem);
+  line-height: 1.1;
+}
+
+.stick {
+  flex-shrink: 0;
+  align-self: center;
+
+  width: 1px;
+  height: clamp(20px, 4.5vw, 30px);
+
+  background-color: var(--color-dark-300);
+}
+
+@media (width <= 380px) {
+  .digit {
+    padding: 5px 4px;
+  }
+
+  .stick {
+    height: 20px;
+  }
+}
+
+@media (width <= 360px) {
+  .digit {
+    padding: 4px 3px;
+    font-size: clamp(0.65rem, 3.5vw, 1.25rem);
+  }
+
+  .stick {
+    height: 18px;
+  }
+}

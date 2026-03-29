@@ -31,6 +31,17 @@
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
   },
+  "MainPage": {
+    "registeredUsers": "Registered users:",
+    "noPostsYet": "No posts yet",
+    "postsLoadError": "Could not load posts",
+    "registeredUsersCountLoadError": "Could not load user count",
+    "registeredUsersCountAria": "Registered users: {count}"
+  },
+  "ExpandableText": {
+    "showMore": "Show more",
+    "showLess": "Hide"
+  },
   "Settings": {
     "tabsAria": "Settings tabs",
     "tabs": {
@@ -194,7 +205,8 @@
   },
   "Common": {
     "somethingWentWrong": "Something went wrong",
-    "networkError": "Network error. Please check your connection."
+    "networkError": "Network error. Please check your connection.",
+    "userProfilePhotoAlt": "Profile photo of {name}"
   },
   "CreatePost": {
     "stepTitleAddPhotos": "Add Photo",

@@ -39,6 +39,7 @@
     "cc-gram": "1.2.10",
     "clsx": "2.1.1",
     "disposable-email-domains": "1.0.62",
+    "jose": "6.2.2",
     "next": "16.1.6",
     "next-intl": "4.8.1",
     "react": "19.2.3",
@@ -48,6 +49,7 @@
     "react-hook-form": "7.71.1",
     "react-hot-toast": "2.6.0",
     "snapflow-ui-kit": "1.2.8",
+    "use-line-clamp": "^1.0.4",
     "zod": "4.3.6"
   },
   "devDependencies": {

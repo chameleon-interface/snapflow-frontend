@@ -12,6 +12,7 @@ import { PinIcon } from 'snapflow-ui-kit/icons';
 import type { LocationSuggestion } from './LocationSuggestions';
 import { LocationSuggestions } from './LocationSuggestions';
 import styles from './Publish.module.css';
+import { UserAvatar } from '@/shared/ui/UserAvatar';
 
 const DESCRIPTION_MAX_LENGTH = 500;
 
@@ -82,19 +83,11 @@ export const Publish = ({
 
       <div className={styles.formPanel} aria-label={t('publicationDetails')}>
         <div className={styles.profileRow}>
-          {profile?.avatarUrl ? (
-            <Image
-              className={styles.avatar}
-              src={profile.avatarUrl}
-              alt={profile?.username ?? ''}
-              width={40}
-              height={40}
-            />
-          ) : (
-            <div className={styles.avatarPlaceholder} aria-hidden>
-              {(profile?.username ?? '?').charAt(0)?.toUpperCase()}
-            </div>
-          )}
+          <UserAvatar
+            avatarUrl={profile?.avatarUrl ?? null}
+            size={40}
+            username={profile?.username ?? '?'}
+          />
           <Typography variant="text-16">{profile?.username ?? '?'}</Typography>
         </div>
 

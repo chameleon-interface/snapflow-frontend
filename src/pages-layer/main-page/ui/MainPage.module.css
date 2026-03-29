@@ -1,0 +1,36 @@
+.visuallyHidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(50%);
+}
+
+.mainPage {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3.2vw, 40px);
+
+  width: 100%;
+  min-width: 0;
+}
+
+@media (width <= 768px) {
+  .mainPage {
+    gap: 24px;
+  }
+}
+
+@media (width <= 380px) {
+  .mainPage {
+    gap: 18px;
+  }
+}

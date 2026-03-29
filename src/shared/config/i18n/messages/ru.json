@@ -31,6 +31,17 @@
     "privacyPolicy": "Политика конфиденциальности",
     "termsOfService": "Условия предоставления услуг"
   },
+  "MainPage": {
+    "registeredUsers": "Пользователей:",
+    "noPostsYet": "Постов пока нет",
+    "postsLoadError": "Не удалось загрузить посты",
+    "registeredUsersCountLoadError": "Не удалось загрузить число пользователей",
+    "registeredUsersCountAria": "Зарегистрировано пользователей: {count}"
+  },
+  "ExpandableText": {
+    "showMore": "Показать больше",
+    "showLess": "Скрыть"
+  },
   "Settings": {
     "tabsAria": "Вкладки настроек",
     "tabs": {
@@ -194,7 +205,8 @@
   },
   "Common": {
     "somethingWentWrong": "Что-то пошло не так",
-    "networkError": "Ошибка сети. Проверьте подключение."
+    "networkError": "Ошибка сети. Проверьте подключение.",
+    "userProfilePhotoAlt": "Фото профиля: {name}"
   },
   "CreatePost": {
     "stepTitleAddPhotos": "Добавить фото",
