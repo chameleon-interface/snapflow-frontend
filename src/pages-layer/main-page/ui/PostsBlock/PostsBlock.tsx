@@ -5,20 +5,10 @@ import { PostCard } from './PostCard';
 import styles from './PostsBlock.module.css';
 
 export const PostsBlock = () => {
-  const { data, isError } = usePostsQuery();
+  const { data } = usePostsQuery();
   const t = useTranslations('MainPage');
 
   const posts = data?.items ?? [];
-
-  if (isError) {
-    return (
-      <section className={styles.postsBlock}>
-        <p className={styles.emptyState} role="alert">
-          {t('postsLoadError')}
-        </p>
-      </section>
-    );
-  }
 
   if (posts.length === 0) {
     return (

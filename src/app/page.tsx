@@ -8,7 +8,6 @@ import {
   QueryClient,
 } from '@tanstack/react-query';
 
-/** Home prefetch hits the API; static generation at build time can hang on slow or unreachable backends. */
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {

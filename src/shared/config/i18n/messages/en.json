@@ -16,7 +16,6 @@
     "backToSignUp": "Back to Sign Up"
   },
   "Pages": {
-    "mainTitle": "Main page",
     "feedTitle": "Feed",
     "favoritesTitle": "Favorites",
     "profileTitle": "Profile",
@@ -34,8 +33,6 @@
   "MainPage": {
     "registeredUsers": "Registered users:",
     "noPostsYet": "No posts yet",
-    "postsLoadError": "Could not load posts",
-    "registeredUsersCountLoadError": "Could not load user count",
     "registeredUsersCountAria": "Registered users: {count}"
   },
   "ExpandableText": {

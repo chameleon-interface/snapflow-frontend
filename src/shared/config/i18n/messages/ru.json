@@ -16,7 +16,6 @@
     "backToSignUp": "Назад к регистрации"
   },
   "Pages": {
-    "mainTitle": "Главная страница",
     "feedTitle": "Лента",
     "favoritesTitle": "Избранное",
     "profileTitle": "Профиль",
@@ -34,8 +33,6 @@
   "MainPage": {
     "registeredUsers": "Пользователей:",
     "noPostsYet": "Постов пока нет",
-    "postsLoadError": "Не удалось загрузить посты",
-    "registeredUsersCountLoadError": "Не удалось загрузить число пользователей",
     "registeredUsersCountAria": "Зарегистрировано пользователей: {count}"
   },
   "ExpandableText": {

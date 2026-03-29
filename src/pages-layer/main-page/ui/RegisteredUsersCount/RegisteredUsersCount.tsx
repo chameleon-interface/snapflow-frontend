@@ -7,7 +7,7 @@ import { UsersCounter } from './UsersCounter';
 import styles from './RegisteredUsersCount.module.css';
 
 export const RegisteredUsersCount = () => {
-  const { data, isError } = useRegisteredUsersCountQuery();
+  const { data } = useRegisteredUsersCountQuery();
   const count = data?.totalCount ?? 0;
   const t = useTranslations('MainPage');
 
@@ -24,15 +24,9 @@ export const RegisteredUsersCount = () => {
       >
         {t('registeredUsers')}
       </Typography>
-      {isError ? (
-        <Typography variant="text-14" as="p" role="alert">
-          {t('registeredUsersCountLoadError')}
-        </Typography>
-      ) : (
-        <div className={styles.counterWrap}>
-          <UsersCounter count={count} />
-        </div>
-      )}
+      <div className={styles.counterWrap}>
+        <UsersCounter count={count} />
+      </div>
     </section>
   );
 };
