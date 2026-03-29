@@ -1,10 +1,13 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Button } from 'snapflow-ui-kit/client';
 import s from './ProfilePage.module.css';
 import { ProfilePosts } from './ProfilePosts';
+import { useMe } from '@/entities/user';
+import { ROUTES } from '@/shared/config';
 import { Profile } from '../types/types';
 
 type Props = {
@@ -13,6 +16,8 @@ type Props = {
 
 export function ProfileContent({ profile }: Props) {
   const t = useTranslations('Pages');
+  const { data: me } = useMe();
+  const isOwner = me?.userId === String(profile.id);
 
   return (
     <section className={s.page}>
@@ -32,7 +37,15 @@ export function ProfileContent({ profile }: Props) {
           <div className={s.userNameAndSettingsButton}>
             <h1>{profile.username}</h1>
 
-            <Button className={s.profileButton}>{t('profileSettings')}</Button>
+            {isOwner && (
+              <Button
+                className={s.profileButton}
+                as={Link}
+                href={ROUTES.SETTINGS}
+              >
+                {t('profileSettings')}
+              </Button>
+            )}
           </div>
 
           <ul className={s.userData}>

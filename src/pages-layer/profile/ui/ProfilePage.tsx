@@ -1,16 +1,24 @@
-import { getTranslations } from 'next-intl/server';
+'use client';
+
+import { useTranslations } from 'next-intl';
 import { ProfileContent } from './ProfileContent';
-import { getProfile } from '../api/profile';
-import type { Profile } from '../types/types';
+import { usePublicProfileQuery } from '../api/usePublicProfileQuery';
 
 type Props = {
   id: string;
 };
 
-export async function ProfilePage({ id }: Props) {
-  await getTranslations('Pages');
+export function ProfilePage({ id }: Props) {
+  const tCommon = useTranslations('Common');
+  const { data: profile, isPending } = usePublicProfileQuery(id);
 
-  const profile: Profile = await getProfile(id);
+  if (isPending) {
+    return null;
+  }
+
+  if (!profile) {
+    return <p>{tCommon('somethingWentWrong')}</p>;
+  }
 
   return <ProfileContent profile={profile} />;
 }
