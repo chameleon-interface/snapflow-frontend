@@ -1,8 +1,10 @@
 'use client';
+
 import { useTranslations } from 'next-intl';
-import { usePostsQuery } from '../../api';
-import { PostCard } from './PostCard';
+import { EmptyStateMessage } from '@/shared/ui';
 import styles from './PostsBlock.module.css';
+import { usePostsQuery } from '@/widgets/main-page/PostsBlock/api';
+import { PostCard } from './PostCard';
 
 export const PostsBlock = () => {
   const { data } = usePostsQuery();
@@ -13,7 +15,7 @@ export const PostsBlock = () => {
   if (posts.length === 0) {
     return (
       <section className={styles.postsBlock}>
-        <p className={styles.emptyState}>{t('noPostsYet')}</p>
+        <EmptyStateMessage>{t('noPostsYet')}</EmptyStateMessage>
       </section>
     );
   }

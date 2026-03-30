@@ -1,6 +1,6 @@
 'use client';
 
-import { useRegisteredUsersCountQuery } from '../../api';
+import { useRegisteredUsersCountQuery } from '@/widgets/main-page/RegisteredUsersCount/api';
 import { useTranslations } from 'next-intl';
 import { Typography } from 'snapflow-ui-kit';
 import { UsersCounter } from './UsersCounter';

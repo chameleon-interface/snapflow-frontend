@@ -1,6 +1,6 @@
 import { MainPage } from '@/pages-layer/main-page';
-import { getPostsSSR } from '@/pages-layer/main-page/api/ssr/getPostsSSR';
-import { getRegisteredUsersCountSSR } from '@/pages-layer/main-page/api/ssr/getRegisteredUsersCountSSR';
+import { getPostsSSR } from '@/widgets/main-page/PostsBlock';
+import { getRegisteredUsersCountSSR } from '@/widgets/main-page/RegisteredUsersCount';
 import { mainPageKeys } from '@/shared/api/keys-factories/mainPageKeysFactory';
 import {
   dehydrate,

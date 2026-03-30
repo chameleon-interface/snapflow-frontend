@@ -62,7 +62,7 @@
 }
 
 .postCard .mediaImage {
-  object-fit: contain;
+  object-fit: fill;
 }
 
 .postHeader {

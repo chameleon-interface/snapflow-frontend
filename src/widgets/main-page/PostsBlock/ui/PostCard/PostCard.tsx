@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Carousel, Typography } from 'snapflow-ui-kit/client';
 import { clsx } from 'clsx';
 import { useCallback, useState } from 'react';
-import { getDescriptionText } from './lib';
+import { getDescriptionText } from '@/widgets/main-page/PostsBlock/ui/lib';
 import styles from './PostCard.module.css';
 import { UserAvatar } from '@/shared/ui/UserAvatar';
 import { ExpandableText } from '@/shared/ui/ExpandableText';

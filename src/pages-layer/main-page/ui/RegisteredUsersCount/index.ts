@@ -1,1 +1,0 @@
-export { RegisteredUsersCount } from './RegisteredUsersCount';
