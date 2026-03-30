@@ -20,11 +20,6 @@
   opacity: 0.9;
 }
 
-.thumb:focus-visible {
-  outline: 2px solid var(--color-accent-500);
-  outline-offset: 2px;
-}
-
 .imageWrap {
   position: relative;
 
@@ -34,10 +29,6 @@
   width: 100%;
   border: 2px solid transparent;
   border-radius: 2px;
-
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
 }
 
 .thumbSelected .imageWrap {
@@ -45,8 +36,17 @@
   box-shadow: 0 0 0 1px var(--color-accent-500);
 }
 
-.thumb:hover .imageWrap {
+.thumb:hover .imageWrap,
+.thumb:focus-visible .imageWrap {
   border-color: var(--color-accent-500);
+}
+
+.thumb:focus-visible {
+  outline: none;
+}
+
+.thumb:focus:not(:focus-visible) {
+  outline: none;
 }
 
 .image {
