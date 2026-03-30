@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { ImageIcon } from 'snapflow-ui-kit/icons';
 import s from './ProfilePage.module.css';
 import { useProfilePostsInfinite } from './useProfilePostsInfinite';
 
@@ -49,6 +50,12 @@ export function ProfilePosts({ profileId }: Props) {
 
         {posts.map((post) => (
           <article key={post.id} className={s.post}>
+            {post.mediaCount > 1 && (
+              <div className={s.multiMediaBadge}>
+                <ImageIcon aria-hidden />
+                <span>{post.mediaCount}</span>
+              </div>
+            )}
             <Image
               src={post.photo}
               alt={`Post ${post.id}`}

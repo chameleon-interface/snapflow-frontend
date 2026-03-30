@@ -12,4 +12,5 @@ export type Post = {
   id: number;
   profileId: number;
   photo: string;
+  mediaCount: number;
 };

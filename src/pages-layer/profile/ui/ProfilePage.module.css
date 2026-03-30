@@ -99,6 +99,7 @@
 }
 
 .post {
+  position: relative;
   cursor: pointer;
   overflow: hidden;
   height: 228px;
@@ -114,6 +115,32 @@
 .post:hover img {
   transform: scale(1.05);
   opacity: 0.85;
+}
+
+.multiMediaBadge {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  right: 10px;
+
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+
+  padding: 4px 9px;
+  border-radius: 14px;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-light-100);
+
+  background: rgb(0 0 0 / 60%);
+}
+
+.multiMediaBadge svg {
+  width: 16px;
+  height: 16px;
 }
 
 .noPosts,

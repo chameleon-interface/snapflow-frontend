@@ -5,4 +5,5 @@ export const mapPost = (item: PostViewDto): Post => ({
   id: item.id,
   profileId: item.owner.ownerId,
   photo: item.postMedias?.[0]?.url ?? '',
+  mediaCount: item.postMedias?.length ?? 0,
 });
