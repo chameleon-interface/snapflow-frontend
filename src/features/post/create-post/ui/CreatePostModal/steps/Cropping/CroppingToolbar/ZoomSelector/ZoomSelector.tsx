@@ -4,8 +4,8 @@ import { usePopover } from '@/features/post/create-post/lib';
 import { clsx } from 'clsx';
 import { useTranslations } from 'next-intl';
 import { SearchIcon } from 'snapflow-ui-kit/icons';
-import { ZoomPopover } from './ZoomPopover';
 import styles from './ZoomSelector.module.css';
+import { ZoomPopover } from './ZoomPopover';
 
 type Props = {
   value: number;
@@ -20,11 +20,11 @@ export const ZoomSelector = ({ value, min, max, step, onChange }: Props) => {
   const { isOpen, toggle, wrapperRef, triggerRef } = usePopover();
 
   return (
-    <div className={styles.wrapper} ref={wrapperRef}>
+    <div className={styles.popoverAnchor} ref={wrapperRef}>
       <button
         ref={triggerRef}
         type="button"
-        className={clsx(styles.trigger, isOpen && styles.triggerActive)}
+        className={clsx(styles.iconTrigger, isOpen && styles.iconTriggerActive)}
         aria-label={t('zoom')}
         aria-expanded={isOpen}
         aria-haspopup="dialog"

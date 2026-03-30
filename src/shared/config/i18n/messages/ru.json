@@ -46,7 +46,6 @@
     "settingsSaved": "Ваши настройки сохранены!",
     "avatarUpdated": "Аватар успешно обновлен!",
     "avatarDeleted": "Аватар успешно удален!",
-    "avatarTooLarge": "Размер аватарки не должен превышать 10 MB.",
     "avatarCropFailed": "Не удалось обработать аватар. Попробуйте снова.",
     "avatarCropModal": {
       "title": "Добавить фото профиля",
@@ -232,9 +231,7 @@
     "closeModalSubMessage": "Несохранённые изменения будут потеряны",
     "closeModalDiscard": "Отменить",
     "closeModalSaveDraft": "Сохранить черновик",
+    "savingDraft": "Сохранение...",
     "draftSaveSuccess": "Черновик сохранён"
-  },
-  "SelectPhotos": {
-    "selectFromComputer": "Выбрать фото"
   }
 }
