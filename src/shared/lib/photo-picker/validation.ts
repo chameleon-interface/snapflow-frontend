@@ -2,7 +2,7 @@ import {
   ACCEPTED_TYPES,
   MAX_FILE_SIZE_BYTES,
   MAX_PHOTOS_MULTIPLE,
-} from '../model/constants';
+} from './constants';
 
 type ValidateFileResult =
   | { valid: true }
@@ -12,18 +12,25 @@ type ValidateFileResult =
       errorValues?: Record<string, string | number>;
     };
 
-/** В multiple: сколько ещё можно добавить. В single: всегда 1 (новый выбор заменяет текущий). */
 export const getMaxAllowedInSelection = (
   multiple: boolean,
   alreadySelectedCount: number,
+  maxPhotosMultiple: number = MAX_PHOTOS_MULTIPLE,
 ): number => {
   if (!multiple) return 1;
-  return Math.max(0, MAX_PHOTOS_MULTIPLE - alreadySelectedCount);
+  return Math.max(0, maxPhotosMultiple - alreadySelectedCount);
 };
 
 export const validateFile = (
   file: File,
   selectedNames: Set<string>,
+  {
+    acceptedTypes = ACCEPTED_TYPES,
+    maxFileSizeBytes = MAX_FILE_SIZE_BYTES,
+  }: {
+    acceptedTypes?: string[];
+    maxFileSizeBytes?: number;
+  } = {},
 ): ValidateFileResult => {
   if (selectedNames.has(file.name)) {
     return {
@@ -32,19 +39,22 @@ export const validateFile = (
       errorValues: { name: file.name },
     };
   }
-  if (!ACCEPTED_TYPES.includes(file.type)) {
+
+  if (acceptedTypes.length > 0 && !acceptedTypes.includes(file.type)) {
     return {
       valid: false,
       errorKey: 'errorFormat',
       errorValues: { name: file.name },
     };
   }
-  if (file.size > MAX_FILE_SIZE_BYTES) {
+
+  if (file.size > maxFileSizeBytes) {
     return {
       valid: false,
       errorKey: 'errorFileSize',
       errorValues: { name: file.name },
     };
   }
+
   return { valid: true };
 };

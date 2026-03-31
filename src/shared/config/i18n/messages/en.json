@@ -42,14 +42,13 @@
       "subscriptions": "Account Management",
       "payments": "My payments"
     },
-    "selectProfilePhoto": "Select Profile Photo",
+    "selectProfilePhoto": "Select Photo",
     "profileAvatar": "Profile avatar",
     "deleteAvatar": "Delete avatar",
     "saveChanges": "Save Changes",
     "settingsSaved": "Your settings are saved!",
     "avatarUpdated": "Avatar updated successfully!",
     "avatarDeleted": "Avatar deleted successfully!",
-    "avatarTooLarge": "Avatar image must be 10 MB or smaller.",
     "avatarCropFailed": "Failed to process avatar image. Please try again.",
     "avatarCropModal": {
       "title": "Add a Profile Photo",
@@ -248,9 +247,7 @@
     "closeModalSubMessage": "Unsaved changes will be lost",
     "closeModalDiscard": "Discard",
     "closeModalSaveDraft": "Save draft",
+    "savingDraft": "Saving...",
     "draftSaveSuccess": "Draft saved"
-  },
-  "SelectPhotos": {
-    "selectFromComputer": "Select photos"
   }
 }

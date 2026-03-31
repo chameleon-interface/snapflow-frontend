@@ -8,7 +8,7 @@
 }
 
 .photoButton {
-  width: 100%;
+  width: 192px;
   padding: 5px 23px;
 }
 
@@ -24,15 +24,8 @@
   color: var(--color-accent-500);
 }
 
-@media (width <= 1024px) {
-  .photoButton {
-    max-width: 202px;
-  }
-}
-
 @media (width <= 768px) {
   .photoButton {
-    max-width: 100%;
     padding-block: 11px;
   }
 }
