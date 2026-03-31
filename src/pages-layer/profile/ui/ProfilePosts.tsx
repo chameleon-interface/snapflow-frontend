@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { ImageIcon } from 'snapflow-ui-kit/icons';
+import { useMe } from '@/entities/user';
 import s from './ProfilePage.module.css';
-import { useProfilePostsInfinite } from './useProfilePostsInfinite';
+import { useProfilePostsInfinite } from '../api/useProfilePostsInfinite';
 
 type Props = {
   profileId: number;
@@ -13,39 +13,20 @@ type Props = {
 
 export function ProfilePosts({ profileId }: Props) {
   const t = useTranslations('Pages');
-  const observerRef = useRef<HTMLDivElement | null>(null);
-  const { posts, fetchNextPage, hasNextPage, isFetchingNextPage, isPending } =
+  const { data: me } = useMe();
+  const isOwner = me?.userId === String(profileId);
+  const { posts, observerRef, hasNextPage, isPending } =
     useProfilePostsInfinite(profileId);
-
-  useEffect(() => {
-    const node = observerRef.current;
-
-    if (!node || !hasNextPage) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting && !isFetchingNextPage) {
-          void fetchNextPage();
-        }
-      },
-      { threshold: 0.5 },
-    );
-
-    observer.observe(node);
-
-    return () => {
-      observer.unobserve(node);
-      observer.disconnect();
-    };
-  }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
 
   return (
     <>
       <section className={s.posts}>
         {!isPending && posts.length === 0 && (
-          <p className={s.noPosts}>{t('noPosts')}</p>
+          <div className={s.emptyWrapper}>
+            <p className={s.noPosts}>
+              {isOwner ? t('noPostsOwn') : t('noPostsGuest')}
+            </p>
+          </div>
         )}
 
         {posts.map((post) => (

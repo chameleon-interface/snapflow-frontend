@@ -34,6 +34,8 @@
     "profilePublications": "Publications",
     "profileSettings": "Profile Settings",
     "noPosts": "You have no posts yet",
+    "noPostsOwn": "You have no posts yet",
+    "noPostsGuest": "There are no posts yet",
     "allPostsLoaded": "You have viewed all posts"
   },
   "Settings": {

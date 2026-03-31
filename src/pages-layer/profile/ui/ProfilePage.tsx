@@ -1,6 +1,5 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { ProfileContent } from './ProfileContent';
 import { usePublicProfileQuery } from '../api/usePublicProfileQuery';
 
@@ -9,15 +8,10 @@ type Props = {
 };
 
 export function ProfilePage({ id }: Props) {
-  const tCommon = useTranslations('Common');
   const { data: profile, isPending } = usePublicProfileQuery(id);
 
-  if (isPending) {
+  if (isPending || !profile) {
     return null;
-  }
-
-  if (!profile) {
-    return <p>{tCommon('somethingWentWrong')}</p>;
   }
 
   return <ProfileContent profile={profile} />;

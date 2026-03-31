@@ -8,7 +8,7 @@ import s from './ProfilePage.module.css';
 import { ProfilePosts } from './ProfilePosts';
 import { useMe } from '@/entities/user';
 import { ROUTES } from '@/shared/config';
-import { Profile } from '../types/types';
+import type { Profile } from '../model/types';
 
 type Props = {
   profile: Profile;
@@ -18,6 +18,7 @@ export function ProfileContent({ profile }: Props) {
   const t = useTranslations('Pages');
   const { data: me } = useMe();
   const isOwner = me?.userId === String(profile.id);
+  const isVerified = true;
 
   return (
     <section className={s.page}>
@@ -35,7 +36,18 @@ export function ProfileContent({ profile }: Props) {
 
         <div className={s.info}>
           <div className={s.userNameAndSettingsButton}>
-            <h1>{profile.username}</h1>
+            <div className={s.userName}>
+              <h1>{profile.username}</h1>
+              {isVerified && (
+                <Image
+                  src="/images/paid.svg"
+                  alt="Verified profile"
+                  width={22}
+                  height={22}
+                  className={s.verifiedBadge}
+                />
+              )}
+            </div>
 
             {isOwner && (
               <Button
