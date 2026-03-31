@@ -1,38 +1,18 @@
 .modalContainer {
-  width: 100%;
-  max-width: 900px;
+  width: min(960px, calc(100vw - 32px));
+  max-width: none;
+  max-height: 90vh;
 }
 
 .viewModalContainer {
-  position: relative;
-  overflow: visible;
-  width: 100%;
-  max-width: 1036px;
-}
-
-.viewModalContainer > header {
-  padding: 0;
-  border-bottom: none;
-}
-
-.viewModalContainer > header h2 {
-  display: none;
-}
-
-.viewModalContainer > header button[aria-label='Close modal'] {
-  position: absolute;
-  z-index: 2;
-  top: -18px;
-  right: -36px;
-}
-
-.viewModalContainer > div {
-  padding: 0;
+  width: min(960px, calc(100vw - 32px));
+  max-width: none;
+  max-height: 90vh;
 }
 
 @media (width <= 900px) {
-  .viewModalContainer > header button[aria-label='Close modal'] {
-    top: 8px;
-    right: 8px;
+  .modalContainer,
+  .viewModalContainer {
+    width: calc(100vw - 32px);
   }
 }

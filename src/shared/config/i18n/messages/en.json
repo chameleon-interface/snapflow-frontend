@@ -113,6 +113,7 @@
       "message": "Are you really want to log out of your account \"{email}\"?"
     },
     "Post": {
+      "viewTitle": "Publication",
       "editTitle": "Edit Post",
       "editAction": "Edit Post",
       "deleteAction": "Delete Post",

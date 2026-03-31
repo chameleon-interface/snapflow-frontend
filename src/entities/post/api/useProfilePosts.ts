@@ -1,9 +1,9 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { postQueryKeys } from '../model/queryKeys';
+import { postQueryKeys } from '@/entities/post/model/queryKeys';
 import type { GetProfilePostsInput } from '../model/types';
-import { getProfilePosts } from './getProfilePosts';
+import { getProfilePosts } from '@/entities/post/api/getProfilePosts';
 
 export const useProfilePosts = ({
   userId,

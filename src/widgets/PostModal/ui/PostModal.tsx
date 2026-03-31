@@ -92,7 +92,7 @@ export const PostModal = ({
       <Modal
         open={open}
         onClose={closeModal}
-        title={mode === 'edit' ? t('editTitle') : ''}
+        title={mode === 'edit' ? t('editTitle') : t('viewTitle')}
         className={modalClassName}
       >
         {mode === 'edit' ? (
