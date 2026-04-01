@@ -22,7 +22,7 @@
   }
 }
 
-@media (width <=480px) {
+@media (width <=380px) {
   .postsBlock {
     grid-template-columns: minmax(0, 1fr);
   }

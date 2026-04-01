@@ -45,9 +45,10 @@
   }
 }
 
-@media (width <=480px) {
+@media (width <=380px) {
   .filterPanel {
     padding: 12px 10px;
+    border-radius: 10px;
   }
 
   .filterGrid {
@@ -56,21 +57,6 @@
 
   .filterGrid > * {
     width: 104px;
-  }
-}
-
-@media (width <=380px) {
-  .filterPanel {
-    padding: 10px 8px;
-    border-radius: 10px;
-  }
-
-  .filterGrid {
-    gap: 6px;
-  }
-
-  .filterGrid > * {
-    width: 96px;
   }
 }
 
@@ -112,7 +98,7 @@
   }
 }
 
-@media (width <= 480px) {
+@media (width <= 380px) {
   .twoColumnRoot {
     grid-template-rows: minmax(180px, 40vh) minmax(0, 1fr);
     gap: 12px;
@@ -120,17 +106,6 @@
 
   .carouselColumn {
     min-height: 180px;
-  }
-}
-
-@media (width <= 380px) {
-  .twoColumnRoot {
-    grid-template-rows: minmax(160px, 38vh) minmax(0, 1fr);
-    gap: 10px;
-  }
-
-  .carouselColumn {
-    min-height: 160px;
   }
 }
 

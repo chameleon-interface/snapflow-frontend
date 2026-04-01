@@ -138,17 +138,10 @@
   }
 }
 
-@media (width <=480px) {
+@media (width <=380px) {
   .root {
     gap: 14px;
     padding: 12px 10px;
-  }
-}
-
-@media (width <=380px) {
-  .root {
-    gap: 12px;
-    padding: 10px 8px;
   }
 
   .profileRow {

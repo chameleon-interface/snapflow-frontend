@@ -39,7 +39,7 @@ export const PostCard = ({ post }: Props) => {
               alt={`Photo ${index + 1} of ${post.postMedias.length} by ${username}`}
               fill
               className={styles.mediaImage}
-              sizes="(max-width: 768px) 100vw, 640px"
+              sizes="(max-width: 380px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
           </div>
         ))}

@@ -1,10 +1,13 @@
 .postCard {
-  --post-card-carousel-height: 248px;
+  /* Соотношение сторон медиа: высота = width * (den / num) */
+  --post-card-media-aspect-num: 4;
+  --post-card-media-aspect-den: 3;
   --post-card-carousel-gap: 8px;
 
-  /* Половина карусели + gap, чтобы блок визуально встал на середину медиа */
+  /* Половина высоты блока медиа + gap — для overlap при раскрытии текста */
   --post-card-content-lift: calc(
-    var(--post-card-carousel-height) * 0.5 + var(--post-card-carousel-gap)
+    100% * var(--post-card-media-aspect-den) /
+      (2 * var(--post-card-media-aspect-num)) + var(--post-card-carousel-gap)
   );
 
   isolation: isolate;
@@ -20,26 +23,23 @@
 
 @media (width <= 1024px) {
   .postCard {
-    --post-card-carousel-height: 228px;
+    --post-card-media-aspect-num: 1;
+    --post-card-media-aspect-den: 1;
   }
 }
 
 @media (width <= 768px) {
   .postCard {
-    --post-card-carousel-height: clamp(200px, 42vw, 280px);
-  }
-}
-
-@media (width <= 480px) {
-  .postCard {
-    --post-card-carousel-height: clamp(210px, 58vw, 360px);
-    --post-card-carousel-gap: 10px;
+    --post-card-media-aspect-num: 4;
+    --post-card-media-aspect-den: 3;
   }
 }
 
 @media (width <= 380px) {
   .postCard {
-    --post-card-carousel-height: clamp(196px, 56vw, 300px);
+    --post-card-media-aspect-num: 3;
+    --post-card-media-aspect-den: 4;
+    --post-card-carousel-gap: 10px;
   }
 }
 
@@ -47,11 +47,13 @@
   position: relative;
   z-index: 0;
 
+  overflow: hidden;
   flex-shrink: 0;
 
-  aspect-ratio: unset;
   width: 100%;
-  height: var(--post-card-carousel-height);
+  aspect-ratio: var(--post-card-media-aspect-num) /
+    var(--post-card-media-aspect-den);
+  border-radius: 2px;
 }
 
 .postCard .mediaSlide {
@@ -63,6 +65,7 @@
 
 .postCard .mediaImage {
   object-fit: fill;
+  object-position: center;
 }
 
 .postHeader {
@@ -91,18 +94,17 @@
 
   background-color: var(--color-dark-700);
 
-  /* margin-top анимируем вместо transform: translateY — transform не меняет геометрию в потоке и даёт пустоту снизу карточки */
   transition: margin-top 0.35s cubic-bezier(0.33, 1, 0.68, 1);
-}
-
-@media (width <= 480px) {
-  .content {
-    padding-top: 6px;
-  }
 }
 
 .contentExpanded {
   margin-top: calc(-1 * var(--post-card-content-lift));
+}
+
+@media (width <= 380px) {
+  .content {
+    padding-top: 6px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

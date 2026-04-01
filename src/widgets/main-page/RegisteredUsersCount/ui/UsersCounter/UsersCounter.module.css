@@ -34,16 +34,6 @@
 
 @media (width <= 380px) {
   .digit {
-    padding: 5px 4px;
-  }
-
-  .stick {
-    height: 20px;
-  }
-}
-
-@media (width <= 360px) {
-  .digit {
     padding: 4px 3px;
     font-size: clamp(0.65rem, 3.5vw, 1.25rem);
   }
