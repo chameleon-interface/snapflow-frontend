@@ -25,6 +25,7 @@ const CarouselSlide = ({ url }: { url: string }) => (
       alt=""
       fill
       unoptimized
+      className={styles.slideImage}
       style={{ objectFit: 'contain' }}
       draggable={false}
     />
