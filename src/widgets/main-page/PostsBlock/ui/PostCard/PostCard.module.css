@@ -1,45 +1,16 @@
 .postCard {
-  --post-card-carousel-gap: 8px;
-  --post-card-carousel-height: 240px;
-
-  /* Половина высоты медиа + gap — для overlap при раскрытии текста */
-  --post-card-content-lift: calc(
-    var(--post-card-carousel-height) * 0.5 + var(--post-card-carousel-gap)
-  );
+  --post-card-stack-gap: 8px;
+  --post-card-content-lift: calc(50% + var(--post-card-stack-gap));
 
   isolation: isolate;
   position: relative;
 
   display: flex;
   flex-direction: column;
-  gap: var(--post-card-carousel-gap);
+  gap: var(--post-card-stack-gap);
   align-self: start;
 
   min-width: 0;
-}
-
-@media (width <= 380px) {
-  .postCard {
-    --post-card-carousel-gap: 10px;
-  }
-}
-
-@media (width <= 1024px) {
-  .postCard {
-    --post-card-carousel-height: clamp(200px, 22vw, 224px);
-  }
-}
-
-@media (width <= 768px) {
-  .postCard {
-    --post-card-carousel-height: clamp(172px, 28vw, 208px);
-  }
-}
-
-@media (width <= 380px) {
-  .postCard {
-    --post-card-carousel-height: clamp(150px, 46vw, 184px);
-  }
 }
 
 .postCard .carousel {
@@ -49,8 +20,10 @@
   overflow: hidden;
   flex-shrink: 0;
 
+  box-sizing: border-box;
   width: 100%;
-  height: var(--post-card-carousel-height);
+  min-height: 0;
+  aspect-ratio: 1 / 1;
   border-radius: 2px;
   background-color: var(--color-dark-500);
   border: 1px solid var(--color-dark-300);
