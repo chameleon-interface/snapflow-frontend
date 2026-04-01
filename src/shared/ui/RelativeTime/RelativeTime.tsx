@@ -5,16 +5,18 @@ import {
   formatRelativePostDate,
   formatShortPostDate,
 } from '@/shared/lib';
+import { Typography } from 'snapflow-ui-kit/client';
 import { useLocale } from 'next-intl';
 import { useMemo, useSyncExternalStore } from 'react';
 
 type Props = {
   isoDate: string;
+  className?: string;
 };
 
 const subscribeToNothing = () => () => {};
 
-export const RelativeTime = ({ isoDate }: Props) => {
+export const RelativeTime = ({ isoDate, className }: Props) => {
   const locale = useLocale();
   const isClient = useSyncExternalStore(
     subscribeToNothing,
@@ -38,8 +40,15 @@ export const RelativeTime = ({ isoDate }: Props) => {
   }
 
   return (
-    <time dateTime={isoDate} title={title} aria-label={title}>
+    <Typography
+      as="time"
+      variant="small"
+      className={className}
+      dateTime={isoDate}
+      title={title}
+      aria-label={title}
+    >
       {display}
-    </time>
+    </Typography>
   );
 };

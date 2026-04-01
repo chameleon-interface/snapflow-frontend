@@ -62,14 +62,7 @@ export const PostCard = ({ post }: Props) => {
               {username}
             </Typography>
           </div>
-          <Typography
-            className={styles.time}
-            variant="small"
-            as="time"
-            dateTime={post.createdAt}
-          >
-            <RelativeTime isoDate={post.createdAt} />
-          </Typography>
+          <RelativeTime isoDate={post.createdAt} className={styles.time} />
         </header>
         {descriptionText && (
           <ExpandableText
