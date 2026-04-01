@@ -42,6 +42,7 @@
     "selectProfilePhoto": "Выберите фото",
     "profileAvatar": "Аватар профиля",
     "deleteAvatar": "Удалить аватар",
+    "deleteAvatarConfirmation": "Вы уверены, что хотите удалить фотографию?",
     "saveChanges": "Сохранить изменения",
     "settingsSaved": "Ваши настройки сохранены!",
     "avatarUpdated": "Аватар успешно обновлен!",

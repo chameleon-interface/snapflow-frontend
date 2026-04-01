@@ -42,6 +42,7 @@
     "selectProfilePhoto": "Select Photo",
     "profileAvatar": "Profile avatar",
     "deleteAvatar": "Delete avatar",
+    "deleteAvatarConfirmation": "Are you sure you want to delete the photo?",
     "saveChanges": "Save Changes",
     "settingsSaved": "Your settings are saved!",
     "avatarUpdated": "Avatar updated successfully!",
