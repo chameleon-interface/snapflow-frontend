@@ -50,7 +50,7 @@ export const profileControllerGetProfile = (
  * @summary Получение публичного профиля пользователя
  */
 export const profileControllerGetPublicProfile = (
-  profileId: number,
+  profileId: string,
   options?: SecondParameter<typeof customInstance<PublicProfileViewDto>>,
 ) => {
   return customInstance<PublicProfileViewDto>(
