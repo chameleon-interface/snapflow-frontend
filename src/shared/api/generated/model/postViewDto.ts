@@ -7,19 +7,18 @@
  */
 import type { OwnerViewDto } from './ownerViewDto';
 import type { PostMediaViewDto } from './postMediaViewDto';
-import type { PostViewDtoDescription } from './postViewDtoDescription';
-import type { PostViewDtoStatus } from './postViewDtoStatus';
+import type { PostStatus } from './postStatus';
 
 export interface PostViewDto {
   /** Post identifier */
-  id: number;
+  id: string;
   /**
    * Post description
    * @nullable
    */
-  description: PostViewDtoDescription;
+  description: string | null;
   /** Post status */
-  status: PostViewDtoStatus;
+  status: PostStatus;
   /** Post creation date in ISO format */
   createdAt: string;
   /** Post media list */

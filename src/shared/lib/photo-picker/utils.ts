@@ -6,6 +6,6 @@ export const mergeSelectedFiles = (
   currentPhotos: File[],
   multiple: boolean,
 ): File[] => {
-  const list = Array.from(files);
-  return multiple ? [...currentPhotos, ...list] : list;
+  const nextFiles = Array.from(files);
+  return multiple ? [...currentPhotos, ...nextFiles] : nextFiles;
 };

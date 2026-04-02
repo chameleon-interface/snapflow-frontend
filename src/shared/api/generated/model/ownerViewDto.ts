@@ -5,16 +5,15 @@
  * REST API для SnapFlow
  * OpenAPI spec version: 1.0.0
  */
-import type { OwnerViewDtoAvatarUrl } from './ownerViewDtoAvatarUrl';
 
 export interface OwnerViewDto {
   /** Идентификатор юзера */
-  ownerId: number;
+  ownerId: string;
   /** Имя юзера */
   username: string;
   /**
    * Публичный URL
    * @nullable
    */
-  avatarUrl: OwnerViewDtoAvatarUrl;
+  avatarUrl: string | null;
 }

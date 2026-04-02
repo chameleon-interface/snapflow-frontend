@@ -4,8 +4,8 @@ import { usePopover } from '@/features/post/create-post/lib';
 import { clsx } from 'clsx';
 import { useTranslations } from 'next-intl';
 import { ImageIcon } from 'snapflow-ui-kit/icons';
-import { GalleryPopover } from './GalleryPopover';
 import styles from './GallerySelector.module.css';
+import { GalleryPopover } from './GalleryPopover';
 
 type Props = {
   photos: File[];
@@ -30,11 +30,11 @@ export const GallerySelector = ({
   const { isOpen, toggle, wrapperRef, triggerRef } = usePopover();
 
   return (
-    <div className={styles.wrapper} ref={wrapperRef}>
+    <div className={styles.popoverAnchor} ref={wrapperRef}>
       <button
         ref={triggerRef}
         type="button"
-        className={clsx(styles.trigger, isOpen && styles.triggerActive)}
+        className={clsx(styles.iconTrigger, isOpen && styles.iconTriggerActive)}
         aria-label={t('gallery')}
         aria-expanded={isOpen}
         aria-haspopup="dialog"

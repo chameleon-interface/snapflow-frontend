@@ -9,6 +9,7 @@ export type { CropStateForExport } from './getCroppedImage';
 export { getFilterStyle } from './getFilterStyle';
 export { reindexRecordAfterRemove } from './reindexRecordAfterRemove';
 export { runCroppingExport } from './runCroppingExport';
+export { mapDraftMediaToFiles } from './mapDraftMediaToFiles';
 export type {
   CropPosition,
   CreatePostStep,

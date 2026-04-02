@@ -11,9 +11,9 @@ import {
   ZOOM_STEP,
 } from '@/features/post/create-post/lib';
 import type { CropPosition } from '@/features/post/create-post/model/types';
+import { MAX_PHOTOS_MULTIPLE } from '@/shared/lib';
 import type { Area } from 'react-easy-crop';
 import { Carousel } from 'snapflow-ui-kit/client';
-import { MAX_PHOTOS_MULTIPLE } from '@/shared/ui/SelectPhotos/model/constants';
 import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useState } from 'react';
 import { Alert } from 'snapflow-ui-kit';

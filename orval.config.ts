@@ -3,7 +3,7 @@ import { defineConfig } from 'orval';
 export default defineConfig({
   snapflow: {
     input: {
-      target: 'https://snapflow.cc/api/v1/docs-json',
+      target: 'https://stage.snapflow.cc/api/v1/docs-json',
     },
     output: {
       mode: 'tags-split',

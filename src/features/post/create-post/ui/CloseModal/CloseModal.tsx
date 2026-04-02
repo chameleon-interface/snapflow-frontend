@@ -1,7 +1,6 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
 import { Modal } from 'snapflow-ui-kit/client';
 import { Button, Typography } from 'snapflow-ui-kit';
 import styles from './CloseModal.module.css';
@@ -11,6 +10,7 @@ type Props = {
   onClose: () => void;
   onDiscard: () => void;
   onSaveDraft: () => void | Promise<void>;
+  isSavingDraft?: boolean;
 };
 
 export const CloseModal = ({
@@ -18,9 +18,9 @@ export const CloseModal = ({
   onClose,
   onDiscard,
   onSaveDraft,
+  isSavingDraft = false,
 }: Props) => {
   const t = useTranslations('CreatePost');
-  const [isSaving, setIsSaving] = useState(false);
 
   const handleDiscard = () => {
     onDiscard();
@@ -28,13 +28,8 @@ export const CloseModal = ({
   };
 
   const handleSaveDraft = async () => {
-    setIsSaving(true);
-    try {
-      await Promise.resolve(onSaveDraft());
-      onClose();
-    } finally {
-      setIsSaving(false);
-    }
+    await Promise.resolve(onSaveDraft());
+    onClose();
   };
 
   return (
@@ -59,6 +54,7 @@ export const CloseModal = ({
           onClick={handleDiscard}
           className={styles.button}
           aria-label={t('closeModalDiscard')}
+          disabled={isSavingDraft}
         >
           {t('closeModalDiscard')}
         </Button>
@@ -66,9 +62,9 @@ export const CloseModal = ({
           onClick={handleSaveDraft}
           className={styles.button}
           aria-label={t('closeModalSaveDraft')}
-          disabled={isSaving}
+          disabled={isSavingDraft}
         >
-          {isSaving ? '...' : t('closeModalSaveDraft')}
+          {isSavingDraft ? t('savingDraft') : t('closeModalSaveDraft')}
         </Button>
       </div>
     </Modal>
