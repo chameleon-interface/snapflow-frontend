@@ -16,7 +16,6 @@
     "backToSignUp": "Назад к регистрации"
   },
   "Pages": {
-    "mainTitle": "Главная страница",
     "feedTitle": "Лента",
     "favoritesTitle": "Избранное",
     "profileTitle": "Профиль",
@@ -109,6 +108,24 @@
     "LogoutConfirm": {
       "title": "Подтверждение выхода",
       "message": "Вы действительно хотите выйти из своего аккаунта \"{email}\"?"
+    },
+    "SocialList": {
+      "likes": "Лайки",
+      "following": "Подписки",
+      "followers": "Подписчики",
+      "likesTitle": "{count, number} лайков",
+      "followingTitle": "{count, number} подписок",
+      "followersTitle": "{count, number} подписчиков",
+      "searchPlaceholder": "Поиск",
+      "follow": "Подписаться",
+      "unfollow": "Отписаться",
+      "delete": "Удалить",
+      "loading": "Загрузка…",
+      "loadError": "Не удалось загрузить список.",
+      "retry": "Повторить",
+      "empty": "Пока никого нет.",
+      "emptySearch": "Никого не найдено.",
+      "backAria": "Назад"
     }
   },
   "PasswordRecovery": {

@@ -1,0 +1,273 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+
+  width: 644px;
+  max-width: calc(100vw - 32px);
+  height: 564px;
+  max-height: min(564px, 90vh);
+  margin-inline: auto;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+
+  min-height: 0;
+  padding-top: 8px;
+}
+
+.search {
+  flex-shrink: 0;
+}
+
+.list {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-block: 12px;
+  padding-inline: 4px;
+  border-bottom: 1px solid var(--social-list-row-border, #2a2a2a);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.user {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+}
+
+.avatar {
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.username {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+  align-items: center;
+}
+
+.followButton {
+  min-width: 96px;
+}
+
+.deleteButton {
+  padding-inline: 8px;
+}
+
+.empty {
+  padding-block: 24px;
+  color: var(--social-list-muted, #888);
+  text-align: center;
+}
+
+.error {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+
+  padding-block: 16px;
+
+  color: var(--color-error, #f87171);
+}
+
+/* Mobile / narrow — согласовано с --bp-md в global.css */
+@media (width <= 768px) {
+  .modal :global(header) {
+    display: none;
+  }
+
+  .modal {
+    width: min(100%, 100vw);
+    max-width: none;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    max-height: 100vh;
+    max-height: 100dvh;
+    margin-inline: 0;
+    border-radius: 0;
+  }
+
+  .mobileChrome {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    flex-shrink: 0;
+    align-items: center;
+
+    padding-top: max(4px, env(safe-area-inset-top, 0px));
+  }
+
+  .mobileBack {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px;
+    border: none;
+
+    color: var(--color-light-100);
+
+    background: transparent;
+  }
+
+  .mobileBackIcon {
+    display: block;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+  }
+
+  .mobileTitleWrap {
+    min-width: 0;
+    text-align: center;
+  }
+
+  /* Figma: 18px / 700 / 133% / center / light-100 */
+  .mobileHeaderTitle {
+    margin: 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-family: var(--font-family, inherit);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.33;
+    color: var(--color-light-100);
+    text-align: center;
+  }
+
+  .mobileProfileName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mobileHeaderSpacer {
+    width: 44px;
+  }
+
+  .mobileTabs {
+    display: flex;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--social-list-row-border, #2a2a2a);
+  }
+
+  .mobileTab {
+    cursor: pointer;
+
+    flex: 1;
+
+    padding-block: 12px;
+    padding-inline: 8px;
+    border: none;
+
+    font: inherit;
+    font-size: 14px;
+    line-height: 1.3;
+    color: var(--social-list-muted, #888);
+
+    background: transparent;
+  }
+
+  .mobileTab[data-active] {
+    font-weight: 600;
+    color: var(--color-primary-500, #397ded);
+    box-shadow: inset 0 -2px 0 0 var(--color-primary-500, #397ded);
+  }
+
+  .body {
+    gap: 12px;
+    padding-top: 4px;
+    padding-bottom: max(8px, env(safe-area-inset-bottom, 0px));
+    padding-inline: max(16px, env(safe-area-inset-left, 0px))
+      max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  .list {
+    padding-bottom: max(8px, env(safe-area-inset-bottom, 0px));
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .row {
+    gap: 8px;
+    padding-block: 10px;
+    padding-inline: 0;
+  }
+
+  .user {
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .username {
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .actions {
+    flex-shrink: 0;
+    gap: 6px;
+  }
+
+  .followButton {
+    min-width: 72px;
+    padding-inline: 10px;
+  }
+
+  .deleteButton {
+    padding-inline: 4px;
+  }
+}
+
+@media (width <= 380px) {
+  .followButton {
+    min-width: 64px;
+    padding-inline: 8px;
+  }
+
+  .row {
+    gap: 6px;
+  }
+}

@@ -1,4 +1,4 @@
-﻿## Общие правила
+## Общие правила
 
 - Используйте `pnpm` (см. `packageManager` в `package.json`).
 - Соблюдайте структуру FSD слоёв.
@@ -69,7 +69,7 @@ Server Components:
 import { getTranslations } from 'next-intl/server';
 
 const t = await getTranslations('Pages');
-return <h1>{t('mainTitle')}</h1>;
+return <h1>{t('feedTitle')}</h1>;
 ```
 
 Переключение языка делается через `LanguageSwitcher`:

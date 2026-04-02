@@ -16,7 +16,6 @@
     "backToSignUp": "Back to Sign Up"
   },
   "Pages": {
-    "mainTitle": "Main page",
     "feedTitle": "Feed",
     "favoritesTitle": "Favorites",
     "profileTitle": "Profile",
@@ -109,6 +108,24 @@
     "LogoutConfirm": {
       "title": "Log out",
       "message": "Are you really want to log out of your account \"{email}\"?"
+    },
+    "SocialList": {
+      "likes": "Likes",
+      "following": "Following",
+      "followers": "Followers",
+      "likesTitle": "{count, number} Likes",
+      "followingTitle": "{count, number} Following",
+      "followersTitle": "{count, number} Followers",
+      "searchPlaceholder": "Search",
+      "follow": "Follow",
+      "unfollow": "Unfollow",
+      "delete": "Delete",
+      "loading": "Loading…",
+      "loadError": "Could not load the list.",
+      "retry": "Retry",
+      "empty": "No users yet.",
+      "emptySearch": "No users match your search.",
+      "backAria": "Back"
     }
   },
   "PasswordRecovery": {
