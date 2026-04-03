@@ -94,8 +94,3 @@
 .time {
   color: var(--color-light-900);
 }
-
-.description {
-  max-width: 100%;
-  overflow-wrap: anywhere;
-}
