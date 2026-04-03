@@ -8,7 +8,7 @@
   padding: 0 16px;
   border-radius: 12px;
 
-  background: var(--color-dark-600);
+  background: var(--color-dark-700);
 
   -webkit-overflow-scrolling: touch;
 }
@@ -139,7 +139,7 @@
 
 .thinVertical::-webkit-scrollbar-track {
   border-radius: 4px;
-  background: var(--color-dark-200);
+  background: var(--color-dark-100);
 }
 
 .thinVertical::-webkit-scrollbar-thumb {
@@ -152,5 +152,5 @@
 }
 
 .thinVertical::-webkit-scrollbar-thumb:active {
-  background: var(--color-accent-600, var(--color-accent-500));
+  background: var(--color-accent-700, var(--color-accent-500));
 }
