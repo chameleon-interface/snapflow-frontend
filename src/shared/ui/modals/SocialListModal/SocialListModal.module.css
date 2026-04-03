@@ -54,21 +54,21 @@
 }
 
 .profileLink {
-  flex: 1;
-  min-width: 0;
-
-  padding: 0;
-  border: 0;
-  background: none;
-
-  justify-content: flex-start;
-  text-align: left;
-  text-decoration: none;
-  color: inherit;
-
   cursor: pointer;
 
+  flex: 1;
+  justify-content: flex-start;
+
+  min-width: 0;
+  padding: 0;
+  border: 0;
   border-radius: 6px;
+
+  color: inherit;
+  text-align: left;
+  text-decoration: none;
+
+  background: none;
 
   transition: opacity 0.15s ease;
 }
@@ -83,8 +83,9 @@
 }
 
 .avatarWrap {
-  flex-shrink: 0;
   overflow: hidden;
+  flex-shrink: 0;
+
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -99,14 +100,14 @@
 
 .username {
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 
   font-family: var(--font-family, var(--font-inter), sans-serif);
-  font-weight: 400;
   font-size: 16px;
+  font-weight: 400;
   line-height: 1.5;
   color: var(--color-light-100);
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .actions {
@@ -201,11 +202,9 @@
   }
 
   .mobileHeaderTitle {
-    margin: 0;
-
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+
+    margin: 0;
 
     font-family: var(--font-family, inherit);
     font-size: 18px;
@@ -213,6 +212,8 @@
     line-height: 1.33;
     color: var(--color-light-100);
     text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .mobileProfileName {
