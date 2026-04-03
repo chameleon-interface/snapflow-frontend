@@ -11,10 +11,12 @@ type Props = {
   username: string;
 };
 
+const PLACEHOLDER_FONT_SIZE_RATIO = 0.444;
+
 const getRootStyle = (size: number): CSSProperties => ({
   width: size,
   height: size,
-  ['--user-avatar-size' as string]: `${size}px`,
+  fontSize: `${size * PLACEHOLDER_FONT_SIZE_RATIO}px`,
 });
 
 export const UserAvatar = ({ avatarUrl, size, username }: Props) => {
