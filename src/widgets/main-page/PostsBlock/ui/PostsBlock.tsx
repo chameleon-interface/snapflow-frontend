@@ -1,13 +1,13 @@
 'use client';
 
+import { useLatestPostsQuery } from '@/entities/post';
 import { useTranslations } from 'next-intl';
 import { EmptyStateMessage } from '@/shared/ui';
 import styles from './PostsBlock.module.css';
-import { usePostsQuery } from '@/widgets/main-page/PostsBlock/api';
 import { PostPreviewCard } from './PostPreviewCard';
 
 export const PostsBlock = () => {
-  const { data } = usePostsQuery();
+  const { data } = useLatestPostsQuery();
   const t = useTranslations('MainPage');
 
   const posts = data?.items ?? [];
