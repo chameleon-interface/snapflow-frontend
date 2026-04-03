@@ -30,6 +30,15 @@
     "privacyPolicy": "Политика конфиденциальности",
     "termsOfService": "Условия предоставления услуг"
   },
+  "MainPage": {
+    "registeredUsers": "Пользователей:",
+    "noPostsYet": "Постов пока нет",
+    "registeredUsersCountAria": "Зарегистрировано пользователей: {count}"
+  },
+  "ExpandableText": {
+    "showMore": "Показать больше",
+    "showLess": "Скрыть"
+  },
   "Settings": {
     "tabsAria": "Вкладки настроек",
     "tabs": {
@@ -109,19 +118,10 @@
       "message": "Вы действительно хотите выйти из своего аккаунта \"{email}\"?"
     },
     "SocialList": {
-      "likes": "Лайки",
-      "following": "Подписки",
-      "followers": "Подписчики",
-      "likesTitle": "{count, number} лайков",
-      "followingTitle": "{count, number} подписок",
-      "followersTitle": "{count, number} подписчиков",
       "searchPlaceholder": "Поиск",
       "follow": "Подписаться",
       "unfollow": "Отписаться",
       "delete": "Удалить",
-      "loading": "Загрузка…",
-      "loadError": "Не удалось загрузить список.",
-      "retry": "Повторить",
       "empty": "Пока никого нет.",
       "emptySearch": "Никого не найдено.",
       "backAria": "Назад"
@@ -210,7 +210,8 @@
   },
   "Common": {
     "somethingWentWrong": "Что-то пошло не так",
-    "networkError": "Ошибка сети. Проверьте подключение."
+    "networkError": "Ошибка сети. Проверьте подключение.",
+    "userProfilePhotoAlt": "Фото профиля: {name}"
   },
   "CreatePost": {
     "stepTitleAddPhotos": "Добавить фото",

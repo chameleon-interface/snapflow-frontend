@@ -99,8 +99,9 @@
     0 0 20px color-mix(in srgb, var(--color-accent-500) 20%, transparent);
 }
 
-@media (width <= 480px) {
+@media (width <= 380px) {
   .footer {
+    flex-wrap: wrap;
     gap: 8px;
     margin-top: 16px;
     padding-top: 12px;
@@ -109,20 +110,6 @@
   .footerLeft,
   .footerRight {
     gap: 8px;
-  }
-}
-
-@media (width <= 380px) {
-  .footer {
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 12px;
-    padding-top: 10px;
-  }
-
-  .footerLeft,
-  .footerRight {
-    gap: 6px;
   }
 
   .footerRight {

@@ -30,6 +30,15 @@
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
   },
+  "MainPage": {
+    "registeredUsers": "Registered users:",
+    "noPostsYet": "No posts yet",
+    "registeredUsersCountAria": "Registered users: {count}"
+  },
+  "ExpandableText": {
+    "showMore": "Show more",
+    "showLess": "Hide"
+  },
   "Settings": {
     "tabsAria": "Settings tabs",
     "tabs": {
@@ -109,19 +118,10 @@
       "message": "Are you really want to log out of your account \"{email}\"?"
     },
     "SocialList": {
-      "likes": "Likes",
-      "following": "Following",
-      "followers": "Followers",
-      "likesTitle": "{count, number} Likes",
-      "followingTitle": "{count, number} Following",
-      "followersTitle": "{count, number} Followers",
       "searchPlaceholder": "Search",
       "follow": "Follow",
       "unfollow": "Unfollow",
       "delete": "Delete",
-      "loading": "Loading…",
-      "loadError": "Could not load the list.",
-      "retry": "Retry",
       "empty": "No users yet.",
       "emptySearch": "No users match your search.",
       "backAria": "Back"
@@ -210,7 +210,8 @@
   },
   "Common": {
     "somethingWentWrong": "Something went wrong",
-    "networkError": "Network error. Please check your connection."
+    "networkError": "Network error. Please check your connection.",
+    "userProfilePhotoAlt": "Profile photo of {name}"
   },
   "CreatePost": {
     "stepTitleAddPhotos": "Add Photo",

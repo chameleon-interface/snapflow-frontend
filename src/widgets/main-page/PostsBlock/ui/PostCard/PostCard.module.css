@@ -1,0 +1,100 @@
+.postCard {
+  --post-card-stack-gap: 8px;
+  --post-card-content-lift: calc(50% + var(--post-card-stack-gap));
+
+  isolation: isolate;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--post-card-stack-gap);
+  align-self: start;
+
+  min-width: 0;
+}
+
+.postCard .carousel {
+  position: relative;
+  z-index: 0;
+
+  overflow: hidden;
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  border-radius: 2px;
+  background-color: var(--color-dark-500);
+  border: 1px solid var(--color-dark-300);
+}
+
+.postCard .mediaSlide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.postCard .mediaImage {
+  object-fit: contain;
+  object-position: center;
+}
+
+.postHeader {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 2vw, 12px);
+  min-width: 0;
+}
+
+.userInfo {
+  display: flex;
+  gap: clamp(8px, 2vw, 12px);
+  align-items: center;
+  min-width: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 2vw, 12px);
+
+  padding-top: 4px;
+
+  background-color: var(--color-dark-700);
+
+  transition: margin-top 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.contentExpanded {
+  margin-top: calc(-1 * var(--post-card-content-lift));
+}
+
+@media (width <= 380px) {
+  .content {
+    padding-top: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content {
+    transition: none;
+  }
+}
+
+.username {
+  min-width: 0;
+}
+
+.time {
+  color: var(--color-light-900);
+}
+
+.description {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}

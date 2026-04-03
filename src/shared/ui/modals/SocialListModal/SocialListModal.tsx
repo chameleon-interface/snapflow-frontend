@@ -8,7 +8,7 @@ import { useMemo, useState } from 'react';
 import { Input, Modal } from 'snapflow-ui-kit/client';
 import { Button, Typography } from 'snapflow-ui-kit';
 import { ArrowBackIcon, SearchIcon } from 'snapflow-ui-kit/icons';
-import { useMediaQuery } from '@/shared/lib';
+import { useMediaQuery } from '@/shared/lib/hooks';
 import s from './SocialListModal.module.css';
 
 const AVATAR_PLACEHOLDER = '/images/bro.svg';
