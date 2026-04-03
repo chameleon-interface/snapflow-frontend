@@ -22,18 +22,21 @@ export type SocialListModalRow = {
   profileHref?: string;
 };
 
+export type ProfileTabsConfig = {
+  profileTitle: string;
+  followingLabel: string;
+  followersLabel: string;
+  activeTab: 'following' | 'followers';
+  onChange: (tab: 'following' | 'followers') => void;
+};
+
 export type SocialListModalProps = {
   open: boolean;
   onClose: () => void;
   title: string;
   rows: SocialListModalRow[];
-  mobileCenterTitle?: string;
-  mobileProfileTitle?: string;
-  showMobileTabs?: boolean;
-  followingTabLabel?: string;
-  followersTabLabel?: string;
-  activeProfileTab?: 'following' | 'followers';
-  onProfileTabChange?: (tab: 'following' | 'followers') => void;
+  profileTabs?: ProfileTabsConfig;
+  followersList?: boolean;
 };
 
 function RowAvatar({ src, alt }: { src: string; alt: string }) {
@@ -58,17 +61,22 @@ export const SocialListModal = ({
   onClose,
   title,
   rows,
-  mobileCenterTitle,
-  mobileProfileTitle,
-  showMobileTabs = false,
-  followingTabLabel = '',
-  followersTabLabel = '',
-  activeProfileTab = 'following',
-  onProfileTabChange,
+  profileTabs,
+  followersList: followersListProp,
 }: SocialListModalProps) => {
   const t = useTranslations('Modals.SocialList');
   const isMobile = useMediaQuery(768);
   const [search, setSearch] = useState('');
+
+  const resolvedProfileTitle = profileTabs?.profileTitle ?? '';
+  const resolvedFollowingLabel = profileTabs?.followingLabel ?? '';
+  const resolvedFollowersLabel = profileTabs?.followersLabel ?? '';
+  const resolvedActiveTab = profileTabs?.activeTab ?? 'following';
+  const resolvedOnTabChange = profileTabs?.onChange;
+
+  const followersActionsMode =
+    followersListProp === true ||
+    (followersListProp !== false && resolvedActiveTab === 'followers');
 
   const handleClose = () => {
     setSearch('');
@@ -76,8 +84,12 @@ export const SocialListModal = ({
   };
 
   const showMobileHeader = isMobile;
+  const hasProfileTabLabels =
+    Boolean(resolvedProfileTitle) &&
+    Boolean(resolvedFollowingLabel) &&
+    Boolean(resolvedFollowersLabel);
   const showMobileTabsRow =
-    isMobile && showMobileTabs && Boolean(mobileProfileTitle);
+    isMobile && hasProfileTabLabels && Boolean(resolvedOnTabChange);
 
   const visibleRows = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -85,7 +97,7 @@ export const SocialListModal = ({
     return rows.filter((r) => r.username.toLowerCase().includes(q));
   }, [rows, search]);
 
-  const centerForMobile = mobileCenterTitle ?? title;
+  const centerForMobile = profileTabs?.profileTitle ?? title;
 
   return (
     <Modal open={open} onClose={handleClose} title={title} className={s.modal}>
@@ -109,7 +121,7 @@ export const SocialListModal = ({
               <div className={s.mobileTitleWrap}>
                 {showMobileTabsRow ? (
                   <Typography variant="text-16" className={s.mobileProfileName}>
-                    {mobileProfileTitle}
+                    {resolvedProfileTitle}
                   </Typography>
                 ) : (
                   <p className={s.mobileHeaderTitle}>{centerForMobile}</p>
@@ -123,26 +135,26 @@ export const SocialListModal = ({
                 <button
                   type="button"
                   role="tab"
-                  aria-selected={activeProfileTab === 'following'}
+                  aria-selected={resolvedActiveTab === 'following'}
                   className={s.mobileTab}
                   data-active={
-                    activeProfileTab === 'following' ? '' : undefined
+                    resolvedActiveTab === 'following' ? '' : undefined
                   }
-                  onClick={() => onProfileTabChange?.('following')}
+                  onClick={() => resolvedOnTabChange?.('following')}
                 >
-                  {followingTabLabel}
+                  {resolvedFollowingLabel}
                 </button>
                 <button
                   type="button"
                   role="tab"
-                  aria-selected={activeProfileTab === 'followers'}
+                  aria-selected={resolvedActiveTab === 'followers'}
                   className={s.mobileTab}
                   data-active={
-                    activeProfileTab === 'followers' ? '' : undefined
+                    resolvedActiveTab === 'followers' ? '' : undefined
                   }
-                  onClick={() => onProfileTabChange?.('followers')}
+                  onClick={() => resolvedOnTabChange?.('followers')}
                 >
-                  {followersTabLabel}
+                  {resolvedFollowersLabel}
                 </button>
               </div>
             ) : null}
@@ -166,40 +178,20 @@ export const SocialListModal = ({
           </Typography>
         ) : (
           <ul className={s.list}>
-            {visibleRows.map((user) => (
-              <li key={user.id} className={s.row}>
+            {visibleRows.map((user) => {
+              const deleteBtn = user.canRemoveFollower ? (
                 <Button
+                  type="button"
                   variant="text"
-                  as={Link}
-                  href={user.profileHref ?? '#'}
-                  className={`${s.user} ${s.profileLink}`}
-                  onClick={(e: MouseEvent<HTMLAnchorElement>) => {
-                    if (!user.profileHref) {
-                      e.preventDefault();
-                      return;
-                    }
-                    onClose();
-                  }}
+                  className={s.deleteButton}
+                  onClick={() => console.log(' remove ')}
                 >
-                  <RowAvatar
-                    src={user.avatarSrc?.trim() ?? ''}
-                    alt={user.username}
-                  />
-                  <Typography variant="text-16" className={s.username}>
-                    {user.username}
-                  </Typography>
+                  {t('delete')}
                 </Button>
+              ) : null;
+
+              const defaultActions = (
                 <div className={s.actions}>
-                  {user.canRemoveFollower ? (
-                    <Button
-                      type="button"
-                      variant="text"
-                      className={s.deleteButton}
-                      onClick={() => console.log(' remove ')}
-                    >
-                      {t('delete')}
-                    </Button>
-                  ) : null}
                   <Button
                     type="button"
                     variant={user.isFollowing ? 'outlined' : 'primary'}
@@ -208,9 +200,56 @@ export const SocialListModal = ({
                   >
                     {user.isFollowing ? t('unfollow') : t('follow')}
                   </Button>
+                  {deleteBtn}
                 </div>
-              </li>
-            ))}
+              );
+
+              const followersActions =
+                user.isFollowing && deleteBtn ? (
+                  <div className={s.actions}>{deleteBtn}</div>
+                ) : user.isFollowing ? null : (
+                  <div className={s.actions}>
+                    <Button
+                      type="button"
+                      variant="primary"
+                      className={s.followButton}
+                      onClick={() => console.log('toggle follow')}
+                    >
+                      {t('follow')}
+                    </Button>
+                    {deleteBtn}
+                  </div>
+                );
+
+              return (
+                <li key={user.id} className={s.row}>
+                  <Button
+                    variant="text"
+                    as={Link}
+                    href={user.profileHref ?? '#'}
+                    className={`${s.user} ${s.profileLink}`}
+                    onClick={(e: MouseEvent<HTMLAnchorElement>) => {
+                      if (!user.profileHref) {
+                        e.preventDefault();
+                        return;
+                      }
+                      onClose();
+                    }}
+                  >
+                    <RowAvatar
+                      src={user.avatarSrc?.trim() ?? ''}
+                      alt={user.username}
+                    />
+                    <div className={s.usernameClamp}>
+                      <Typography variant="text-16" className={s.username}>
+                        {user.username}
+                      </Typography>
+                    </div>
+                  </Button>
+                  {followersActionsMode ? followersActions : defaultActions}
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>

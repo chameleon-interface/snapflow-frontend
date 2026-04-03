@@ -23,6 +23,23 @@
   flex-shrink: 0;
 }
 
+.search > div:first-of-type {
+  box-sizing: border-box;
+  height: 36px;
+  min-height: 36px;
+}
+
+.search :global(input) {
+  box-sizing: border-box;
+  height: 100%;
+  padding-block: 6px;
+  padding-inline-start: 40px !important;
+
+  padding-inline-end: 12px;
+
+  line-height: 1.25;
+}
+
 .list {
   overflow-y: auto;
   display: flex;
@@ -37,10 +54,10 @@
 }
 
 .row {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 12px;
   align-items: center;
-  justify-content: space-between;
 
   padding-block: 12px;
   padding-inline: 4px;
@@ -56,9 +73,9 @@
 .profileLink {
   cursor: pointer;
 
-  flex: 1;
   justify-content: flex-start;
 
+  width: 100%;
   min-width: 0;
   padding: 0;
   border: 0;
@@ -98,8 +115,19 @@
   object-fit: cover;
 }
 
+.usernameClamp {
+  overflow: hidden;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
 .username {
   overflow: hidden;
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
 
   font-family: var(--font-family, var(--font-inter), sans-serif);
   font-size: 16px;
@@ -113,21 +141,41 @@
 .actions {
   display: flex;
   flex-shrink: 0;
-  gap: 8px;
+  gap: 53px;
   align-items: center;
 }
 
 .followButton {
+  flex-shrink: 0;
+
   box-sizing: border-box;
-  width: 117px;
-  min-width: 117px;
+  width: auto;
+  min-width: 88px;
   height: 36px;
-  padding: 6px 24px;
+  padding: 6px 16px;
   border-radius: 2px;
 }
 
 .deleteButton {
   padding-inline: 8px;
+
+  font-family: var(--font-family, var(--font-inter), sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%;
+  color: var(--color-light-100);
+  text-align: center;
+}
+
+.deleteButton:hover {
+  color: var(--color-light-100);
+  opacity: 0.88;
+}
+
+.deleteButton :is(span, p) {
+  font-size: inherit;
+  font-weight: 600;
+  line-height: inherit;
 }
 
 .empty {
@@ -286,8 +334,7 @@
   }
 
   .actions {
-    flex-shrink: 0;
-    gap: 6px;
+    gap: 8px;
   }
 
   .deleteButton {
@@ -297,9 +344,8 @@
 
 @media (width <= 380px) {
   .followButton {
-    width: auto;
-    min-width: 96px;
-    padding: 6px 16px;
+    min-width: 80px;
+    padding: 6px 12px;
   }
 
   .row {
