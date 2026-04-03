@@ -123,7 +123,7 @@
 
 .thinVertical::-webkit-scrollbar-track {
   border-radius: 4px;
-  background: var(--color-dark-200);
+  background: var(--color-dark-300);
 }
 
 .thinVertical::-webkit-scrollbar-thumb {
@@ -136,5 +136,5 @@
 }
 
 .thinVertical::-webkit-scrollbar-thumb:active {
-  background: var(--color-accent-600, var(--color-accent-500));
+  background: var(--color-accent-700);
 }
