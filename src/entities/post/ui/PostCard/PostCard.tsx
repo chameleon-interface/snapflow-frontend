@@ -61,7 +61,7 @@ export const PostCard = ({ post }: Props) => {
             <div className={s.metaLine}>
               <Typography
                 as="h2"
-                variant="text-14-bold"
+                variant="h3"
                 id={`feed-post-${post.id}`}
                 className={s.username}
               >

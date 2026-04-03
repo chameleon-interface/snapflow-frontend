@@ -1,14 +1,14 @@
 .page {
-  display: flex;
-  justify-content: center;
   width: 100%;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 36px;
+
   width: min(100%, 491px);
+  margin-inline: auto;
 }
 
 .stateCard {
@@ -32,7 +32,7 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 36px;
 }
 
 .loadMoreTrigger {
@@ -44,12 +44,18 @@
   text-align: center;
 }
 
+@media (width >= 1280px) {
+  .content {
+    margin-inline: 131px auto;
+  }
+}
+
 @media (width <= 768px) {
   .content {
     width: 100%;
   }
 
   .list {
-    gap: 16px;
+    gap: 24px;
   }
 }

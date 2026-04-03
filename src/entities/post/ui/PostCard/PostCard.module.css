@@ -1,5 +1,4 @@
 .card {
-  overflow: hidden;
   width: 100%;
   max-width: 491px;
   background: var(--color-dark-700);
@@ -11,8 +10,8 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 12px 0;
-  border-bottom: 1px solid var(--color-dark-300);
+  min-height: 36px;
+  margin-bottom: 12px;
 }
 
 .authorBlock {
@@ -67,6 +66,7 @@
 
 .username {
   overflow: hidden;
+  line-height: 1.5;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -83,7 +83,7 @@
 
 .mediaWrap {
   width: 100%;
-  height: 502px;
+  height: 504px;
   background: var(--color-dark-500);
 }
 
@@ -95,7 +95,7 @@
 .slide {
   position: relative;
   width: 100%;
-  height: 502px;
+  height: 504px;
   background: var(--color-dark-500);
 }
 
@@ -108,7 +108,7 @@
   place-items: center;
 
   width: 100%;
-  height: 502px;
+  height: 504px;
 
   color: var(--color-light-900);
 }
@@ -117,18 +117,19 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 14px 0 10px;
+  padding-top: 12px;
 }
 
 .actionsRow {
   display: flex;
   gap: 12px;
   justify-content: space-between;
+  min-height: 24px;
 }
 
 .primaryActions {
   display: flex;
-  gap: 8px;
+  gap: 20px;
 }
 
 .iconButton {
@@ -138,8 +139,8 @@
   align-items: center;
   justify-content: center;
 
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   padding: 0;
   border: none;
 
@@ -166,6 +167,10 @@
   color: var(--color-light-900);
 }
 
+.content > .metaText:first-of-type {
+  color: var(--color-light-100);
+}
+
 .description {
   display: block;
   flex: 1;
@@ -183,7 +188,9 @@
   display: flex;
   gap: 12px;
   align-items: flex-start;
+
   width: 100%;
+  margin-top: 5px;
 }
 
 .descriptionAvatar {
@@ -202,7 +209,6 @@
   align-items: center;
   justify-content: space-between;
 
-  padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--color-dark-300);
 }
@@ -245,12 +251,12 @@
   }
 
   .slide {
-    aspect-ratio: 491 / 502;
+    aspect-ratio: 491 / 504;
     height: auto;
   }
 
   .emptyMedia {
-    aspect-ratio: 491 / 502;
+    aspect-ratio: 491 / 504;
     height: auto;
     min-height: 280px;
   }
