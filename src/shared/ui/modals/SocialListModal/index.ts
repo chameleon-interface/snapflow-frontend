@@ -1,1 +1,5 @@
-export { SocialListModal, type SocialListModalProps } from './SocialListModal';
+export {
+  SocialListModal,
+  type SocialListModalProps,
+  type SocialListModalRow,
+} from './SocialListModal';
