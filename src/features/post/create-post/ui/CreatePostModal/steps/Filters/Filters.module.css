@@ -23,7 +23,6 @@
 @media (width <=768px) {
   .filterPanel {
     overflow: auto hidden;
-
     max-height: none;
     padding: 16px 12px;
 
