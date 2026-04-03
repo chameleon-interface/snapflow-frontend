@@ -164,7 +164,7 @@
     border-radius: 0;
   }
 
-  .mobileChrome {
+  .mobileHeaderRow {
     display: grid;
     grid-template-columns: 44px 1fr 44px;
     flex-shrink: 0;

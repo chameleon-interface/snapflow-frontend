@@ -75,7 +75,7 @@ export const SocialListModal = ({
     onClose();
   };
 
-  const showMobileChrome = isMobile;
+  const showMobileHeader = isMobile;
   const showMobileTabsRow =
     isMobile && showMobileTabs && Boolean(mobileProfileTitle);
 
@@ -90,9 +90,9 @@ export const SocialListModal = ({
   return (
     <Modal open={open} onClose={handleClose} title={title} className={s.modal}>
       <div className={s.body}>
-        {showMobileChrome ? (
+        {showMobileHeader ? (
           <>
-            <div className={s.mobileChrome}>
+            <div className={s.mobileHeaderRow}>
               <button
                 type="button"
                 className={s.mobileBack}
