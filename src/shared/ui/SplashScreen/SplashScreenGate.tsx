@@ -2,10 +2,10 @@
 
 import { useIsFetching } from '@tanstack/react-query';
 import { PropsWithChildren, useEffect, useRef, useState } from 'react';
+import { authKeys } from '@/shared/api/keys-factories/authKeysFactory';
 import s from './SplashScreen.module.css';
 
 const BRAND_NAME = 'Snapflow';
-const AUTH_ME_QUERY_KEY = ['auth', 'me'] as const;
 const TYPEWRITER_STEP_MS = 120;
 const FADE_OUT_MS = 500;
 const DOTS_HIDE_BEFORE_FADE_MS = 620;
@@ -31,7 +31,7 @@ export const SplashScreenGate = ({ children }: PropsWithChildren) => {
   const [isTypewriterDone, setIsTypewriterDone] = useState(false);
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [isSplashVisible, setIsSplashVisible] = useState(true);
-  const activeRequestsCount = useIsFetching({ queryKey: AUTH_ME_QUERY_KEY });
+  const activeRequestsCount = useIsFetching({ queryKey: authKeys.me() });
   const isInitialLoadDone = activeRequestsCount === 0;
   const showLoadingDots = isTypewriterDone && !isInitialLoadDone;
   const canHideSplash = isTypewriterDone && isInitialLoadDone;

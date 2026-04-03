@@ -5,7 +5,9 @@ import { useIsFetching, useIsMutating } from '@tanstack/react-query';
 import s from './QueryProgressBar.module.css';
 
 export const QueryProgressBar = () => {
-  const isFetching = useIsFetching();
+  const isFetching = useIsFetching({
+    predicate: (query) => !query.meta?.skipGlobalLoader,
+  });
   const isMutating = useIsMutating();
   const isActive = isFetching + isMutating > 0;
 

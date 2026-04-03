@@ -9,4 +9,7 @@ export { ConfirmModal } from './modals/ConfirmModal';
 export { EmailModal } from './modals/EmailModal';
 export { InfoModal } from './modals/InfoModal';
 export { SplashScreenGate } from './SplashScreen';
+export { RelativeTime } from './RelativeTime';
+export { EmptyStateMessage } from './EmptyStateMessage';
 export { HiddenFileInput } from './HiddenFileInput';
+export { UserAvatar } from './UserAvatar';

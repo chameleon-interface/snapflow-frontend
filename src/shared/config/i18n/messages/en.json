@@ -16,7 +16,6 @@
     "backToSignUp": "Back to Sign Up"
   },
   "Pages": {
-    "mainTitle": "Main page",
     "feedTitle": "Feed",
     "favoritesTitle": "Favorites",
     "profileTitle": "Profile",
@@ -30,6 +29,15 @@
     "placeholder": "Placeholder page.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
+  },
+  "MainPage": {
+    "registeredUsers": "Registered users:",
+    "noPostsYet": "No posts yet",
+    "registeredUsersCountAria": "Registered users: {count}"
+  },
+  "ExpandableText": {
+    "showMore": "Show more",
+    "showLess": "Hide"
   },
   "Settings": {
     "tabsAria": "Settings tabs",
@@ -193,7 +201,8 @@
   },
   "Common": {
     "somethingWentWrong": "Something went wrong",
-    "networkError": "Network error. Please check your connection."
+    "networkError": "Network error. Please check your connection.",
+    "userProfilePhotoAlt": "Profile photo of {name}"
   },
   "CreatePost": {
     "stepTitleAddPhotos": "Add Photo",
