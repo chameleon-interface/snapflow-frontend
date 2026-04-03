@@ -7,10 +7,10 @@
   min-width: 0;
   height: 100%;
   min-height: 0;
-
-  background-color: var(--color-dark-500);
   border: 1px solid var(--color-dark-100);
   border-radius: 2px;
+
+  background-color: var(--color-dark-500);
 }
 
 .slideImage {

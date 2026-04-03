@@ -27,6 +27,7 @@
   padding: clamp(10px, 2vw, 14px) clamp(12px, 3vw, 24px);
   border: 1px solid var(--color-dark-300);
   border-radius: 2px;
+
   background-color: var(--color-dark-500);
 }
 
