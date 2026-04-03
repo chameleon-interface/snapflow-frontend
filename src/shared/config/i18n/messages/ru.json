@@ -17,7 +17,6 @@
   },
   "Pages": {
     "mainTitle": "Главная страница",
-    "feedTitle": "Лента",
     "favoritesTitle": "Избранное",
     "profileTitle": "Профиль",
     "messengerTitle": "Мессенджер",
@@ -30,6 +29,27 @@
     "placeholder": "Страница-заглушка.",
     "privacyPolicy": "Политика конфиденциальности",
     "termsOfService": "Условия предоставления услуг"
+  },
+  "Feed": {
+    "title": "Лента",
+    "loadingMore": "Загружаем еще посты...",
+    "error": "Не удалось загрузить ленту.",
+    "retry": "Повторить",
+    "empty": "Публикаций пока нет.",
+    "likesPlaceholder": "2 243 \"Нравится\"",
+    "commentsPlaceholder": "Посмотреть все комментарии (114)",
+    "addCommentPlaceholder": "Добавить комментарий...",
+    "publish": "Опубликовать",
+    "mediaUnavailable": "Медиа недоступно",
+    "avatarAlt": "Аватар {username}",
+    "mediaAlt": "Изображение поста {current} из {total} от {username}",
+    "actions": {
+      "like": "Нравится",
+      "comment": "Комментировать",
+      "share": "Отправить",
+      "save": "Сохранить",
+      "more": "Дополнительные действия"
+    }
   },
   "Settings": {
     "tabsAria": "Вкладки настроек",

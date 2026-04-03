@@ -10,3 +10,4 @@ export { EmailModal } from './modals/EmailModal';
 export { InfoModal } from './modals/InfoModal';
 export { SplashScreenGate } from './SplashScreen';
 export { HiddenFileInput } from './HiddenFileInput';
+export { RelativeTime } from './RelativeTime';

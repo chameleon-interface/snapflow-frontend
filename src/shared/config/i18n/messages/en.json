@@ -17,7 +17,6 @@
   },
   "Pages": {
     "mainTitle": "Main page",
-    "feedTitle": "Feed",
     "favoritesTitle": "Favorites",
     "profileTitle": "Profile",
     "messengerTitle": "Messenger",
@@ -30,6 +29,27 @@
     "placeholder": "Placeholder page.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
+  },
+  "Feed": {
+    "title": "Feed",
+    "loadingMore": "Loading more posts...",
+    "error": "Failed to load feed.",
+    "retry": "Try again",
+    "empty": "No posts yet.",
+    "likesPlaceholder": "2,243 \"Like\"",
+    "commentsPlaceholder": "View all comments (114)",
+    "addCommentPlaceholder": "Add a comment...",
+    "publish": "Publish",
+    "mediaUnavailable": "Media is unavailable",
+    "avatarAlt": "{username} avatar",
+    "mediaAlt": "Post image {current} of {total} by {username}",
+    "actions": {
+      "like": "Like",
+      "comment": "Comment",
+      "share": "Share",
+      "save": "Save",
+      "more": "More actions"
+    }
   },
   "Settings": {
     "tabsAria": "Settings tabs",
