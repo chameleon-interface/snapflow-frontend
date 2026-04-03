@@ -18,7 +18,7 @@
   background: linear-gradient(
     165deg,
     var(--color-dark-500) 0%,
-    color-mix(in srgb, var(--color-dark-600) 65%, var(--color-dark-500)) 100%
+    color-mix(in srgb, var(--color-dark-500) 55%, var(--color-dark-700)) 100%
   );
 }
 
