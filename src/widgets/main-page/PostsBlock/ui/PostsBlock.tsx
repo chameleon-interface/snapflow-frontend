@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { EmptyStateMessage } from '@/shared/ui';
 import styles from './PostsBlock.module.css';
 import { usePostsQuery } from '@/widgets/main-page/PostsBlock/api';
-import { PostCard } from './PostCard';
+import { PostPreviewCard } from './PostPreviewCard';
 
 export const PostsBlock = () => {
   const { data } = usePostsQuery();
@@ -22,7 +22,7 @@ export const PostsBlock = () => {
   return (
     <section className={styles.postsBlock}>
       {posts.map((post) => {
-        return <PostCard key={post.id} post={post} />;
+        return <PostPreviewCard key={post.id} post={post} />;
       })}
     </section>
   );

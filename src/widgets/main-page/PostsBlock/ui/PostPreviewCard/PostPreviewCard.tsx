@@ -2,19 +2,19 @@
 
 import type { PostViewDto } from '@/shared/api/generated/model';
 import { RelativeTime } from '@/shared/ui';
-import Image from 'next/image';
-import { Carousel, Typography } from 'snapflow-ui-kit/client';
-import { clsx } from 'clsx';
-import { useCallback, useState } from 'react';
-import styles from './PostCard.module.css';
-import { UserAvatar } from '@/shared/ui/UserAvatar';
 import { ExpandableText } from '@/shared/ui/ExpandableText';
+import { UserAvatar } from '@/shared/ui/UserAvatar';
+import { clsx } from 'clsx';
+import Image from 'next/image';
+import { useCallback, useState } from 'react';
+import { Carousel, Typography } from 'snapflow-ui-kit/client';
+import styles from './PostPreviewCard.module.css';
 
 type Props = {
   post: PostViewDto;
 };
 
-export const PostCard = ({ post }: Props) => {
+export const PostPreviewCard = ({ post }: Props) => {
   const username = post.owner.username ?? '?';
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
