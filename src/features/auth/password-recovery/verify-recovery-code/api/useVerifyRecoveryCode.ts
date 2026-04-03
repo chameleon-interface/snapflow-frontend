@@ -2,10 +2,11 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { authControllerCheckPasswordRecoveryCode } from '@/shared/api/generated/endpoints/auth/auth';
+import { authKeys } from '@/shared/api/keys-factories/authKeysFactory';
 
 export const useVerifyRecoveryCode = (recoveryCode: string) => {
   return useQuery({
-    queryKey: ['auth', 'check-password-recovery-code', recoveryCode],
+    queryKey: authKeys.checkPasswordRecoveryCode(recoveryCode),
     queryFn: async () => {
       await authControllerCheckPasswordRecoveryCode({
         recoveryCode,

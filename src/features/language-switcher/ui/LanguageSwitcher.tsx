@@ -3,7 +3,7 @@
 import { Select } from 'snapflow-ui-kit/client';
 import { useRouter } from 'next/navigation';
 import { useLang, LANG_OPTIONS } from '@/entities/language';
-import { useMediaQuery } from '@/shared/lib';
+import { useMediaQuery } from '@/shared/lib/hooks';
 import s from './LanguageSwitcher.module.css';
 
 export const LanguageSwitcher = () => {

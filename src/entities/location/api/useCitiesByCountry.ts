@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { locationsKeys } from '@/shared/api/keys-factories/locationsKeysFactory';
 import {
   DEFAULT_CITY_LIMIT,
   LOCATIONS_GC_TIME,
@@ -23,7 +24,11 @@ export const useCitiesByCountry = ({
   const isQueryLongEnough = normalizedQuery.length >= MIN_CITY_QUERY_LENGTH;
 
   return useQuery({
-    queryKey: ['locations', 'cities', countryCode, normalizedQuery, limit],
+    queryKey: locationsKeys.citiesByCountry(
+      countryCode,
+      normalizedQuery,
+      limit,
+    ),
     queryFn: ({ signal }) => {
       const searchParams = new URLSearchParams({
         type: 'cities',

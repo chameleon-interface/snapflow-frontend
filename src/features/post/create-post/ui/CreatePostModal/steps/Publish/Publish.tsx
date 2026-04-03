@@ -1,11 +1,11 @@
 'use client';
 
 import { useFileObjectUrls } from '@/features/post/create-post/lib';
-import { Carousel } from 'snapflow-ui-kit/client';
+import type { ProfileViewDto } from '@/shared/api/generated/model';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useState } from 'react';
-import type { ProfileViewDto } from '@/shared/api/generated/model';
+import { Carousel } from 'snapflow-ui-kit/client';
 import { PublicationDetailsPanel } from './PublicationDetailsPanel';
 import styles from './Publish.module.css';
 
@@ -25,6 +25,7 @@ const CarouselSlide = ({ url }: { url: string }) => (
       alt=""
       fill
       unoptimized
+      className={styles.slideImage}
       style={{ objectFit: 'contain' }}
       draggable={false}
     />
