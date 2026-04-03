@@ -1,14 +1,13 @@
 'use client';
 
 import { PostCard, useFeedPostsInfiniteQuery } from '@/entities/post';
+import { useInfiniteScrollTrigger } from '@/shared/lib/hooks';
 import { useTranslations } from 'next-intl';
-import { useEffect, useMemo, useRef } from 'react';
 import { Button, Typography } from 'snapflow-ui-kit';
 import s from './FeedPage.module.css';
 
 export function FeedPage() {
   const t = useTranslations('Feed');
-  const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const {
     data,
     error,
@@ -20,59 +19,19 @@ export function FeedPage() {
     refetch,
   } = useFeedPostsInfiniteQuery();
 
-  const posts = useMemo(
-    () => data?.pages.flatMap((page) => page.items) ?? [],
-    [data?.pages],
-  );
-
-  useEffect(() => {
-    const node = loadMoreRef.current;
-
-    if (!node || !hasNextPage) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting && !isFetchingNextPage) {
-          void fetchNextPage();
-        }
-      },
-      {
-        rootMargin: '300px 0px',
-      },
-    );
-
-    observer.observe(node);
-
-    return () => observer.disconnect();
-  }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
+  const posts = data?.pages.flatMap((page) => page.items) ?? [];
+  const loadMoreRef = useInfiniteScrollTrigger({
+    enabled: hasNextPage && !isFetchingNextPage,
+    onIntersect: () => fetchNextPage(),
+  });
 
   if (isPending) {
     return null;
   }
 
-  if (isError) {
-    return (
-      <section className={s.page}>
-        <div className={s.content}>
-          <div className={s.stateCard}>
-            <Typography as="h1" variant="h2">
-              {t('title')}
-            </Typography>
-            <Typography variant="text-14" className={s.stateText}>
-              {error?.message || t('error')}
-            </Typography>
-            <Button type="button" onClick={() => void refetch()}>
-              {t('retry')}
-            </Button>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  if (isError || posts.length === 0) {
+    const stateMessage = isError ? error?.message || t('error') : t('empty');
 
-  if (posts.length === 0) {
     return (
       <section className={s.page}>
         <div className={s.content}>
@@ -81,8 +40,13 @@ export function FeedPage() {
               {t('title')}
             </Typography>
             <Typography variant="text-14" className={s.stateText}>
-              {t('empty')}
+              {stateMessage}
             </Typography>
+            {isError ? (
+              <Button type="button" onClick={() => void refetch()}>
+                {t('retry')}
+              </Button>
+            ) : null}
           </div>
         </div>
       </section>
