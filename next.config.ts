@@ -14,21 +14,6 @@ const nextConfig: NextConfig = {
         hostname: 'snapflow-storage.storage.yandexcloud.net',
         pathname: '/**',
       },
-      {
-        protocol: 'https',
-        hostname: 'i.pravatar.cc',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'picsum.photos',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'placehold.co',
-        pathname: '/**',
-      },
     ],
   },
 };

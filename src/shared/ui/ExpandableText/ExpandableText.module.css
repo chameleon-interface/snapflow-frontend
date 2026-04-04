@@ -1,0 +1,34 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 171%;
+  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+}
+
+.expanded {
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+}
+
+.button {
+  align-self: flex-end;
+}
+
+.buttonText {
+  color: var(--color-accent-500);
+  text-decoration: underline;
+}

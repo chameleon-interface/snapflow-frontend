@@ -16,7 +16,6 @@
     "backToSignUp": "Back to Sign Up"
   },
   "Pages": {
-    "mainTitle": "Main page",
     "feedTitle": "Feed",
     "favoritesTitle": "Favorites",
     "messengerTitle": "Messenger",
@@ -37,6 +36,15 @@
     "noPostsGuest": "There are no posts yet",
     "allPostsLoaded": "You have viewed all posts"
   },
+  "MainPage": {
+    "registeredUsers": "Registered users:",
+    "noPostsYet": "No posts yet",
+    "registeredUsersCountAria": "Registered users: {count}"
+  },
+  "ExpandableText": {
+    "showMore": "Show more",
+    "showLess": "Hide"
+  },
   "Settings": {
     "tabsAria": "Settings tabs",
     "tabs": {
@@ -45,14 +53,13 @@
       "subscriptions": "Account Management",
       "payments": "My payments"
     },
-    "selectProfilePhoto": "Select Profile Photo",
+    "selectProfilePhoto": "Select Photo",
     "profileAvatar": "Profile avatar",
     "deleteAvatar": "Delete avatar",
     "saveChanges": "Save Changes",
     "settingsSaved": "Your settings are saved!",
     "avatarUpdated": "Avatar updated successfully!",
     "avatarDeleted": "Avatar deleted successfully!",
-    "avatarTooLarge": "Avatar image must be 10 MB or smaller.",
     "avatarCropFailed": "Failed to process avatar image. Please try again.",
     "avatarCropModal": {
       "title": "Add a Profile Photo",
@@ -200,7 +207,8 @@
   },
   "Common": {
     "somethingWentWrong": "Something went wrong",
-    "networkError": "Network error. Please check your connection."
+    "networkError": "Network error. Please check your connection.",
+    "userProfilePhotoAlt": "Profile photo of {name}"
   },
   "CreatePost": {
     "stepTitleAddPhotos": "Add Photo",
@@ -238,9 +246,7 @@
     "closeModalSubMessage": "Unsaved changes will be lost",
     "closeModalDiscard": "Discard",
     "closeModalSaveDraft": "Save draft",
+    "savingDraft": "Saving...",
     "draftSaveSuccess": "Draft saved"
-  },
-  "SelectPhotos": {
-    "selectFromComputer": "Select photos"
   }
 }

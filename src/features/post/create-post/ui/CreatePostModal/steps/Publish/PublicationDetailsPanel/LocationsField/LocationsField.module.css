@@ -1,0 +1,37 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputWrapper {
+  width: 100%;
+}
+
+.inputWrapper input {
+  border: 1px solid var(--color-dark-100);
+  border-radius: 0;
+  background: var(--color-dark-400);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.inputWrapper > div {
+  overflow: hidden;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.inputWrapper input:focus-visible {
+  border: 1px solid var(--color-light-100) !important;
+  color: var(--color-light-100);
+  outline: none;
+  box-shadow: none;
+}
+
+.inputWrapper input:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}

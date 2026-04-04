@@ -10,9 +10,11 @@ import { useStepState } from './useStepState';
 import { useCreatePostState } from './useCreatePostState';
 import { useExports } from './useExports';
 import { applyFiltersExport } from '../utils/applyFiltersExport';
+import { mapDraftMediaToFiles } from '../utils/mapDraftMediaToFiles';
 import { runCroppingExport } from '../utils/runCroppingExport';
 import { useCreatePostMutation } from '../../api/useCreatePostMutation';
 import { useCreateDraftMutation } from '../../api/useCreateDraftMutation';
+import { useOpenDraftQuery } from '../../api';
 import { useCloseModal } from './useCloseModal';
 
 type Params = {
@@ -25,6 +27,8 @@ export const useFlow = ({ onClose }: Params) => {
 
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
+  const [isOpeningDraft, setIsOpeningDraft] = useState(false);
+  const [isSaveDraftInProgress, setIsSaveDraftInProgress] = useState(false);
   const postState = useCreatePostState({
     photoCount: photos.originalPhotos.length,
   });
@@ -32,9 +36,19 @@ export const useFlow = ({ onClose }: Params) => {
 
   const { mutate: createPost, isPending: isCreatePostPending } =
     useCreatePostMutation();
-  const { mutateAsync: createDraft } = useCreateDraftMutation();
-  const { mutateAsync: uploadMedia, isPending: isUploadPending } =
+  const { mutateAsync: createDraft, isPending: isCreateDraftPending } =
+    useCreateDraftMutation();
+  const openDraftQuery = useOpenDraftQuery({
+    enabled: stepState.step === 'addPhotos',
+  });
+  const {
+    mutateAsync: uploadMediaForPublish,
+    isPending: isUploadPublishPending,
+  } = useUploadMediaMutation();
+  const { mutateAsync: uploadMediaForDraft, isPending: isUploadDraftPending } =
     useUploadMediaMutation();
+
+  const hasDraft = (openDraftQuery.data?.length ?? 0) > 0;
 
   const setOriginalPhotos = useCallback(
     (value: File[] | ((prev: File[]) => File[])) => {
@@ -109,11 +123,11 @@ export const useFlow = ({ onClose }: Params) => {
     async (profileId: string | undefined) => {
       if (!profileId || photos.readyToUploadPhotos.length === 0) return;
 
-      const fileIds = await uploadMedia(photos.readyToUploadPhotos).catch(
-        () => {
-          return null;
-        },
-      );
+      const fileIds = await uploadMediaForPublish(
+        photos.readyToUploadPhotos,
+      ).catch(() => {
+        return null;
+      });
 
       if (fileIds === null) return;
 
@@ -132,7 +146,7 @@ export const useFlow = ({ onClose }: Params) => {
     [
       photos.readyToUploadPhotos,
       description,
-      uploadMedia,
+      uploadMediaForPublish,
       createPost,
       t,
       doClose,
@@ -180,38 +194,69 @@ export const useFlow = ({ onClose }: Params) => {
   ]);
 
   const handleSaveDraft = useCallback(async () => {
-    const filesToUpload = await getReadyToUploadFilesForDraft();
-    if (!filesToUpload || filesToUpload.length === 0) return;
+    if (isSaveDraftInProgress) return;
 
-    const fileIds = await uploadMedia(filesToUpload).catch(() => {
-      return null;
-    });
+    setIsSaveDraftInProgress(true);
+    try {
+      const filesToUpload = await getReadyToUploadFilesForDraft();
+      if (!filesToUpload || filesToUpload.length === 0) return;
 
-    if (fileIds === null) return;
+      const fileIds = await uploadMediaForDraft(filesToUpload).catch(() => {
+        return null;
+      });
 
-    const payload: CreatePostInputDto = {
-      description,
-      fileIds,
-    };
+      if (fileIds === null) return;
 
-    await createDraft(payload, {
-      onSuccess: () => {
-        toastSuccess(t('draftSaveSuccess'));
-        doClose();
-      },
-    });
+      const payload: CreatePostInputDto = {
+        description,
+        fileIds,
+      };
+
+      await createDraft(payload, {
+        onSuccess: () => {
+          toastSuccess(t('draftSaveSuccess'));
+          doClose();
+        },
+      });
+    } finally {
+      setIsSaveDraftInProgress(false);
+    }
   }, [
     description,
     getReadyToUploadFilesForDraft,
-    uploadMedia,
+    uploadMediaForDraft,
     createDraft,
     t,
     doClose,
+    isSaveDraftInProgress,
   ]);
 
   const handleOpenDraft = useCallback(() => {
-    // TODO: заглушка — открытие черновика будет реализовано позже
-  }, []);
+    if (isOpeningDraft) return;
+
+    const openDraft = async () => {
+      setIsOpeningDraft(true);
+      try {
+        const { data: freshDrafts } = await openDraftQuery.refetch();
+        const draft = (freshDrafts ?? openDraftQuery.data)?.[0] ?? null;
+        if (!draft) return;
+
+        const draftFiles = await mapDraftMediaToFiles(draft.postMedias);
+        photos.setOriginalPhotos(draftFiles);
+        photos.setCroppedPhotos([]);
+        photos.setReadyToUploadPhotos([]);
+        postState.reset();
+        const draftDescription =
+          typeof draft.description === 'string' ? draft.description : '';
+        setDescription(draftDescription);
+        stepState.setStep('cropping');
+      } finally {
+        setIsOpeningDraft(false);
+      }
+    };
+
+    void openDraft();
+  }, [isOpeningDraft, openDraftQuery, photos, postState, stepState]);
 
   return {
     step: stepState.step,
@@ -227,6 +272,8 @@ export const useFlow = ({ onClose }: Params) => {
     handleCloseRequest: closeModal.handleCloseRequest,
     handleDiscard: doClose,
     onOpenDraft: handleOpenDraft,
+    hasDraft,
+    isOpenDraftLoading: openDraftQuery.isPending || isOpeningDraft,
     isCloseModalOpened: closeModal.isCloseModalOpened,
     setIsCloseModalOpened: closeModal.setIsCloseModalOpened,
     goToAddPhotos: stepState.goToAddPhotos,
@@ -238,7 +285,9 @@ export const useFlow = ({ onClose }: Params) => {
     handleNextStep,
     handlePreviousStep,
     handlePublish,
-    isPublishMutationPending: isUploadPending || isCreatePostPending,
+    isPublishMutationPending: isUploadPublishPending || isCreatePostPending,
+    isSaveDraftPending:
+      isSaveDraftInProgress || isUploadDraftPending || isCreateDraftPending,
   };
 };
 
