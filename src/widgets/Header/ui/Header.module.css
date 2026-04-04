@@ -25,6 +25,7 @@
 .actions {
   display: flex;
   gap: 36px;
+  align-items: center;
 }
 
 .buttonWrapper {
@@ -35,6 +36,12 @@
 .buttonWrapper > a {
   min-width: 100px;
   padding-inline: 12px;
+}
+
+.profileLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mobileOnly {

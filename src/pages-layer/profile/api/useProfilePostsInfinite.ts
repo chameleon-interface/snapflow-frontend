@@ -3,14 +3,15 @@
 import { useEffect, useRef } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { postsControllerGetProfilePosts } from '@/shared/api/generated/endpoints/posts/posts';
+import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
 import type { Post } from '../model/types';
 
 const POSTS_PER_PAGE = 8;
 
-export const useProfilePostsInfinite = (profileId: number) => {
+export const useProfilePostsInfinite = (profileId: string) => {
   const observerRef = useRef<HTMLDivElement | null>(null);
   const query = useInfiniteQuery({
-    queryKey: ['profile-posts', profileId, POSTS_PER_PAGE],
+    queryKey: [...postsKeys.usersPosts(profileId), POSTS_PER_PAGE],
     queryFn: async ({ pageParam = 1 }) => {
       const response = await postsControllerGetProfilePosts(profileId, {
         pageNumber: pageParam,
@@ -74,5 +75,7 @@ export const useProfilePostsInfinite = (profileId: number) => {
     observerRef,
     hasNextPage,
     isPending: query.isPending,
+    isError: query.isError,
+    refetch: query.refetch,
   };
 };

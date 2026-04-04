@@ -34,7 +34,12 @@
     "profileSettings": "Profile Settings",
     "noPostsOwn": "You have no posts yet",
     "noPostsGuest": "There are no posts yet",
-    "allPostsLoaded": "You have viewed all posts"
+    "allPostsLoaded": "You have viewed all posts",
+    "profileNotFound": "This profile does not exist",
+    "profileLoadFailed": "Failed to load profile",
+    "profilePostsLoadFailed": "Failed to load posts for this profile",
+    "profilePostsUnavailable": "Posts are temporarily unavailable",
+    "retry": "Retry"
   },
   "MainPage": {
     "registeredUsers": "Registered users:",

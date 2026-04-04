@@ -34,7 +34,12 @@
     "profileSettings": "Настройки профиля",
     "noPostsOwn": "У вас пока нет публикаций",
     "noPostsGuest": "Здесь пока нет постов",
-    "allPostsLoaded": "Вы просмотрели все публикации"
+    "allPostsLoaded": "Вы просмотрели все публикации",
+    "profileNotFound": "Такого профиля нет",
+    "profileLoadFailed": "Не удалось загрузить профиль",
+    "profilePostsLoadFailed": "Не удалось загрузить публикации этого профиля",
+    "profilePostsUnavailable": "Публикации временно недоступны",
+    "retry": "Повторить"
   },
   "MainPage": {
     "registeredUsers": "Пользователей:",
