@@ -1,7 +1,7 @@
 'use client';
 
 import type { PostViewDto } from '@/shared/api/generated/model';
-import { RelativeTime } from '@/shared/ui';
+import { RelativeTime, UserAvatar } from '@/shared/ui';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
@@ -22,14 +22,10 @@ type Props = {
 
 const LIKES_PLACEHOLDER_COUNT = '2 243';
 
-const getInitial = (username: string) =>
-  (username.trim().charAt(0) || '?').toUpperCase();
-
 export const PostCard = ({ post }: Props) => {
   const t = useTranslations('Feed');
   const username = post.owner.username || '?';
   const description = post.description?.trim() ?? '';
-  const avatarAlt = t('avatarAlt', { username });
   const postImages = useMemo(
     () => post.postMedias.filter((media) => media.url),
     [post.postMedias],
@@ -40,24 +36,11 @@ export const PostCard = ({ post }: Props) => {
     <article className={s.card} aria-labelledby={`feed-post-${post.id}`}>
       <header className={s.header}>
         <div className={s.authorBlock}>
-          {post.owner.avatarUrl ? (
-            <span className={s.avatar}>
-              <Image
-                src={post.owner.avatarUrl}
-                alt={avatarAlt}
-                fill
-                sizes="36px"
-                className={s.avatarImage}
-              />
-            </span>
-          ) : (
-            <span
-              className={`${s.avatar} ${s.avatarFallback}`}
-              aria-hidden="true"
-            >
-              {getInitial(username)}
-            </span>
-          )}
+          <UserAvatar
+            avatarUrl={post.owner.avatarUrl}
+            size={36}
+            username={username}
+          />
 
           <div className={s.authorMeta}>
             <div className={s.metaLine}>
@@ -173,24 +156,13 @@ export const PostCard = ({ post }: Props) => {
 
         {description ? (
           <div className={s.descriptionRow}>
-            {post.owner.avatarUrl ? (
-              <span className={`${s.avatar} ${s.descriptionAvatar}`}>
-                <Image
-                  src={post.owner.avatarUrl}
-                  alt={avatarAlt}
-                  fill
-                  sizes="24px"
-                  className={s.avatarImage}
-                />
-              </span>
-            ) : (
-              <span
-                className={`${s.avatar} ${s.avatarFallback} ${s.descriptionAvatar}`}
-                aria-hidden="true"
-              >
-                {getInitial(username)}
-              </span>
-            )}
+            <span className={s.descriptionAvatar}>
+              <UserAvatar
+                avatarUrl={post.owner.avatarUrl}
+                size={36}
+                username={username}
+              />
+            </span>
 
             <Typography as="p" variant="text-14" className={s.description}>
               <span className={s.descriptionAuthor}>{username}</span>{' '}
