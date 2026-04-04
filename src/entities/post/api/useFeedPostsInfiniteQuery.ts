@@ -2,7 +2,7 @@
 
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
-import { getPosts } from './getPosts';
+import { postsControllerGetPosts } from '@/shared/api/generated/endpoints/posts/posts';
 
 const FEED_PAGE_SIZE = 6;
 
@@ -11,7 +11,7 @@ export const useFeedPostsInfiniteQuery = () => {
     queryKey: postsKeys.feed(),
     initialPageParam: 1,
     queryFn: ({ pageParam }) =>
-      getPosts({
+      postsControllerGetPosts({
         pageNumber: pageParam,
         pageSize: FEED_PAGE_SIZE,
         sortBy: 'createdAt',
