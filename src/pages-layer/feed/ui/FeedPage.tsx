@@ -13,6 +13,7 @@ export function FeedPage() {
     error,
     fetchNextPage,
     hasNextPage,
+    isFetchNextPageError,
     isFetchingNextPage,
     isPending,
     isError,
@@ -20,8 +21,10 @@ export function FeedPage() {
   } = useFeedPostsInfiniteQuery();
 
   const posts = data?.pages.flatMap((page) => page.items) ?? [];
+  const hasPosts = posts.length > 0;
+  const errorMessage = error?.message || t('error');
   const loadMoreRef = useInfiniteScrollTrigger({
-    enabled: hasNextPage && !isFetchingNextPage,
+    enabled: hasNextPage && !isFetchingNextPage && !isFetchNextPageError,
     onIntersect: () => fetchNextPage(),
   });
 
@@ -29,9 +32,7 @@ export function FeedPage() {
     return null;
   }
 
-  if (isError || posts.length === 0) {
-    const stateMessage = isError ? error?.message || t('error') : t('empty');
-
+  if (!hasPosts) {
     return (
       <section className={s.page}>
         <div className={s.content}>
@@ -40,7 +41,7 @@ export function FeedPage() {
               {t('title')}
             </Typography>
             <Typography variant="text-14" className={s.stateText}>
-              {stateMessage}
+              {isError ? errorMessage : t('empty')}
             </Typography>
             {isError ? (
               <Button type="button" onClick={() => void refetch()}>
@@ -54,7 +55,7 @@ export function FeedPage() {
   }
 
   return (
-    <section className={s.page} aria-label={t('title')}>
+    <section className={s.page}>
       <div className={s.content}>
         <div className={s.list}>
           {posts.map((post) => (
@@ -66,6 +67,17 @@ export function FeedPage() {
           <Typography variant="text-14" className={s.loaderText}>
             {t('loadingMore')}
           </Typography>
+        ) : null}
+
+        {isFetchNextPageError ? (
+          <div className={s.loadMoreError}>
+            <Typography variant="text-14" className={s.loaderText}>
+              {errorMessage}
+            </Typography>
+            <Button type="button" onClick={() => void fetchNextPage()}>
+              {t('retry')}
+            </Button>
+          </div>
         ) : null}
 
         <div

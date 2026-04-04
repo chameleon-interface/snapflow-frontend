@@ -4,7 +4,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
 import { getPosts } from './getPosts';
 
-const FEED_PAGE_SIZE = 4;
+const FEED_PAGE_SIZE = 6;
 
 export const useFeedPostsInfiniteQuery = () => {
   return useInfiniteQuery({

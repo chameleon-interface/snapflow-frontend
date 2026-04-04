@@ -44,6 +44,13 @@
   text-align: center;
 }
 
+.loadMoreError {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
 @media (width >= 1280px) {
   .content {
     margin-inline: 131px auto;
