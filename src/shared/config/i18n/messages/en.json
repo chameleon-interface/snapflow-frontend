@@ -49,7 +49,6 @@
     "addCommentPlaceholder": "Add a comment...",
     "publish": "Publish",
     "mediaUnavailable": "Media is unavailable",
-    "avatarAlt": "{username} avatar",
     "mediaAlt": "Post image {current} of {total} by {username}",
     "actions": {
       "like": "Like",

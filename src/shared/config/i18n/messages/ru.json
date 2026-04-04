@@ -49,7 +49,6 @@
     "addCommentPlaceholder": "Добавить комментарий...",
     "publish": "Опубликовать",
     "mediaUnavailable": "Медиа недоступно",
-    "avatarAlt": "Аватар {username}",
     "mediaAlt": "Изображение поста {current} из {total} от {username}",
     "actions": {
       "like": "Нравится",

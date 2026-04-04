@@ -1,13 +1,13 @@
 'use client';
 
 import type { PostViewDto } from '@/shared/api/generated/model';
+import { PostAuthorInfo } from '@/entities/post/ui/PostAuthorInfo';
 import { RelativeTime } from '@/shared/ui';
 import { ExpandableText } from '@/shared/ui/ExpandableText';
-import { UserAvatar } from '@/shared/ui/UserAvatar';
 import { clsx } from 'clsx';
 import Image from 'next/image';
 import { useCallback, useState } from 'react';
-import { Carousel, Typography } from 'snapflow-ui-kit/client';
+import { Carousel } from 'snapflow-ui-kit/client';
 import styles from './PostCardPreview.module.css';
 
 type Props = {
@@ -47,21 +47,11 @@ export const PostCardPreview = ({ post }: Props) => {
         )}
       >
         <header className={styles.postHeader}>
-          <div className={styles.userInfo}>
-            <UserAvatar
-              avatarUrl={post.owner.avatarUrl}
-              size={36}
-              username={username}
-            />
-            <Typography
-              id={`post-heading-${post.id}`}
-              className={styles.username}
-              variant="h3"
-              as="h3"
-            >
-              {username}
-            </Typography>
-          </div>
+          <PostAuthorInfo
+            avatarUrl={post.owner.avatarUrl}
+            headingId={`post-heading-${post.id}`}
+            username={username}
+          />
           <RelativeTime isoDate={post.createdAt} className={styles.time} />
         </header>
         {post.description && (

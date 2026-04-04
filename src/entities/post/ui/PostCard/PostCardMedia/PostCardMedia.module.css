@@ -1,0 +1,48 @@
+.mediaWrap {
+  width: 100%;
+  height: 504px;
+  background: var(--color-dark-500);
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: relative;
+  width: 100%;
+  height: 504px;
+  background: var(--color-dark-500);
+}
+
+.mediaImage {
+  object-fit: cover;
+}
+
+.emptyMedia {
+  display: grid;
+  place-items: center;
+
+  width: 100%;
+  height: 504px;
+
+  color: var(--color-light-900);
+}
+
+@media (width <= 768px) {
+  .mediaWrap {
+    height: auto;
+  }
+
+  .slide {
+    aspect-ratio: 491 / 504;
+    height: auto;
+  }
+
+  .emptyMedia {
+    aspect-ratio: 491 / 504;
+    height: auto;
+    min-height: 280px;
+  }
+}

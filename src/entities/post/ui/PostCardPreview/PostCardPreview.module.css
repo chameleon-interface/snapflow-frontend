@@ -49,13 +49,6 @@
   min-width: 0;
 }
 
-.userInfo {
-  display: flex;
-  gap: clamp(8px, 2vw, 12px);
-  align-items: center;
-  min-width: 0;
-}
-
 .content {
   position: relative;
   z-index: 1;
@@ -85,10 +78,6 @@
   .content {
     transition: none;
   }
-}
-
-.username {
-  min-width: 0;
 }
 
 .time {
