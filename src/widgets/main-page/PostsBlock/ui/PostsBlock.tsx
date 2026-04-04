@@ -1,10 +1,9 @@
 'use client';
 
-import { useLatestPostsQuery } from '@/entities/post';
+import { PostCardPreview, useLatestPostsQuery } from '@/entities/post';
 import { useTranslations } from 'next-intl';
 import { EmptyStateMessage } from '@/shared/ui';
 import styles from './PostsBlock.module.css';
-import { PostPreviewCard } from './PostPreviewCard';
 
 export const PostsBlock = () => {
   const { data } = useLatestPostsQuery();
@@ -22,7 +21,7 @@ export const PostsBlock = () => {
   return (
     <section className={styles.postsBlock}>
       {posts.map((post) => {
-        return <PostPreviewCard key={post.id} post={post} />;
+        return <PostCardPreview key={post.id} post={post} />;
       })}
     </section>
   );

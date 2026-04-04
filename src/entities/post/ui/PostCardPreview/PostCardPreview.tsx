@@ -8,13 +8,13 @@ import { clsx } from 'clsx';
 import Image from 'next/image';
 import { useCallback, useState } from 'react';
 import { Carousel, Typography } from 'snapflow-ui-kit/client';
-import styles from './PostPreviewCard.module.css';
+import styles from './PostCardPreview.module.css';
 
 type Props = {
   post: PostViewDto;
 };
 
-export const PostPreviewCard = ({ post }: Props) => {
+export const PostCardPreview = ({ post }: Props) => {
   const username = post.owner.username ?? '?';
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
