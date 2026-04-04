@@ -20,6 +20,8 @@ type Props = {
   post: PostViewDto;
 };
 
+const LIKES_PLACEHOLDER_COUNT = '2 243';
+
 const getInitial = (username: string) =>
   (username.trim().charAt(0) || '?').toUpperCase();
 
@@ -169,10 +171,6 @@ export const PostCard = ({ post }: Props) => {
           </button>
         </div>
 
-        <Typography variant="small-semibold" className={s.metaText}>
-          {t('likesPlaceholder')}
-        </Typography>
-
         {description ? (
           <div className={s.descriptionRow}>
             {post.owner.avatarUrl ? (
@@ -201,9 +199,12 @@ export const PostCard = ({ post }: Props) => {
           </div>
         ) : null}
 
-        <Typography as="p" variant="small" className={s.metaText}>
-          {t('commentsPlaceholder')}
-        </Typography>
+        <p className={s.likesText}>
+          <span className={s.likesCount}>{LIKES_PLACEHOLDER_COUNT}</span>{' '}
+          <span className={s.likesLabel}>{t('likesLabel')}</span>
+        </p>
+
+        <p className={s.commentsText}>{t('commentsPlaceholder')}</p>
 
         <div className={s.commentComposer}>
           <input

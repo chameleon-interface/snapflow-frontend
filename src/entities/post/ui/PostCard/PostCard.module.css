@@ -73,12 +73,21 @@
 
 .time {
   flex-shrink: 0;
+  font-size: 12px;
+  line-height: 16px;
   color: var(--color-light-900);
 }
 
 .timeSeparator {
   flex-shrink: 0;
-  color: var(--color-light-900);
+
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+
+  color: transparent;
+
+  background-color: var(--color-light-700);
 }
 
 .mediaWrap {
@@ -116,7 +125,6 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 12px;
   padding-top: 12px;
 }
 
@@ -124,7 +132,9 @@
   display: flex;
   gap: 12px;
   justify-content: space-between;
+
   min-height: 24px;
+  margin-bottom: 17px;
 }
 
 .primaryActions {
@@ -163,14 +173,6 @@
   outline-offset: 2px;
 }
 
-.metaText {
-  color: var(--color-light-900);
-}
-
-.content > .metaText:first-of-type {
-  color: var(--color-light-100);
-}
-
 .description {
   display: block;
   flex: 1;
@@ -190,12 +192,38 @@
   align-items: flex-start;
 
   width: 100%;
-  margin-top: 5px;
+  margin-bottom: 14px;
 }
 
 .descriptionAvatar {
   width: 36px;
   height: 36px;
+}
+
+.likesText {
+  margin: 0 0 24px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 171%;
+  color: var(--color-light-100);
+}
+
+.likesCount {
+  font-weight: 400;
+}
+
+.likesLabel {
+  font-weight: 700;
+}
+
+.commentsText {
+  margin: 0 0 12px;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--color-light-900);
 }
 
 .descriptionAuthor {
@@ -209,13 +237,17 @@
   align-items: center;
   justify-content: space-between;
 
-  padding-bottom: 10px;
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--color-dark-300);
 }
 
 .publishButton {
   min-width: auto;
   padding-inline: 0;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
   color: var(--color-accent-500);
 }
 
@@ -226,8 +258,8 @@
   border: none;
 
   font-size: 14px;
-  line-height: 171%;
-  color: var(--color-light-100);
+  line-height: 24px;
+  color: var(--color-light-900);
 
   background: transparent;
   outline: none;
