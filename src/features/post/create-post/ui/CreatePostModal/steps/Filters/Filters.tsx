@@ -6,6 +6,7 @@ import {
   useFileObjectUrls,
 } from '@/features/post/create-post/lib';
 import { Carousel } from 'snapflow-ui-kit/client';
+import { clsx } from 'clsx';
 import { useTranslations } from 'next-intl';
 import { FilterSlide } from './FilterSlide';
 import { FilterThumb } from './FilterThumb';
@@ -34,10 +35,14 @@ export const Filters = ({
   const currentSlideUrl = urls[currentIndex] ?? urls[0]!;
 
   return (
-    <div className={styles.wrapper} role="region" aria-label={t('filters')}>
-      <div className={styles.carouselSection}>
+    <div
+      className={styles.twoColumnRoot}
+      role="region"
+      aria-label={t('filters')}
+    >
+      <div className={styles.carouselColumn}>
         <Carousel
-          className={styles.carousel}
+          className={styles.carouselFlex}
           value={currentIndex}
           onValueChange={onSlideChange}
           hideArrowsWhenSingle
@@ -51,7 +56,10 @@ export const Filters = ({
           ))}
         </Carousel>
       </div>
-      <aside className={styles.filterPanel} aria-label={t('filterChoice')}>
+      <aside
+        className={clsx(styles.filterPanel, styles.thinVertical)}
+        aria-label={t('filterChoice')}
+      >
         <div className={styles.filterGrid}>
           {FILTER_OPTIONS.map(({ id, label }) => (
             <FilterThumb

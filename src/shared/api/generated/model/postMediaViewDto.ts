@@ -8,7 +8,7 @@
 
 export interface PostMediaViewDto {
   /** Идентификатор медиа */
-  postMediaId: number;
+  postMediaId: string;
   /** File identifier */
   fileId: string;
   /** Публичный URL медиа */

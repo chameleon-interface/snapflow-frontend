@@ -1,1 +1,0 @@
-export { SelectPhotos } from './SelectPhotos';

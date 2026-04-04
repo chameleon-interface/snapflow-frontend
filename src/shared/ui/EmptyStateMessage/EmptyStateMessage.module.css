@@ -1,0 +1,29 @@
+.root {
+  display: flex;
+  grid-column: 1 / -1;
+  align-items: center;
+  justify-content: center;
+
+  min-height: clamp(72px, 18vw, 120px);
+  padding: clamp(14px, 3.5vw, 24px) clamp(16px, 4vw, 28px);
+  border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
+
+  font-size: clamp(14px, 2.8vw, 16px);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-light-100);
+  text-align: center;
+
+  background: linear-gradient(
+    165deg,
+    var(--color-dark-500) 0%,
+    color-mix(in srgb, var(--color-dark-500) 55%, var(--color-dark-700)) 100%
+  );
+}
+
+@media (width <=380px) {
+  .root {
+    padding-inline: 14px;
+  }
+}

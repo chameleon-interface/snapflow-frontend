@@ -1,0 +1,1 @@
+export { PublicationDetailsPanel } from './PublicationDetailsPanel';

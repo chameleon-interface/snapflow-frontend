@@ -65,7 +65,7 @@ export const CreatePostModal = ({ isOpen, onClose }: Props) => {
           onPrevious={flow.handlePreviousStep}
           onNext={flow.handleNextStep}
           onPublish={() => {
-            void flow.handlePublish(profileQuery.data?.id);
+            flow.handlePublish(profileQuery.data?.id);
           }}
           isNextLoading={
             flow.isCroppingExporting ||
@@ -82,6 +82,7 @@ export const CreatePostModal = ({ isOpen, onClose }: Props) => {
         onClose={() => flow.setIsCloseModalOpened(false)}
         onDiscard={flow.handleDiscard}
         onSaveDraft={flow.handleSaveDraft}
+        isSavingDraft={flow.isSaveDraftPending}
       />
     </Modal>
   );

@@ -29,11 +29,11 @@ export const AspectRatioSelector = ({
   };
 
   return (
-    <div className={styles.wrapper} ref={wrapperRef}>
+    <div className={styles.popoverAnchor} ref={wrapperRef}>
       <button
         ref={triggerRef}
         type="button"
-        className={clsx(styles.trigger, isOpen && styles.triggerActive)}
+        className={clsx(styles.iconTrigger, isOpen && styles.iconTriggerActive)}
         aria-label={t('aspectRatio')}
         aria-expanded={isOpen}
         aria-haspopup="listbox"

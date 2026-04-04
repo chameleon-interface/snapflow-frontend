@@ -69,7 +69,7 @@ export const postsControllerCreateDraft = (
  * @summary Редактировать описание поста
  */
 export const postsControllerEditPost = (
-  id: number,
+  id: string,
   updatePostInputDto: BodyType<UpdatePostInputDto>,
   options?: SecondParameter<typeof customInstance<void>>,
 ) => {
@@ -87,7 +87,7 @@ export const postsControllerEditPost = (
  * @summary Удалить пост
  */
 export const postsControllerDeletePost = (
-  id: number,
+  id: string,
   options?: SecondParameter<typeof customInstance<void>>,
 ) => {
   return customInstance<void>(
@@ -99,7 +99,7 @@ export const postsControllerDeletePost = (
  * @summary Получить свой пост (черновик или опубликованный)
  */
 export const postsControllerGetPostById = (
-  id: number,
+  id: string,
   options?: SecondParameter<typeof customInstance<PostViewDto>>,
 ) => {
   return customInstance<PostViewDto>(
@@ -122,7 +122,7 @@ export const postsControllerGetMyDrafts = (
  * @summary Получить публичные посты пользователя с пагинацией
  */
 export const postsControllerGetProfilePosts = (
-  userId: number,
+  userId: string,
   params?: PostsControllerGetProfilePostsParams,
   options?: SecondParameter<typeof customInstance<PostsPageViewDto>>,
 ) => {
@@ -135,7 +135,7 @@ export const postsControllerGetProfilePosts = (
  * @summary Получить публичный пост по id
  */
 export const postsControllerGetPublicPost = (
-  id: number,
+  id: string,
   options?: SecondParameter<typeof customInstance<PostViewDto>>,
 ) => {
   return customInstance<PostViewDto>(

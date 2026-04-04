@@ -16,7 +16,6 @@
     "backToSignUp": "Назад к регистрации"
   },
   "Pages": {
-    "mainTitle": "Главная страница",
     "feedTitle": "Лента",
     "favoritesTitle": "Избранное",
     "profileTitle": "Профиль",
@@ -30,6 +29,15 @@
     "placeholder": "Страница-заглушка.",
     "privacyPolicy": "Политика конфиденциальности",
     "termsOfService": "Условия предоставления услуг"
+  },
+  "MainPage": {
+    "registeredUsers": "Пользователей:",
+    "noPostsYet": "Постов пока нет",
+    "registeredUsersCountAria": "Зарегистрировано пользователей: {count}"
+  },
+  "ExpandableText": {
+    "showMore": "Показать больше",
+    "showLess": "Скрыть"
   },
   "Settings": {
     "tabsAria": "Вкладки настроек",
@@ -46,7 +54,6 @@
     "settingsSaved": "Ваши настройки сохранены!",
     "avatarUpdated": "Аватар успешно обновлен!",
     "avatarDeleted": "Аватар успешно удален!",
-    "avatarTooLarge": "Размер аватарки не должен превышать 10 MB.",
     "avatarCropFailed": "Не удалось обработать аватар. Попробуйте снова.",
     "avatarCropModal": {
       "title": "Добавить фото профиля",
@@ -194,7 +201,8 @@
   },
   "Common": {
     "somethingWentWrong": "Что-то пошло не так",
-    "networkError": "Ошибка сети. Проверьте подключение."
+    "networkError": "Ошибка сети. Проверьте подключение.",
+    "userProfilePhotoAlt": "Фото профиля: {name}"
   },
   "CreatePost": {
     "stepTitleAddPhotos": "Добавить фото",
@@ -232,9 +240,7 @@
     "closeModalSubMessage": "Несохранённые изменения будут потеряны",
     "closeModalDiscard": "Отменить",
     "closeModalSaveDraft": "Сохранить черновик",
+    "savingDraft": "Сохранение...",
     "draftSaveSuccess": "Черновик сохранён"
-  },
-  "SelectPhotos": {
-    "selectFromComputer": "Выбрать фото"
   }
 }

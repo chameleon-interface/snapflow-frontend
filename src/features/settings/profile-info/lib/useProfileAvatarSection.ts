@@ -1,6 +1,5 @@
 'use client';
 
-import { ChangeEvent, useRef } from 'react';
 import type { Area, Point } from 'react-easy-crop';
 import { useTranslations } from 'next-intl';
 import { toastError } from 'snapflow-ui-kit/client';
@@ -12,8 +11,6 @@ import {
 } from './useAvatarCropDraft';
 import { useAvatarUploadActions } from './useAvatarUploadActions';
 
-const MAX_AVATAR_SIZE_BYTES = 10 * 1024 * 1024;
-
 type UseProfileAvatarSectionParams = {
   profileId: string;
   avatarUrl: string;
@@ -24,12 +21,10 @@ export const useProfileAvatarSection = ({
   avatarUrl,
 }: UseProfileAvatarSectionParams) => {
   const t = useTranslations('Settings');
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
-
   const {
     cropDraft,
     isCropModalOpen,
-    openCropDraft,
+    openCropDraftByFile,
     resetCropDraft,
     setCrop,
     setZoom,
@@ -47,30 +42,14 @@ export const useProfileAvatarSection = ({
   });
   const isPending = isUploadPending || isDeletePending;
 
-  const handleButtonClick = () => {
-    fileInputRef.current?.click();
-  };
+  const handleAvatarSelect = (photos: File[]) => {
+    const avatar = photos[0];
 
-  const handleAvatarChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const avatar = event.target.files?.[0];
-
-    if (profileId.length === 0) {
-      event.target.value = '';
+    if (profileId.length === 0 || !avatar) {
       return;
     }
 
-    if (!avatar) {
-      event.target.value = '';
-      return;
-    }
-
-    if (avatar.size > MAX_AVATAR_SIZE_BYTES) {
-      toastError(t('avatarTooLarge'));
-      event.target.value = '';
-      return;
-    }
-
-    openCropDraft(event);
+    openCropDraftByFile(avatar);
   };
 
   const handleCropModalClose = () => {
@@ -112,14 +91,12 @@ export const useProfileAvatarSection = ({
   };
 
   return {
-    fileInputRef,
     isPending,
     isCropModalOpen,
     avatarToCropUrl: cropDraft?.imageSrc ?? '',
     crop: cropDraft?.crop ?? DEFAULT_CROP,
     zoom: cropDraft?.zoom ?? DEFAULT_ZOOM,
-    handleButtonClick,
-    handleAvatarChange,
+    handleAvatarSelect,
     handleDeleteAvatar,
     handleCropModalClose,
     handleCropChange,

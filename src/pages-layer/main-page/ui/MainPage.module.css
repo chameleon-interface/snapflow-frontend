@@ -1,0 +1,20 @@
+.mainPage {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3.2vw, 40px);
+
+  width: 100%;
+  min-width: 0;
+}
+
+@media (width <= 768px) {
+  .mainPage {
+    gap: 24px;
+  }
+}
+
+@media (width <= 380px) {
+  .mainPage {
+    gap: 18px;
+  }
+}

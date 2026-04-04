@@ -5,6 +5,7 @@ import type {
   ProfileControllerUploadAvatarBody,
   ProfileViewDto,
 } from '@/shared/api/generated/model';
+import { profileKeys } from '@/shared/api/keys-factories/profileKeysFactory';
 
 export const useUploadProfileAvatar = () => {
   const queryClient = useQueryClient();
@@ -16,7 +17,7 @@ export const useUploadProfileAvatar = () => {
       profileControllerUploadAvatar({ avatar }),
     onSuccess: ({ publicUrl }) => {
       queryClient.setQueryData<ProfileViewDto | undefined>(
-        ['my-profile'],
+        profileKeys.myProfile(),
         (currentProfile) =>
           currentProfile
             ? { ...currentProfile, avatarUrl: publicUrl }

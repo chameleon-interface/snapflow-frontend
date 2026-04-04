@@ -4,28 +4,11 @@ import {
   filesMediaControllerGenerateUploadUrls,
 } from '@/shared/api/generated/endpoints/files-media/files-media';
 import type {
-  ConfirmUploadInputDto,
   GenerateUploadUrlsInputDto,
-  GenerateUploadUrlViewDto,
   MimeType,
 } from '@/shared/api/generated/model';
 
-export const getUploadUrls = async (
-  files: File[],
-): Promise<GenerateUploadUrlViewDto[]> => {
-  if (files.length === 0) return [];
-
-  const payload: GenerateUploadUrlsInputDto = {
-    files: files.map((file) => ({
-      mimeType: file.type as MimeType,
-      size: file.size,
-    })),
-  };
-
-  return filesMediaControllerGenerateUploadUrls(payload);
-};
-
-export const uploadFileToStorage = async (
+const uploadFileToStorage = async (
   uploadUrl: string,
   file: File,
 ): Promise<void> => {
@@ -36,18 +19,17 @@ export const uploadFileToStorage = async (
   });
 };
 
-export const confirmUploads = async (fileIds: string[]): Promise<void> => {
-  if (fileIds.length === 0) return;
-
-  const payload: ConfirmUploadInputDto = { fileIds };
-
-  await filesMediaControllerConfirmUploads(payload);
-};
-
 export const uploadMedia = async (files: File[]): Promise<string[]> => {
   if (files.length === 0) return [];
 
-  const uploadItems = await getUploadUrls(files);
+  const payload: GenerateUploadUrlsInputDto = {
+    files: files.map((file) => ({
+      mimeType: file.type as MimeType,
+      size: file.size,
+    })),
+  };
+
+  const uploadItems = await filesMediaControllerGenerateUploadUrls(payload);
   const fileIds = uploadItems.map((item) => item.fileId);
 
   if (uploadItems.length !== files.length) {
@@ -62,7 +44,7 @@ export const uploadMedia = async (files: File[]): Promise<string[]> => {
     ),
   );
 
-  await confirmUploads(fileIds);
+  await filesMediaControllerConfirmUploads({ fileIds });
 
   return fileIds;
 };
