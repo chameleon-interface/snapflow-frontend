@@ -48,8 +48,6 @@ export const useUpdateProfile = () => {
               : currentProfile,
         );
       }
-
-      queryClient.invalidateQueries({ queryKey: profileKeys.myProfile() });
     },
   });
 };

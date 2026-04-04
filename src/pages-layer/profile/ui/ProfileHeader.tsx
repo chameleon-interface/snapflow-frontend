@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Button } from 'snapflow-ui-kit/client';
-import { CheckmarkIcon } from 'snapflow-ui-kit/icons';
+import { PaidIcon } from 'snapflow-ui-kit/icons';
 import { useMe } from '@/entities/user';
 import type { PublicProfileViewDto } from '@/shared/api/generated/model';
 import { ROUTES } from '@/shared/config';
@@ -38,7 +38,7 @@ export function ProfileHeader({ profile }: Props) {
             <h1>{profile.username}</h1>
             {isVerified && (
               <span className={s.verifiedBadge} aria-hidden>
-                <CheckmarkIcon />
+                <PaidIcon />
               </span>
             )}
           </div>
@@ -56,15 +56,15 @@ export function ProfileHeader({ profile }: Props) {
 
         <ul className={s.userData}>
           <li>
-            <strong>{profile.userMetadata.followingCount ?? 0}</strong>
+            <strong>{profile.userMetadata.followingCount}</strong>
             <span>{t('profileFollowing')}</span>
           </li>
           <li>
-            <strong>{profile.userMetadata.followersCount ?? 0}</strong>
+            <strong>{profile.userMetadata.followersCount}</strong>
             <span>{t('profileFollowers')}</span>
           </li>
           <li>
-            <strong>{profile.userMetadata.publicationsCount ?? 0}</strong>
+            <strong>{profile.userMetadata.publicationsCount}</strong>
             <span>{t('profilePublications')}</span>
           </li>
         </ul>

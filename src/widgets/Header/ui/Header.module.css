@@ -38,12 +38,6 @@
   padding-inline: 12px;
 }
 
-.profileLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .mobileOnly {
   display: none;
 }

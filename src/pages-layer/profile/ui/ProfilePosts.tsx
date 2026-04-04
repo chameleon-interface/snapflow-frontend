@@ -2,9 +2,8 @@
 
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Button } from 'snapflow-ui-kit/client';
+import { Button, Carousel } from 'snapflow-ui-kit/client';
 import { ImageIcon } from 'snapflow-ui-kit/icons';
-import { useMe } from '@/entities/user';
 import { EmptyStateMessage } from '@/shared/ui';
 import s from './ProfilePage.module.css';
 import { useProfilePostsInfinite } from '../api/useProfilePostsInfinite';
@@ -16,8 +15,7 @@ type Props = {
 
 export function ProfilePosts({ profileId, postsCount }: Props) {
   const t = useTranslations('Pages');
-  const { data: me } = useMe();
-  const isOwner = me?.userId === profileId;
+  const tMainPage = useTranslations('MainPage');
   const { posts, observerRef, hasNextPage, isPending, isError, refetch } =
     useProfilePostsInfinite(profileId);
 
@@ -41,7 +39,7 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
 
         {!isPending && !isError && posts.length === 0 && (
           <EmptyStateMessage className={s.emptyWrapper}>
-            {isOwner ? t('noPostsOwn') : t('noPostsGuest')}
+            {tMainPage('noPostsYet')}
           </EmptyStateMessage>
         )}
 
@@ -53,14 +51,19 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
                 <span>{post.mediaCount}</span>
               </div>
             )}
-            <Image
-              src={post.photo}
-              alt={`Post ${post.id}`}
-              width={234}
-              height={228}
-              sizes="(max-width: 600px) 150px, 234px"
-              style={{ objectFit: 'cover' }}
-            />
+            <Carousel className={s.postCarousel}>
+              {post.medias.map((media, index) => (
+                <div key={media.id} className={s.postSlide}>
+                  <Image
+                    src={media.url}
+                    alt={`Photo ${index + 1} of ${post.mediaCount} in post ${post.id}`}
+                    fill
+                    className={s.postImage}
+                    sizes="(max-width: 600px) 150px, 234px"
+                  />
+                </div>
+              ))}
+            </Carousel>
           </article>
         ))}
       </section>

@@ -13,12 +13,7 @@ type Props = {
 
 export function ProfilePage({ id }: Props) {
   const t = useTranslations('Pages');
-  const {
-    data: profile,
-    isPending,
-    isError,
-    error,
-  } = usePublicProfileQuery(id);
+  const { data, isPending, isError, error } = usePublicProfileQuery(id);
 
   if (isPending) {
     return null;
@@ -37,15 +32,5 @@ export function ProfilePage({ id }: Props) {
     );
   }
 
-  if (!profile) {
-    return (
-      <section className={s.pageState}>
-        <EmptyStateMessage className={s.pageStateMessage}>
-          {t('profileNotFound')}
-        </EmptyStateMessage>
-      </section>
-    );
-  }
-
-  return <ProfileContent profile={profile} />;
+  return <ProfileContent profile={data} />;
 }

@@ -6,12 +6,12 @@ import { postsControllerGetProfilePosts } from '@/shared/api/generated/endpoints
 import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
 import type { Post } from '../model/types';
 
-const POSTS_PER_PAGE = 8;
+const POSTS_PER_PAGE = 12;
 
 export const useProfilePostsInfinite = (profileId: string) => {
   const observerRef = useRef<HTMLDivElement | null>(null);
   const query = useInfiniteQuery({
-    queryKey: [...postsKeys.usersPosts(profileId), POSTS_PER_PAGE],
+    queryKey: postsKeys.usersPosts(profileId),
     queryFn: async ({ pageParam = 1 }) => {
       const response = await postsControllerGetProfilePosts(profileId, {
         pageNumber: pageParam,
@@ -24,8 +24,12 @@ export const useProfilePostsInfinite = (profileId: string) => {
         data: response.items.map((item) => ({
           id: item.id,
           profileId: item.owner.ownerId,
-          photo: item.postMedias?.[0]?.url ?? '',
           mediaCount: item.postMedias?.length ?? 0,
+          medias:
+            item.postMedias?.map((media) => ({
+              id: media.postMediaId,
+              url: media.url,
+            })) ?? [],
         })),
         total: response.totalCount,
       };
