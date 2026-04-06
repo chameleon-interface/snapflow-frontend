@@ -14,7 +14,6 @@ export const useCreatePostMutation = () => {
     mutationFn: (payload: CreatePostInputDto) =>
       postsControllerCreatePost(payload),
     onSuccess: (createdPost) => {
-      queryClient.invalidateQueries({ queryKey: postsKeys.myPosts() });
       queryClient.invalidateQueries({
         queryKey: postsKeys.usersPosts(createdPost.owner.ownerId),
       });
