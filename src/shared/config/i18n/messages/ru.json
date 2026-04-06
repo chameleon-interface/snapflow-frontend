@@ -16,13 +16,11 @@
     "backToSignUp": "Назад к регистрации"
   },
   "Pages": {
-    "mainTitle": "Главная страница",
     "feedTitle": "Лента",
     "feedDemoStatus": "Превью UI для ленты включено.",
     "feedDemoMockReady": "Режим отладки открывает локальный моковый пост для тестирования UI.",
     "feedDemoOpen": "Открыть модалку поста",
     "favoritesTitle": "Избранное",
-    "profileTitle": "Профиль",
     "messengerTitle": "Мессенджер",
     "searchTitle": "Поиск",
     "statisticsTitle": "Статистика",
@@ -32,7 +30,26 @@
     "createNewPasswordTitle": "Создать новый пароль",
     "placeholder": "Страница-заглушка.",
     "privacyPolicy": "Политика конфиденциальности",
-    "termsOfService": "Условия предоставления услуг"
+    "termsOfService": "Условия предоставления услуг",
+    "profileFollowing": "Подписки",
+    "profileFollowers": "Подписчики",
+    "profilePublications": "Публикации",
+    "profileSettings": "Настройки профиля",
+    "allPostsLoaded": "Вы просмотрели все публикации",
+    "profileNotFound": "Такого профиля нет",
+    "profileLoadFailed": "Не удалось загрузить профиль",
+    "profilePostsLoadFailed": "Не удалось загрузить публикации этого профиля",
+    "profilePostsUnavailable": "Публикации временно недоступны",
+    "retry": "Повторить"
+  },
+  "MainPage": {
+    "registeredUsers": "Пользователей:",
+    "noPostsYet": "Постов пока нет",
+    "registeredUsersCountAria": "Зарегистрировано пользователей: {count}"
+  },
+  "ExpandableText": {
+    "showMore": "Показать больше",
+    "showLess": "Скрыть"
   },
   "Settings": {
     "tabsAria": "Вкладки настроек",
@@ -45,6 +62,7 @@
     "selectProfilePhoto": "Выберите фото",
     "profileAvatar": "Аватар профиля",
     "deleteAvatar": "Удалить аватар",
+    "deleteAvatarConfirmation": "Вы уверены, что хотите удалить фотографию?",
     "saveChanges": "Сохранить изменения",
     "settingsSaved": "Ваши настройки сохранены!",
     "avatarUpdated": "Аватар успешно обновлен!",
@@ -210,7 +228,8 @@
   },
   "Common": {
     "somethingWentWrong": "Что-то пошло не так",
-    "networkError": "Ошибка сети. Проверьте подключение."
+    "networkError": "Ошибка сети. Проверьте подключение.",
+    "userProfilePhotoAlt": "Фото профиля: {name}"
   },
   "CreatePost": {
     "stepTitleAddPhotos": "Добавить фото",

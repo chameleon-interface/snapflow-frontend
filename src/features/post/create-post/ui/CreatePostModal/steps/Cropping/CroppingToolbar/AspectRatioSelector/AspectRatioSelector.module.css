@@ -58,7 +58,7 @@
 }
 
 .aspectOption:hover {
-  background-color: var(--color-dark-200);
+  background-color: var(--color-dark-300);
 }
 
 .aspectOption:focus-visible {

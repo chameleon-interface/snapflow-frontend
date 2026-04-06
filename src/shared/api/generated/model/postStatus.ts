@@ -9,10 +9,9 @@
 /**
  * Post status
  */
-export type PostViewDtoStatus =
-  (typeof PostViewDtoStatus)[keyof typeof PostViewDtoStatus];
+export type PostStatus = (typeof PostStatus)[keyof typeof PostStatus];
 
-export const PostViewDtoStatus = {
+export const PostStatus = {
   DRAFT: 'DRAFT',
   PUBLISHED: 'PUBLISHED',
 } as const;

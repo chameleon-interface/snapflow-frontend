@@ -105,16 +105,10 @@
   max-width: none;
 }
 
-@media (width <=480px) {
+@media (width <=380px) {
   .content {
     gap: 20px;
     width: 100%;
     min-width: 0;
-  }
-}
-
-@media (width <=380px) {
-  .content {
-    gap: 16px;
   }
 }

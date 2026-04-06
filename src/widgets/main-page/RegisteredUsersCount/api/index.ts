@@ -1,0 +1,1 @@
+export { useRegisteredUsersCountQuery } from './useRegisteredUsersCountQuery';

@@ -1,0 +1,43 @@
+.title {
+  overflow: hidden;
+  display: block;
+  flex: 1 1 auto;
+
+  min-width: 0;
+
+  font-size: clamp(0.7rem, 0.35rem + 2.1vw, 1.25rem);
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.counterWrap {
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.registeredUsersContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: clamp(8px, 2vw, 16px);
+  align-items: center;
+  justify-content: space-between;
+
+  min-width: 0;
+  padding: clamp(10px, 2vw, 14px) clamp(12px, 3vw, 24px);
+  border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
+
+  background-color: var(--color-dark-500);
+}
+
+@media (width <= 380px) {
+  .registeredUsersContainer {
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .title {
+    font-size: clamp(0.65rem, 0.3rem + 2.4vw, 1.15rem);
+  }
+}
