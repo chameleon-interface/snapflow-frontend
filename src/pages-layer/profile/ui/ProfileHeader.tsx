@@ -1,34 +1,24 @@
-'use client';
-
-import Link from 'next/link';
-import { useTranslations } from 'next-intl';
-import { Button } from 'snapflow-ui-kit/client';
+import { getTranslations } from 'next-intl/server';
 import { PaidIcon } from 'snapflow-ui-kit/icons';
-import { useMe } from '@/entities/user';
 import type { PublicProfileViewDto } from '@/shared/api/generated/model';
-import { ROUTES } from '@/shared/config';
-import { useMediaQuery } from '@/shared/lib/hooks/useMediaQuery';
-import { UserAvatar } from '@/shared/ui';
 import s from './ProfilePage.module.css';
+import { ProfileAvatar } from './ProfileAvatar';
+import { ProfileSettingsButton } from './ProfileSettingsButton';
 
 type Props = {
   profile: PublicProfileViewDto;
 };
 
-export function ProfileHeader({ profile }: Props) {
-  const t = useTranslations('Pages');
-  const { data: me } = useMe();
-  const isCompact = useMediaQuery(1024);
-  const isOwner = me?.userId === profile.id;
+export async function ProfileHeader({ profile }: Props) {
+  const t = await getTranslations('Pages');
   const isVerified = true;
 
   return (
     <header className={s.header}>
       <div className={s.avatar}>
-        <UserAvatar
+        <ProfileAvatar
           avatarUrl={profile.avatarUrl}
           username={profile.username}
-          size={isCompact ? 160 : 204}
         />
       </div>
 
@@ -43,15 +33,7 @@ export function ProfileHeader({ profile }: Props) {
             )}
           </div>
 
-          {isOwner && (
-            <Button
-              className={s.profileButton}
-              as={Link}
-              href={ROUTES.SETTINGS}
-            >
-              {t('profileSettings')}
-            </Button>
-          )}
+          <ProfileSettingsButton profileId={profile.id} />
         </div>
 
         <ul className={s.userData}>

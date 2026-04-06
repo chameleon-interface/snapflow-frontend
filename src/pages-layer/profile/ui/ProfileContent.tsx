@@ -1,5 +1,3 @@
-'use client';
-
 import s from './ProfilePage.module.css';
 import type { PublicProfileViewDto } from '@/shared/api/generated/model';
 import { ProfileHeader } from './ProfileHeader';

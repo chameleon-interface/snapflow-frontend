@@ -1,25 +1,21 @@
-'use client';
-
 import axios from 'axios';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { ProfileContent } from './ProfileContent';
 import s from './ProfilePage.module.css';
 import { EmptyStateMessage } from '@/shared/ui';
-import { usePublicProfileQuery } from '../api/usePublicProfileQuery';
+import { profileControllerGetPublicProfile } from '@/shared/api/generated/endpoints/profile/profile';
 
 type Props = {
   id: string;
 };
 
-export function ProfilePage({ id }: Props) {
-  const t = useTranslations('Pages');
-  const { data, isPending, isError, error } = usePublicProfileQuery(id);
+export async function ProfilePage({ id }: Props) {
+  const t = await getTranslations('Pages');
+  let profile;
 
-  if (isPending) {
-    return null;
-  }
-
-  if (isError) {
+  try {
+    profile = await profileControllerGetPublicProfile(id);
+  } catch (error) {
     const isNotFound =
       axios.isAxiosError(error) && error.response?.status === 404;
 
@@ -32,5 +28,5 @@ export function ProfilePage({ id }: Props) {
     );
   }
 
-  return <ProfileContent profile={data} />;
+  return <ProfileContent profile={profile} />;
 }
