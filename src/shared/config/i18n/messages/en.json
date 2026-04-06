@@ -18,7 +18,6 @@
   "Pages": {
     "feedTitle": "Feed",
     "favoritesTitle": "Favorites",
-    "profileTitle": "Profile",
     "messengerTitle": "Messenger",
     "searchTitle": "Search",
     "statisticsTitle": "Statistics",
@@ -28,7 +27,17 @@
     "createNewPasswordTitle": "Create New Password",
     "placeholder": "Placeholder page.",
     "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service"
+    "termsOfService": "Terms of Service",
+    "profileFollowing": "Following",
+    "profileFollowers": "Followers",
+    "profilePublications": "Publications",
+    "profileSettings": "Profile Settings",
+    "allPostsLoaded": "You have viewed all posts",
+    "profileNotFound": "This profile does not exist",
+    "profileLoadFailed": "Failed to load profile",
+    "profilePostsLoadFailed": "Failed to load posts for this profile",
+    "profilePostsUnavailable": "Posts are temporarily unavailable",
+    "retry": "Retry"
   },
   "MainPage": {
     "registeredUsers": "Registered users:",
