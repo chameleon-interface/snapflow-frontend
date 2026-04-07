@@ -2,6 +2,7 @@
 
 import type { PostViewDto } from '@/shared/api/generated/model';
 import { PostAuthorInfo } from '@/entities/post/ui/PostAuthorInfo';
+import { ROUTES } from '@/shared/config/routes';
 import { RelativeTime } from '@/shared/ui';
 import { ExpandableText } from '@/shared/ui/ExpandableText';
 import { clsx } from 'clsx';
@@ -50,6 +51,7 @@ export const PostCardPreview = ({ post }: Props) => {
           <PostAuthorInfo
             avatarUrl={post.owner.avatarUrl}
             headingId={`post-heading-${post.id}`}
+            profileHref={ROUTES.PROFILE(post.owner.ownerId)}
             username={username}
           />
           <RelativeTime isoDate={post.createdAt} className={styles.time} />

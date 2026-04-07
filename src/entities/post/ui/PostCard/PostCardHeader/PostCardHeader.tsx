@@ -1,3 +1,4 @@
+import { ROUTES } from '@/shared/config/routes';
 import { RelativeTime } from '@/shared/ui';
 import { Button } from 'snapflow-ui-kit';
 import { MoreHozitontalIcon } from 'snapflow-ui-kit/icons';
@@ -10,6 +11,7 @@ type Props = {
   headingId: string;
   moreLabel: string;
   onMoreClickAction: () => void;
+  ownerId: string;
   username: string;
 };
 
@@ -19,6 +21,7 @@ export const PostCardHeader = ({
   headingId,
   moreLabel,
   onMoreClickAction,
+  ownerId,
   username,
 }: Props) => {
   return (
@@ -28,6 +31,7 @@ export const PostCardHeader = ({
           avatarUrl={avatarUrl}
           headingId={headingId}
           headingTag="h2"
+          profileHref={ROUTES.PROFILE(ownerId)}
           username={username}
         />
         <span className={styles.timeSeparator} aria-hidden="true">

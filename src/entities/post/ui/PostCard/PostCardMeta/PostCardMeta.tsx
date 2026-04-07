@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import { ROUTES } from '@/shared/config/routes';
 import { UserAvatar } from '@/shared/ui';
 import { useLocale, useTranslations } from 'next-intl';
 import { Typography } from 'snapflow-ui-kit';
@@ -7,6 +9,7 @@ type Props = {
   avatarUrl: string | null;
   description: string;
   likesCount: number;
+  ownerId: string;
   username: string;
 };
 
@@ -14,6 +17,7 @@ export const PostCardMeta = ({
   avatarUrl,
   description,
   likesCount,
+  ownerId,
   username,
 }: Props) => {
   const locale = useLocale();
@@ -29,7 +33,12 @@ export const PostCardMeta = ({
           </span>
 
           <Typography as="p" variant="text-14" className={styles.description}>
-            <span className={styles.descriptionAuthor}>{username}</span>{' '}
+            <Link
+              href={ROUTES.PROFILE(ownerId)}
+              className={styles.descriptionAuthorLink}
+            >
+              <span className={styles.descriptionAuthor}>{username}</span>
+            </Link>{' '}
             {description}
           </Typography>
         </div>

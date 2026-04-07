@@ -29,6 +29,21 @@
   white-space: nowrap;
 }
 
+.descriptionAuthorLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.descriptionAuthorLink:hover {
+  color: var(--color-accent-500);
+}
+
+.descriptionAuthorLink:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
 .likesText {
   margin: 0 0 24px;
 
