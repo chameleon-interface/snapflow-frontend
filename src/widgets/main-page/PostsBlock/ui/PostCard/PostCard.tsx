@@ -1,7 +1,6 @@
 'use client';
 
-import type { KeyboardEvent, MouseEvent } from 'react';
-import type { Post } from '@/entities/post';
+import type { PostViewDto } from '@/shared/api/generated/model';
 import { RelativeTime } from '@/shared/ui';
 import Image from 'next/image';
 import { Carousel, Typography } from 'snapflow-ui-kit/client';
@@ -12,46 +11,21 @@ import { UserAvatar } from '@/shared/ui/UserAvatar';
 import { ExpandableText } from '@/shared/ui/ExpandableText';
 
 type Props = {
-  post: Post;
-  onOpen?: (post: Post) => void;
+  post: PostViewDto;
 };
 
-export const PostCard = ({ post, onOpen }: Props) => {
+export const PostCard = ({ post }: Props) => {
   const username = post.owner.username ?? '?';
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   const handleDescriptionExpandedChange = useCallback((expanded: boolean) => {
     setIsDescriptionExpanded(expanded);
   }, []);
-  const handleOpen = () => onOpen?.(post);
-  const handleClick = (event: MouseEvent<HTMLElement>) => {
-    const target = event.target;
-
-    if (
-      target instanceof Element &&
-      target.closest('button, a, input, textarea, select, [role="button"]') !==
-        event.currentTarget
-    ) {
-      return;
-    }
-
-    handleOpen();
-  };
-  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      handleOpen();
-    }
-  };
 
   return (
     <article
       className={styles.postCard}
       aria-labelledby={`post-heading-${post.id}`}
-      role={onOpen ? 'button' : undefined}
-      tabIndex={onOpen ? 0 : undefined}
-      onClick={onOpen ? handleClick : undefined}
-      onKeyDown={onOpen ? handleKeyDown : undefined}
     >
       <Carousel className={styles.carousel}>
         {post.postMedias.map((media, index) => (
