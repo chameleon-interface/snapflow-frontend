@@ -22,7 +22,7 @@
   background: var(--color-dark-500);
 }
 
-.mediaImage {
+.carousel .mediaImage {
   object-fit: contain;
   object-position: center;
 }
