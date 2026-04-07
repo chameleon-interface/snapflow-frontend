@@ -2,8 +2,8 @@
   overflow: hidden;
 
   box-sizing: border-box;
+  aspect-ratio: 491 / 504;
   width: 100%;
-  height: 504px;
   border: 1px solid var(--color-dark-300);
   border-radius: 2px;
 
@@ -18,7 +18,7 @@
 .slide {
   position: relative;
   width: 100%;
-  height: 504px;
+  height: 100%;
   background: var(--color-dark-500);
 }
 
@@ -32,24 +32,17 @@
   place-items: center;
 
   width: 100%;
-  height: 504px;
+  height: 100%;
 
   color: var(--color-light-900);
 }
 
 @media (width <= 768px) {
-  .mediaWrap {
-    height: auto;
-  }
-
   .slide {
-    aspect-ratio: 491 / 504;
-    height: auto;
+    min-height: 280px;
   }
 
   .emptyMedia {
-    aspect-ratio: 491 / 504;
-    height: auto;
     min-height: 280px;
   }
 }
