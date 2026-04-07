@@ -13,7 +13,34 @@
 }
 
 .actionsButton {
-  padding-inline: 0;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+
+  color: var(--color-light-100);
+
+  background: transparent;
+}
+
+.actionsButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+.actionsButton:hover {
+  color: var(--color-accent-500);
+}
+
+.actionsButton:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
 }
 
 .actionsButton span {

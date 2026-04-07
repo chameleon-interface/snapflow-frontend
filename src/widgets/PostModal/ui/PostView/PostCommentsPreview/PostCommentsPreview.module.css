@@ -21,6 +21,7 @@
 
 .commentText {
   display: block;
+  overflow-wrap: anywhere;
 }
 
 .commentAuthor {

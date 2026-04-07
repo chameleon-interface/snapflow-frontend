@@ -61,4 +61,9 @@
     width: calc(100vw - 32px);
     height: auto;
   }
+
+  .viewModalContainer > header {
+    top: 8px;
+    right: 8px;
+  }
 }
