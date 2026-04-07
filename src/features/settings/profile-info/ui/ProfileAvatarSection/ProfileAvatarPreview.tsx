@@ -1,6 +1,9 @@
 import Image from 'next/image';
 import { CloseIcon, ImageIcon } from 'snapflow-ui-kit/icons';
 import s from './ProfileAvatarPreview.module.css';
+import { ConfirmModal } from '@/shared/ui';
+import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 type ProfileAvatarPreviewProps = {
   avatarUrl: string;
@@ -17,33 +20,45 @@ export const ProfileAvatarPreview = ({
   isPending,
   onDelete,
 }: ProfileAvatarPreviewProps) => {
-  return (
-    <div className={s.avatarPreview}>
-      <div className={s.avatarPlaceholder}>
-        {avatarUrl ? (
-          <Image
-            src={avatarUrl}
-            alt={alt}
-            className={s.avatarImage}
-            fill
-            sizes="192px"
-          />
-        ) : (
-          <ImageIcon />
-        )}
-      </div>
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const t = useTranslations('Settings');
 
-      {avatarUrl ? (
-        <button
-          type="button"
-          className={s.deleteAvatarButton}
-          onClick={onDelete}
-          disabled={isPending}
-          aria-label={deleteLabel}
-        >
-          <CloseIcon />
-        </button>
-      ) : null}
-    </div>
+  return (
+    <>
+      <ConfirmModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={onDelete}
+        title={t('deleteAvatar')}
+        message={t('deleteAvatarConfirmation')}
+      />
+      <div className={s.avatarPreview}>
+        <div className={s.avatarPlaceholder}>
+          {avatarUrl ? (
+            <Image
+              src={avatarUrl}
+              alt={alt}
+              className={s.avatarImage}
+              fill
+              sizes="192px"
+            />
+          ) : (
+            <ImageIcon />
+          )}
+        </div>
+
+        {avatarUrl ? (
+          <button
+            type="button"
+            className={s.deleteAvatarButton}
+            onClick={() => setIsModalOpen(true)}
+            disabled={isPending}
+            aria-label={deleteLabel}
+          >
+            <CloseIcon />
+          </button>
+        ) : null}
+      </div>
+    </>
   );
 };

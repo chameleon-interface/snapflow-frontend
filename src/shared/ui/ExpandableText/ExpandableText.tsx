@@ -35,17 +35,20 @@ export const ExpandableText = ({
 
   const showToggle = isTruncated || isExpanded;
 
+  const textClampStyle: CSSProperties | undefined = isExpanded
+    ? undefined
+    : {
+        WebkitLineClamp: lines,
+        lineClamp: lines,
+      };
+
   return (
     <div className={styles.root}>
       <span
         id={textId}
         ref={textRef}
         className={`${styles.text} ${isExpanded ? styles.expanded : ''}`}
-        style={
-          {
-            '--line-clamp': String(lines),
-          } as CSSProperties
-        }
+        style={textClampStyle}
       >
         {trimmed}
       </span>
