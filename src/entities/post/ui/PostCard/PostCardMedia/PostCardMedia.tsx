@@ -17,9 +17,11 @@ export const PostCardMedia = ({
   mediaUnavailableText,
   postImages,
 }: Props) => {
+  const hasMedia = postImages.length > 0;
+
   return (
     <div className={styles.mediaWrap}>
-      {postImages.length > 1 ? (
+      {hasMedia ? (
         <Carousel className={styles.carousel} hideArrowsWhenSingle>
           {postImages.map((media, index) => (
             <div key={media.postMediaId} className={styles.slide}>
@@ -33,16 +35,6 @@ export const PostCardMedia = ({
             </div>
           ))}
         </Carousel>
-      ) : postImages[0] ? (
-        <div className={styles.slide}>
-          <Image
-            src={postImages[0].url}
-            alt={getMediaAltAction(1, 1)}
-            fill
-            sizes="(max-width: 768px) 100vw, 491px"
-            className={styles.mediaImage}
-          />
-        </div>
       ) : (
         <div className={styles.emptyMedia}>
           <Typography variant="text-14">{mediaUnavailableText}</Typography>
