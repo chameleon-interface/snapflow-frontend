@@ -17,9 +17,6 @@
   },
   "Pages": {
     "feedTitle": "Лента",
-    "feedDemoStatus": "Превью UI для ленты включено.",
-    "feedDemoMockReady": "Режим отладки открывает локальный моковый пост для тестирования UI.",
-    "feedDemoOpen": "Открыть модалку поста",
     "favoritesTitle": "Избранное",
     "messengerTitle": "Мессенджер",
     "searchTitle": "Поиск",

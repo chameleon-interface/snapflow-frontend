@@ -1,15 +1,16 @@
 import type {
   PostMediaViewDto,
+  PostStatus,
   PostsControllerGetProfilePostsParams,
   PostsPageViewDto,
   PostViewDto,
-  PostViewDtoStatus,
+  UpdatePostInputDto,
 } from '@/shared/api/generated/model';
 
 export type PostMedia = PostMediaViewDto;
 
 export type PostOwner = {
-  ownerId: number;
+  ownerId: string;
   username: string;
   avatarUrl: string | null;
 };
@@ -20,7 +21,7 @@ export type ProfilePost = Omit<
 > & {
   description: string;
   owner: PostOwner;
-  status: PostViewDtoStatus;
+  status: PostStatus;
 };
 
 export type Post = ProfilePost;
@@ -30,14 +31,15 @@ export type PostsPage = Omit<PostsPageViewDto, 'items'> & {
 };
 
 export type GetProfilePostsInput = PostsControllerGetProfilePostsParams & {
-  userId: number;
+  userId: string;
 };
 
-export type UpdatePostInput = {
-  postId: number;
-  description: string;
+export type UpdatePostInput = UpdatePostInputDto & {
+  postId: string;
+  ownerId: string;
 };
 
 export type DeletePostInput = {
-  postId: number;
+  postId: string;
+  ownerId: string;
 };

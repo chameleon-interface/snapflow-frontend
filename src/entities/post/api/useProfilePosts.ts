@@ -13,6 +13,6 @@ export const useProfilePosts = ({
   return useQuery({
     queryKey: [...postQueryKeys.byProfile(userId), pageNumber, pageSize],
     queryFn: () => getProfilePosts({ userId, pageNumber, pageSize }),
-    enabled: Number.isFinite(userId) && userId > 0,
+    enabled: userId.length > 0,
   });
 };

@@ -19,7 +19,7 @@ type Props = {
   onCloseAction: () => void;
   forceOwnerActions?: boolean;
   onPostUpdated?: (post: Post) => void;
-  onPostDeleted?: (postId: number) => void;
+  onPostDeleted?: (postId: string) => void;
 };
 
 export const PostModal = ({
@@ -44,8 +44,7 @@ export const PostModal = ({
   const isAuthorized = Boolean(me);
   const canManagePost =
     isAuthorized &&
-    (forceOwnerActions ||
-      (isOwner && me?.userId === String(post.owner.ownerId)));
+    (forceOwnerActions || (isOwner && me?.userId === post.owner.ownerId));
   const isDirty = draftDescription !== post.description;
   const ownerName = post.owner.username ?? me?.username ?? 'UserName';
   const ownerAvatar = post.owner.avatarUrl ?? null;
@@ -57,7 +56,11 @@ export const PostModal = ({
   const saveChanges = () =>
     canManagePost &&
     updatePost(
-      { postId: post.id, description: draftDescription },
+      {
+        postId: post.id,
+        ownerId: post.owner.ownerId,
+        description: draftDescription,
+      },
       {
         onSuccess: () => {
           toastSuccess(t('editSuccess'));
@@ -69,7 +72,7 @@ export const PostModal = ({
   const deletePostItem = () =>
     canManagePost &&
     deletePost(
-      { postId: post.id },
+      { postId: post.id, ownerId: post.owner.ownerId },
       {
         onSuccess: () => {
           toastSuccess(t('deleteSuccess'));

@@ -1,18 +1,64 @@
 .modalContainer {
   width: min(960px, calc(100vw - 32px));
   max-width: none;
-  max-height: 90vh;
+  height: min(562px, calc(100vh - 64px));
+  max-height: calc(100vh - 64px);
+}
+
+.modalContainer > div {
+  overflow: hidden;
+  flex: 1;
+  min-height: 0;
 }
 
 .viewModalContainer {
-  width: min(960px, calc(100vw - 32px));
+  position: relative;
+
+  width: min(1080px, calc(100vw - 72px));
   max-width: none;
-  max-height: 90vh;
+  height: min(562px, calc(100vh - 64px));
+  max-height: calc(100vh - 64px);
+}
+
+.viewModalContainer > header {
+  position: absolute;
+  z-index: 2;
+  top: -25px;
+  right: -40px;
+
+  padding: 0;
+  border-bottom: 0;
+}
+
+.viewModalContainer > header h2 {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(50%);
+}
+
+.viewModalContainer > div {
+  overflow: hidden;
+  flex: 1;
+
+  height: 100%;
+  min-height: 0;
+  padding: 0;
 }
 
 @media (width <= 900px) {
   .modalContainer,
   .viewModalContainer {
     width: calc(100vw - 32px);
+    height: auto;
   }
 }

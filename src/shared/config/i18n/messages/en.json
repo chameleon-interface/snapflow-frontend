@@ -17,9 +17,6 @@
   },
   "Pages": {
     "feedTitle": "Feed",
-    "feedDemoStatus": "Feed UI preview enabled.",
-    "feedDemoMockReady": "Debug mode opens a local mock post for UI testing.",
-    "feedDemoOpen": "Open Post Modal",
     "favoritesTitle": "Favorites",
     "messengerTitle": "Messenger",
     "searchTitle": "Search",

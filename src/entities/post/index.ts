@@ -1,3 +1,4 @@
+export { mapPostDtoToPost, mapPostsPageDtoToPostsPage } from './model/mappers';
 export {
   deletePost,
   getPostById,
