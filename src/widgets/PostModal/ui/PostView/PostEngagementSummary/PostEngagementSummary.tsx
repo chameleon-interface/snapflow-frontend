@@ -46,7 +46,6 @@ export const PostEngagementSummary = () => {
           <div className={styles.likesAvatars}>
             <div className={styles.likesAvatar} />
             <div className={styles.likesAvatarAlt} />
-            <div className={styles.likesAvatar} />
           </div>
           <Typography variant="text-14">2 243 &quot;Like&quot;</Typography>
         </div>
