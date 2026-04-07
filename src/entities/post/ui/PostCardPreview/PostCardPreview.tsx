@@ -13,10 +13,12 @@ import styles from './PostCardPreview.module.css';
 
 type Props = {
   post: PostViewDto;
+  variant?: 'default' | 'compact';
 };
 
-export const PostCardPreview = ({ post }: Props) => {
+export const PostCardPreview = ({ post, variant = 'default' }: Props) => {
   const username = post.owner.username ?? '?';
+  const isCompact = variant === 'compact';
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   const handleDescriptionExpandedChange = useCallback((expanded: boolean) => {
@@ -41,30 +43,32 @@ export const PostCardPreview = ({ post }: Props) => {
           </div>
         ))}
       </Carousel>
-      <div
-        className={clsx(
-          styles.content,
-          isDescriptionExpanded && styles.contentExpanded,
-        )}
-      >
-        <header className={styles.postHeader}>
-          <PostAuthorInfo
-            avatarUrl={post.owner.avatarUrl}
-            headingId={`post-heading-${post.id}`}
-            profileHref={ROUTES.PROFILE(post.owner.ownerId)}
-            username={username}
-          />
-          <RelativeTime isoDate={post.createdAt} className={styles.time} />
-        </header>
-        {post.description && (
-          <ExpandableText
-            key={`${post.id}-${post.description}-3`}
-            text={post.description}
-            lines={3}
-            onExpandedChange={handleDescriptionExpandedChange}
-          />
-        )}
-      </div>
+      {!isCompact && (
+        <div
+          className={clsx(
+            styles.content,
+            isDescriptionExpanded && styles.contentExpanded,
+          )}
+        >
+          <header className={styles.postHeader}>
+            <PostAuthorInfo
+              avatarUrl={post.owner.avatarUrl}
+              headingId={`post-heading-${post.id}`}
+              profileHref={ROUTES.PROFILE(post.owner.ownerId)}
+              username={username}
+            />
+            <RelativeTime isoDate={post.createdAt} className={styles.time} />
+          </header>
+          {post.description && (
+            <ExpandableText
+              key={`${post.id}-${post.description}-3`}
+              text={post.description}
+              lines={3}
+              onExpandedChange={handleDescriptionExpandedChange}
+            />
+          )}
+        </div>
+      )}
     </article>
   );
 };

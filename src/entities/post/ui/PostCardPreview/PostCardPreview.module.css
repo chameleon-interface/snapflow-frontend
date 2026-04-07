@@ -68,6 +68,15 @@
   margin-top: calc(-1 * var(--post-card-content-lift));
 }
 
+.contentCompact {
+  gap: 0;
+  padding-top: 6px;
+}
+
+.contentCompact.contentExpanded {
+  margin-top: 0;
+}
+
 @media (width <= 380px) {
   .content {
     padding-top: 6px;
