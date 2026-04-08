@@ -4,21 +4,22 @@ import { useTranslations } from 'next-intl';
 import { Button } from 'snapflow-ui-kit';
 import { DropdownMenu } from 'snapflow-ui-kit/client';
 import { EditIcon, MoreHozitontalIcon, TrashIcon } from 'snapflow-ui-kit/icons';
-import { PostAuthor } from '../../PostAuthor';
+import { Typography } from 'snapflow-ui-kit';
+import { UserAvatar } from '@/shared/ui/UserAvatar';
 import styles from './PostHeader.module.css';
 
 type Props = {
   canManagePost: boolean;
-  ownerAvatar: string | null;
-  ownerName: string;
+  ownerAvatarUrl: string | null;
+  ownerUsername: string;
   onDelete: () => void;
   onEdit: () => void;
 };
 
 export const PostHeader = ({
   canManagePost,
-  ownerAvatar,
-  ownerName,
+  ownerAvatarUrl,
+  ownerUsername,
   onDelete,
   onEdit,
 }: Props) => {
@@ -30,7 +31,14 @@ export const PostHeader = ({
 
   return (
     <div className={styles.root}>
-      <PostAuthor avatarUrl={ownerAvatar} username={ownerName} />
+      <div className={styles.author}>
+        <UserAvatar
+          avatarUrl={ownerAvatarUrl}
+          size={36}
+          username={ownerUsername}
+        />
+        <Typography variant="text-16-bold">{ownerUsername}</Typography>
+      </div>
       {canManagePost ? (
         <DropdownMenu
           items={actionItems}

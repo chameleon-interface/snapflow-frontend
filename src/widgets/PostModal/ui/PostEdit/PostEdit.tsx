@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { Button, Textarea, Typography } from 'snapflow-ui-kit';
-import { PostAuthor } from '../PostAuthor';
+import { UserAvatar } from '@/shared/ui/UserAvatar';
 import styles from './PostEdit.module.css';
 
 type Props = {
@@ -46,7 +46,10 @@ export const PostEdit = ({
       </div>
 
       <div className={styles.formSection}>
-        <PostAuthor avatarUrl={ownerAvatar} username={ownerName} />
+        <div className={styles.author}>
+          <UserAvatar avatarUrl={ownerAvatar} size={36} username={ownerName} />
+          <Typography variant="text-16-bold">{ownerName}</Typography>
+        </div>
         <div className={styles.descriptionArea}>
           <Textarea
             label={t('descriptionLabel')}

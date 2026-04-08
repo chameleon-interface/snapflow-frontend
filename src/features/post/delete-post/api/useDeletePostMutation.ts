@@ -1,11 +1,15 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { postQueryKeys, type DeletePostInput } from '@/entities/post';
 import { postsControllerDeletePost } from '@/shared/api/generated/endpoints/posts/posts';
 import { mainPageKeys } from '@/shared/api/keys-factories/mainPageKeysFactory';
 import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
 import { profileKeys } from '@/shared/api/keys-factories/profileKeysFactory';
+
+type DeletePostInput = {
+  postId: string;
+  ownerId: string;
+};
 
 export const useDeletePostMutation = () => {
   const queryClient = useQueryClient();
@@ -16,10 +20,7 @@ export const useDeletePostMutation = () => {
     onSuccess: async (_, variables) => {
       await Promise.all([
         queryClient.invalidateQueries({
-          queryKey: postQueryKeys.all,
-        }),
-        queryClient.invalidateQueries({
-          queryKey: postsKeys.usersPosts(variables.ownerId),
+          queryKey: postsKeys.all,
         }),
         queryClient.invalidateQueries({
           queryKey: mainPageKeys.posts(),
@@ -30,7 +31,7 @@ export const useDeletePostMutation = () => {
       ]);
 
       queryClient.removeQueries({
-        queryKey: postQueryKeys.byId(variables.postId),
+        queryKey: postsKeys.byId(variables.postId),
       });
     },
   });

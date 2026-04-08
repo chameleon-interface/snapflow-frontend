@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Carousel } from 'snapflow-ui-kit/client';
 import styles from './PostGallery.module.css';
 
@@ -16,11 +17,12 @@ export const PostGallery = ({ photoUrls }: Props) => {
         {slides.map((photoUrl, index) => (
           <div key={`${photoUrl}-${index}`} className={styles.slide}>
             {photoUrl ? (
-              <div
-                role="img"
-                aria-label={`Post ${index + 1}`}
+              <Image
+                src={photoUrl}
+                alt={`Post ${index + 1}`}
+                fill
                 className={styles.slideImage}
-                style={{ backgroundImage: `url(${photoUrl})` }}
+                sizes="562px"
               />
             ) : (
               <div className={styles.photoFallback} />

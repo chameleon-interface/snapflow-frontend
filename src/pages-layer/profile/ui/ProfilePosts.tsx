@@ -6,9 +6,9 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Button, Carousel } from 'snapflow-ui-kit/client';
 import { ImageIcon } from 'snapflow-ui-kit/icons';
-import type { Post } from '@/entities/post';
 import { useMe } from '@/entities/user';
 import { PostModal } from '@/widgets/PostModal';
+import type { Post } from '@/widgets/PostModal/ui/post.types';
 import { EmptyStateMessage } from '@/shared/ui';
 import s from './ProfilePage.module.css';
 import { useProfilePostsInfinite } from '../api/useProfilePostsInfinite';
@@ -16,6 +16,19 @@ import { useProfilePostsInfinite } from '../api/useProfilePostsInfinite';
 type Props = {
   profileId: string;
   postsCount: number;
+};
+
+const INTERACTIVE_TARGET_SELECTOR =
+  'button, a, input, textarea, select, [role="button"]';
+
+const isNestedInteractiveTarget = (
+  target: EventTarget | null,
+  currentTarget: EventTarget | null,
+) => {
+  return (
+    target instanceof Element &&
+    target.closest(INTERACTIVE_TARGET_SELECTOR) !== currentTarget
+  );
 };
 
 export function ProfilePosts({ profileId, postsCount }: Props) {
@@ -36,13 +49,7 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
     };
 
   const handlePostClick = (post: Post) => (event: MouseEvent<HTMLElement>) => {
-    const target = event.target;
-
-    if (
-      target instanceof Element &&
-      target.closest('button, a, input, textarea, select, [role="button"]') !==
-        event.currentTarget
-    ) {
+    if (isNestedInteractiveTarget(event.target, event.currentTarget)) {
       return;
     }
 

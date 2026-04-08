@@ -1,7 +1,8 @@
 'use client';
 
-import type { Post } from '@/entities/post';
+import type { Post } from '../post.types';
 import { PostCommentsPreview } from './PostCommentsPreview';
+import { PostDescription } from './PostDescription';
 import { PostEngagementSummary } from './PostEngagementSummary';
 import { PostGallery } from './PostGallery';
 import { PostHeader } from './PostHeader';
@@ -11,10 +12,7 @@ import styles from './PostView.module.css';
 type Props = {
   canManagePost: boolean;
   isAuthorized: boolean;
-  ownerAvatar: string | null;
-  ownerName: string;
   post: Post;
-  postPhotos: string[];
   onDelete: () => void;
   onEdit: () => void;
 };
@@ -22,31 +20,27 @@ type Props = {
 export const PostView = ({
   canManagePost,
   isAuthorized,
-  ownerAvatar,
-  ownerName,
   post,
-  postPhotos,
   onDelete,
   onEdit,
 }: Props) => {
   return (
     <div className={styles.content}>
-      <PostGallery photoUrls={postPhotos} />
+      <PostGallery photoUrls={post.postMedias.map(({ url }) => url)} />
 
       <div className={styles.metaSection}>
         <div className={styles.root}>
           <PostHeader
             canManagePost={canManagePost}
-            ownerAvatar={ownerAvatar}
-            ownerName={ownerName}
+            ownerAvatarUrl={post.owner.avatarUrl}
+            ownerUsername={post.owner.username}
             onDelete={onDelete}
             onEdit={onEdit}
           />
-          <PostCommentsPreview
-            description={post.description}
-            ownerAvatar={ownerAvatar}
-            ownerName={ownerName}
-          />
+          <div className={styles.scrollSection}>
+            <PostDescription post={post} />
+            <PostCommentsPreview />
+          </div>
           <PostEngagementSummary />
           {isAuthorized ? <PostPublishBar /> : null}
         </div>

@@ -1,11 +1,8 @@
 .root {
-  overflow: hidden;
   display: flex;
-  flex: 1;
   flex-direction: column;
   gap: 18px;
-
-  padding: 20px 16px;
+  padding: 0 16px 20px;
 }
 
 .commentItem {
@@ -17,20 +14,6 @@
 .commentBody {
   flex: 1;
   min-width: 0;
-}
-
-.commentText {
-  display: block;
-  overflow-wrap: anywhere;
-}
-
-.commentAuthor {
-  font-weight: 700;
-}
-
-.commentMeta {
-  margin-top: 4px;
-  color: var(--color-light-900);
 }
 
 .commentActionIcon,

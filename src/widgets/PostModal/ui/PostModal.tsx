@@ -4,10 +4,10 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Modal, toastSuccess } from 'snapflow-ui-kit/client';
 import { useMe } from '@/entities/user';
-import type { Post } from '@/entities/post';
-import { useDeletePostMutation } from '@/features/delete-post';
-import { useUpdatePostMutation } from '@/features/edit-post';
+import { useDeletePostMutation } from '@/features/post/delete-post';
+import { useUpdatePostMutation } from '@/features/post/edit-post';
 import { ConfirmModal } from '@/shared/ui/modals';
+import type { Post } from './post.types';
 import { PostEdit } from './PostEdit';
 import { PostView } from './PostView';
 import styles from './PostModal.module.css';
@@ -34,7 +34,7 @@ export const PostModal = ({
   const t = useTranslations('Modals.Post');
   const { data: me } = useMe();
   const [mode, setMode] = useState<'view' | 'edit'>('view');
-  const [draftDescription, setDraftDescription] = useState(post.description);
+  const [editedDescription, setEditedDescription] = useState(post.description);
   const [isDeleteConfirmOpen, setIsDeleteConfirmOpen] = useState(false);
   const [isCloseEditConfirmOpen, setIsCloseEditConfirmOpen] = useState(false);
   const { mutate: updatePost, isPending: isUpdatingPost } =
@@ -45,7 +45,7 @@ export const PostModal = ({
   const canManagePost =
     isAuthorized &&
     (forceOwnerActions || (isOwner && me?.userId === post.owner.ownerId));
-  const isDirty = draftDescription !== post.description;
+  const isDirty = editedDescription !== post.description;
   const ownerName = post.owner.username ?? me?.username ?? 'UserName';
   const ownerAvatar = post.owner.avatarUrl ?? null;
   const postPhotos = post.postMedias.map(({ url }) => url).filter(Boolean);
@@ -59,13 +59,13 @@ export const PostModal = ({
       {
         postId: post.id,
         ownerId: post.owner.ownerId,
-        description: draftDescription,
+        description: editedDescription,
       },
       {
         onSuccess: () => {
           toastSuccess(t('editSuccess'));
           setMode('view');
-          onPostUpdated?.({ ...post, description: draftDescription });
+          onPostUpdated?.({ ...post, description: editedDescription });
         },
       },
     );
@@ -84,7 +84,7 @@ export const PostModal = ({
     );
   const resetEdit = () => {
     setIsCloseEditConfirmOpen(false);
-    setDraftDescription(post.description);
+    setEditedDescription(post.description);
     setMode('view');
   };
   const modalClassName =
@@ -100,27 +100,24 @@ export const PostModal = ({
       >
         {mode === 'edit' ? (
           <PostEdit
-            description={draftDescription}
+            description={editedDescription}
             isPending={isUpdatingPost || isDeletingPost}
             isSaveDisabled={!isDirty}
             maxLength={500}
             ownerAvatar={ownerAvatar}
             ownerName={ownerName}
             previewPhotoUrl={postPhotos[0] ?? null}
-            onChange={setDraftDescription}
+            onChange={setEditedDescription}
             onSave={saveChanges}
           />
         ) : (
           <PostView
             canManagePost={canManagePost}
             isAuthorized={isAuthorized}
-            ownerAvatar={ownerAvatar}
-            ownerName={ownerName}
             post={post}
-            postPhotos={postPhotos}
             onDelete={() => setIsDeleteConfirmOpen(true)}
             onEdit={() => {
-              setDraftDescription(post.description);
+              setEditedDescription(post.description);
               setMode('edit');
             }}
           />

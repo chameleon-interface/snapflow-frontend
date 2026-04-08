@@ -44,6 +44,12 @@
   padding: 0 16px 16px;
 }
 
+.author {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
 .descriptionArea {
   flex: 1;
   padding: 0;
