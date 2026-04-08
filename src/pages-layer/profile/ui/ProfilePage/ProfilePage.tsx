@@ -1,9 +1,15 @@
 import axios from 'axios';
 import { getTranslations } from 'next-intl/server';
-import { ProfileContent } from './ProfileContent';
-import s from './ProfilePage.module.css';
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from '@tanstack/react-query';
 import { EmptyStateMessage } from '@/shared/ui';
 import { profileControllerGetPublicProfile } from '@/shared/api/generated/endpoints/profile/profile';
+import { profileKeys } from '@/shared/api/keys-factories/profileKeysFactory';
+import s from './ProfilePage.module.css';
+import { ProfileContent } from './ProfileContent/ProfileContent';
 
 type Props = {
   id: string;
@@ -11,10 +17,13 @@ type Props = {
 
 export async function ProfilePage({ id }: Props) {
   const t = await getTranslations('Pages');
-  let profile;
+  const queryClient = new QueryClient();
 
   try {
-    profile = await profileControllerGetPublicProfile(id);
+    await queryClient.fetchQuery({
+      queryKey: profileKeys.userProfile(id),
+      queryFn: () => profileControllerGetPublicProfile(id),
+    });
   } catch (error) {
     const isNotFound =
       axios.isAxiosError(error) && error.response?.status === 404;
@@ -28,5 +37,9 @@ export async function ProfilePage({ id }: Props) {
     );
   }
 
-  return <ProfileContent profile={profile} />;
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <ProfileContent id={id} />
+    </HydrationBoundary>
+  );
 }

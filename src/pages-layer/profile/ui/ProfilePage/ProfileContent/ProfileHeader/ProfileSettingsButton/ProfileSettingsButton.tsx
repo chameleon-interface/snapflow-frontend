@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Button } from 'snapflow-ui-kit/client';
 import { useMe } from '@/entities/user';
 import { ROUTES } from '@/shared/config';
-import s from './ProfilePage.module.css';
+import s from './ProfileSettingsButton.module.css';
 
 type Props = {
   profileId: string;

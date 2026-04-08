@@ -9,16 +9,20 @@ import styles from './UserAvatar.module.css';
 type Props = {
   avatarUrl: string | null;
   className?: string;
-  size: number;
+  size?: number;
   username: string;
 };
 
 const PLACEHOLDER_FONT_SIZE_RATIO = 0.444;
 
-const getRootStyle = (size: number): CSSProperties => ({
-  ['--avatar-size' as string]: `${size}px`,
-  ['--avatar-font-size' as string]: `${size * PLACEHOLDER_FONT_SIZE_RATIO}px`,
-});
+const getRootStyle = (size?: number): CSSProperties | undefined =>
+  size
+    ? {
+        width: size,
+        height: size,
+        fontSize: `${size * PLACEHOLDER_FONT_SIZE_RATIO}px`,
+      }
+    : undefined;
 
 export const UserAvatar = ({ avatarUrl, className, size, username }: Props) => {
   const t = useTranslations('Common');
@@ -35,7 +39,7 @@ export const UserAvatar = ({ avatarUrl, className, size, username }: Props) => {
           src={avatarUrl}
           alt={t('userProfilePhotoAlt', { name: username })}
           fill
-          sizes={`${size}px`}
+          sizes={size ? `${size}px` : '100vw'}
         />
       </span>
     );

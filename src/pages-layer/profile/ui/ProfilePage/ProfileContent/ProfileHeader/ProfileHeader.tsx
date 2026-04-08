@@ -1,16 +1,18 @@
-import { getTranslations } from 'next-intl/server';
+'use client';
+
+import { useTranslations } from 'next-intl';
 import { PaidIcon } from 'snapflow-ui-kit/icons';
 import type { PublicProfileViewDto } from '@/shared/api/generated/model';
 import { UserAvatar } from '@/shared/ui';
-import s from './ProfilePage.module.css';
-import { ProfileSettingsButton } from './ProfileSettingsButton';
+import s from './ProfileHeader.module.css';
+import { ProfileSettingsButton } from './ProfileSettingsButton/ProfileSettingsButton';
 
 type Props = {
   profile: PublicProfileViewDto;
 };
 
-export async function ProfileHeader({ profile }: Props) {
-  const t = await getTranslations('Pages');
+export function ProfileHeader({ profile }: Props) {
+  const t = useTranslations('Pages');
   const isVerified = true;
 
   return (
@@ -19,7 +21,6 @@ export async function ProfileHeader({ profile }: Props) {
         <UserAvatar
           avatarUrl={profile.avatarUrl}
           className={s.profileAvatar}
-          size={204}
           username={profile.username}
         />
       </div>

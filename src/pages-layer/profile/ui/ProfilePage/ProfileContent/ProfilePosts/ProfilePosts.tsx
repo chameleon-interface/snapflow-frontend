@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 import { Button, Carousel } from 'snapflow-ui-kit/client';
 import { ImageIcon } from 'snapflow-ui-kit/icons';
 import { EmptyStateMessage } from '@/shared/ui';
-import s from './ProfilePage.module.css';
-import { useProfilePostsInfinite } from '../api/useProfilePostsInfinite';
+import { useProfilePostsInfinite } from '../../../../api/useProfilePostsInfinite';
+import s from './ProfilePosts.module.css';
 
 type Props = {
   profileId: string;
