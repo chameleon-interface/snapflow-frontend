@@ -1,4 +1,7 @@
 .avatarRoot {
+  --avatar-size: auto;
+  --avatar-font-size: inherit;
+
   position: relative;
 
   overflow: hidden;
@@ -8,8 +11,12 @@
   justify-content: center;
 
   box-sizing: border-box;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
   border: 1px solid var(--color-dark-100);
   border-radius: 50%;
+
+  font-size: var(--avatar-font-size);
 
   box-shadow: 0 2px 8px
     color-mix(in srgb, var(--color-dark-900) 20%, transparent);

@@ -1,8 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 import { PaidIcon } from 'snapflow-ui-kit/icons';
 import type { PublicProfileViewDto } from '@/shared/api/generated/model';
+import { UserAvatar } from '@/shared/ui';
 import s from './ProfilePage.module.css';
-import { ProfileAvatar } from './ProfileAvatar';
 import { ProfileSettingsButton } from './ProfileSettingsButton';
 
 type Props = {
@@ -16,8 +16,10 @@ export async function ProfileHeader({ profile }: Props) {
   return (
     <header className={s.header}>
       <div className={s.avatar}>
-        <ProfileAvatar
+        <UserAvatar
           avatarUrl={profile.avatarUrl}
+          className={s.profileAvatar}
+          size={204}
           username={profile.username}
         />
       </div>
