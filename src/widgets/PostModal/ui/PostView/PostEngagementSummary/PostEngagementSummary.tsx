@@ -1,12 +1,7 @@
 'use client';
 
 import { Button, Typography } from 'snapflow-ui-kit';
-import {
-  BookMarkIcon,
-  LikeIcon,
-  MessageIcon,
-  PaperPlaneIcon,
-} from 'snapflow-ui-kit/icons';
+import { BookMarkIcon, LikeIcon, PaperPlaneIcon } from 'snapflow-ui-kit/icons';
 import styles from './PostEngagementSummary.module.css';
 
 export const PostEngagementSummary = () => {
@@ -19,12 +14,6 @@ export const PostEngagementSummary = () => {
             className={styles.iconButton}
             icon={<LikeIcon />}
             aria-label="Like"
-          />
-          <Button
-            variant="text"
-            className={styles.iconButton}
-            icon={<MessageIcon />}
-            aria-label="Comment"
           />
           <Button
             variant="text"

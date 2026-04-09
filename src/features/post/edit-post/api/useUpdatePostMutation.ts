@@ -5,7 +5,6 @@ import { postsControllerEditPost } from '@/shared/api/generated/endpoints/posts/
 import type { UpdatePostInputDto } from '@/shared/api/generated/model';
 import { mainPageKeys } from '@/shared/api/keys-factories/mainPageKeysFactory';
 import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
-import { profileKeys } from '@/shared/api/keys-factories/profileKeysFactory';
 
 type UpdatePostInput = UpdatePostInputDto & {
   postId: string;
@@ -21,13 +20,13 @@ export const useUpdatePostMutation = () => {
     onSuccess: async (_, variables) => {
       await Promise.all([
         queryClient.invalidateQueries({
+          queryKey: postsKeys.byId(variables.postId),
+        }),
+        queryClient.invalidateQueries({
           queryKey: postsKeys.all,
         }),
         queryClient.invalidateQueries({
           queryKey: mainPageKeys.posts(),
-        }),
-        queryClient.invalidateQueries({
-          queryKey: profileKeys.userProfile(variables.ownerId),
         }),
       ]);
     },

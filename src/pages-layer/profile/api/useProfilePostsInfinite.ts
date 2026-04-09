@@ -5,16 +5,8 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import type { PostViewDto } from '@/shared/api/generated/model';
 import { postsControllerGetProfilePosts } from '@/shared/api/generated/endpoints/posts/posts';
 import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
-import type { Post } from '@/widgets/PostModal/ui/post.types';
 
 const POSTS_PER_PAGE = 12;
-
-const normalizePost = (post: PostViewDto): Post => {
-  return {
-    ...post,
-    description: typeof post.description === 'string' ? post.description : '',
-  };
-};
 
 export const useProfilePostsInfinite = (profileId: string) => {
   const observerRef = useRef<HTMLDivElement | null>(null);
@@ -29,7 +21,7 @@ export const useProfilePostsInfinite = (profileId: string) => {
       });
 
       return {
-        data: response.items.map(normalizePost),
+        data: response.items,
         total: response.totalCount,
       };
     },
@@ -47,7 +39,8 @@ export const useProfilePostsInfinite = (profileId: string) => {
   const hasNextPage = query.hasNextPage;
   const isFetchingNextPage = query.isFetchingNextPage;
 
-  const posts: Post[] = query.data?.pages.flatMap((page) => page.data) ?? [];
+  const posts: PostViewDto[] =
+    query.data?.pages.flatMap((page) => page.data) ?? [];
 
   useEffect(() => {
     const node = observerRef.current;

@@ -7,8 +7,9 @@ import { useTranslations } from 'next-intl';
 import { Button, Carousel } from 'snapflow-ui-kit/client';
 import { ImageIcon } from 'snapflow-ui-kit/icons';
 import { useMe } from '@/entities/user';
+import type { PostViewDto } from '@/shared/api/generated/model';
+import { usePostByIdQuery } from '@/widgets/PostModal/api/usePostByIdQuery';
 import { PostModal } from '@/widgets/PostModal';
-import type { Post } from '@/widgets/PostModal/ui/post.types';
 import { EmptyStateMessage } from '@/shared/ui';
 import s from './ProfilePage.module.css';
 import { useProfilePostsInfinite } from '../api/useProfilePostsInfinite';
@@ -37,24 +38,30 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
   const { data: me } = useMe();
   const { posts, observerRef, hasNextPage, isPending, isError, refetch } =
     useProfilePostsInfinite(profileId);
-  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+  const [selectedPost, setSelectedPost] = useState<PostViewDto | null>(null);
   const closePostModal = () => setSelectedPost(null);
+  const { data: selectedPostData } = usePostByIdQuery({
+    postId: selectedPost?.id ?? null,
+    isOwner: me?.userId === selectedPost?.owner.ownerId,
+    initialPost: selectedPost,
+  });
 
   const handlePostKeyDown =
-    (post: Post) => (event: KeyboardEvent<HTMLElement>) => {
+    (post: PostViewDto) => (event: KeyboardEvent<HTMLElement>) => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
         setSelectedPost(post);
       }
     };
 
-  const handlePostClick = (post: Post) => (event: MouseEvent<HTMLElement>) => {
-    if (isNestedInteractiveTarget(event.target, event.currentTarget)) {
-      return;
-    }
+  const handlePostClick =
+    (post: PostViewDto) => (event: MouseEvent<HTMLElement>) => {
+      if (isNestedInteractiveTarget(event.target, event.currentTarget)) {
+        return;
+      }
 
-    setSelectedPost(post);
-  };
+      setSelectedPost(post);
+    };
 
   return (
     <>
@@ -119,14 +126,12 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
         <p className={s.endMessage}>{t('allPostsLoaded')}</p>
       )}
 
-      {selectedPost ? (
+      {selectedPostData ? (
         <PostModal
           open
-          post={selectedPost}
-          isOwner={me?.userId === selectedPost.owner.ownerId}
+          post={selectedPostData}
+          isOwner={me?.userId === selectedPostData.owner.ownerId}
           onCloseAction={closePostModal}
-          onPostUpdated={setSelectedPost}
-          onPostDeleted={closePostModal}
         />
       ) : null}
     </>

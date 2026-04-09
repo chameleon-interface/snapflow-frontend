@@ -20,6 +20,9 @@ export const useDeletePostMutation = () => {
     onSuccess: async (_, variables) => {
       await Promise.all([
         queryClient.invalidateQueries({
+          queryKey: postsKeys.byId(variables.postId),
+        }),
+        queryClient.invalidateQueries({
           queryKey: postsKeys.all,
         }),
         queryClient.invalidateQueries({
@@ -29,10 +32,6 @@ export const useDeletePostMutation = () => {
           queryKey: profileKeys.userProfile(variables.ownerId),
         }),
       ]);
-
-      queryClient.removeQueries({
-        queryKey: postsKeys.byId(variables.postId),
-      });
     },
   });
 };

@@ -9,7 +9,7 @@ import { UserAvatar } from '@/shared/ui/UserAvatar';
 import styles from './PostHeader.module.css';
 
 type Props = {
-  canManagePost: boolean;
+  isOwner: boolean;
   ownerAvatarUrl: string | null;
   ownerUsername: string;
   onDelete: () => void;
@@ -17,7 +17,7 @@ type Props = {
 };
 
 export const PostHeader = ({
-  canManagePost,
+  isOwner,
   ownerAvatarUrl,
   ownerUsername,
   onDelete,
@@ -39,7 +39,7 @@ export const PostHeader = ({
         />
         <Typography variant="text-16-bold">{ownerUsername}</Typography>
       </div>
-      {canManagePost ? (
+      {isOwner ? (
         <DropdownMenu
           items={actionItems}
           align="end"

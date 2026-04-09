@@ -22,7 +22,7 @@ export const PostGallery = ({ photoUrls }: Props) => {
                 alt={`Post ${index + 1}`}
                 fill
                 className={styles.slideImage}
-                sizes="562px"
+                sizes="(max-width: 900px) 100vw, 50vw"
               />
             ) : (
               <div className={styles.photoFallback} />

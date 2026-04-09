@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { Button, Textarea, Typography } from 'snapflow-ui-kit';
+import type { OwnerViewDto } from '@/shared/api/generated/model';
 import { UserAvatar } from '@/shared/ui/UserAvatar';
 import styles from './PostEdit.module.css';
 
@@ -10,8 +11,7 @@ type Props = {
   isPending: boolean;
   isSaveDisabled: boolean;
   maxLength: number;
-  ownerAvatar: string | null;
-  ownerName: string;
+  owner: OwnerViewDto;
   previewPhotoUrl: string | null;
   onChange: (value: string) => void;
   onSave: () => void;
@@ -22,8 +22,7 @@ export const PostEdit = ({
   isPending,
   isSaveDisabled,
   maxLength,
-  ownerAvatar,
-  ownerName,
+  owner,
   previewPhotoUrl,
   onChange,
   onSave,
@@ -47,8 +46,12 @@ export const PostEdit = ({
 
       <div className={styles.formSection}>
         <div className={styles.author}>
-          <UserAvatar avatarUrl={ownerAvatar} size={36} username={ownerName} />
-          <Typography variant="text-16-bold">{ownerName}</Typography>
+          <UserAvatar
+            avatarUrl={owner.avatarUrl}
+            size={36}
+            username={owner.username}
+          />
+          <Typography variant="text-16-bold">{owner.username}</Typography>
         </div>
         <div className={styles.descriptionArea}>
           <Textarea
