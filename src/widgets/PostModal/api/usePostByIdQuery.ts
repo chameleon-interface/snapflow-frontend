@@ -6,6 +6,7 @@ import {
   postsControllerGetPublicPost,
 } from '@/shared/api/generated/endpoints/posts/posts';
 import type { PostViewDto } from '@/shared/api/generated/model';
+import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
 
 type Params = {
   initialPost?: PostViewDto | null;
@@ -15,7 +16,7 @@ type Params = {
 
 export const usePostByIdQuery = ({ initialPost, isOwner, postId }: Params) => {
   return useQuery({
-    queryKey: ['posts', 'by-id', postId, isOwner],
+    queryKey: postsKeys.byId(postId ?? 'unknown', isOwner),
     queryFn: () =>
       isOwner && postId
         ? postsControllerGetPostById(postId)
