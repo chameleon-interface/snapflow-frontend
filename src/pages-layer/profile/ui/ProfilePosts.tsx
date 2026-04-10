@@ -1,9 +1,8 @@
 'use client';
 
-import Image from 'next/image';
+import { PostCardPreview } from '@/entities/post';
 import { useTranslations } from 'next-intl';
-import { Button, Carousel } from 'snapflow-ui-kit/client';
-import { ImageIcon } from 'snapflow-ui-kit/icons';
+import { Button } from 'snapflow-ui-kit/client';
 import { EmptyStateMessage } from '@/shared/ui';
 import s from './ProfilePage.module.css';
 import { useProfilePostsInfinite } from '../api/useProfilePostsInfinite';
@@ -44,27 +43,7 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
         )}
 
         {posts.map((post) => (
-          <article key={post.id} className={s.post}>
-            {post.mediaCount > 1 && (
-              <div className={s.multiMediaBadge}>
-                <ImageIcon aria-hidden />
-                <span>{post.mediaCount}</span>
-              </div>
-            )}
-            <Carousel className={s.postCarousel}>
-              {post.medias.map((media, index) => (
-                <div key={media.id} className={s.postSlide}>
-                  <Image
-                    src={media.url}
-                    alt={`Photo ${index + 1} of ${post.mediaCount} in post ${post.id}`}
-                    fill
-                    className={s.postImage}
-                    sizes="(max-width: 600px) 150px, 234px"
-                  />
-                </div>
-              ))}
-            </Carousel>
-          </article>
+          <PostCardPreview key={post.id} post={post} variant="compact" />
         ))}
       </section>
 

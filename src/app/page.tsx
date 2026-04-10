@@ -1,4 +1,5 @@
 import { MainPage } from '@/pages-layer/main-page';
+import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
 import { getPostsSSR } from '@/widgets/main-page/PostsBlock';
 import { getRegisteredUsersCountSSR } from '@/widgets/main-page/RegisteredUsersCount';
 import { mainPageKeys } from '@/shared/api/keys-factories/mainPageKeysFactory';
@@ -19,7 +20,7 @@ export default async function Home() {
       queryFn: getRegisteredUsersCountSSR,
     }),
     queryClient.prefetchQuery({
-      queryKey: mainPageKeys.posts(),
+      queryKey: postsKeys.latest(),
       queryFn: getPostsSSR,
     }),
   ]);

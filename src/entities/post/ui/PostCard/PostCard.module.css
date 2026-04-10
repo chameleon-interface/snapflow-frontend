@@ -1,0 +1,17 @@
+.card {
+  width: 100%;
+  max-width: 491px;
+  background: var(--color-dark-700);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 12px;
+}
+
+@media (width <= 768px) {
+  .card {
+    max-width: none;
+  }
+}

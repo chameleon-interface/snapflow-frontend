@@ -1,0 +1,62 @@
+.description {
+  display: block;
+  flex: 1;
+
+  min-width: 0;
+  margin: 0;
+
+  color: var(--color-light-100);
+  text-align: left;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.descriptionRow {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.descriptionAvatar {
+  flex-shrink: 0;
+}
+
+.descriptionAuthor {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.descriptionAuthorLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.descriptionAuthorLink:hover {
+  color: var(--color-accent-500);
+}
+
+.descriptionAuthorLink:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+.likesText {
+  margin: 0 0 24px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 171%;
+  color: var(--color-light-100);
+}
+
+.likesCount {
+  font-weight: 400;
+}
+
+.likesLabel {
+  font-weight: 700;
+}
