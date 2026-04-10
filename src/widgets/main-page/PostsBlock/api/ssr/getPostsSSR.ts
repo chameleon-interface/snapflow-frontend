@@ -1,17 +1,17 @@
 import 'server-only';
 
+import { LATEST_POSTS_QUERY_PARAMS } from '@/entities/post/model/latestPostsQueryParams';
 import { postsControllerGetPosts } from '@/shared/api/generated/endpoints/posts/posts';
-import { mainPageKeys } from '@/shared/api/keys-factories/mainPageKeysFactory';
+import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
 import { unstable_cache } from 'next/cache';
-import { POSTS_QUERY_PARAMS } from '../../model/postQueryParams';
 
-const HOME_POSTS_TAG = mainPageKeys.posts().join(':');
+const LATEST_POSTS_TAG = postsKeys.latest().join(':');
 
 export const getPostsSSR = unstable_cache(
-  async () => postsControllerGetPosts(POSTS_QUERY_PARAMS),
-  [...mainPageKeys.posts()],
+  async () => postsControllerGetPosts(LATEST_POSTS_QUERY_PARAMS),
+  [...postsKeys.latest()],
   {
     revalidate: 60,
-    tags: [HOME_POSTS_TAG],
+    tags: [LATEST_POSTS_TAG],
   },
 );

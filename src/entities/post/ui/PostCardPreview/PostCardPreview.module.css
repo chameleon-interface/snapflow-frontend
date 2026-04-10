@@ -49,13 +49,6 @@
   min-width: 0;
 }
 
-.userInfo {
-  display: flex;
-  gap: clamp(8px, 2vw, 12px);
-  align-items: center;
-  min-width: 0;
-}
-
 .content {
   position: relative;
   z-index: 1;
@@ -75,6 +68,15 @@
   margin-top: calc(-1 * var(--post-card-content-lift));
 }
 
+.contentCompact {
+  gap: 0;
+  padding-top: 6px;
+}
+
+.contentCompact.contentExpanded {
+  margin-top: 0;
+}
+
 @media (width <= 380px) {
   .content {
     padding-top: 6px;
@@ -87,15 +89,6 @@
   }
 }
 
-.username {
-  min-width: 0;
-}
-
 .time {
   color: var(--color-light-900);
-}
-
-.description {
-  max-width: 100%;
-  overflow-wrap: anywhere;
 }

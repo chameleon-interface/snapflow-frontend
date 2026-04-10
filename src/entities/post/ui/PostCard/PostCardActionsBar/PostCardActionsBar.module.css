@@ -1,0 +1,44 @@
+.actionsRow {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+
+  min-height: 24px;
+  margin-bottom: 17px;
+}
+
+.primaryActions {
+  display: flex;
+  gap: 20px;
+}
+
+.iconButton {
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+
+  color: var(--color-light-100);
+
+  background: transparent;
+}
+
+.iconButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+.iconButton:hover {
+  color: var(--color-accent-500);
+}
+
+.iconButton:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}

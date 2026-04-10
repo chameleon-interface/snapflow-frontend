@@ -1,21 +1,24 @@
 'use client';
 
 import type { PostViewDto } from '@/shared/api/generated/model';
+import { PostAuthorInfo } from '@/entities/post/ui/PostAuthorInfo';
+import { ROUTES } from '@/shared/config/routes';
 import { RelativeTime } from '@/shared/ui';
-import Image from 'next/image';
-import { Carousel, Typography } from 'snapflow-ui-kit/client';
-import { clsx } from 'clsx';
-import { useCallback, useState } from 'react';
-import styles from './PostCard.module.css';
-import { UserAvatar } from '@/shared/ui/UserAvatar';
 import { ExpandableText } from '@/shared/ui/ExpandableText';
+import { clsx } from 'clsx';
+import Image from 'next/image';
+import { useCallback, useState } from 'react';
+import { Carousel } from 'snapflow-ui-kit/client';
+import styles from './PostCardPreview.module.css';
 
 type Props = {
   post: PostViewDto;
+  variant?: 'default' | 'compact';
 };
 
-export const PostCard = ({ post }: Props) => {
+export const PostCardPreview = ({ post, variant = 'default' }: Props) => {
   const username = post.owner.username ?? '?';
+  const isCompact = variant === 'compact';
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   const handleDescriptionExpandedChange = useCallback((expanded: boolean) => {
@@ -40,39 +43,32 @@ export const PostCard = ({ post }: Props) => {
           </div>
         ))}
       </Carousel>
-      <div
-        className={clsx(
-          styles.content,
-          isDescriptionExpanded && styles.contentExpanded,
-        )}
-      >
-        <header className={styles.postHeader}>
-          <div className={styles.userInfo}>
-            <UserAvatar
+      {!isCompact && (
+        <div
+          className={clsx(
+            styles.content,
+            isDescriptionExpanded && styles.contentExpanded,
+          )}
+        >
+          <header className={styles.postHeader}>
+            <PostAuthorInfo
               avatarUrl={post.owner.avatarUrl}
-              size={36}
+              headingId={`post-heading-${post.id}`}
+              profileHref={ROUTES.PROFILE(post.owner.ownerId)}
               username={username}
             />
-            <Typography
-              id={`post-heading-${post.id}`}
-              className={styles.username}
-              variant="h3"
-              as="h3"
-            >
-              {username}
-            </Typography>
-          </div>
-          <RelativeTime isoDate={post.createdAt} className={styles.time} />
-        </header>
-        {post.description && (
-          <ExpandableText
-            key={`${post.id}-${post.description}-3`}
-            text={post.description}
-            lines={3}
-            onExpandedChange={handleDescriptionExpandedChange}
-          />
-        )}
-      </div>
+            <RelativeTime isoDate={post.createdAt} className={styles.time} />
+          </header>
+          {post.description && (
+            <ExpandableText
+              key={`${post.id}-${post.description}-3`}
+              text={post.description}
+              lines={3}
+              onExpandedChange={handleDescriptionExpandedChange}
+            />
+          )}
+        </div>
+      )}
     </article>
   );
 };
