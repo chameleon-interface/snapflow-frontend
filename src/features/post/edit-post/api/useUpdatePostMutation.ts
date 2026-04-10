@@ -20,10 +20,7 @@ export const useUpdatePostMutation = () => {
     onSuccess: async (_, variables) => {
       await Promise.all([
         queryClient.invalidateQueries({
-          queryKey: postsKeys.byId(variables.postId, true),
-        }),
-        queryClient.invalidateQueries({
-          queryKey: postsKeys.byId(variables.postId, false),
+          queryKey: postsKeys.byId(variables.postId),
         }),
         queryClient.invalidateQueries({
           queryKey: postsKeys.all,

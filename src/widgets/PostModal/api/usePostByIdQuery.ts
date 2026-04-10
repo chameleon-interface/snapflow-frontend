@@ -16,7 +16,9 @@ type Params = {
 
 export const usePostByIdQuery = ({ initialPost, isOwner, postId }: Params) => {
   return useQuery({
-    queryKey: postsKeys.byId(postId ?? 'unknown', isOwner),
+    // eslint-disable-next-line @tanstack/query/exhaustive-deps
+    queryKey: postsKeys.byId(postId ?? 'unknown'),
+    // We intentionally keep one cache entry per post id and choose the endpoint by access context.
     queryFn: () =>
       isOwner && postId
         ? postsControllerGetPostById(postId)
