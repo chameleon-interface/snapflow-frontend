@@ -16,7 +16,6 @@
     "backToSignUp": "Back to Sign Up"
   },
   "Pages": {
-    "feedTitle": "Feed",
     "favoritesTitle": "Favorites",
     "messengerTitle": "Messenger",
     "searchTitle": "Search",
@@ -47,6 +46,26 @@
   "ExpandableText": {
     "showMore": "Show more",
     "showLess": "Hide"
+  },
+  "Feed": {
+    "title": "Feed",
+    "loadingMore": "Loading more posts...",
+    "error": "Failed to load feed.",
+    "retry": "Try again",
+    "empty": "No posts yet.",
+    "likesLabel": "\"Like\"",
+    "commentsPlaceholder": "View All Comments (114)",
+    "addCommentPlaceholder": "Add a comment...",
+    "publish": "Publish",
+    "mediaUnavailable": "Media is unavailable",
+    "mediaAlt": "Post image {current} of {total} by {username}",
+    "actions": {
+      "like": "Like",
+      "comment": "Comment",
+      "share": "Share",
+      "save": "Save",
+      "more": "More actions"
+    }
   },
   "Settings": {
     "tabsAria": "Settings tabs",

@@ -1,1 +1,0 @@
-export { usePostsQuery } from './usePostsQuery';

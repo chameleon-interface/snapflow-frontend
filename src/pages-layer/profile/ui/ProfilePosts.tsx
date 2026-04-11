@@ -2,10 +2,9 @@
 
 import type { KeyboardEvent, MouseEvent } from 'react';
 import { useState } from 'react';
-import Image from 'next/image';
+import { PostCardPreview } from '@/entities/post';
 import { useTranslations } from 'next-intl';
-import { Button, Carousel } from 'snapflow-ui-kit/client';
-import { ImageIcon } from 'snapflow-ui-kit/icons';
+import { Button } from 'snapflow-ui-kit/client';
 import { useMe } from '@/entities/user';
 import type { PostViewDto } from '@/shared/api/generated/model';
 import { usePostByIdQuery } from '@/widgets/PostModal/api/usePostByIdQuery';
@@ -88,7 +87,7 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
         )}
 
         {posts.map((post) => (
-          <article
+          <div
             key={post.id}
             className={s.post}
             role="button"
@@ -97,26 +96,8 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
             onClick={handlePostClick(post)}
             onKeyDown={handlePostKeyDown(post)}
           >
-            {post.postMedias.length > 1 && (
-              <div className={s.multiMediaBadge}>
-                <ImageIcon aria-hidden />
-                <span>{post.postMedias.length}</span>
-              </div>
-            )}
-            <Carousel className={s.postCarousel}>
-              {post.postMedias.map((media, index) => (
-                <div key={media.postMediaId} className={s.postSlide}>
-                  <Image
-                    src={media.url}
-                    alt={`Photo ${index + 1} of ${post.postMedias.length} in post ${post.id}`}
-                    fill
-                    className={s.postImage}
-                    sizes="(max-width: 600px) 150px, 234px"
-                  />
-                </div>
-              ))}
-            </Carousel>
-          </article>
+            <PostCardPreview post={post} variant="compact" />
+          </div>
         ))}
       </section>
 

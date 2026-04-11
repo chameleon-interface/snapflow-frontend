@@ -1,13 +1,12 @@
 'use client';
 
+import { PostCardPreview, useLatestPostsQuery } from '@/entities/post';
 import { useTranslations } from 'next-intl';
 import { EmptyStateMessage } from '@/shared/ui';
 import styles from './PostsBlock.module.css';
-import { usePostsQuery } from '@/widgets/main-page/PostsBlock/api';
-import { PostCard } from './PostCard';
 
 export const PostsBlock = () => {
-  const { data } = usePostsQuery();
+  const { data } = useLatestPostsQuery();
   const t = useTranslations('MainPage');
 
   const posts = data?.items ?? [];
@@ -22,7 +21,7 @@ export const PostsBlock = () => {
   return (
     <section className={styles.postsBlock}>
       {posts.map((post) => {
-        return <PostCard key={post.id} post={post} />;
+        return <PostCardPreview key={post.id} post={post} />;
       })}
     </section>
   );
