@@ -16,9 +16,7 @@
     "backToSignUp": "Back to Sign Up"
   },
   "Pages": {
-    "feedTitle": "Feed",
     "favoritesTitle": "Favorites",
-    "profileTitle": "Profile",
     "messengerTitle": "Messenger",
     "searchTitle": "Search",
     "statisticsTitle": "Statistics",
@@ -28,7 +26,17 @@
     "createNewPasswordTitle": "Create New Password",
     "placeholder": "Placeholder page.",
     "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service"
+    "termsOfService": "Terms of Service",
+    "profileFollowing": "Following",
+    "profileFollowers": "Followers",
+    "profilePublications": "Publications",
+    "profileSettings": "Profile Settings",
+    "allPostsLoaded": "You have viewed all posts",
+    "profileNotFound": "This profile does not exist",
+    "profileLoadFailed": "Failed to load profile",
+    "profilePostsLoadFailed": "Failed to load posts for this profile",
+    "profilePostsUnavailable": "Posts are temporarily unavailable",
+    "retry": "Retry"
   },
   "MainPage": {
     "registeredUsers": "Registered users:",
@@ -38,6 +46,26 @@
   "ExpandableText": {
     "showMore": "Show more",
     "showLess": "Hide"
+  },
+  "Feed": {
+    "title": "Feed",
+    "loadingMore": "Loading more posts...",
+    "error": "Failed to load feed.",
+    "retry": "Try again",
+    "empty": "No posts yet.",
+    "likesLabel": "\"Like\"",
+    "commentsPlaceholder": "View All Comments (114)",
+    "addCommentPlaceholder": "Add a comment...",
+    "publish": "Publish",
+    "mediaUnavailable": "Media is unavailable",
+    "mediaAlt": "Post image {current} of {total} by {username}",
+    "actions": {
+      "like": "Like",
+      "comment": "Comment",
+      "share": "Share",
+      "save": "Save",
+      "more": "More actions"
+    }
   },
   "Settings": {
     "tabsAria": "Settings tabs",
@@ -50,6 +78,7 @@
     "selectProfilePhoto": "Select Photo",
     "profileAvatar": "Profile avatar",
     "deleteAvatar": "Delete avatar",
+    "deleteAvatarConfirmation": "Are you sure you want to delete the photo?",
     "saveChanges": "Save Changes",
     "settingsSaved": "Your settings are saved!",
     "avatarUpdated": "Avatar updated successfully!",

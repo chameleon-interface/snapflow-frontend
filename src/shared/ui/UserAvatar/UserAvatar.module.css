@@ -20,7 +20,6 @@
 }
 
 .avatarPlaceholder {
-  font-size: calc(var(--user-avatar-size) * 0.444);
   font-weight: 600;
   color: var(--color-light-900);
   background: linear-gradient(

@@ -3,6 +3,7 @@ import { profileControllerUploadAvatar } from '@/shared/api/generated/endpoints/
 import type {
   AvatarViewDto,
   ProfileControllerUploadAvatarBody,
+  PublicProfileViewDto,
   ProfileViewDto,
 } from '@/shared/api/generated/model';
 import { profileKeys } from '@/shared/api/keys-factories/profileKeysFactory';
@@ -23,6 +24,20 @@ export const useUploadProfileAvatar = () => {
             ? { ...currentProfile, avatarUrl: publicUrl }
             : currentProfile,
       );
+
+      const profile = queryClient.getQueryData<ProfileViewDto>(
+        profileKeys.myProfile(),
+      );
+
+      if (profile?.id) {
+        queryClient.setQueryData<PublicProfileViewDto | undefined>(
+          profileKeys.userProfile(profile.id),
+          (currentProfile) =>
+            currentProfile
+              ? { ...currentProfile, avatarUrl: publicUrl }
+              : currentProfile,
+        );
+      }
     },
   });
 };

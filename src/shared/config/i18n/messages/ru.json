@@ -16,9 +16,7 @@
     "backToSignUp": "Назад к регистрации"
   },
   "Pages": {
-    "feedTitle": "Лента",
     "favoritesTitle": "Избранное",
-    "profileTitle": "Профиль",
     "messengerTitle": "Мессенджер",
     "searchTitle": "Поиск",
     "statisticsTitle": "Статистика",
@@ -28,7 +26,17 @@
     "createNewPasswordTitle": "Создать новый пароль",
     "placeholder": "Страница-заглушка.",
     "privacyPolicy": "Политика конфиденциальности",
-    "termsOfService": "Условия предоставления услуг"
+    "termsOfService": "Условия предоставления услуг",
+    "profileFollowing": "Подписки",
+    "profileFollowers": "Подписчики",
+    "profilePublications": "Публикации",
+    "profileSettings": "Настройки профиля",
+    "allPostsLoaded": "Вы просмотрели все публикации",
+    "profileNotFound": "Такого профиля нет",
+    "profileLoadFailed": "Не удалось загрузить профиль",
+    "profilePostsLoadFailed": "Не удалось загрузить публикации этого профиля",
+    "profilePostsUnavailable": "Публикации временно недоступны",
+    "retry": "Повторить"
   },
   "MainPage": {
     "registeredUsers": "Пользователей:",
@@ -38,6 +46,26 @@
   "ExpandableText": {
     "showMore": "Показать больше",
     "showLess": "Скрыть"
+  },
+  "Feed": {
+    "title": "Лента",
+    "loadingMore": "Загружаем еще посты...",
+    "error": "Не удалось загрузить ленту.",
+    "retry": "Повторить",
+    "empty": "Публикаций пока нет.",
+    "likesLabel": "\"Нравится\"",
+    "commentsPlaceholder": "Посмотреть все комментарии (114)",
+    "addCommentPlaceholder": "Добавить комментарий...",
+    "publish": "Опубликовать",
+    "mediaUnavailable": "Медиа недоступно",
+    "mediaAlt": "Изображение поста {current} из {total} от {username}",
+    "actions": {
+      "like": "Нравится",
+      "comment": "Комментировать",
+      "share": "Отправить",
+      "save": "Сохранить",
+      "more": "Дополнительные действия"
+    }
   },
   "Settings": {
     "tabsAria": "Вкладки настроек",
@@ -50,6 +78,7 @@
     "selectProfilePhoto": "Выберите фото",
     "profileAvatar": "Аватар профиля",
     "deleteAvatar": "Удалить аватар",
+    "deleteAvatarConfirmation": "Вы уверены, что хотите удалить фотографию?",
     "saveChanges": "Сохранить изменения",
     "settingsSaved": "Ваши настройки сохранены!",
     "avatarUpdated": "Аватар успешно обновлен!",

@@ -1,5 +1,6 @@
 export const postsKeys = {
   all: ['posts'],
-  myPosts: () => [...postsKeys.all, 'my'],
+  feed: () => [...postsKeys.all, 'feed'],
+  latest: () => [...postsKeys.all, 'latest'],
   usersPosts: (userId: string) => [...postsKeys.all, 'user', userId],
 };

@@ -14,7 +14,7 @@
     "lint:fix": "eslint . --fix",
     "format:write": "prettier \"**/*.{js,ts,jsx,tsx,css,scss,json,md,yml,yaml}\" --write",
     "format:check": "prettier \"**/*.{js,ts,jsx,tsx,css,scss,json,md,yml,yaml}\" --check",
-    "stylelint": "stylelint \"**/*.{css,scss,module.css,module.scss}\"",
+    "stylelint": "stylelint \"**/*.{css,scss,module.css,module.scss}\" --max-warnings 0",
     "stylelint:fix": "stylelint \"**/*.{css,scss,module.css,module.scss}\" --fix",
     "i18n:validate": "node scripts/run-i18n-validate.mjs"
   },
@@ -25,6 +25,7 @@
     ],
     "*.{css,scss,module.css,module.scss}": [
       "pnpm format:write --",
+      "pnpm stylelint:fix --",
       "pnpm stylelint --"
     ],
     "*.{json,md,yml,yaml}": [
@@ -40,7 +41,7 @@
     "clsx": "2.1.1",
     "disposable-email-domains": "1.0.62",
     "jose": "6.2.2",
-    "next": "16.1.6",
+    "next": "16.2.2",
     "next-intl": "4.8.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -48,7 +49,7 @@
     "react-google-recaptcha": "3.1.0",
     "react-hook-form": "7.71.1",
     "react-hot-toast": "2.6.0",
-    "snapflow-ui-kit": "1.2.9",
+    "snapflow-ui-kit": "1.2.10",
     "zod": "4.3.6"
   },
   "devDependencies": {

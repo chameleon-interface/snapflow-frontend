@@ -1,3 +1,2 @@
-export { PostsBlock, PostCard } from './ui';
-export { usePostsQuery } from './api/usePostsQuery';
+export { PostsBlock } from './ui';
 export { getPostsSSR } from './api/ssr/getPostsSSR';

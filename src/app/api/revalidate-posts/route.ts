@@ -1,9 +1,9 @@
 import { jwtVerify } from 'jose';
 import { revalidateTag } from 'next/cache';
 import { NextResponse } from 'next/server';
-import { mainPageKeys } from '@/shared/api/keys-factories/mainPageKeysFactory';
+import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
 
-const HOME_POSTS_TAG = mainPageKeys.posts().join(':');
+const LATEST_POSTS_TAG = postsKeys.latest().join(':');
 const REQUIRED_ACTION = 'revalidate_home';
 const encoder = new TextEncoder();
 
@@ -52,7 +52,7 @@ export const POST = async (request: Request) => {
       );
     }
 
-    revalidateTag(HOME_POSTS_TAG, 'max');
+    revalidateTag(LATEST_POSTS_TAG, 'max');
 
     return NextResponse.json({ revalidated: true }, { status: 200 });
   } catch (error) {
