@@ -112,6 +112,31 @@
   color: var(--color-light-100);
 }
 
+.statButton {
+  cursor: pointer;
+
+  margin: 0;
+  padding: 0;
+  border: none;
+
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+
+  background: none;
+}
+
+.statButton:hover strong,
+.statButton:focus-visible strong {
+  color: var(--color-accent-500);
+}
+
+.statButton:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
 .bio {
   margin-top: 23px;
 }

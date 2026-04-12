@@ -11,6 +11,7 @@ type Props = {
   likesCount: number;
   ownerId: string;
   username: string;
+  onLikesClick?: () => void;
 };
 
 export const PostCardMeta = ({
@@ -19,6 +20,7 @@ export const PostCardMeta = ({
   likesCount,
   ownerId,
   username,
+  onLikesClick,
 }: Props) => {
   const locale = useLocale();
   const t = useTranslations('Feed');
@@ -44,10 +46,21 @@ export const PostCardMeta = ({
         </div>
       ) : null}
 
-      <p className={styles.likesText}>
-        <span className={styles.likesCount}>{formattedLikesCount}</span>{' '}
-        <span className={styles.likesLabel}>{t('likesLabel')}</span>
-      </p>
+      {onLikesClick ? (
+        <button
+          type="button"
+          className={styles.likesButton}
+          onClick={onLikesClick}
+        >
+          <span className={styles.likesCount}>{formattedLikesCount}</span>{' '}
+          <span className={styles.likesLabel}>{t('likesLabel')}</span>
+        </button>
+      ) : (
+        <p className={styles.likesText}>
+          <span className={styles.likesCount}>{formattedLikesCount}</span>{' '}
+          <span className={styles.likesLabel}>{t('likesLabel')}</span>
+        </p>
+      )}
     </>
   );
 };

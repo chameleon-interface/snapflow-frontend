@@ -1,8 +1,9 @@
 'use client';
 
 import type { PostViewDto } from '@/shared/api/generated/model';
-import { useTranslations } from 'next-intl';
-import { useMemo } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { useMemo, useState } from 'react';
+import { UserListsModal } from '@/shared/ui/modals';
 import { PostAddComment } from './PostAddComment/PostAddComment';
 import { PostCardActionsBar } from './PostCardActionsBar/PostCardActionsBar';
 import { PostCardCommentsLink } from './PostCardCommentsLink/PostCardCommentsLink';
@@ -19,6 +20,8 @@ const LIKES_PLACEHOLDER_COUNT = 2243;
 
 export const PostCard = ({ post }: Props) => {
   const t = useTranslations('Feed');
+  const locale = useLocale();
+  const [likesModalOpen, setLikesModalOpen] = useState(false);
   const username = post.owner.username || '?';
   const description = post.description?.trim() ?? '';
   const postImages = useMemo(
@@ -26,6 +29,13 @@ export const PostCard = ({ post }: Props) => {
     [post.postMedias],
   );
   const handleTodoAlert = () => window.alert('TODO');
+
+  const formattedLikes = new Intl.NumberFormat(locale).format(
+    LIKES_PLACEHOLDER_COUNT,
+  );
+  const likesModalTitle = t('likesListModalTitle', {
+    count: formattedLikes,
+  });
 
   return (
     <article className={s.card} aria-labelledby={`feed-post-${post.id}`}>
@@ -60,7 +70,7 @@ export const PostCard = ({ post }: Props) => {
           }}
           like={{
             ariaLabel: t('actions.like'),
-            onClickAction: handleTodoAlert,
+            onClickAction: () => setLikesModalOpen(true),
             title: t('actions.like'),
           }}
           save={{
@@ -81,6 +91,7 @@ export const PostCard = ({ post }: Props) => {
           likesCount={LIKES_PLACEHOLDER_COUNT}
           ownerId={post.owner.ownerId}
           username={username}
+          onLikesClick={() => setLikesModalOpen(true)}
         />
 
         <PostCardCommentsLink />
@@ -91,6 +102,13 @@ export const PostCard = ({ post }: Props) => {
           publishLabel={t('publish')}
         />
       </div>
+
+      <UserListsModal
+        open={likesModalOpen}
+        onClose={() => setLikesModalOpen(false)}
+        title={likesModalTitle}
+        rows={[]}
+      />
     </article>
   );
 };

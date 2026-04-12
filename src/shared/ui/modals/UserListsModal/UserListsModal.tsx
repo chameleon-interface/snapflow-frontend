@@ -9,11 +9,11 @@ import { Input, Modal } from 'snapflow-ui-kit/client';
 import { Button, Typography } from 'snapflow-ui-kit';
 import { ArrowBackIcon, SearchIcon } from 'snapflow-ui-kit/icons';
 import { useMediaQuery } from '@/shared/lib/hooks';
-import s from './SocialListModal.module.css';
+import s from './UserListsModal.module.css';
 
 const AVATAR_PLACEHOLDER = '/images/bro.svg';
 
-export type SocialListModalRow = {
+export type UserListsModalRow = {
   id: string;
   username: string;
   avatarSrc?: string;
@@ -30,11 +30,11 @@ export type ProfileTabsConfig = {
   onChange: (tab: 'following' | 'followers') => void;
 };
 
-export type SocialListModalProps = {
+export type UserListsModalProps = {
   open: boolean;
   onClose: () => void;
   title: string;
-  rows: SocialListModalRow[];
+  rows: UserListsModalRow[];
   profileTabs?: ProfileTabsConfig;
   followersList?: boolean;
 };
@@ -56,14 +56,14 @@ function RowAvatar({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-export const SocialListModal = ({
+export const UserListsModal = ({
   open,
   onClose,
   title,
   rows,
   profileTabs,
   followersList: followersListProp,
-}: SocialListModalProps) => {
+}: UserListsModalProps) => {
   const t = useTranslations('Modals.SocialList');
   const isMobile = useMediaQuery(768);
   const [search, setSearch] = useState('');

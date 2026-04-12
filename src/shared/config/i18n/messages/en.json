@@ -54,6 +54,7 @@
     "retry": "Try again",
     "empty": "No posts yet.",
     "likesLabel": "\"Like\"",
+    "likesListModalTitle": "Likes: {count}",
     "commentsPlaceholder": "View All Comments (114)",
     "addCommentPlaceholder": "Add a comment...",
     "publish": "Publish",

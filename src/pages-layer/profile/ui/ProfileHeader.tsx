@@ -2,12 +2,14 @@
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 import { Button } from 'snapflow-ui-kit/client';
 import { PaidIcon } from 'snapflow-ui-kit/icons';
 import { useMe } from '@/entities/user';
 import type { PublicProfileViewDto } from '@/shared/api/generated/model';
 import { ROUTES } from '@/shared/config';
 import { useMediaQuery } from '@/shared/lib/hooks/useMediaQuery';
+import { UserListsModal } from '@/shared/ui/modals';
 import { UserAvatar } from '@/shared/ui';
 import s from './ProfilePage.module.css';
 
@@ -21,6 +23,22 @@ export function ProfileHeader({ profile }: Props) {
   const isCompact = useMediaQuery(1024);
   const isOwner = me?.userId === profile.id;
   const isVerified = true;
+
+  const [socialOpen, setSocialOpen] = useState(false);
+  const [socialTab, setSocialTab] = useState<'following' | 'followers'>(
+    'following',
+  );
+
+  const openSocial = (tab: 'following' | 'followers') => {
+    setSocialTab(tab);
+    setSocialOpen(true);
+  };
+
+  const handleSocialClose = () => setSocialOpen(false);
+
+  const profileHandle = profile.username.startsWith('@')
+    ? profile.username
+    : `@${profile.username}`;
 
   return (
     <header className={s.header}>
@@ -56,12 +74,24 @@ export function ProfileHeader({ profile }: Props) {
 
         <ul className={s.userData}>
           <li>
-            <strong>{profile.userMetadata.followingCount}</strong>
-            <span>{t('profileFollowing')}</span>
+            <button
+              type="button"
+              className={s.statButton}
+              onClick={() => openSocial('following')}
+            >
+              <strong>{profile.userMetadata.followingCount}</strong>
+              <span>{t('profileFollowing')}</span>
+            </button>
           </li>
           <li>
-            <strong>{profile.userMetadata.followersCount}</strong>
-            <span>{t('profileFollowers')}</span>
+            <button
+              type="button"
+              className={s.statButton}
+              onClick={() => openSocial('followers')}
+            >
+              <strong>{profile.userMetadata.followersCount}</strong>
+              <span>{t('profileFollowers')}</span>
+            </button>
           </li>
           <li>
             <strong>{profile.userMetadata.publicationsCount}</strong>
@@ -71,6 +101,25 @@ export function ProfileHeader({ profile }: Props) {
 
         <p className={s.bio}>{profile.aboutMe ?? ''}</p>
       </div>
+
+      <UserListsModal
+        open={socialOpen}
+        onClose={handleSocialClose}
+        title={
+          socialTab === 'following'
+            ? t('profileFollowing')
+            : t('profileFollowers')
+        }
+        rows={[]}
+        profileTabs={{
+          profileTitle: profileHandle,
+          followingLabel: t('profileFollowing'),
+          followersLabel: t('profileFollowers'),
+          activeTab: socialTab,
+          onChange: setSocialTab,
+        }}
+        followersList={socialTab === 'followers'}
+      />
     </header>
   );
 }

@@ -54,6 +54,7 @@
     "retry": "Повторить",
     "empty": "Публикаций пока нет.",
     "likesLabel": "\"Нравится\"",
+    "likesListModalTitle": "Отметки «Нравится»: {count}",
     "commentsPlaceholder": "Посмотреть все комментарии (114)",
     "addCommentPlaceholder": "Добавить комментарий...",
     "publish": "Опубликовать",
