@@ -145,6 +145,23 @@
     "LogoutConfirm": {
       "title": "Подтверждение выхода",
       "message": "Вы действительно хотите выйти из своего аккаунта \"{email}\"?"
+    },
+    "Post": {
+      "viewTitle": "Публикация",
+      "editTitle": "Редактировать пост",
+      "editAction": "Редактировать",
+      "deleteAction": "Удалить",
+      "descriptionLabel": "Добавьте описание публикации",
+      "saveChanges": "Сохранить изменения",
+      "addCommentPlaceholder": "Добавить комментарий...",
+      "publishCommentAction": "Опубликовать",
+      "publishCommentSuccess": "Комментарий опубликован",
+      "deleteTitle": "Удалить пост",
+      "deleteMessage": "Вы действительно хотите удалить этот пост?",
+      "deleteSuccess": "Пост успешно удален",
+      "closeTitle": "Закрыть пост",
+      "closeMessage": "Вы действительно хотите завершить редактирование? Если закрыть окно, изменения не будут сохранены.",
+      "editSuccess": "Пост успешно обновлен"
     }
   },
   "PasswordRecovery": {

@@ -1,0 +1,25 @@
+.root {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 20px 16px 0;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.text {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.author {
+  font-weight: 700;
+}
+
+.meta {
+  margin-top: 4px;
+  color: var(--color-light-900);
+}

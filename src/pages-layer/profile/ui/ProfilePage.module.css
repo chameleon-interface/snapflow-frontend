@@ -136,6 +136,11 @@
   min-height: 0;
 }
 
+.post:focus-visible {
+  outline: 2px solid var(--color-accent-700);
+  outline-offset: 4px;
+}
+
 .postCarousel {
   position: relative;
 
