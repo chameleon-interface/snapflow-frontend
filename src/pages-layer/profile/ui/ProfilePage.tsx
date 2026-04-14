@@ -8,10 +8,12 @@ import { EmptyStateMessage } from '@/shared/ui';
 import { usePublicProfileQuery } from '../api/usePublicProfileQuery';
 
 type Props = {
+  from?: string | null;
   id: string;
+  postId?: string | null;
 };
 
-export function ProfilePage({ id }: Props) {
+export function ProfilePage({ id, postId, from }: Props) {
   const t = useTranslations('Pages');
   const { data, isPending, isError, error } = usePublicProfileQuery(id);
 
@@ -32,5 +34,5 @@ export function ProfilePage({ id }: Props) {
     );
   }
 
-  return <ProfileContent profile={data} />;
+  return <ProfileContent profile={data} postId={postId} from={from} />;
 }

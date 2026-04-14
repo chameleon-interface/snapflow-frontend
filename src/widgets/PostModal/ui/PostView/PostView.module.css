@@ -46,6 +46,11 @@
   min-height: 0;
 }
 
+.galleryWrapper {
+  min-width: 0;
+  min-height: 0;
+}
+
 .metaSection {
   display: flex;
   flex-direction: column;
@@ -57,12 +62,16 @@
 
 @media (width <= 900px) {
   .content {
-    overflow-x: hidden;
     display: flex;
     flex-direction: column;
 
     min-width: 0;
     height: auto;
+    min-height: 100%;
+  }
+
+  .galleryWrapper {
+    flex: none;
   }
 
   .metaSection {

@@ -1,21 +1,29 @@
 'use client';
 
 import type { KeyboardEvent, MouseEvent } from 'react';
-import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { PostCardPreview } from '@/entities/post';
+import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Button } from 'snapflow-ui-kit/client';
 import { useMe } from '@/entities/user';
 import type { PostViewDto } from '@/shared/api/generated/model';
+import { ROUTES } from '@/shared/config/routes';
 import { usePostByIdQuery } from '@/widgets/PostModal/api/usePostByIdQuery';
-import { PostModal } from '@/widgets/PostModal';
 import { EmptyStateMessage } from '@/shared/ui';
 import s from './ProfilePage.module.css';
 import { useProfilePostsInfinite } from '../api/useProfilePostsInfinite';
 
+const PostModal = dynamic(
+  () => import('@/widgets/PostModal').then((mod) => mod.PostModal),
+  { ssr: false },
+);
+
 type Props = {
+  from?: string | null;
   profileId: string;
   postsCount: number;
+  postId?: string | null;
 };
 
 const INTERACTIVE_TARGET_SELECTOR =
@@ -31,24 +39,32 @@ const isNestedInteractiveTarget = (
   );
 };
 
-export function ProfilePosts({ profileId, postsCount }: Props) {
+export function ProfilePosts({ from, profileId, postsCount, postId }: Props) {
   const t = useTranslations('Pages');
   const tMainPage = useTranslations('MainPage');
+  const router = useRouter();
   const { data: me } = useMe();
   const { posts, observerRef, hasNextPage, isPending, isError, refetch } =
     useProfilePostsInfinite(profileId);
-  const [selectedPost, setSelectedPost] = useState<PostViewDto | null>(null);
-  const closePostModal = () => setSelectedPost(null);
+  const initialPost =
+    posts.find((post) => post.id === (postId ?? null)) ?? null;
+  const closePostModal = () => {
+    router.push(from === 'main' ? ROUTES.HOME : ROUTES.PROFILE(profileId), {
+      scroll: false,
+    });
+  };
   const { data: selectedPostData } = usePostByIdQuery({
-    postId: selectedPost?.id ?? null,
-    initialPost: selectedPost,
+    postId: postId ?? null,
+    initialPost,
   });
 
   const handlePostKeyDown =
     (post: PostViewDto) => (event: KeyboardEvent<HTMLElement>) => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
-        setSelectedPost(post);
+        router.push(`${ROUTES.PROFILE(profileId)}?postId=${post.id}`, {
+          scroll: false,
+        });
       }
     };
 
@@ -58,7 +74,9 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
         return;
       }
 
-      setSelectedPost(post);
+      router.push(`${ROUTES.PROFILE(profileId)}?postId=${post.id}`, {
+        scroll: false,
+      });
     };
 
   return (
