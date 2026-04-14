@@ -1,6 +1,6 @@
 'use client';
 
-import { postsControllerCreateDraft } from '@/shared/api/generated/endpoints/posts/posts';
+import { postsControllerSaveDraft } from '@/shared/api/generated/endpoints/posts/posts';
 import type { CreatePostInputDto } from '@/shared/api/generated/model';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { openDraftQueryKey } from './useOpenDraftQuery';
@@ -10,7 +10,7 @@ export const useCreateDraftMutation = () => {
 
   return useMutation({
     mutationFn: (payload: CreatePostInputDto) =>
-      postsControllerCreateDraft(payload),
+      postsControllerSaveDraft(payload),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: openDraftQueryKey() });
     },

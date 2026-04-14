@@ -48,7 +48,7 @@ export const useFlow = ({ onClose }: Params) => {
   const { mutateAsync: uploadMediaForDraft, isPending: isUploadDraftPending } =
     useUploadMediaMutation();
 
-  const hasDraft = (openDraftQuery.data?.length ?? 0) > 0;
+  const hasDraft = openDraftQuery.data != null;
 
   const setOriginalPhotos = useCallback(
     (value: File[] | ((prev: File[]) => File[])) => {
@@ -237,8 +237,8 @@ export const useFlow = ({ onClose }: Params) => {
     const openDraft = async () => {
       setIsOpeningDraft(true);
       try {
-        const { data: freshDrafts } = await openDraftQuery.refetch();
-        const draft = (freshDrafts ?? openDraftQuery.data)?.[0] ?? null;
+        const { data: freshDraft } = await openDraftQuery.refetch();
+        const draft = freshDraft ?? openDraftQuery.data ?? null;
         if (!draft) return;
 
         const draftFiles = await mapDraftMediaToFiles(draft.postMedias);

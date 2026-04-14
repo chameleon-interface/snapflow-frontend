@@ -49,9 +49,9 @@ export const postsControllerGetPosts = (
   );
 };
 /**
- * @summary Создать черновик поста
+ * @summary Сохранить черновик поста
  */
-export const postsControllerCreateDraft = (
+export const postsControllerSaveDraft = (
   createPostInputDto: BodyType<CreatePostInputDto>,
   options?: SecondParameter<typeof customInstance<PostViewDto>>,
 ) => {
@@ -62,6 +62,17 @@ export const postsControllerCreateDraft = (
       headers: { 'Content-Type': 'application/json' },
       data: createPostInputDto,
     },
+    options,
+  );
+};
+/**
+ * @summary Получить черновик поста
+ */
+export const postsControllerGetDraft = (
+  options?: SecondParameter<typeof customInstance<PostViewDto>>,
+) => {
+  return customInstance<PostViewDto>(
+    { url: `/api/v1/posts/draft`, method: 'GET' },
     options,
   );
 };
@@ -96,7 +107,7 @@ export const postsControllerDeletePost = (
   );
 };
 /**
- * @summary Получить свой пост (черновик или опубликованный)
+ * @summary Получить пост по id
  */
 export const postsControllerGetPostById = (
   id: string,
@@ -104,17 +115,6 @@ export const postsControllerGetPostById = (
 ) => {
   return customInstance<PostViewDto>(
     { url: `/api/v1/posts/${id}`, method: 'GET' },
-    options,
-  );
-};
-/**
- * @summary Получить черновики пользователя
- */
-export const postsControllerGetMyDrafts = (
-  options?: SecondParameter<typeof customInstance<PostViewDto[]>>,
-) => {
-  return customInstance<PostViewDto[]>(
-    { url: `/api/v1/posts/drafts`, method: 'GET' },
     options,
   );
 };
@@ -131,26 +131,17 @@ export const postsControllerGetProfilePosts = (
     options,
   );
 };
-/**
- * @summary Получить публичный пост по id
- */
-export const postsControllerGetPublicPost = (
-  id: string,
-  options?: SecondParameter<typeof customInstance<PostViewDto>>,
-) => {
-  return customInstance<PostViewDto>(
-    { url: `/api/v1/posts/${id}/public`, method: 'GET' },
-    options,
-  );
-};
 export type PostsControllerCreatePostResult = NonNullable<
   Awaited<ReturnType<typeof postsControllerCreatePost>>
 >;
 export type PostsControllerGetPostsResult = NonNullable<
   Awaited<ReturnType<typeof postsControllerGetPosts>>
 >;
-export type PostsControllerCreateDraftResult = NonNullable<
-  Awaited<ReturnType<typeof postsControllerCreateDraft>>
+export type PostsControllerSaveDraftResult = NonNullable<
+  Awaited<ReturnType<typeof postsControllerSaveDraft>>
+>;
+export type PostsControllerGetDraftResult = NonNullable<
+  Awaited<ReturnType<typeof postsControllerGetDraft>>
 >;
 export type PostsControllerEditPostResult = NonNullable<
   Awaited<ReturnType<typeof postsControllerEditPost>>
@@ -161,12 +152,6 @@ export type PostsControllerDeletePostResult = NonNullable<
 export type PostsControllerGetPostByIdResult = NonNullable<
   Awaited<ReturnType<typeof postsControllerGetPostById>>
 >;
-export type PostsControllerGetMyDraftsResult = NonNullable<
-  Awaited<ReturnType<typeof postsControllerGetMyDrafts>>
->;
 export type PostsControllerGetProfilePostsResult = NonNullable<
   Awaited<ReturnType<typeof postsControllerGetProfilePosts>>
->;
-export type PostsControllerGetPublicPostResult = NonNullable<
-  Awaited<ReturnType<typeof postsControllerGetPublicPost>>
 >;

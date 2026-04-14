@@ -1,0 +1,55 @@
+.root {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+
+  min-width: 0;
+  padding: 14px 16px 16px;
+}
+
+.commentInput {
+  flex: 1;
+  min-width: 0;
+}
+
+.commentInput input {
+  padding: 0;
+  border: none;
+  color: var(--color-light-100);
+  background: transparent;
+}
+
+.commentInput input::placeholder {
+  color: var(--color-light-900);
+}
+
+.commentInput > div {
+  overflow: hidden;
+  border: none;
+  box-shadow: none;
+}
+
+.commentInput input:focus,
+.commentInput input:focus-visible {
+  border: none !important;
+  outline: none;
+  box-shadow: none;
+}
+
+.publishButton {
+  flex-shrink: 0;
+  padding: 0;
+  font-weight: 600;
+  color: var(--color-accent-500);
+}
+
+@media (width <= 580px) {
+  .root {
+    gap: 8px;
+  }
+
+  .publishButton {
+    min-width: fit-content;
+  }
+}

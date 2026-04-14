@@ -1,0 +1,82 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-width: 0;
+  padding: 12px 48px 16px 16px;
+  border-bottom: 1px solid var(--color-dark-100);
+}
+
+.author {
+  display: flex;
+  flex: 1;
+  gap: 12px;
+  align-items: center;
+
+  min-width: 0;
+}
+
+.actionsMenu {
+  overflow: hidden;
+  padding-block: 0;
+}
+
+.actionsButton {
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+
+  color: var(--color-light-100);
+
+  background: transparent;
+}
+
+.actionsButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+.actionsButton:hover {
+  color: var(--color-accent-500);
+}
+
+.actionsButton:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+.actionsButton span {
+  margin-right: 0;
+}
+
+.actionsMenu :global([data-radix-popper-content-wrapper]) {
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.actionsMenu :global([role='menuitem']) {
+  min-height: 53px;
+}
+
+.actionsMenu :global([role='menuitem']:first-child),
+.actionsMenu :global([role='menuitem']:last-child) {
+  margin-block: 0;
+}
+
+.actionsMenu :global([role='menuitem'][data-highlighted]) {
+  box-shadow: none;
+}
+
+@media (width <= 580px) {
+  .root {
+    padding-right: 16px;
+  }
+}
