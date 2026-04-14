@@ -41,7 +41,6 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
   const closePostModal = () => setSelectedPost(null);
   const { data: selectedPostData } = usePostByIdQuery({
     postId: selectedPost?.id ?? null,
-    isOwner: me?.userId === selectedPost?.owner.ownerId,
     initialPost: selectedPost,
   });
 
