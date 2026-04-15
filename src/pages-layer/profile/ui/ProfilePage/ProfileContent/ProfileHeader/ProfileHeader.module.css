@@ -1,0 +1,135 @@
+.header {
+  display: flex;
+  gap: 38px;
+  align-items: flex-start;
+  margin-bottom: 48px;
+}
+
+.avatar {
+  flex-shrink: 0;
+}
+
+.profileAvatar {
+  width: 204px;
+  height: 204px;
+  font-size: 90px;
+}
+
+.info {
+  flex: 1;
+  color: var(--color-light-100);
+}
+
+.userNameAndSettingsButton {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.userNameAndSettingsButton h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.userName {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+
+  max-width: 100%;
+}
+
+.userName h1 {
+  overflow-wrap: anywhere;
+}
+
+.verifiedBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+}
+
+.verifiedBadge :global(svg) {
+  width: 100%;
+  height: 100%;
+}
+
+.userData {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  column-gap: 100px;
+
+  margin-bottom: 20px;
+  padding: 0;
+
+  list-style: none;
+}
+
+.userData li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.userData li span {
+  color: var(--color-light-100);
+}
+
+.bio {
+  margin-top: 23px;
+}
+
+@media (width <= 1024px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .userNameAndSettingsButton {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .userData {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 24px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .avatar {
+    width: 160px;
+    height: 160px;
+  }
+
+  .profileAvatar {
+    width: 160px;
+    height: 160px;
+    font-size: 71px;
+  }
+}
+
+@media (width <= 600px) {
+  .userData {
+    column-gap: 16px;
+  }
+
+  .userData li {
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .userData li span {
+    overflow-wrap: anywhere;
+  }
+}

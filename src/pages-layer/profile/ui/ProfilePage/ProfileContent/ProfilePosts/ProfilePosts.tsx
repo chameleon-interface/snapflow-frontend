@@ -10,8 +10,8 @@ import type { PostViewDto } from '@/shared/api/generated/model';
 import { usePostByIdQuery } from '@/widgets/PostModal/api/usePostByIdQuery';
 import { PostModal } from '@/widgets/PostModal';
 import { EmptyStateMessage } from '@/shared/ui';
-import s from './ProfilePage.module.css';
-import { useProfilePostsInfinite } from '../api/useProfilePostsInfinite';
+import { useProfilePostsInfinite } from '../../../../api/useProfilePostsInfinite';
+import s from './ProfilePosts.module.css';
 
 type Props = {
   profileId: string;
