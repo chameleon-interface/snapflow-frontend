@@ -11,8 +11,8 @@ import type { PostViewDto } from '@/shared/api/generated/model';
 import { ROUTES } from '@/shared/config/routes';
 import { usePostByIdQuery } from '@/widgets/PostModal/api/usePostByIdQuery';
 import { EmptyStateMessage } from '@/shared/ui';
-import s from './ProfilePage.module.css';
-import { useProfilePostsInfinite } from '../api/useProfilePostsInfinite';
+import { useProfilePostsInfinite } from '../../../../api/useProfilePostsInfinite';
+import s from './ProfilePosts.module.css';
 
 const PostModal = dynamic(
   () => import('@/widgets/PostModal').then((mod) => mod.PostModal),

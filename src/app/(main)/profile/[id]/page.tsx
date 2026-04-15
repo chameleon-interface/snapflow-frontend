@@ -1,8 +1,6 @@
 import { ProfilePage } from '@/pages-layer/profile';
 import { postsControllerGetPostById } from '@/shared/api/generated/endpoints/posts/posts';
-import { profileControllerGetPublicProfile } from '@/shared/api/generated/endpoints/profile/profile';
 import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
-import { profileKeys } from '@/shared/api/keys-factories/profileKeysFactory';
 import {
   dehydrate,
   HydrationBoundary,
@@ -14,6 +12,8 @@ type Props = {
   searchParams?: Promise<{ from?: string; postId?: string }>;
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function Page({ params, searchParams }: Props) {
   const queryClient = new QueryClient();
   const { id } = await params;
@@ -21,20 +21,12 @@ export default async function Page({ params, searchParams }: Props) {
   const from = resolvedSearchParams?.from ?? null;
   const postId = resolvedSearchParams?.postId ?? null;
 
-  await Promise.all([
-    queryClient.prefetchQuery({
-      queryKey: profileKeys.userProfile(id),
-      queryFn: () => profileControllerGetPublicProfile(id),
-    }),
-    ...(postId != null
-      ? [
-          queryClient.prefetchQuery({
-            queryKey: postsKeys.byId(postId),
-            queryFn: () => postsControllerGetPostById(postId),
-          }),
-        ]
-      : []),
-  ]);
+  if (postId != null) {
+    await queryClient.prefetchQuery({
+      queryKey: postsKeys.byId(postId),
+      queryFn: () => postsControllerGetPostById(postId),
+    });
+  }
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

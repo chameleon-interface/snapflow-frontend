@@ -1,0 +1,18 @@
+.profileButton {
+  cursor: pointer;
+
+  margin-right: 16px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+
+  color: var(--color-light-100);
+
+  background: var(--color-dark-300);
+
+  transition: background 0.2s ease;
+}
+
+.profileButton:hover {
+  background: var(--color-dark-300);
+}
