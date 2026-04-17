@@ -3,16 +3,16 @@
 import type { KeyboardEvent, MouseEvent } from 'react';
 import dynamic from 'next/dynamic';
 import { PostCardPreview } from '@/entities/post';
-import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Button } from 'snapflow-ui-kit/client';
 import { useMe } from '@/entities/user';
 import type { PostViewDto } from '@/shared/api/generated/model';
-import { ROUTES } from '@/shared/config/routes';
+import { isNestedInteractiveTarget } from '@/shared/lib/dom/isNestedInteractiveTarget';
 import { usePostByIdQuery } from '@/widgets/PostModal/api/usePostByIdQuery';
 import { EmptyStateMessage } from '@/shared/ui';
 import { useProfilePostsInfinite } from '../../../../api/useProfilePostsInfinite';
 import s from './ProfilePosts.module.css';
+import { useProfilePostModalRoute } from './useProfilePostModalRoute';
 
 const PostModal = dynamic(
   () => import('@/widgets/PostModal').then((mod) => mod.PostModal),
@@ -20,39 +20,21 @@ const PostModal = dynamic(
 );
 
 type Props = {
-  from?: string | null;
   profileId: string;
   postsCount: number;
-  postId?: string | null;
 };
 
-const INTERACTIVE_TARGET_SELECTOR =
-  'button, a, input, textarea, select, [role="button"]';
-
-const isNestedInteractiveTarget = (
-  target: EventTarget | null,
-  currentTarget: EventTarget | null,
-) => {
-  return (
-    target instanceof Element &&
-    target.closest(INTERACTIVE_TARGET_SELECTOR) !== currentTarget
-  );
-};
-
-export function ProfilePosts({ from, profileId, postsCount, postId }: Props) {
+export function ProfilePosts({ profileId, postsCount }: Props) {
   const t = useTranslations('Pages');
   const tMainPage = useTranslations('MainPage');
-  const router = useRouter();
   const { data: me } = useMe();
+  const { closePost, openPost, postId } = useProfilePostModalRoute({
+    profileId,
+  });
   const { posts, observerRef, hasNextPage, isPending, isError, refetch } =
     useProfilePostsInfinite(profileId);
   const initialPost =
     posts.find((post) => post.id === (postId ?? null)) ?? null;
-  const closePostModal = () => {
-    router.push(from === 'main' ? ROUTES.HOME : ROUTES.PROFILE(profileId), {
-      scroll: false,
-    });
-  };
   const { data: selectedPostData } = usePostByIdQuery({
     postId: postId ?? null,
     initialPost,
@@ -62,9 +44,7 @@ export function ProfilePosts({ from, profileId, postsCount, postId }: Props) {
     (post: PostViewDto) => (event: KeyboardEvent<HTMLElement>) => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
-        router.push(`${ROUTES.PROFILE(profileId)}?postId=${post.id}`, {
-          scroll: false,
-        });
+        openPost(post.id);
       }
     };
 
@@ -74,9 +54,7 @@ export function ProfilePosts({ from, profileId, postsCount, postId }: Props) {
         return;
       }
 
-      router.push(`${ROUTES.PROFILE(profileId)}?postId=${post.id}`, {
-        scroll: false,
-      });
+      openPost(post.id);
     };
 
   return (
@@ -129,7 +107,7 @@ export function ProfilePosts({ from, profileId, postsCount, postId }: Props) {
           open
           post={selectedPostData}
           isOwner={me?.userId === selectedPostData.owner.ownerId}
-          onCloseAction={closePostModal}
+          onCloseAction={closePost}
         />
       ) : null}
     </>

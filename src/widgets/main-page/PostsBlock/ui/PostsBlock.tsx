@@ -4,23 +4,11 @@ import type { KeyboardEvent, MouseEvent } from 'react';
 import { PostCardPreview, useLatestPostsQuery } from '@/entities/post';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { ROUTES } from '@/shared/config/routes';
 import type { PostViewDto } from '@/shared/api/generated/model';
+import { isNestedInteractiveTarget } from '@/shared/lib/dom/isNestedInteractiveTarget';
+import { getProfilePostRoute } from '@/shared/lib/routes/getProfilePostRoute';
 import { EmptyStateMessage } from '@/shared/ui';
 import styles from './PostsBlock.module.css';
-
-const INTERACTIVE_TARGET_SELECTOR =
-  'button, a, input, textarea, select, [role="button"]';
-
-const isNestedInteractiveTarget = (
-  target: EventTarget | null,
-  currentTarget: EventTarget | null,
-) => {
-  return (
-    target instanceof Element &&
-    target.closest(INTERACTIVE_TARGET_SELECTOR) !== currentTarget
-  );
-};
 
 export const PostsBlock = () => {
   const router = useRouter();
@@ -31,10 +19,12 @@ export const PostsBlock = () => {
 
   const openPost = (post: PostViewDto) => {
     router.push(
-      `${ROUTES.PROFILE(post.owner.ownerId)}?postId=${post.id}&from=main`,
-      {
-        scroll: false,
-      },
+      getProfilePostRoute({
+        from: 'main',
+        postId: post.id,
+        profileId: post.owner.ownerId,
+      }),
+      { scroll: false },
     );
   };
 

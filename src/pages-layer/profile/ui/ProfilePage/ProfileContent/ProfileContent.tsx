@@ -6,12 +6,10 @@ import { ProfileHeader } from './ProfileHeader/ProfileHeader';
 import { ProfilePosts } from './ProfilePosts/ProfilePosts';
 
 type Props = {
-  from?: string | null;
   id: string;
-  postId?: string | null;
 };
 
-export function ProfileContent({ id, postId, from }: Props) {
+export function ProfileContent({ id }: Props) {
   const { data: profile } = usePublicProfileQuery(id);
 
   if (!profile) {
@@ -22,10 +20,8 @@ export function ProfileContent({ id, postId, from }: Props) {
     <section className={s.page}>
       <ProfileHeader profile={profile} />
       <ProfilePosts
-        from={from}
         profileId={profile.id}
         postsCount={profile.userMetadata.publicationsCount ?? 0}
-        postId={postId}
       />
     </section>
   );
