@@ -6,25 +6,27 @@ import { useUpdatePostMutation } from '@/features/post/edit-post';
 import type { PostViewDto } from '@/shared/api/generated/model';
 
 type Params = {
+  deleteSuccessMessage: string;
   description: string;
+  editSuccessMessage: string;
   editedDescription: string;
   isOwner: boolean;
   onCloseAction: () => void;
   onDeleteSuccess: () => void;
   onEditSuccess: () => void;
   post: PostViewDto;
-  t: (key: 'deleteSuccess' | 'editSuccess') => string;
 };
 
 export const usePostModalActions = ({
+  deleteSuccessMessage,
   description,
+  editSuccessMessage,
   editedDescription,
   isOwner,
   onCloseAction,
   onDeleteSuccess,
   onEditSuccess,
   post,
-  t,
 }: Params) => {
   const { mutate: updatePost, isPending: isUpdatingPost } =
     useUpdatePostMutation();
@@ -41,7 +43,7 @@ export const usePostModalActions = ({
       },
       {
         onSuccess: () => {
-          toastSuccess(t('editSuccess'));
+          toastSuccess(editSuccessMessage);
           onEditSuccess();
         },
       },
@@ -53,7 +55,7 @@ export const usePostModalActions = ({
       { postId: post.id, ownerId: post.owner.ownerId },
       {
         onSuccess: () => {
-          toastSuccess(t('deleteSuccess'));
+          toastSuccess(deleteSuccessMessage);
           onDeleteSuccess();
           onCloseAction();
         },

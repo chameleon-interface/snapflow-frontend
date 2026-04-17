@@ -22,6 +22,8 @@ export const PostModal = ({ open, post, isOwner, onCloseAction }: Props) => {
   const t = useTranslations('Modals.Post');
   const { data: me } = useMe();
   const description = post.description ?? '';
+  const editSuccessMessage = t('editSuccess');
+  const deleteSuccessMessage = t('deleteSuccess');
   const {
     closeModal,
     confirmModal,
@@ -39,14 +41,15 @@ export const PostModal = ({ open, post, isOwner, onCloseAction }: Props) => {
   });
   const { deletePostItem, isPending, isSaveDisabled, saveChanges } =
     usePostModalActions({
+      deleteSuccessMessage,
       description,
+      editSuccessMessage,
       editedDescription,
       isOwner,
       onCloseAction,
       onDeleteSuccess: () => setConfirmModal(null),
       onEditSuccess: () => setMode('view'),
       post,
-      t,
     });
   const modalClassName =
     mode === 'edit' ? styles.modalContainer : styles.viewModalContainer;
