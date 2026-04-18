@@ -54,7 +54,7 @@ export default async function Page({ params, searchParams }: Props) {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <ProfilePage id={id} />
+      <ProfilePage />
     </HydrationBoundary>
   );
 }
