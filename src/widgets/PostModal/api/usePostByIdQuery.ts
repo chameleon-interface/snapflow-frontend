@@ -15,7 +15,7 @@ export const usePostByIdQuery = ({ initialPost, postId }: Params) => {
     queryKey: postsKeys.byId(postId ?? 'unknown'),
     queryFn: () => postsControllerGetPostById(postId!),
     enabled: postId != null,
-    placeholderData: initialPost ?? undefined,
+    initialData: initialPost ?? undefined,
     staleTime: 60 * 1000,
   });
 };

@@ -1,15 +1,14 @@
 'use client';
 
+import { useParams } from 'next/navigation';
 import { usePublicProfileQuery } from '../../../api/usePublicProfileQuery';
 import s from './ProfileContent.module.css';
 import { ProfileHeader } from './ProfileHeader/ProfileHeader';
 import { ProfilePosts } from './ProfilePosts/ProfilePosts';
 
-type Props = {
-  id: string;
-};
-
-export function ProfileContent({ id }: Props) {
+export function ProfileContent() {
+  const params = useParams<{ id: string }>();
+  const id = params.id;
   const { data: profile } = usePublicProfileQuery(id);
 
   if (!profile) {

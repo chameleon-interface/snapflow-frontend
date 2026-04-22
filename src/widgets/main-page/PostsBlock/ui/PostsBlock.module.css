@@ -9,6 +9,16 @@
   min-width: 0;
 }
 
+.postCardTrigger {
+  cursor: pointer;
+  min-width: 0;
+}
+
+.postCardTrigger:focus-visible {
+  outline: 2px solid var(--color-accent-700);
+  outline-offset: 4px;
+}
+
 @media (width <=1024px) {
   .postsBlock {
     grid-template-columns: repeat(3, minmax(0, 1fr));

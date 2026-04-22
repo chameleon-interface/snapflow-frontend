@@ -59,11 +59,19 @@
   .modalContainer,
   .viewModalContainer {
     width: calc(100vw - 32px);
-    height: auto;
+    height: calc(100vh - 32px);
+    max-height: calc(100vh - 32px);
   }
 
   .viewModalContainer > header {
     top: 8px;
     right: 8px;
+  }
+
+  .modalContainer > div,
+  .viewModalContainer > div {
+    overflow-y: auto;
+    height: 100%;
+    max-height: 100%;
   }
 }

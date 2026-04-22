@@ -1,13 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Modal, toastSuccess } from 'snapflow-ui-kit/client';
+import { Modal } from 'snapflow-ui-kit/client';
 import { useMe } from '@/entities/user';
-import { useDeletePostMutation } from '@/features/post/delete-post';
-import { useUpdatePostMutation } from '@/features/post/edit-post';
 import type { PostViewDto } from '@/shared/api/generated/model';
 import { ConfirmModal } from '@/shared/ui/modals';
+import { usePostModalActions } from './lib/usePostModalActions';
+import { usePostModalState } from './lib/usePostModalState';
 import { PostEdit } from './PostEdit';
 import { PostView } from './PostView';
 import styles from './PostModal.module.css';
@@ -22,70 +21,36 @@ type Props = {
 export const PostModal = ({ open, post, isOwner, onCloseAction }: Props) => {
   const t = useTranslations('Modals.Post');
   const { data: me } = useMe();
-  const [mode, setMode] = useState<'view' | 'edit'>('view');
-  const [editedDescription, setEditedDescription] = useState(
-    post.description ?? '',
-  );
-  const [confirmModal, setConfirmModal] = useState<
-    'delete' | 'close-edit' | null
-  >(null);
-
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [open, mode, confirmModal]);
-
-  const { mutate: updatePost, isPending: isUpdatingPost } =
-    useUpdatePostMutation();
-
-  const { mutate: deletePost, isPending: isDeletingPost } =
-    useDeletePostMutation();
-
-  const closeModal = () =>
-    mode === 'edit' ? setConfirmModal('close-edit') : onCloseAction();
-  const openEdit = () => {
-    setEditedDescription(post.description ?? '');
-    setMode('edit');
-  };
-  const saveChanges = () =>
-    isOwner &&
-    updatePost(
-      {
-        postId: post.id,
-        ownerId: post.owner.ownerId,
-        description: editedDescription,
-      },
-      {
-        onSuccess: () => {
-          toastSuccess(t('editSuccess'));
-          setMode('view');
-        },
-      },
-    );
-  const deletePostItem = () =>
-    isOwner &&
-    deletePost(
-      { postId: post.id, ownerId: post.owner.ownerId },
-      {
-        onSuccess: () => {
-          toastSuccess(t('deleteSuccess'));
-          setConfirmModal(null);
-          onCloseAction();
-        },
-      },
-    );
-  const resetEdit = () => {
-    setConfirmModal(null);
-    setEditedDescription(post.description ?? '');
-    setMode('view');
-  };
+  const description = post.description ?? '';
+  const editSuccessMessage = t('editSuccess');
+  const deleteSuccessMessage = t('deleteSuccess');
+  const {
+    closeModal,
+    confirmModal,
+    editedDescription,
+    mode,
+    openEdit,
+    resetEdit,
+    setConfirmModal,
+    setEditedDescription,
+    setMode,
+  } = usePostModalState({
+    description,
+    onCloseAction,
+    open,
+  });
+  const { deletePostItem, isPending, isSaveDisabled, saveChanges } =
+    usePostModalActions({
+      deleteSuccessMessage,
+      description,
+      editSuccessMessage,
+      editedDescription,
+      isOwner,
+      onCloseAction,
+      onDeleteSuccess: () => setConfirmModal(null),
+      onEditSuccess: () => setMode('view'),
+      post,
+    });
   const modalClassName =
     mode === 'edit' ? styles.modalContainer : styles.viewModalContainer;
 
@@ -100,8 +65,8 @@ export const PostModal = ({ open, post, isOwner, onCloseAction }: Props) => {
         {mode === 'edit' ? (
           <PostEdit
             description={editedDescription}
-            isPending={isUpdatingPost || isDeletingPost}
-            isSaveDisabled={editedDescription === (post.description ?? '')}
+            isPending={isPending}
+            isSaveDisabled={isSaveDisabled}
             maxLength={500}
             owner={post.owner}
             previewPhotoUrl={post.postMedias[0]?.url ?? null}
