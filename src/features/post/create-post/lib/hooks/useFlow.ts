@@ -18,10 +18,11 @@ import { useOpenDraftQuery } from '../../api';
 import { useCloseModal } from './useCloseModal';
 
 type Params = {
+  isOpen: boolean;
   onClose: () => void;
 };
 
-export const useFlow = ({ onClose }: Params) => {
+export const useFlow = ({ isOpen, onClose }: Params) => {
   const t = useTranslations('CreatePost');
   const photos = usePhotosState();
 
@@ -39,7 +40,7 @@ export const useFlow = ({ onClose }: Params) => {
   const { mutateAsync: createDraft, isPending: isCreateDraftPending } =
     useCreateDraftMutation();
   const openDraftQuery = useOpenDraftQuery({
-    enabled: stepState.step === 'addPhotos',
+    enabled: isOpen && stepState.step === 'addPhotos',
   });
   const {
     mutateAsync: uploadMediaForPublish,
@@ -48,7 +49,8 @@ export const useFlow = ({ onClose }: Params) => {
   const { mutateAsync: uploadMediaForDraft, isPending: isUploadDraftPending } =
     useUploadMediaMutation();
 
-  const hasDraft = openDraftQuery.data != null;
+  const canOpenDraft = openDraftQuery.data != null;
+  const isDraftStatusLoading = isOpen && openDraftQuery.isPending;
 
   const setOriginalPhotos = useCallback(
     (value: File[] | ((prev: File[]) => File[])) => {
@@ -272,8 +274,8 @@ export const useFlow = ({ onClose }: Params) => {
     handleCloseRequest: closeModal.handleCloseRequest,
     handleDiscard: doClose,
     onOpenDraft: handleOpenDraft,
-    hasDraft,
-    isOpenDraftLoading: openDraftQuery.isPending || isOpeningDraft,
+    canOpenDraft,
+    isDraftStatusLoading: isDraftStatusLoading || isOpeningDraft,
     isCloseModalOpened: closeModal.isCloseModalOpened,
     setIsCloseModalOpened: closeModal.setIsCloseModalOpened,
     goToAddPhotos: stepState.goToAddPhotos,

@@ -21,10 +21,6 @@
   text-decoration: none;
 }
 
-.usernameLink:hover {
-  color: var(--color-accent-500);
-}
-
 .usernameLink:focus-visible {
   border-radius: 4px;
   outline: 2px solid var(--color-accent-500);

@@ -98,10 +98,6 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
 
       {hasNextPage && <div ref={observerRef} className={s.observer} />}
 
-      {!hasNextPage && posts.length > 0 && (
-        <p className={s.endMessage}>{t('allPostsLoaded')}</p>
-      )}
-
       {selectedPostData ? (
         <PostModal
           open

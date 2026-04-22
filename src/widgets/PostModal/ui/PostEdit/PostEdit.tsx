@@ -1,9 +1,10 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Button, Textarea, Typography } from 'snapflow-ui-kit';
+import { Button, Typography } from 'snapflow-ui-kit';
 import type { OwnerViewDto } from '@/shared/api/generated/model';
 import { UserAvatar } from '@/shared/ui/UserAvatar';
+import { PostDescriptionField } from '@/shared/ui';
 import styles from './PostEdit.module.css';
 
 type Props = {
@@ -54,17 +55,13 @@ export const PostEdit = ({
           <Typography variant="text-16-bold">{owner.username}</Typography>
         </div>
         <div className={styles.descriptionArea}>
-          <Textarea
+          <PostDescriptionField
             label={t('descriptionLabel')}
             minHeight={120}
             value={description}
-            onChange={(event) => onChange(event.target.value)}
             maxLength={maxLength}
-            className={styles.descriptionInput}
+            onChange={onChange}
           />
-          <Typography variant="text-14" className={styles.descriptionCounter}>
-            {description.length}/{maxLength}
-          </Typography>
         </div>
         <div className={styles.footer}>
           <Button

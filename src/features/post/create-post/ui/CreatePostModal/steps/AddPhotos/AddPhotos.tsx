@@ -12,16 +12,16 @@ type Props = {
   originalPhotos: File[];
   setOriginalPhotos: (photos: File[]) => void;
   onOpenDraft?: () => void;
-  hasDraft?: boolean;
-  isOpenDraftLoading?: boolean;
+  canOpenDraft?: boolean;
+  isDraftStatusLoading?: boolean;
 };
 
 export const AddPhotos = ({
   originalPhotos,
   setOriginalPhotos,
   onOpenDraft,
-  hasDraft = false,
-  isOpenDraftLoading = false,
+  canOpenDraft = false,
+  isDraftStatusLoading = false,
 }: Props) => {
   const t = useTranslations('CreatePost');
   const tValidation = useTranslations('Validation.selectPhotos');
@@ -73,17 +73,15 @@ export const AddPhotos = ({
         >
           {t('addPhoto')}
         </Button>
-        {hasDraft && (
-          <Button
-            className={styles.openDraftButton}
-            variant="outlined"
-            onClick={() => onOpenDraft?.()}
-            aria-label={t('openDraft')}
-            disabled={isOpenDraftLoading}
-          >
-            {t('openDraft')}
-          </Button>
-        )}
+        <Button
+          className={styles.openDraftButton}
+          variant="outlined"
+          onClick={() => onOpenDraft?.()}
+          aria-label={t('openDraft')}
+          disabled={!canOpenDraft || isDraftStatusLoading}
+        >
+          {t('openDraft')}
+        </Button>
       </div>
     </>
   );

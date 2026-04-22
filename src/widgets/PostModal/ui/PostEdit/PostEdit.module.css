@@ -57,26 +57,6 @@
   border-radius: 2px;
 }
 
-.descriptionInput :global(textarea) {
-  border: 1px solid var(--color-dark-100) !important;
-  border-radius: 2px;
-  background-color: var(--color-dark-900);
-}
-
-.descriptionInput :global(textarea:focus),
-.descriptionInput :global(textarea:focus-visible) {
-  border: 1px solid var(--color-dark-100) !important;
-  border-radius: 2px;
-  outline: none !important;
-  box-shadow: none;
-}
-
-.descriptionCounter {
-  display: flex;
-  justify-content: flex-end;
-  color: var(--color-light-900);
-}
-
 .footer {
   display: flex;
   justify-content: flex-end;
