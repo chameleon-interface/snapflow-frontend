@@ -32,7 +32,7 @@ const getNextStepLoadingLabel = (
 
 export const CreatePostModal = ({ isOpen, onClose }: Props) => {
   const t = useTranslations('CreatePost');
-  const flow = useFlow({ onClose });
+  const flow = useFlow({ isOpen, onClose });
 
   const profileQuery = useGetMyProfile({
     enabled: isOpen,

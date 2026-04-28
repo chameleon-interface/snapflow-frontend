@@ -1,0 +1,56 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.textarea {
+  width: 100%;
+}
+
+.textarea :global(textarea) {
+  scrollbar-color: var(--color-dark-100) var(--color-dark-300);
+  scrollbar-width: thin;
+
+  border: 1px solid var(--color-dark-100);
+  border-radius: 2px;
+
+  background: var(--color-dark-400);
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.textarea :global(textarea:focus:not(:focus-visible)) {
+  outline: none;
+  box-shadow: none;
+}
+
+.textarea :global(textarea::-webkit-scrollbar) {
+  width: 6px;
+}
+
+.textarea :global(textarea::-webkit-scrollbar-track) {
+  border-radius: 4px;
+  background: var(--color-dark-300);
+}
+
+.textarea :global(textarea::-webkit-scrollbar-thumb) {
+  border-radius: 4px;
+  background: var(--color-dark-100);
+}
+
+.textarea :global(textarea::-webkit-scrollbar-thumb:hover) {
+  background: var(--color-accent-500);
+}
+
+.textarea :global(textarea::-webkit-scrollbar-thumb:active) {
+  background: var(--color-accent-700);
+}
+
+.counter {
+  font-size: 12px;
+  color: var(--color-light-900);
+  text-align: right;
+}

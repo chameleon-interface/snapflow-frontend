@@ -15,8 +15,8 @@ export const StepContent = (p: Props) => {
         originalPhotos={p.originalPhotos}
         setOriginalPhotos={p.setOriginalPhotos}
         onOpenDraft={p.onOpenDraft}
-        hasDraft={p.hasDraft}
-        isOpenDraftLoading={p.isOpenDraftLoading}
+        canOpenDraft={p.canOpenDraft}
+        isDraftStatusLoading={p.isDraftStatusLoading}
       />
     );
   }
