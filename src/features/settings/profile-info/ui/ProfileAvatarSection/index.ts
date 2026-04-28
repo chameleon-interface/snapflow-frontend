@@ -1,0 +1,1 @@
+export { ProfileAvatarSection } from './ProfileAvatarSection';

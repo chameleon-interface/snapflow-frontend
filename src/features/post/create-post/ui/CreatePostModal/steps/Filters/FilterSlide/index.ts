@@ -1,0 +1,1 @@
+export { FilterSlide } from './FilterSlide';

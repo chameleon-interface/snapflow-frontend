@@ -1,0 +1,140 @@
+.filterPanel {
+  scroll-behavior: smooth;
+
+  overflow: hidden auto;
+
+  min-height: 0;
+  max-height: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--color-dark-100);
+  border-radius: 2px;
+
+  background: var(--color-dark-500);
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.filterGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  min-width: 0;
+}
+
+@media (width <=768px) {
+  .filterPanel {
+    overflow: auto hidden;
+    max-height: none;
+    padding: 16px 12px;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filterGrid {
+    display: flex;
+    grid-template-columns: unset;
+    flex-wrap: nowrap;
+    gap: 10px;
+
+    min-width: min-content;
+  }
+
+  .filterGrid > * {
+    flex: 0 0 auto;
+    width: 112px;
+  }
+}
+
+@media (width <=380px) {
+  .filterPanel {
+    padding: 12px 10px;
+    border-radius: 10px;
+  }
+
+  .filterGrid {
+    gap: 8px;
+  }
+
+  .filterGrid > * {
+    width: 104px;
+  }
+}
+
+.twoColumnRoot {
+  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: 1fr 364px;
+  grid-template-rows: minmax(280px, 65vh);
+  gap: 24px;
+
+  width: 100%;
+}
+
+.carouselColumn {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid var(--color-dark-100);
+  border-radius: 2px;
+
+  background: var(--color-dark-500);
+}
+
+.carouselFlex {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 0;
+}
+
+@media (width <= 768px) {
+  .twoColumnRoot {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(200px, 45vh) minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .carouselColumn {
+    min-height: 200px;
+  }
+}
+
+@media (width <= 380px) {
+  .twoColumnRoot {
+    grid-template-rows: minmax(180px, 40vh) minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .carouselColumn {
+    min-height: 180px;
+    border-radius: 10px;
+  }
+}
+
+.thinVertical::-webkit-scrollbar {
+  width: 6px;
+}
+
+.thinVertical::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background: var(--color-dark-300);
+}
+
+.thinVertical::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: var(--color-dark-100);
+}
+
+.thinVertical::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-500);
+}
+
+.thinVertical::-webkit-scrollbar-thumb:active {
+  background: var(--color-accent-700);
+}

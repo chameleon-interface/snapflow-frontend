@@ -1,0 +1,39 @@
+.postsBlock {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  align-content: start;
+  align-items: start;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.postCardTrigger {
+  cursor: pointer;
+  min-width: 0;
+}
+
+.postCardTrigger:focus-visible {
+  outline: 2px solid var(--color-accent-700);
+  outline-offset: 4px;
+}
+
+@media (width <=1024px) {
+  .postsBlock {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (width <=768px) {
+  .postsBlock {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+@media (width <=380px) {
+  .postsBlock {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

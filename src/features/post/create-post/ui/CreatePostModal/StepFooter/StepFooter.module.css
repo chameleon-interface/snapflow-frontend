@@ -1,0 +1,119 @@
+.footer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-dark-300);
+}
+
+.footerLeft,
+.footerRight {
+  display: flex;
+  gap: 12px;
+}
+
+.btnIcon {
+  flex-shrink: 0;
+}
+
+/* outlined в ui-kit: 1px → 2px при :focus-visible; держим 2px + padding −1px — без скачка */
+.previousBtn {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+
+  min-width: 100px;
+  padding: 5px 23px !important;
+  border-width: 2px !important;
+
+  font-weight: 500;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.previousBtn .btnIcon {
+  order: -1;
+}
+
+.previousBtn:focus-visible {
+  border-color: transparent !important;
+  outline: 2px solid var(--color-accent-700);
+  box-shadow: none;
+}
+
+.previousBtn:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.previousBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.previousBtn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+.nextBtn {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+
+  min-width: 120px;
+
+  font-weight: 500;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.nextBtn:focus-visible,
+.nextBtnPublish:focus-visible {
+  outline: 2px solid var(--color-accent-700);
+  box-shadow: none;
+}
+
+.nextBtn:focus:not(:focus-visible),
+.nextBtnPublish:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.nextBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px
+    color-mix(in srgb, var(--color-dark-900) 25%, transparent);
+}
+
+.nextBtn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+.nextBtnPublish:hover:not(:disabled) {
+  box-shadow:
+    0 4px 16px color-mix(in srgb, var(--color-dark-900) 30%, transparent),
+    0 0 20px color-mix(in srgb, var(--color-accent-500) 20%, transparent);
+}
+
+@media (width <= 380px) {
+  .footer {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 12px;
+  }
+
+  .footerLeft,
+  .footerRight {
+    gap: 8px;
+  }
+
+  .footerRight {
+    flex: 1;
+    justify-content: flex-end;
+  }
+}

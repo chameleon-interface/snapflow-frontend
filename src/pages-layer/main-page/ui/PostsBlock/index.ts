@@ -1,0 +1,1 @@
+export { PostsBlock } from './PostsBlock';

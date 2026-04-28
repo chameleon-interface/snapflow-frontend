@@ -1,0 +1,39 @@
+.oauthButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 64px;
+  height: 64px;
+  border: none;
+  border-radius: 12px;
+
+  color: #fff;
+
+  background: transparent;
+
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+}
+
+.oauthButton svg {
+  pointer-events: none;
+  width: 32px;
+  height: 32px;
+}
+
+.oauthButton:hover {
+  background: rgb(255 255 255 / 10%);
+}
+
+.oauthButton:active {
+  transform: scale(0.96);
+}
+
+.oauthButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

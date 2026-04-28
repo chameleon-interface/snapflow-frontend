@@ -1,0 +1,114 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 240px;
+}
+
+.photoPlaceholder {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 240px;
+  border: 2px dashed var(--color-dark-300);
+  border-radius: 2px;
+
+  background: linear-gradient(
+    145deg,
+    var(--color-dark-400) 0%,
+    var(--color-dark-500) 100%
+  );
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+.photoPlaceholder:hover {
+  border-color: var(--color-dark-100);
+  background: linear-gradient(
+    145deg,
+    var(--color-dark-500) 0%,
+    var(--color-dark-400) 100%
+  );
+}
+
+.photoPlaceholder:active {
+  transform: scale(0.99);
+}
+
+.photoPlaceholder:focus-visible {
+  border-color: var(--color-dark-100);
+  outline: 2px solid var(--color-accent-700);
+  box-shadow: none;
+}
+
+.photoPlaceholder:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+
+  color: var(--color-light-900);
+
+  background: color-mix(in srgb, var(--color-light-100) 6%, transparent);
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.photoPlaceholder:hover .iconWrap {
+  color: var(--color-light-700);
+  background: color-mix(in srgb, var(--color-light-100) 8%, transparent);
+}
+
+.selectButton {
+  width: 100%;
+  font-weight: 500;
+  transition: transform 0.15s ease;
+}
+
+.selectButton:hover {
+  transform: translateY(-1px);
+}
+
+.selectButton:active {
+  transform: translateY(0);
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.openDraftButton {
+  width: 100%;
+  padding: 5px 23px !important;
+  border-width: 2px !important;
+  font-weight: 500;
+}
+
+.error {
+  width: 100%;
+  max-width: none;
+}
+
+@media (width <=380px) {
+  .content {
+    gap: 20px;
+    width: 100%;
+    min-width: 0;
+  }
+}

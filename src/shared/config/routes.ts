@@ -10,8 +10,7 @@ export const ROUTES = {
   STATISTICS: '/statistics',
   FAVORITES: '/favorites',
   FEED: '/feed',
-  CREATE: '/create',
-  PROFILE: '/profile',
+  PROFILE: (id: string) => `/profile/${id}`,
   MESSENGER: '/messenger',
   SEARCH: '/search',
 } as const;

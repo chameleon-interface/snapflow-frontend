@@ -16,21 +16,105 @@
     "backToSignUp": "Back to Sign Up"
   },
   "Pages": {
-    "mainTitle": "Main page",
-    "feedTitle": "Feed",
     "favoritesTitle": "Favorites",
-    "profileTitle": "Profile",
     "messengerTitle": "Messenger",
     "searchTitle": "Search",
     "statisticsTitle": "Statistics",
-    "settingsTitle": "Settings",
     "signInTitle": "Sign In",
     "signUpTitle": "Sign Up",
     "forgotPasswordTitle": "Forgot Password",
     "createNewPasswordTitle": "Create New Password",
     "placeholder": "Placeholder page.",
     "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service"
+    "termsOfService": "Terms of Service",
+    "profileFollowing": "Following",
+    "profileFollowers": "Followers",
+    "profilePublications": "Publications",
+    "profileSettings": "Profile Settings",
+    "profileNotFound": "This profile does not exist",
+    "profileLoadFailed": "Failed to load profile",
+    "profilePostsLoadFailed": "Failed to load posts for this profile",
+    "profilePostsUnavailable": "Posts are temporarily unavailable",
+    "retry": "Retry"
+  },
+  "MainPage": {
+    "registeredUsers": "Registered users:",
+    "noPostsYet": "No posts yet",
+    "registeredUsersCountAria": "Registered users: {count}"
+  },
+  "ExpandableText": {
+    "showMore": "Show more",
+    "showLess": "Hide"
+  },
+  "Feed": {
+    "title": "Feed",
+    "loadingMore": "Loading more posts...",
+    "error": "Failed to load feed.",
+    "retry": "Try again",
+    "empty": "No posts yet.",
+    "likesLabel": "\"Like\"",
+    "commentsPlaceholder": "View All Comments (114)",
+    "addCommentPlaceholder": "Add a comment...",
+    "publish": "Publish",
+    "mediaUnavailable": "Media is unavailable",
+    "mediaAlt": "Post image {current} of {total} by {username}",
+    "actions": {
+      "like": "Like",
+      "comment": "Comment",
+      "share": "Share",
+      "save": "Save",
+      "more": "More actions"
+    }
+  },
+  "Settings": {
+    "tabsAria": "Settings tabs",
+    "tabs": {
+      "info": "General information",
+      "devices": "Devices",
+      "subscriptions": "Account Management",
+      "payments": "My payments"
+    },
+    "selectProfilePhoto": "Select Photo",
+    "profileAvatar": "Profile avatar",
+    "deleteAvatar": "Delete avatar",
+    "deleteAvatarConfirmation": "Are you sure you want to delete the photo?",
+    "saveChanges": "Save Changes",
+    "settingsSaved": "Your settings are saved!",
+    "avatarUpdated": "Avatar updated successfully!",
+    "avatarDeleted": "Avatar deleted successfully!",
+    "avatarCropFailed": "Failed to process avatar image. Please try again.",
+    "avatarCropModal": {
+      "title": "Add a Profile Photo",
+      "save": "Save"
+    },
+    "fields": {
+      "username": "Username",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "dateOfBirth": "Date of birth",
+      "country": "Select your country",
+      "city": "Select your city",
+      "about": "About me"
+    },
+    "placeholders": {
+      "country": "Country",
+      "city": "City",
+      "about": "Tell users about yourself"
+    },
+    "stubs": {
+      "devices": {
+        "title": "Devices",
+        "description": "Device management settings will be added in the next iteration."
+      },
+      "subscriptions": {
+        "title": "Account Management",
+        "description": "Subscription and account controls will be added in the next iteration."
+      },
+      "payments": {
+        "title": "My payments",
+        "description": "Payment history and billing settings will be added in the next iteration."
+      }
+    }
   },
   "Forms": {
     "haveAccount": "Do you have an account?",
@@ -49,15 +133,34 @@
     }
   },
   "Modals": {
+    "Confirm": {
+      "yes": "Yes",
+      "no": "No"
+    },
     "EmailSent": {
       "title": "Email sent",
       "message": "We have sent a link to confirm your email to {email}"
     },
     "LogoutConfirm": {
-      "title": "Log out confirmation",
-      "message": "Are you really want to log out of your account \"{email}\"?",
-      "yes": "Yes",
-      "no": "No"
+      "title": "Log out",
+      "message": "Are you really want to log out of your account \"{email}\"?"
+    },
+    "Post": {
+      "viewTitle": "Publication",
+      "editTitle": "Edit Post",
+      "editAction": "Edit",
+      "deleteAction": "Delete",
+      "descriptionLabel": "Add publication descriptions",
+      "saveChanges": "Save Changes",
+      "addCommentPlaceholder": "Add a Comment...",
+      "publishCommentAction": "Publish",
+      "publishCommentSuccess": "Comment published",
+      "deleteTitle": "Delete Post",
+      "deleteMessage": "Are you sure you want to delete this post?",
+      "deleteSuccess": "Post deleted successfully",
+      "closeTitle": "Close Post",
+      "closeMessage": "Do you really want to finish editing? If you close the changes you have made will not be saved.",
+      "editSuccess": "Post updated successfully"
     }
   },
   "PasswordRecovery": {
@@ -66,11 +169,7 @@
     "sendLinkAgain": "Send Link Again",
     "sendLink": "Send Link",
     "backToSignIn": "Back to Sign In",
-    "error": "An error occurred while sending the request. Please try again.",
     "newPasswordLabel": "New password",
-    "newPasswordPlaceholder": "Enter new password",
-    "passwordConfirmationLabel": "Password confirmation",
-    "passwordConfirmationPlaceholder": "Confirm new password",
     "passwordDescription": "Your password must be between 6 and 20 characters",
     "createNewPasswordButton": "Create New Password",
     "passwordChangedSuccess": "Password successfully changed"
@@ -91,8 +190,6 @@
     "emailAlreadyConfirmed": "User with this email already confirmed",
     "emailNotFound": "User with this email not found",
     "emailNotRegistered": "It is impossible to send the code - the specified email is not registered",
-    "invalidCredentials": "Invalid email or password",
-    "validationError": "Invalid input data",
     "emailNotExists": "User with this email doesn't exist"
   },
   "Validation": {
@@ -116,12 +213,79 @@
       "mismatch": "Passwords must match",
       "required": "Please confirm your password"
     },
-    "terms": {
-      "required": "You must agree to the Terms of Service"
+    "settings": {
+      "firstName": {
+        "min": "First name is required",
+        "max": "Maximum number of characters 50",
+        "pattern": "First name can only contain Latin and Cyrillic letters"
+      },
+      "lastName": {
+        "min": "Last name is required",
+        "max": "Maximum number of characters 50",
+        "pattern": "Last name can only contain Latin and Cyrillic letters"
+      },
+      "dateOfBirth": {
+        "format": "Use date format dd.mm.yyyy",
+        "invalidDate": "Enter a valid calendar date"
+      },
+      "aboutMe": {
+        "max": "Maximum number of characters 200"
+      }
     },
     "recaptcha": {
       "required": "Please complete the reCAPTCHA verification",
       "expired": "reCAPTCHA verification has expired. Please complete the verification again"
+    },
+    "selectPhotos": {
+      "errorMaxCount": "You can still select no more than {limit} photos, selected {count}",
+      "errorLimitReached": "Photo limit reached - {limit}",
+      "errorFileSize": "Photo size must not exceed 20 MB",
+      "errorFormat": "The format of the uploaded photo must be PNG or JPEG",
+      "errorDuplicate": "This photo is already selected - {name}"
     }
+  },
+  "Common": {
+    "somethingWentWrong": "Something went wrong",
+    "networkError": "Network error. Please check your connection.",
+    "userProfilePhotoAlt": "Profile photo of {name}"
+  },
+  "CreatePost": {
+    "stepTitleAddPhotos": "Add Photo",
+    "stepTitleCropping": "Cropping",
+    "stepTitleFilters": "Filters",
+    "stepTitlePublish": "Publish",
+    "previousStep": "Previous",
+    "nextStep": "Next",
+    "generatingCropped": "Preparing...",
+    "applyingFilters": "Applying filters...",
+    "openDraft": "Open Draft",
+    "gallery": "Gallery",
+    "addPhoto": "Add photo",
+    "removePhoto": "Remove photo",
+    "aspectOriginal": "Original",
+    "filters": "Filters",
+    "filterChoice": "Filter choice",
+    "aspectRatio": "Aspect ratio",
+    "aspectRatioChoice": "Aspect ratio choice",
+    "zoom": "Zoom",
+    "zoomDialog": "Zoom",
+    "zoomImage": "Image zoom",
+    "publish": "Publish",
+    "publicationDetails": "Publication details",
+    "addPublicationDescriptions": "Description",
+    "descriptionPlaceholder": "Describe your post...",
+    "addLocation": "Location",
+    "locationPlaceholder": "Add location",
+    "locationSuggestions": "Location suggestions",
+    "publishButton": "Publish",
+    "publishing": "Publishing...",
+    "postPublishedSuccess": "Post published",
+    "closeModalTitle": "Close",
+    "closeModalMessage": "Do you really want to close the creation of a publication?",
+    "closeModalSubMessage": "Unsaved changes will be lost",
+    "closeModalDiscard": "Discard",
+    "closeModalSaveDraft": "Save draft",
+    "savingDraft": "Saving...",
+    "draftSaveSuccess": "Draft saved"
   }
 }

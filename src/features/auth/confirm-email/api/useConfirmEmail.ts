@@ -1,13 +1,14 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { api } from '@/shared/api';
+import { authControllerConfirmRegistration } from '@/shared/api/generated/endpoints/auth/auth';
+import { authKeys } from '@/shared/api/keys-factories/authKeysFactory';
 
 export const useConfirmEmail = (code: string) => {
   return useQuery({
-    queryKey: ['auth', 'registration-confirmation', code],
+    queryKey: authKeys.registrationConfirmation(code),
     queryFn: async () => {
-      await api.post<void>('/auth/registration-confirmation', { code });
+      await authControllerConfirmRegistration({ code });
       return true;
     },
     enabled: Boolean(code),

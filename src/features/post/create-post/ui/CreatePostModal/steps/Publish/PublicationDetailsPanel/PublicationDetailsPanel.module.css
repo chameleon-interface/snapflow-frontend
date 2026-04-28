@@ -1,0 +1,140 @@
+.root {
+  overflow: hidden scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  min-height: 0;
+  max-height: 100%;
+  padding: 24px 20px;
+  border: 1px solid var(--color-dark-100);
+
+  background: var(--color-dark-500);
+}
+
+.profileRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.avatar {
+  flex-shrink: 0;
+
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-dark-100);
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    var(--color-dark-400) 0%,
+    var(--color-dark-300) 100%
+  );
+  box-shadow: 0 2px 8px
+    color-mix(in srgb, var(--color-dark-900) 20%, transparent);
+}
+
+.avatarPlaceholder {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  min-height: 40px;
+  border: 2px solid var(--color-dark-100);
+  border-radius: 50%;
+
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-light-900);
+
+  background: linear-gradient(
+    135deg,
+    var(--color-dark-400) 0%,
+    var(--color-dark-300) 100%
+  );
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.thinVertical::-webkit-scrollbar {
+  width: 6px;
+}
+
+.thinVertical::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background: var(--color-dark-300);
+}
+
+.thinVertical::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: var(--color-dark-100);
+}
+
+.thinVertical::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-500);
+}
+
+.thinVertical::-webkit-scrollbar-thumb:active {
+  background: var(--color-accent-700);
+}
+
+@media (width <=768px) {
+  .root {
+    gap: 16px;
+    max-height: none;
+    padding: 16px 12px;
+  }
+
+  .profileRow {
+    gap: 10px;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .avatarPlaceholder {
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+    min-height: 32px;
+
+    font-size: 14px;
+  }
+}
+
+@media (width <=380px) {
+  .root {
+    gap: 14px;
+    padding: 12px 10px;
+  }
+
+  .profileRow {
+    gap: 8px;
+  }
+
+  .avatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .avatarPlaceholder {
+    width: 28px;
+    min-width: 28px;
+    height: 28px;
+    min-height: 28px;
+
+    font-size: 12px;
+  }
+}

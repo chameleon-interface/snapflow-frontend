@@ -16,21 +16,105 @@
     "backToSignUp": "Назад к регистрации"
   },
   "Pages": {
-    "mainTitle": "Главная страница",
-    "feedTitle": "Лента",
     "favoritesTitle": "Избранное",
-    "profileTitle": "Профиль",
     "messengerTitle": "Мессенджер",
     "searchTitle": "Поиск",
     "statisticsTitle": "Статистика",
-    "settingsTitle": "Настройки",
     "signInTitle": "Вход",
     "signUpTitle": "Регистрация",
     "forgotPasswordTitle": "Восстановление пароля",
     "createNewPasswordTitle": "Создать новый пароль",
     "placeholder": "Страница-заглушка.",
     "privacyPolicy": "Политика конфиденциальности",
-    "termsOfService": "Условия предоставления услуг"
+    "termsOfService": "Условия предоставления услуг",
+    "profileFollowing": "Подписки",
+    "profileFollowers": "Подписчики",
+    "profilePublications": "Публикации",
+    "profileSettings": "Настройки профиля",
+    "profileNotFound": "Такого профиля нет",
+    "profileLoadFailed": "Не удалось загрузить профиль",
+    "profilePostsLoadFailed": "Не удалось загрузить публикации этого профиля",
+    "profilePostsUnavailable": "Публикации временно недоступны",
+    "retry": "Повторить"
+  },
+  "MainPage": {
+    "registeredUsers": "Пользователей:",
+    "noPostsYet": "Постов пока нет",
+    "registeredUsersCountAria": "Зарегистрировано пользователей: {count}"
+  },
+  "ExpandableText": {
+    "showMore": "Показать больше",
+    "showLess": "Скрыть"
+  },
+  "Feed": {
+    "title": "Лента",
+    "loadingMore": "Загружаем еще посты...",
+    "error": "Не удалось загрузить ленту.",
+    "retry": "Повторить",
+    "empty": "Публикаций пока нет.",
+    "likesLabel": "\"Нравится\"",
+    "commentsPlaceholder": "Посмотреть все комментарии (114)",
+    "addCommentPlaceholder": "Добавить комментарий...",
+    "publish": "Опубликовать",
+    "mediaUnavailable": "Медиа недоступно",
+    "mediaAlt": "Изображение поста {current} из {total} от {username}",
+    "actions": {
+      "like": "Нравится",
+      "comment": "Комментировать",
+      "share": "Отправить",
+      "save": "Сохранить",
+      "more": "Дополнительные действия"
+    }
+  },
+  "Settings": {
+    "tabsAria": "Вкладки настроек",
+    "tabs": {
+      "info": "Общая информация",
+      "devices": "Устройства",
+      "subscriptions": "Управление аккаунтом",
+      "payments": "Мои платежи"
+    },
+    "selectProfilePhoto": "Выберите фото",
+    "profileAvatar": "Аватар профиля",
+    "deleteAvatar": "Удалить аватар",
+    "deleteAvatarConfirmation": "Вы уверены, что хотите удалить фотографию?",
+    "saveChanges": "Сохранить изменения",
+    "settingsSaved": "Ваши настройки сохранены!",
+    "avatarUpdated": "Аватар успешно обновлен!",
+    "avatarDeleted": "Аватар успешно удален!",
+    "avatarCropFailed": "Не удалось обработать аватар. Попробуйте снова.",
+    "avatarCropModal": {
+      "title": "Добавить фото профиля",
+      "save": "Сохранить"
+    },
+    "fields": {
+      "username": "Имя пользователя",
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "dateOfBirth": "Дата рождения",
+      "country": "Выберите страну",
+      "city": "Выберите город",
+      "about": "Обо мне"
+    },
+    "placeholders": {
+      "country": "Страна",
+      "city": "Город",
+      "about": "Расскажите о себе"
+    },
+    "stubs": {
+      "devices": {
+        "title": "Устройства",
+        "description": "Настройки управления устройствами будут добавлены в следующей итерации."
+      },
+      "subscriptions": {
+        "title": "Управление аккаунтом",
+        "description": "Управление подпиской и аккаунтом будет добавлено в следующей итерации."
+      },
+      "payments": {
+        "title": "Мои платежи",
+        "description": "История платежей и настройки биллинга будут добавлены в следующей итерации."
+      }
+    }
   },
   "Forms": {
     "haveAccount": "Уже есть аккаунт?",
@@ -49,15 +133,34 @@
     }
   },
   "Modals": {
+    "Confirm": {
+      "yes": "Да",
+      "no": "Нет"
+    },
     "EmailSent": {
       "title": "Email отправлен",
       "message": "Мы отправили ссылку для подтверждения на {email}"
     },
     "LogoutConfirm": {
       "title": "Подтверждение выхода",
-      "message": "Вы действительно хотите выйти из своего аккаунта \"{email}\"?",
-      "yes": "Да",
-      "no": "Нет"
+      "message": "Вы действительно хотите выйти из своего аккаунта \"{email}\"?"
+    },
+    "Post": {
+      "viewTitle": "Публикация",
+      "editTitle": "Редактировать пост",
+      "editAction": "Редактировать",
+      "deleteAction": "Удалить",
+      "descriptionLabel": "Добавьте описание публикации",
+      "saveChanges": "Сохранить изменения",
+      "addCommentPlaceholder": "Добавить комментарий...",
+      "publishCommentAction": "Опубликовать",
+      "publishCommentSuccess": "Комментарий опубликован",
+      "deleteTitle": "Удалить пост",
+      "deleteMessage": "Вы действительно хотите удалить этот пост?",
+      "deleteSuccess": "Пост успешно удален",
+      "closeTitle": "Закрыть пост",
+      "closeMessage": "Вы действительно хотите завершить редактирование? Если закрыть окно, изменения не будут сохранены.",
+      "editSuccess": "Пост успешно обновлен"
     }
   },
   "PasswordRecovery": {
@@ -67,9 +170,6 @@
     "sendLink": "Отправить ссылку",
     "backToSignIn": "Вернуться",
     "newPasswordLabel": "Новый пароль",
-    "newPasswordPlaceholder": "Введите новый пароль",
-    "passwordConfirmationLabel": "Подтверждение пароля",
-    "passwordConfirmationPlaceholder": "Подтвердите новый пароль",
     "passwordDescription": "Ваш пароль должен содержать от 6 до 20 символов",
     "createNewPasswordButton": "Создать новый пароль",
     "passwordChangedSuccess": "Пароль успешно изменён"
@@ -88,8 +188,6 @@
     "usernameExists": "Пользователь с таким именем уже зарегистрирован",
     "emailExists": "Пользователь с таким email уже зарегистрирован",
     "emailAlreadyConfirmed": "Email уже подтверждён",
-    "invalidCredentials": "Неверный email или пароль",
-    "validationError": "Некорректные данные",
     "emailNotFound": "Пользователь с таким email не найден",
     "emailNotExists": "Пользователь с таким email не существует",
     "emailNotRegistered": "Невозможно отправить код - указанный email не зарегистрирован"
@@ -115,12 +213,79 @@
       "mismatch": "Пароли должны совпадать",
       "required": "Подтвердите пароль"
     },
-    "terms": {
-      "required": "Необходимо принять условия сервиса"
-    },
     "recaptcha": {
       "required": "Пожалуйста, завершите проверку reCAPTCHA",
       "expired": "Время проверки reCAPTCHA истекло. Пожалуйста, пройдите проверку снова"
+    },
+    "settings": {
+      "firstName": {
+        "min": "Имя обязательно",
+        "max": "Максимальное количество символов - 50",
+        "pattern": "Имя может содержать только латинские и кириллические буквы"
+      },
+      "lastName": {
+        "min": "Фамилия обязательна",
+        "max": "Максимальное количество символов - 50",
+        "pattern": "Фамилия может содержать только латинские и кириллические буквы"
+      },
+      "dateOfBirth": {
+        "format": "Используйте формат даты dd.mm.yyyy",
+        "invalidDate": "Введите корректную календарную дату"
+      },
+      "aboutMe": {
+        "max": "Максимальное количество символов - 200"
+      }
+    },
+    "selectPhotos": {
+      "errorMaxCount": "Еще можно выбрать не более {limit} фото, выбрано {count}",
+      "errorLimitReached": "Достигнут лимит фото - {limit}",
+      "errorFileSize": "Размер фото не должен превышать 20 МБ",
+      "errorFormat": "Формат загружаемого фото должен быть PNG или JPEG",
+      "errorDuplicate": "Это фото уже выбрано - {name}"
     }
+  },
+  "Common": {
+    "somethingWentWrong": "Что-то пошло не так",
+    "networkError": "Ошибка сети. Проверьте подключение.",
+    "userProfilePhotoAlt": "Фото профиля: {name}"
+  },
+  "CreatePost": {
+    "stepTitleAddPhotos": "Добавить фото",
+    "stepTitleCropping": "Обрезка",
+    "stepTitleFilters": "Фильтры",
+    "stepTitlePublish": "Публикация",
+    "previousStep": "Назад",
+    "nextStep": "Далее",
+    "generatingCropped": "Подготовка...",
+    "applyingFilters": "Применение фильтров...",
+    "openDraft": "Открыть черновик",
+    "gallery": "Галерея",
+    "addPhoto": "Добавить фото",
+    "removePhoto": "Удалить фото",
+    "aspectOriginal": "Оригинал",
+    "filters": "Фильтры",
+    "filterChoice": "Выбор фильтра",
+    "aspectRatio": "Соотношение сторон",
+    "aspectRatioChoice": "Выбор соотношения сторон",
+    "zoom": "Масштаб",
+    "zoomDialog": "Масштабирование",
+    "zoomImage": "Масштаб изображения",
+    "publish": "Публикация",
+    "publicationDetails": "Детали публикации",
+    "addPublicationDescriptions": "Описание",
+    "descriptionPlaceholder": "Опишите публикацию...",
+    "addLocation": "Местоположение",
+    "locationPlaceholder": "Добавить местоположение",
+    "locationSuggestions": "Варианты местоположения",
+    "publishButton": "Опубликовать",
+    "publishing": "Публикация...",
+    "postPublishedSuccess": "Публикация успешно создана",
+    "closeModalTitle": "Закрыть",
+    "closeModalMessage": "Вы действительно хотите отменить создание публикации?",
+    "closeModalSubMessage": "Несохранённые изменения будут потеряны",
+    "closeModalDiscard": "Отменить",
+    "closeModalSaveDraft": "Сохранить черновик",
+    "savingDraft": "Сохранение...",
+    "draftSaveSuccess": "Черновик сохранён"
   }
 }

@@ -1,14 +1,14 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
-import prettierConfig from "eslint-config-prettier";
-import tanstackQuery from "@tanstack/eslint-plugin-query";
-import boundaries from "eslint-plugin-boundaries";
+import { defineConfig, globalIgnores } from 'eslint/config';
+import nextVitals from 'eslint-config-next/core-web-vitals';
+import nextTs from 'eslint-config-next/typescript';
+import prettierConfig from 'eslint-config-prettier';
+import tanstackQuery from '@tanstack/eslint-plugin-query';
+import boundaries from 'eslint-plugin-boundaries';
 
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  ...tanstackQuery.configs["flat/recommended"],
+  ...tanstackQuery.configs['flat/recommended'],
   prettierConfig,
   {
     plugins: {
@@ -16,49 +16,49 @@ const eslintConfig = defineConfig([
     },
     settings: {
       ...boundaries.configs.strict.settings,
-      "boundaries/include": ["src/**/*.{js,jsx,ts,tsx}"],
-      "boundaries/ignore": [
-        "**/*.stories.{js,jsx,ts,tsx}",
-        "**/*.test.{js,jsx,ts,tsx}",
-        "**/*.spec.{js,jsx,ts,tsx}",
+      'boundaries/include': ['src/**/*.{js,jsx,ts,tsx}'],
+      'boundaries/ignore': [
+        '**/*.stories.{js,jsx,ts,tsx}',
+        '**/*.test.{js,jsx,ts,tsx}',
+        '**/*.spec.{js,jsx,ts,tsx}',
       ],
-      "boundaries/elements": [
-        { type: "shared", pattern: "src/shared/*", mode: "folder" },
-        { type: "entities", pattern: "src/entities/*", mode: "folder" },
-        { type: "features", pattern: "src/features/*", mode: "folder" },
-        { type: "widgets", pattern: "src/widgets/*", mode: "folder" },
-        { type: "pages", pattern: "src/pages-layer/*", mode: "folder" },
-        { type: "app", pattern: "src/app/**", mode: "folder" },
+      'boundaries/elements': [
+        { type: 'shared', pattern: 'src/shared/*', mode: 'folder' },
+        { type: 'entities', pattern: 'src/entities/*', mode: 'folder' },
+        { type: 'features', pattern: 'src/features/*', mode: 'folder' },
+        { type: 'widgets', pattern: 'src/widgets/*', mode: 'folder' },
+        { type: 'pages', pattern: 'src/pages-layer/*', mode: 'folder' },
+        { type: 'app', pattern: 'src/app/**', mode: 'folder' },
       ],
     },
     rules: {
       ...boundaries.configs.strict.rules,
-      "boundaries/no-ignored": "off",
-      "boundaries/element-types": [
-        "error",
+      'boundaries/no-ignored': 'off',
+      'boundaries/element-types': [
+        'error',
         {
-          default: "disallow",
+          default: 'disallow',
           rules: [
-            { from: ["shared"], allow: ["shared"] },
-            { from: ["entities"], allow: ["shared", "entities"] },
-            { from: ["features"], allow: ["shared", "entities"] },
+            { from: ['shared'], allow: ['shared'] },
+            { from: ['entities'], allow: ['shared', 'entities'] },
+            { from: ['features'], allow: ['shared', 'entities'] },
             {
-              from: ["widgets"],
-              allow: ["shared", "entities", "features", "widgets"],
+              from: ['widgets'],
+              allow: ['shared', 'entities', 'features', 'widgets'],
             },
             {
-              from: ["pages"],
-              allow: ["shared", "entities", "features", "widgets", "pages"],
+              from: ['pages'],
+              allow: ['shared', 'entities', 'features', 'widgets', 'pages'],
             },
             {
-              from: ["app"],
+              from: ['app'],
               allow: [
-                "shared",
-                "entities",
-                "features",
-                "widgets",
-                "pages",
-                "app",
+                'shared',
+                'entities',
+                'features',
+                'widgets',
+                'pages',
+                'app',
               ],
             },
           ],
@@ -69,10 +69,10 @@ const eslintConfig = defineConfig([
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
+    '.next/**',
+    'out/**',
+    'build/**',
+    'next-env.d.ts',
   ]),
 ]);
 

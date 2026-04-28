@@ -1,15 +1,17 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { LogoutButton } from '@/features/auth/logout';
 import { NavMenu } from '../NavMenu/NavMenu';
 import { BottomNav } from '../BottomNav';
+import { CreatePostModal } from '@/features/post/create-post/ui';
 import s from './Sidebar.module.css';
 import { useMe } from '@/entities/user';
 
 export const Sidebar = () => {
   const { data, isPending, isError } = useMe();
   const hasSidebar = !isPending && !isError && !!data;
+  const [isCreatePostModalOpen, setIsCreatePostModalOpen] = useState(false);
 
   useEffect(() => {
     if (hasSidebar) {
@@ -26,18 +28,34 @@ export const Sidebar = () => {
     return null;
   }
 
+  const handleOpenCreatePostModal = () => setIsCreatePostModalOpen(true);
+  const handleCloseCreatePostModal = () => setIsCreatePostModalOpen(false);
+
   return (
     <>
       {/* Desktop Sidebar */}
       <aside className={`${s.sidebar} ${s.desktopOnly}`}>
-        <NavMenu />
+        <NavMenu
+          userId={data.userId}
+          onOpenCreatePostModal={handleOpenCreatePostModal}
+          isCreatePostModalOpen={isCreatePostModalOpen}
+        />
         <LogoutButton />
       </aside>
 
       {/* Mobile Bottom Navigation */}
       <div className={s.mobileOnly}>
-        <BottomNav />
+        <BottomNav
+          userId={data.userId}
+          onOpenCreatePostModal={handleOpenCreatePostModal}
+          isCreatePostModalOpen={isCreatePostModalOpen}
+        />
       </div>
+
+      <CreatePostModal
+        isOpen={isCreatePostModalOpen}
+        onClose={handleCloseCreatePostModal}
+      />
     </>
   );
 };

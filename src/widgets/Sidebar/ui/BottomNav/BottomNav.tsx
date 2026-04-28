@@ -3,33 +3,67 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { mobileNavItems } from '../../model';
+import { getMobileNavItems, isNavItemLink } from '../../model';
 import s from './BottomNav.module.css';
 
-export const BottomNav = () => {
+type Props = {
+  userId: string;
+  onOpenCreatePostModal?: () => void;
+  isCreatePostModalOpen?: boolean;
+};
+
+export const BottomNav = ({
+  userId,
+  onOpenCreatePostModal,
+  isCreatePostModalOpen = false,
+}: Props) => {
   const pathname = usePathname();
   const t = useTranslations('Nav');
+  const mobileNavItems = getMobileNavItems(userId);
 
   return (
     <nav className={s.bottomNav} aria-label="Mobile navigation">
       <ul className={s.menu}>
-        {mobileNavItems.map(({ labelKey, href, icon }) => {
-          const isActive = pathname === href || pathname.startsWith(`${href}/`);
-          const label = t(labelKey);
+        {mobileNavItems.map((item) => {
+          const label = t(item.labelKey);
 
-          return (
-            <li key={href}>
-              <Link
-                href={href}
-                className={`${s.link} ${isActive ? s.linkActive : ''}`}
-                aria-label={label}
-                title={label}
-                aria-current={isActive ? 'page' : undefined}
-              >
-                <span className={s.icon}>{icon}</span>
-              </Link>
-            </li>
-          );
+          if (isNavItemLink(item)) {
+            const isActive =
+              !isCreatePostModalOpen &&
+              (pathname === item.href || pathname.startsWith(`${item.href}/`));
+
+            return (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className={`${s.link} ${isActive ? s.linkActive : ''}`}
+                  aria-label={label}
+                  title={label}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  <span className={s.icon}>{item.icon}</span>
+                </Link>
+              </li>
+            );
+          }
+
+          if (item.action === 'createPost') {
+            return (
+              <li key={item.labelKey}>
+                <button
+                  type="button"
+                  className={`${s.link} ${s.button} ${isCreatePostModalOpen ? s.linkActive : ''}`}
+                  onClick={onOpenCreatePostModal}
+                  aria-label={label}
+                  title={label}
+                >
+                  <span className={s.icon}>{item.icon}</span>
+                </button>
+              </li>
+            );
+          }
+
+          return null;
         })}
       </ul>
     </nav>

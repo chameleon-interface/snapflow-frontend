@@ -1,2 +1,2 @@
-export { navItems, mobileNavItems } from './navigation';
-export type { NavItem } from './navigation';
+export { getNavItems, getMobileNavItems, isNavItemLink } from './navigation';
+export type { NavItem, NavItemLink, NavItemAction } from './navigation';
