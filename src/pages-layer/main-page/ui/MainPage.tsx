@@ -1,5 +1,5 @@
-import { PostsBlock } from '@/widgets/main-page/PostsBlock';
-import { RegisteredUsersCount } from '@/widgets/main-page/RegisteredUsersCount';
+import { PostsBlock } from './PostsBlock';
+import { RegisteredUsersCount } from './RegisteredUsersCount';
 import styles from './MainPage.module.css';
 
 export const MainPage = () => {

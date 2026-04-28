@@ -2,12 +2,12 @@
 
 import type { KeyboardEvent, MouseEvent } from 'react';
 import { PostCardPreview, useLatestPostsQuery } from '@/entities/post';
-import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
 import type { PostViewDto } from '@/shared/api/generated/model';
 import { isNestedInteractiveTarget } from '@/shared/lib/dom/isNestedInteractiveTarget';
 import { getProfilePostRoute } from '@/shared/lib/routes/getProfilePostRoute';
 import { EmptyStateMessage } from '@/shared/ui';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import styles from './PostsBlock.module.css';
 
 export const PostsBlock = () => {
@@ -52,6 +52,7 @@ export const PostsBlock = () => {
       </section>
     );
   }
+
   return (
     <section className={styles.postsBlock}>
       {posts.map((post) => {
