@@ -1,6 +1,8 @@
 {
   "Auth": {
     "logOut": "Выйти",
+    "logOutSuccess": "Вы вышли из аккаунта",
+    "signInSuccess": "Вы успешно вошли в аккаунт",
     "signIn": "Войти",
     "signUp": "Регистрация"
   },

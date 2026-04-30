@@ -11,6 +11,7 @@ export { InfoModal } from './modals/InfoModal';
 export { SplashScreenGate } from './SplashScreen';
 export { RelativeTime } from './RelativeTime';
 export { EmptyStateMessage } from './EmptyStateMessage';
+export { Skeleton } from './Skeleton';
 export { HiddenFileInput } from './HiddenFileInput';
 export { PostDescriptionField } from './PostDescriptionField';
 export { UserAvatar } from './UserAvatar';

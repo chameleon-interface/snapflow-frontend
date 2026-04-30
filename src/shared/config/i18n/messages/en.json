@@ -1,6 +1,8 @@
 {
   "Auth": {
     "logOut": "Log out",
+    "logOutSuccess": "You are now logged out",
+    "signInSuccess": "You are now logged in",
     "signIn": "Sign In",
     "signUp": "Sign Up"
   },
