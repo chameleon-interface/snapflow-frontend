@@ -24,6 +24,7 @@ export const useProfilePostsInfinite = (userId: string) => {
         total: response.totalCount,
       };
     },
+    enabled: userId.trim().length > 0,
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
       const loadedItems = allPages.reduce(

@@ -6,18 +6,38 @@ import { authControllerLogout } from '@/shared/api/generated/endpoints/auth/auth
 import { authKeys } from '@/shared/api/keys-factories/authKeysFactory';
 import { ROUTES } from '@/shared/config';
 import { tokenStorage } from '@/shared/lib';
+import { toastSuccess } from 'snapflow-ui-kit/client';
+import { useTranslations } from 'next-intl';
 
 export const useLogoutMutation = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
+  const t = useTranslations();
 
   return useMutation({
     mutationFn: () => authControllerLogout(),
     onMutate: async () => {
-      await queryClient.cancelQueries({ queryKey: authKeys.me() });
-      tokenStorage.clear();
+      await queryClient.cancelQueries();
+
+      const previousMe = queryClient.getQueryData(authKeys.me());
       queryClient.setQueryData(authKeys.me(), null);
-      router.push(ROUTES.HOME);
+      return { previousMe };
+    },
+    onSuccess: () => {
+      toastSuccess(t('Auth.logOutSuccess'));
+
+      tokenStorage.clear();
+
+      queryClient.clear();
+
+      router.replace(ROUTES.HOME);
+    },
+    onError: (_error, _variables, context) => {
+      if (context?.previousMe != null) {
+        queryClient.setQueryData(authKeys.me(), context.previousMe);
+      }
+
+      queryClient.invalidateQueries({ queryKey: authKeys.me() });
     },
   });
 };
