@@ -2,7 +2,10 @@
   display: flex;
   gap: 38px;
   align-items: flex-start;
+
   margin-bottom: 48px;
+
+  animation: profile-header-enter 260ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 .avatar {
@@ -10,9 +13,14 @@
 }
 
 .profileAvatar {
+  will-change: transform;
+
   width: 204px;
   height: 204px;
+
   font-size: 90px;
+
+  transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .info {
@@ -86,6 +94,36 @@
 
 .bio {
   margin-top: 23px;
+}
+
+.header:hover .profileAvatar {
+  transform: scale(1.012);
+}
+
+@keyframes profile-header-enter {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header {
+    animation: none;
+  }
+
+  .profileAvatar {
+    transition: none;
+  }
+
+  .header:hover .profileAvatar {
+    transform: none;
+  }
 }
 
 @media (width <= 1024px) {
