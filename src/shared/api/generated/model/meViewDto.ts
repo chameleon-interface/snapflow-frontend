@@ -5,12 +5,17 @@
  * REST API для SnapFlow
  * OpenAPI spec version: 1.0.0
  */
+import type { MeViewDtoAccountType } from './meViewDtoAccountType';
 
 export interface MeViewDto {
   /** ID пользователя */
   userId: string;
+  /** Идентификатор профиля пользователя */
+  profileId: string;
   /** Email пользователя */
   email: string;
   /** Имя пользователя */
   username: string;
+  /** Тип аккаунта (подписка) */
+  accountType: MeViewDtoAccountType;
 }

@@ -19,7 +19,7 @@ export function ProfileContent() {
     <section className={s.page}>
       <ProfileHeader profile={profile} />
       <ProfilePosts
-        profileId={profile.id}
+        profileId={id}
         postsCount={profile.userMetadata.publicationsCount ?? 0}
       />
     </section>

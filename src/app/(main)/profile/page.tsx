@@ -14,14 +14,14 @@ export default function ProfileRedirectPage() {
       return;
     }
 
-    if (data?.userId) {
-      router.replace(ROUTES.PROFILE(data.userId));
+    if (data?.profileId) {
+      router.replace(ROUTES.PROFILE(data.profileId));
 
       return;
     }
 
     router.replace(ROUTES.SIGN_IN);
-  }, [data?.userId, isPending, router]);
+  }, [data?.profileId, isPending, router]);
 
   return null;
 }

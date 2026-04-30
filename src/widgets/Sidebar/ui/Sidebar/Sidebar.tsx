@@ -36,7 +36,7 @@ export const Sidebar = () => {
       {/* Desktop Sidebar */}
       <aside className={`${s.sidebar} ${s.desktopOnly}`}>
         <NavMenu
-          userId={data.userId}
+          profileId={data.profileId}
           onOpenCreatePostModal={handleOpenCreatePostModal}
           isCreatePostModalOpen={isCreatePostModalOpen}
         />
@@ -46,7 +46,7 @@ export const Sidebar = () => {
       {/* Mobile Bottom Navigation */}
       <div className={s.mobileOnly}>
         <BottomNav
-          userId={data.userId}
+          profileId={data.profileId}
           onOpenCreatePostModal={handleOpenCreatePostModal}
           isCreatePostModalOpen={isCreatePostModalOpen}
         />

@@ -38,7 +38,6 @@ export const usePostModalActions = ({
     updatePost(
       {
         postId: post.id,
-        ownerId: post.owner.ownerId,
         description: editedDescription,
       },
       {
@@ -52,7 +51,11 @@ export const usePostModalActions = ({
   const deletePostItem = () =>
     isOwner &&
     deletePost(
-      { postId: post.id, ownerId: post.owner.ownerId },
+      {
+        postId: post.id,
+        userId: post.owner.userId,
+        profileId: post.owner.profileId,
+      },
       {
         onSuccess: () => {
           toastSuccess(deleteSuccessMessage);

@@ -35,7 +35,7 @@ export const PostCard = ({ post }: Props) => {
         headingId={`feed-post-${post.id}`}
         moreLabel={t('actions.more')}
         onMoreClickAction={handleTodoAlert}
-        ownerId={post.owner.ownerId}
+        profileId={post.owner.profileId}
         username={username}
       />
 
@@ -79,7 +79,7 @@ export const PostCard = ({ post }: Props) => {
           avatarUrl={post.owner.avatarUrl}
           description={description}
           likesCount={LIKES_PLACEHOLDER_COUNT}
-          ownerId={post.owner.ownerId}
+          profileId={post.owner.profileId}
           username={username}
         />
 
