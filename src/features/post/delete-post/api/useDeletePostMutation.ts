@@ -2,13 +2,13 @@
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { postsControllerDeletePost } from '@/shared/api/generated/endpoints/posts/posts';
-import { mainPageKeys } from '@/shared/api/keys-factories/mainPageKeysFactory';
 import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
 import { profileKeys } from '@/shared/api/keys-factories/profileKeysFactory';
 
 type DeletePostInput = {
   postId: string;
-  ownerId: string;
+  userId: string;
+  profileId: string;
 };
 
 export const useDeletePostMutation = () => {
@@ -19,14 +19,13 @@ export const useDeletePostMutation = () => {
       postsControllerDeletePost(postId),
     onSuccess: async (_, variables) => {
       await Promise.all([
+        queryClient.invalidateQueries({ queryKey: postsKeys.feed() }),
+        queryClient.invalidateQueries({ queryKey: postsKeys.latest() }),
         queryClient.invalidateQueries({
-          queryKey: postsKeys.usersPosts(variables.ownerId),
+          queryKey: postsKeys.usersPosts(variables.userId),
         }),
         queryClient.invalidateQueries({
-          queryKey: mainPageKeys.posts(),
-        }),
-        queryClient.invalidateQueries({
-          queryKey: profileKeys.userProfile(variables.ownerId),
+          queryKey: profileKeys.userProfile(variables.profileId),
         }),
       ]);
     },

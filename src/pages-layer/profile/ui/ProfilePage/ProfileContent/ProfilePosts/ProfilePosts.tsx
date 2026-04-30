@@ -32,7 +32,7 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
     profileId,
   });
   const { posts, observerRef, hasNextPage, isPending, isError, refetch } =
-    useProfilePostsInfinite(profileId);
+    useProfilePostsInfinite(me?.userId ?? '');
   const initialPost =
     posts.find((post) => post.id === (postId ?? null)) ?? null;
   const { data: selectedPostData } = usePostByIdQuery({
@@ -102,7 +102,7 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
         <PostModal
           open
           post={selectedPostData}
-          isOwner={me?.userId === selectedPostData.owner.ownerId}
+          isOwner={me?.userId === selectedPostData.owner.userId}
           onCloseAction={closePost}
         />
       ) : null}

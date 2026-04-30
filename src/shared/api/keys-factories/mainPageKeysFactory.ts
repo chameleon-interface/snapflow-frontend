@@ -1,5 +1,3 @@
 export const mainPageKeys = {
-  all: ['main-page'],
-  registeredUsersCount: () => [...mainPageKeys.all, 'registered-users-count'],
-  posts: () => [...mainPageKeys.all, 'posts'],
+  registeredUsersCount: () => ['main-page', 'registered-users-count'],
 };

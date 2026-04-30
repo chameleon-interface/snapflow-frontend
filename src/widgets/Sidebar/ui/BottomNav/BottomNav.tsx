@@ -7,19 +7,19 @@ import { getMobileNavItems, isNavItemLink } from '../../model';
 import s from './BottomNav.module.css';
 
 type Props = {
-  userId: string;
+  profileId: string;
   onOpenCreatePostModal?: () => void;
   isCreatePostModalOpen?: boolean;
 };
 
 export const BottomNav = ({
-  userId,
+  profileId,
   onOpenCreatePostModal,
   isCreatePostModalOpen = false,
 }: Props) => {
   const pathname = usePathname();
   const t = useTranslations('Nav');
-  const mobileNavItems = getMobileNavItems(userId);
+  const mobileNavItems = getMobileNavItems(profileId);
 
   return (
     <nav className={s.bottomNav} aria-label="Mobile navigation">

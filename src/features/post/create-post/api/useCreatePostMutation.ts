@@ -13,12 +13,13 @@ export const useCreatePostMutation = () => {
     mutationFn: (payload: CreatePostInputDto) =>
       postsControllerCreatePost(payload),
     onSuccess: (createdPost) => {
-      queryClient.invalidateQueries({ queryKey: postsKeys.all });
+      queryClient.invalidateQueries({ queryKey: postsKeys.feed() });
+      queryClient.invalidateQueries({ queryKey: postsKeys.latest() });
       queryClient.invalidateQueries({
-        queryKey: postsKeys.usersPosts(createdPost.owner.ownerId),
+        queryKey: postsKeys.usersPosts(createdPost.owner.userId),
       });
       queryClient.invalidateQueries({
-        queryKey: profileKeys.userProfile(createdPost.owner.ownerId),
+        queryKey: profileKeys.userProfile(createdPost.owner.profileId),
       });
     },
   });

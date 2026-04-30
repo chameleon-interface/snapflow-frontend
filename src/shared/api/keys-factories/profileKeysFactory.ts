@@ -1,5 +1,5 @@
 export const profileKeys = {
   all: ['profile'],
   myProfile: () => [...profileKeys.all, 'my'],
-  userProfile: (userId: string) => [...profileKeys.all, 'user', userId],
+  userProfile: (profileId: string) => [...profileKeys.all, 'user', profileId],
 };

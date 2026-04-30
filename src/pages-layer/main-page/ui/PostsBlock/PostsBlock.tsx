@@ -22,7 +22,7 @@ export const PostsBlock = () => {
       getProfilePostRoute({
         from: 'main',
         postId: post.id,
-        profileId: post.owner.ownerId,
+        profileId: post.owner.profileId,
       }),
       { scroll: false },
     );

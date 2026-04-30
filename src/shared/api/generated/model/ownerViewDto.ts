@@ -7,8 +7,10 @@
  */
 
 export interface OwnerViewDto {
-  /** Идентификатор юзера */
-  ownerId: string;
+  /** Идентификатор пользователя */
+  userId: string;
+  /** Идентификатор профиля пользователя */
+  profileId: string;
   /** Имя юзера */
   username: string;
   /**

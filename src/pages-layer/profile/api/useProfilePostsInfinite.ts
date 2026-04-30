@@ -8,11 +8,11 @@ import { useInfiniteScrollTrigger } from '@/shared/lib/hooks';
 
 const POSTS_PER_PAGE = 12;
 
-export const useProfilePostsInfinite = (profileId: string) => {
+export const useProfilePostsInfinite = (userId: string) => {
   const query = useInfiniteQuery({
-    queryKey: postsKeys.usersPosts(profileId),
+    queryKey: postsKeys.usersPosts(userId),
     queryFn: async ({ pageParam = 1 }) => {
-      const response = await postsControllerGetProfilePosts(profileId, {
+      const response = await postsControllerGetProfilePosts(userId, {
         pageNumber: pageParam,
         pageSize: POSTS_PER_PAGE,
         sortBy: 'createdAt',
