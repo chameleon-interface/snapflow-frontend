@@ -13,6 +13,7 @@ import { EmptyStateMessage } from '@/shared/ui';
 import { useProfilePostsInfinite } from '../../../../api/useProfilePostsInfinite';
 import s from './ProfilePosts.module.css';
 import { useProfilePostModalRoute } from './useProfilePostModalRoute';
+import { ProfilePostsSkeleton } from './ProfilePostsSkeleton/ProfilePostsSkeleton';
 
 const PostModal = dynamic(
   () => import('@/widgets/PostModal').then((mod) => mod.PostModal),
@@ -31,8 +32,10 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
   const { closePost, openPost, postId } = useProfilePostModalRoute({
     profileId,
   });
+  const userId = me?.userId ?? '';
+  const canLoadPosts = userId.trim().length > 0;
   const { posts, observerRef, hasNextPage, isPending, isError, refetch } =
-    useProfilePostsInfinite(me?.userId ?? '');
+    useProfilePostsInfinite(userId);
   const initialPost =
     posts.find((post) => post.id === (postId ?? null)) ?? null;
   const { data: selectedPostData } = usePostByIdQuery({
@@ -60,6 +63,8 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
   return (
     <>
       <section className={s.posts}>
+        {canLoadPosts && isPending ? <ProfilePostsSkeleton /> : null}
+
         {isError && (
           <EmptyStateMessage className={s.emptyWrapper}>
             <div className={s.stateBlock}>
@@ -75,28 +80,32 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
           </EmptyStateMessage>
         )}
 
-        {!isPending && !isError && posts.length === 0 && (
+        {canLoadPosts && !isPending && !isError && posts.length === 0 && (
           <EmptyStateMessage className={s.emptyWrapper}>
             {tMainPage('noPostsYet')}
           </EmptyStateMessage>
         )}
 
-        {posts.map((post) => (
-          <div
-            key={post.id}
-            className={s.post}
-            role="button"
-            tabIndex={0}
-            aria-label={`Open post ${post.id}`}
-            onClick={handlePostClick(post)}
-            onKeyDown={handlePostKeyDown(post)}
-          >
-            <PostCardPreview post={post} variant="compact" />
-          </div>
-        ))}
+        {canLoadPosts &&
+          !isPending &&
+          posts.map((post) => (
+            <div
+              key={post.id}
+              className={s.post}
+              role="button"
+              tabIndex={0}
+              aria-label={`Open post ${post.id}`}
+              onClick={handlePostClick(post)}
+              onKeyDown={handlePostKeyDown(post)}
+            >
+              <PostCardPreview post={post} variant="compact" />
+            </div>
+          ))}
       </section>
 
-      {hasNextPage && <div ref={observerRef} className={s.observer} />}
+      {canLoadPosts && hasNextPage && (
+        <div ref={observerRef} className={s.observer} />
+      )}
 
       {selectedPostData ? (
         <PostModal
