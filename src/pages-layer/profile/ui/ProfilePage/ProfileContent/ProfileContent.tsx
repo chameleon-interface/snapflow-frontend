@@ -25,6 +25,7 @@ export function ProfileContent() {
       <ProfileHeader profile={profile} />
       <ProfilePosts
         profileId={id}
+        userId={profile.userId}
         postsCount={profile.userMetadata.publicationsCount ?? 0}
       />
     </section>

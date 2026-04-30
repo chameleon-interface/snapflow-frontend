@@ -10,6 +10,8 @@ import type { UserMetadataViewDto } from './userMetadataViewDto';
 export interface PublicProfileViewDto {
   /** ID профиля пользователя */
   id: string;
+  /** ID пользователя, которому принадлежит профиль */
+  userId: string;
   /** Уникальный username пользователя */
   username: string;
   /**
