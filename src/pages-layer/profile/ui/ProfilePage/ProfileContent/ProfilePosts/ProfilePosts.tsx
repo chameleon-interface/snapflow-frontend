@@ -22,17 +22,17 @@ const PostModal = dynamic(
 
 type Props = {
   profileId: string;
+  userId: string;
   postsCount: number;
 };
 
-export function ProfilePosts({ profileId, postsCount }: Props) {
+export function ProfilePosts({ profileId, userId, postsCount }: Props) {
   const t = useTranslations('Pages');
   const tMainPage = useTranslations('MainPage');
   const { data: me } = useMe();
   const { closePost, openPost, postId } = useProfilePostModalRoute({
     profileId,
   });
-  const userId = me?.userId ?? '';
   const canLoadPosts = userId.trim().length > 0;
   const { posts, observerRef, hasNextPage, isPending, isError, refetch } =
     useProfilePostsInfinite(userId);

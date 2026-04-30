@@ -15,4 +15,6 @@ export interface SessionsViewDto {
   ip: string;
   /** Дата последней генерации токенов */
   lastVisit: string;
+  /** Текущая сессия, с которой выполнен запрос */
+  isCurrent: boolean;
 }
