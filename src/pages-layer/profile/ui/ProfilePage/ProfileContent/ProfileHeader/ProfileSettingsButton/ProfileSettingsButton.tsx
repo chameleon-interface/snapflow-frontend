@@ -15,7 +15,7 @@ export function ProfileSettingsButton({ profileId }: Props) {
   const t = useTranslations('Pages');
   const { data: me } = useMe();
 
-  if (me?.userId !== profileId) {
+  if (me?.profileId !== profileId) {
     return null;
   }
 
