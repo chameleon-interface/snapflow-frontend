@@ -20,6 +20,8 @@ export const Skeleton = ({
   style,
   ...rest
 }: Props) => {
+  const normalizedRadius = typeof radius === 'number' ? `${radius}px` : radius;
+
   return (
     <div
       className={clsx(
@@ -33,8 +35,8 @@ export const Skeleton = ({
         {
           width,
           height,
-          ...(radius != null
-            ? { ['--skeleton-radius' as string]: radius }
+          ...(normalizedRadius != null
+            ? { ['--skeleton-radius' as string]: normalizedRadius }
             : {}),
           ...style,
         } as CSSProperties

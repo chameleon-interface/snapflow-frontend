@@ -7,7 +7,6 @@ import { BottomNav } from '../BottomNav';
 import { CreatePostModal } from '@/features/post/create-post/ui';
 import s from './Sidebar.module.css';
 import { useMe } from '@/entities/user';
-import { SidebarSkeleton } from './SidebarSkeleton';
 
 export const Sidebar = () => {
   const { data, isPending, isError } = useMe();
@@ -24,14 +23,6 @@ export const Sidebar = () => {
 
     delete document.body.dataset.hasSidebar;
   }, [hasSidebar]);
-
-  if (isPending) {
-    return (
-      <aside className={`${s.sidebar} ${s.desktopOnly}`}>
-        <SidebarSkeleton />
-      </aside>
-    );
-  }
 
   if (!hasSidebar) {
     return null;

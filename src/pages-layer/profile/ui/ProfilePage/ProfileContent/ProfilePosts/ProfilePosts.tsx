@@ -62,7 +62,11 @@ export function ProfilePosts({ profileId, postsCount }: Props) {
 
   return (
     <>
-      <section className={s.posts}>
+      <section
+        className={s.posts}
+        aria-busy={canLoadPosts && isPending}
+        aria-label="Profile posts"
+      >
         {canLoadPosts && isPending ? <ProfilePostsSkeleton /> : null}
 
         {isError && (

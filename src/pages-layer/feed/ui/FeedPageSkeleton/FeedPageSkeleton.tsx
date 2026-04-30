@@ -7,12 +7,8 @@ export const FeedPageSkeleton = () => {
   return (
     <section className={s.page} aria-busy="true" aria-label="Loading feed">
       <div className={s.content}>
-        <div className={s.title}>
-          <Skeleton variant="pulse" height={28} width={160} radius={6} />
-        </div>
-
         <div className={s.list}>
-          {Array.from({ length: 3 }).map((_, idx) => (
+          {Array.from({ length: 6 }).map((_, idx) => (
             <article key={idx} className={s.card}>
               <div className={s.headerRow}>
                 <div className={s.author}>
@@ -41,7 +37,14 @@ export const FeedPageSkeleton = () => {
               </div>
 
               <div className={s.media}>
-                <Skeleton variant="wave" height={504} width="100%" radius={2} />
+                <div className={s.mediaFrame}>
+                  <Skeleton
+                    variant="wave"
+                    height="100%"
+                    width="100%"
+                    radius={2}
+                  />
+                </div>
               </div>
 
               <div className={s.actions}>
