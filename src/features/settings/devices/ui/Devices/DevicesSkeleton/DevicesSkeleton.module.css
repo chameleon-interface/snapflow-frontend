@@ -1,0 +1,97 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sectionTitle {
+  margin-bottom: 18px;
+}
+
+.cardShell {
+  padding: 16px 18px;
+  border: 1px solid color-mix(in srgb, var(--color-dark-300) 72%, transparent);
+  border-radius: 12px;
+}
+
+.deviceBlock {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 14px;
+
+  min-width: 0;
+}
+
+.cardHeaderRow {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.logoutSlot {
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(108px, 34%) 1fr;
+  gap: 8px 14px;
+  align-items: center;
+
+  padding: 9px 0;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-dark-300) 72%, transparent);
+}
+
+.row:last-of-type {
+  border-bottom: none;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 2px;
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--color-dark-300) 55%, transparent);
+  border-radius: 8px;
+
+  background: color-mix(in srgb, var(--color-dark-900) 52%, transparent);
+}
+
+.terminateRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.terminateButton {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.activeList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (width <= 768px) {
+  .terminateRow {
+    justify-content: stretch;
+  }
+
+  .terminateButton {
+    width: 100%;
+  }
+}

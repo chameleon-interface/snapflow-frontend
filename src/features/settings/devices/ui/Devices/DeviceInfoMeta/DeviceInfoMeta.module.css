@@ -1,0 +1,31 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  align-items: baseline;
+
+  margin-top: 2px;
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--color-dark-300) 55%, transparent);
+  border-radius: 8px;
+
+  background: color-mix(in srgb, var(--color-dark-900) 52%, transparent);
+}
+
+.online {
+  color: var(--color-accent-500);
+  text-transform: uppercase;
+}
+
+.label {
+  margin: 0;
+  font-weight: 500;
+  color: var(--color-light-900);
+}
+
+.value {
+  margin: 0;
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-light-100);
+}

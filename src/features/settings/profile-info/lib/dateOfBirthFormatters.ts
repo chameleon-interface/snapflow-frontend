@@ -6,7 +6,7 @@ const parseDdMmYyyyToUtcDate = (value: string): Date => {
 };
 
 /**
- * Validates that a string matches `dd.MM.yyyy` and represents a real calendar date.
+ * Проверяет, что строка соответствует формату `dd.MM.yyyy` и является реальной календарной датой.
  */
 export const isValidDdMmYyyyDate = (value: string): boolean => {
   if (!dateOfBirthPattern.test(value)) {
@@ -29,7 +29,7 @@ export const isValidDdMmYyyyDate = (value: string): boolean => {
 };
 
 /**
- * Checks whether a valid `dd.MM.yyyy` date is in the future (compared by calendar day, UTC).
+ * Проверяет, что корректная дата `dd.MM.yyyy` находится в будущем (сравнение по календарному дню, UTC).
  */
 export const isDdMmYyyyDateInFuture = (value: string): boolean => {
   if (!isValidDdMmYyyyDate(value)) {
@@ -46,8 +46,8 @@ export const isDdMmYyyyDateInFuture = (value: string): boolean => {
 };
 
 /**
- * Converts a date string from `dd.MM.yyyy` to ISO 8601 (`yyyy-MM-ddTHH:mm:ss.sssZ`).
- * Returns `null` for `null` input and returns the original value if parsing fails.
+ * Конвертирует строку даты из `dd.MM.yyyy` в ISO 8601 (`yyyy-MM-ddTHH:mm:ss.sssZ`).
+ * Для `null` возвращает `null`; если парсинг не удался — возвращает исходное значение.
  */
 export const convertDdMmYyyyToIso8601 = (
   value: string | null,
@@ -63,34 +63,4 @@ export const convertDdMmYyyyToIso8601 = (
   const date = parseDdMmYyyyToUtcDate(value);
 
   return date.toISOString();
-};
-
-/**
- * Converts an ISO 8601 date string to `dd.MM.yyyy`.
- * Returns an empty string for `null`/empty input and returns the original value if parsing fails.
- */
-export const formatIso8601ToDdMmYyyy = (value: string | null): string => {
-  if (!value) {
-    return '';
-  }
-
-  const isoDateMatch = /^(\d{4})-(\d{2})-(\d{2})/.exec(value);
-
-  if (isoDateMatch) {
-    const [, year, month, day] = isoDateMatch;
-
-    return `${day}.${month}.${year}`;
-  }
-
-  const parsedDate = new Date(value);
-
-  if (Number.isNaN(parsedDate.getTime())) {
-    return value;
-  }
-
-  const day = String(parsedDate.getUTCDate()).padStart(2, '0');
-  const month = String(parsedDate.getUTCMonth() + 1).padStart(2, '0');
-  const year = String(parsedDate.getUTCFullYear());
-
-  return `${day}.${month}.${year}`;
 };

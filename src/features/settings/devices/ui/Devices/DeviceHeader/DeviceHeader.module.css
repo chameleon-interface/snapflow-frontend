@@ -1,0 +1,9 @@
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.logOutButtonHidden {
+  visibility: hidden;
+}

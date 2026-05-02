@@ -9,12 +9,22 @@
 export interface SessionsViewDto {
   /** Id сессии устройства */
   deviceId: string;
+  /** Название браузера */
+  browserName: string;
+  /** Версия браузера */
+  browserVersion: string;
+  /** Название операционной системы */
+  osName: string;
+  /** Версия операционной системы */
+  osVersion: string;
   /** Имя устройства. Получаем из header "user-agent" */
   deviceName: string;
+  /** Тип устройства */
+  deviceType: string;
   /** Ip адрес устройства */
   ip: string;
   /** Дата последней генерации токенов */
-  lastVisit: string;
+  lastActive: string;
   /** Текущая сессия, с которой выполнен запрос */
   isCurrent: boolean;
 }

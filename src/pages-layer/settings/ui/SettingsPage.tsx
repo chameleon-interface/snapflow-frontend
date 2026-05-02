@@ -1,10 +1,11 @@
 'use client';
 
-import { useMemo } from 'react';
-import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
-import { Tab, Typography } from 'snapflow-ui-kit';
+import { Devices } from '@/features/settings/devices/ui';
 import { ProfileInfoForm } from '@/features/settings/profile-info';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import { useMemo } from 'react';
+import { Tab } from 'snapflow-ui-kit';
 import { buildSettingsUrl, SETTINGS_PARTS, SettingsPart } from '../model';
 import s from './SettingsPage.module.css';
 
@@ -34,16 +35,19 @@ export function SettingsPage({ part }: SettingsPageProps) {
       return <ProfileInfoForm />;
     }
 
-    return (
-      <section className={s.stub}>
-        <Typography as="h2" variant="h2">
-          {t(`stubs.${part}.title`)}
-        </Typography>
-        <Typography as="p" variant="text-14" className={s.stubText}>
-          {t(`stubs.${part}.description`)}
-        </Typography>
-      </section>
-    );
+    if (part === 'devices') {
+      return <Devices />;
+    }
+
+    if (part === 'subscriptions') {
+      return <div>Subscriptions</div>;
+    }
+
+    if (part === 'payments') {
+      return <div>Payments</div>;
+    }
+
+    return null;
   };
 
   return (

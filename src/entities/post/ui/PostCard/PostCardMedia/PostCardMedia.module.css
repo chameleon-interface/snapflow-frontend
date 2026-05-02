@@ -16,7 +16,8 @@
 
 .mediaWrap:hover {
   border-color: var(--color-dark-100);
-  box-shadow: 0 10px 22px rgb(0 0 0 / 22%);
+  box-shadow: 0 10px 22px
+    color-mix(in srgb, var(--color-dark-900) 22%, transparent);
 }
 
 .carousel {

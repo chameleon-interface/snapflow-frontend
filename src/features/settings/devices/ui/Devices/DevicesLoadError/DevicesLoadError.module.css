@@ -1,0 +1,43 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  min-height: min(65dvh, 520px);
+  padding: 24px 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 420px;
+
+  text-align: center;
+}
+
+.message {
+  margin: 0;
+}
+
+.retryButton {
+  min-width: 140px;
+}
+
+@media (width <= 768px) {
+  .root {
+    min-height: min(58dvh, 440px);
+    padding: 16px 12px;
+  }
+
+  .retryButton {
+    align-self: stretch;
+    width: 100%;
+  }
+}

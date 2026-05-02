@@ -52,11 +52,19 @@
 }
 
 .likesAvatar {
-  background: linear-gradient(135deg, #f2b36f, #d75a7f);
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-500),
+    var(--color-danger-500)
+  );
 }
 
 .likesAvatarAlt {
-  background: linear-gradient(135deg, #79c7ff, #4d6dff);
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-700),
+    var(--color-accent-500)
+  );
 }
 
 .likesAvatars > :first-child {
