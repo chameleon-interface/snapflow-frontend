@@ -8,6 +8,15 @@
   border-radius: 2px;
 
   background: var(--color-dark-500);
+
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.mediaWrap:hover {
+  border-color: var(--color-dark-100);
+  box-shadow: 0 10px 22px rgb(0 0 0 / 22%);
 }
 
 .carousel {
@@ -35,6 +44,17 @@
   height: 100%;
 
   color: var(--color-light-900);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mediaWrap {
+    transition: none;
+  }
+
+  .mediaWrap:hover {
+    border-color: var(--color-dark-300);
+    box-shadow: none;
+  }
 }
 
 @media (width <= 768px) {

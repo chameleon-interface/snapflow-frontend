@@ -5,6 +5,7 @@ import { useInfiniteScrollTrigger } from '@/shared/lib/hooks';
 import { useTranslations } from 'next-intl';
 import { Button, Typography } from 'snapflow-ui-kit';
 import s from './FeedPage.module.css';
+import { FeedPageSkeleton } from './FeedPageSkeleton/FeedPageSkeleton';
 
 export function FeedPage() {
   const t = useTranslations('Feed');
@@ -29,7 +30,7 @@ export function FeedPage() {
   });
 
   if (isPending) {
-    return null;
+    return <FeedPageSkeleton />;
   }
 
   if (!hasPosts) {

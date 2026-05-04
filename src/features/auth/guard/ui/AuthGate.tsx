@@ -21,8 +21,8 @@ export const AuthGate = ({ mode, children }: AuthGateProps) => {
       return ROUTES.SIGN_IN;
     }
 
-    if (mode === 'guest-only' && data?.userId) {
-      return ROUTES.PROFILE(data.userId);
+    if (mode === 'guest-only' && data?.profileId) {
+      return ROUTES.PROFILE(data.profileId);
     }
 
     return null;

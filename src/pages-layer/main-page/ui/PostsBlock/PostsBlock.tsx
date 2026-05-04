@@ -9,10 +9,11 @@ import { EmptyStateMessage } from '@/shared/ui';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import styles from './PostsBlock.module.css';
+import { PostsBlockSkeleton } from './PostsBlockSkeleton/PostsBlockSkeleton';
 
 export const PostsBlock = () => {
   const router = useRouter();
-  const { data } = useLatestPostsQuery();
+  const { data, isPending } = useLatestPostsQuery();
   const t = useTranslations('MainPage');
 
   const posts = data?.items ?? [];
@@ -22,7 +23,7 @@ export const PostsBlock = () => {
       getProfilePostRoute({
         from: 'main',
         postId: post.id,
-        profileId: post.owner.ownerId,
+        profileId: post.owner.profileId,
       }),
       { scroll: false },
     );
@@ -44,6 +45,10 @@ export const PostsBlock = () => {
 
       openPost(post);
     };
+
+  if (isPending) {
+    return <PostsBlockSkeleton />;
+  }
 
   if (posts.length === 0) {
     return (

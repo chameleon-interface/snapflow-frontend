@@ -4,12 +4,17 @@ import { useRegisteredUsersCountQuery } from '@/pages-layer/main-page/api/useReg
 import { useTranslations } from 'next-intl';
 import { Typography } from 'snapflow-ui-kit';
 import { UsersCounter } from './UsersCounter';
+import { RegisteredUsersCountSkeleton } from './RegisteredUsersCountSkeleton/RegisteredUsersCountSkeleton';
 import styles from './RegisteredUsersCount.module.css';
 
 export const RegisteredUsersCount = () => {
-  const { data } = useRegisteredUsersCountQuery();
+  const { data, isPending } = useRegisteredUsersCountQuery();
   const count = data?.totalCount ?? 0;
   const t = useTranslations('MainPage');
+
+  if (isPending) {
+    return <RegisteredUsersCountSkeleton />;
+  }
 
   return (
     <section

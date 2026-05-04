@@ -6,19 +6,19 @@ import s from './NavMenu.module.css';
 import { useTranslations } from 'next-intl';
 
 type Props = {
-  userId: string;
+  profileId: string;
   onOpenCreatePostModal?: () => void;
   isCreatePostModalOpen?: boolean;
 };
 
 export const NavMenu = ({
-  userId,
+  profileId,
   onOpenCreatePostModal,
   isCreatePostModalOpen = false,
 }: Props) => {
   const t = useTranslations('Nav');
   const pathname = usePathname();
-  const navItems = getNavItems(userId);
+  const navItems = getNavItems(profileId);
 
   return (
     <nav>

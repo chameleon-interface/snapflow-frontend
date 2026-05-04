@@ -9,7 +9,7 @@ type Props = {
   avatarUrl: string | null;
   description: string;
   likesCount: number;
-  ownerId: string;
+  profileId: string;
   username: string;
 };
 
@@ -17,7 +17,7 @@ export const PostCardMeta = ({
   avatarUrl,
   description,
   likesCount,
-  ownerId,
+  profileId,
   username,
 }: Props) => {
   const locale = useLocale();
@@ -34,7 +34,7 @@ export const PostCardMeta = ({
 
           <Typography as="p" variant="text-14" className={styles.description}>
             <Link
-              href={ROUTES.PROFILE(ownerId)}
+              href={ROUTES.PROFILE(profileId)}
               className={styles.descriptionAuthorLink}
             >
               <span className={styles.descriptionAuthor}>{username}</span>

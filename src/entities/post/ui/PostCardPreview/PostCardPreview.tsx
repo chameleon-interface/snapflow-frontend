@@ -54,7 +54,7 @@ export const PostCardPreview = ({ post, variant = 'default' }: Props) => {
             <PostAuthorInfo
               avatarUrl={post.owner.avatarUrl}
               headingId={`post-heading-${post.id}`}
-              profileHref={ROUTES.PROFILE(post.owner.ownerId)}
+              profileHref={ROUTES.PROFILE(post.owner.profileId)}
               username={username}
             />
             <RelativeTime isoDate={post.createdAt} className={styles.time} />

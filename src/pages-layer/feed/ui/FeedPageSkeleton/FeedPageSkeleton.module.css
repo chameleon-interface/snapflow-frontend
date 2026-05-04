@@ -1,0 +1,94 @@
+.page {
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+
+  width: min(100%, 491px);
+  margin-inline: auto;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.card {
+  border-radius: 4px;
+  background: var(--color-dark-700);
+}
+
+.headerRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 36px;
+  margin-bottom: 12px;
+}
+
+.author {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-width: 0;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.media {
+  margin-bottom: 12px;
+}
+
+.mediaFrame {
+  overflow: hidden;
+
+  box-sizing: border-box;
+  aspect-ratio: 491 / 504;
+  width: 100%;
+  border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
+
+  background: var(--color-dark-500);
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 12px;
+}
+
+.actionsLeft {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+@media (width >= 1280px) {
+  .content {
+    margin-inline: 131px auto;
+  }
+}
+
+@media (width <= 768px) {
+  .content {
+    width: 100%;
+  }
+
+  .list {
+    gap: 24px;
+  }
+}

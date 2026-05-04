@@ -19,6 +19,7 @@ export * from './generateUploadUrlViewDto';
 export * from './loginUserInputDto';
 export * from './loginViewDto';
 export * from './meViewDto';
+export * from './meViewDtoAccountType';
 export * from './mimeType';
 export * from './newPasswordInputDto';
 export * from './ownerViewDto';

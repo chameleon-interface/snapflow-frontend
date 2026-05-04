@@ -11,7 +11,7 @@ type Props = {
   headingId: string;
   moreLabel: string;
   onMoreClickAction: () => void;
-  ownerId: string;
+  profileId: string;
   username: string;
 };
 
@@ -21,7 +21,7 @@ export const PostCardHeader = ({
   headingId,
   moreLabel,
   onMoreClickAction,
-  ownerId,
+  profileId,
   username,
 }: Props) => {
   return (
@@ -31,7 +31,7 @@ export const PostCardHeader = ({
           avatarUrl={avatarUrl}
           headingId={headingId}
           headingTag="h2"
-          profileHref={ROUTES.PROFILE(ownerId)}
+          profileHref={ROUTES.PROFILE(profileId)}
           username={username}
         />
         <span className={styles.timeSeparator} aria-hidden="true">
