@@ -32,7 +32,69 @@ pnpm lint          # ESLint (нулевые warnings)
 pnpm format:check  # проверка Prettier
 pnpm format:write  # форматирование Prettier
 pnpm stylelint     # линт CSS/SCSS
+pnpm api:docs      # обновление локального Swagger/OpenAPI-файла
+pnpm api:generate  # генерация API-клиентов и типов через Orval
 ```
+
+## API / Swagger
+
+Проект использует OpenAPI/Swagger для описания backend API и Orval для генерации API-клиентов и типов.
+
+Локальный Swagger хранится здесь:
+
+```bash
+docs/openapi.json
+```
+
+Источник Swagger:
+
+```bash
+https://snapflow.cc/api/v1/docs-json
+```
+
+Перед началом работы с API обновите локальный Swagger:
+
+```bash
+pnpm api:docs
+```
+
+После обновления Swagger сгенерируйте API-клиенты и типы:
+
+```bash
+pnpm api:generate
+```
+
+Обычный порядок работы:
+
+```bash
+pnpm api:docs
+pnpm api:generate
+```
+
+Проверить изменения в Swagger:
+
+```bash
+git diff docs/openapi.json
+```
+
+Сгенерированный API-код находится здесь:
+
+```bash
+src/shared/api/generated
+```
+
+Для запросов используется существующий axios instance:
+
+```bash
+src/shared/api/instance.ts
+```
+
+Правила:
+
+- Не пишите API-запрос вручную, если нужная generated function уже существует.
+- Не придумывайте endpoints, DTO, request params или response types вручную.
+- Если backend изменил Swagger, сначала обновите `docs/openapi.json`, затем запустите `pnpm api:generate`.
+- Если Swagger конфликтует с текущим frontend-кодом, сначала зафиксируйте расхождение, потом меняйте код.
 
 ## Переводы (i18n)
 
