@@ -1,5 +1,3 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
 import { Button, Typography } from 'snapflow-ui-kit';
 import type { OwnerViewDto } from '@/shared/api/generated/model';

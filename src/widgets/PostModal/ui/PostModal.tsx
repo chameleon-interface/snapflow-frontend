@@ -1,5 +1,3 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
 import { Modal } from 'snapflow-ui-kit/client';
 import { useMe } from '@/entities/user';

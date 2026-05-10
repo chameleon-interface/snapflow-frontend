@@ -1,5 +1,3 @@
-'use client';
-
 import type { PostViewDto } from '@/shared/api/generated/model';
 import { PostCommentsPreview } from './PostCommentsPreview';
 import { PostDescription } from './PostDescription';

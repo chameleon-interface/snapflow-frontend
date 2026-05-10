@@ -1,5 +1,3 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
 import type { ProfileViewDto } from '@/shared/api/generated/model';
 import { clsx } from 'clsx';

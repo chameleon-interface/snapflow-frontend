@@ -1,5 +1,3 @@
-'use client';
-
 import { toastSuccess } from 'snapflow-ui-kit/client';
 import { useDeletePostMutation } from '@/features/post/delete-post';
 import { useUpdatePostMutation } from '@/features/post/edit-post';

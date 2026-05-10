@@ -1,5 +1,3 @@
-'use client';
-
 import { useGetMyProfile } from '@/entities/user';
 import { useFlow } from '@/features/post/create-post/lib/hooks/useFlow';
 import type { CreatePostStep } from '@/features/post/create-post/model/types';

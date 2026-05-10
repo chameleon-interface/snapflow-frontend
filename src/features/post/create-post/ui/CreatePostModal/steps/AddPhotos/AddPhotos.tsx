@@ -1,6 +1,4 @@
-'use client';
-
-import { usePhotoPicker } from '@/shared/lib';
+import { usePhotoPicker } from '@/shared/lib/photo-picker/usePhotoPicker';
 import { HiddenFileInput } from '@/shared/ui';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
