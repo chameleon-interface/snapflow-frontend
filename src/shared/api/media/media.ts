@@ -2,11 +2,11 @@ import axios from 'axios';
 import {
   filesMediaControllerConfirmUploads,
   filesMediaControllerGenerateUploadUrls,
-} from '@/shared/api/generated/endpoints/files-media/files-media';
+} from '@/shared/api/generated/endpoints/core/files-media/files-media';
 import type {
   GenerateUploadUrlsInputDto,
   MimeType,
-} from '@/shared/api/generated/model';
+} from '@/shared/api/generated/model/core';
 
 const uploadFileToStorage = async (
   uploadUrl: string,

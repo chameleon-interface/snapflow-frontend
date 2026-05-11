@@ -5,7 +5,7 @@
  * REST API для SnapFlow
  * OpenAPI spec version: 1.0.0
  */
-import { customInstance } from '../../mutator/custom-instance';
+import { customInstance } from '../../../mutator/custom-instance';
 
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 

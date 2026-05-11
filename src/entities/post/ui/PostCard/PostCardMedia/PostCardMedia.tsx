@@ -1,4 +1,4 @@
-import type { PostViewDto } from '@/shared/api/generated/model';
+import type { PostViewDto } from '@/shared/api/generated/model/core';
 import Image from 'next/image';
 import { Typography } from 'snapflow-ui-kit';
 import { Carousel } from 'snapflow-ui-kit/client';

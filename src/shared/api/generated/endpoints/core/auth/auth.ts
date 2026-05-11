@@ -15,10 +15,9 @@ import type {
   PasswordRecoveryInputDto,
   RegistrationEmailResendingInputDto,
   RegistrationUserInputDto,
-} from '../../model';
+} from '../../../model/core';
 
-import { customInstance } from '../../mutator/custom-instance';
-import type { BodyType } from '../../mutator/custom-instance';
+import { customInstance } from '../../../mutator/custom-instance';
 
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
@@ -27,7 +26,7 @@ type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
  * @summary Регистрация пользователя
  */
 export const authControllerRegistration = (
-  registrationUserInputDto: BodyType<RegistrationUserInputDto>,
+  registrationUserInputDto: RegistrationUserInputDto,
   options?: SecondParameter<typeof customInstance<void>>,
 ) => {
   return customInstance<void>(
@@ -44,7 +43,7 @@ export const authControllerRegistration = (
  * @summary Подтверждение регистрации
  */
 export const authControllerConfirmRegistration = (
-  confirmationEmailCodeInputDto: BodyType<ConfirmationEmailCodeInputDto>,
+  confirmationEmailCodeInputDto: ConfirmationEmailCodeInputDto,
   options?: SecondParameter<typeof customInstance<void>>,
 ) => {
   return customInstance<void>(
@@ -61,7 +60,7 @@ export const authControllerConfirmRegistration = (
  * @summary Повторно отправить подтверждение регистрации, если пользователь существует
  */
 export const authControllerResendingEmail = (
-  registrationEmailResendingInputDto: BodyType<RegistrationEmailResendingInputDto>,
+  registrationEmailResendingInputDto: RegistrationEmailResendingInputDto,
   options?: SecondParameter<typeof customInstance<void>>,
 ) => {
   return customInstance<void>(
@@ -78,7 +77,7 @@ export const authControllerResendingEmail = (
  * @summary Вход пользователя в систему
  */
 export const authControllerLogin = (
-  loginUserInputDto: BodyType<LoginUserInputDto>,
+  loginUserInputDto: LoginUserInputDto,
   options?: SecondParameter<typeof customInstance<LoginViewDto>>,
 ) => {
   return customInstance<LoginViewDto>(
@@ -108,7 +107,7 @@ export const authControllerLogout = (
  * @summary Восстановление пароля
  */
 export const authControllerPasswordRecovery = (
-  passwordRecoveryInputDto: BodyType<PasswordRecoveryInputDto>,
+  passwordRecoveryInputDto: PasswordRecoveryInputDto,
   options?: SecondParameter<typeof customInstance<void>>,
 ) => {
   return customInstance<void>(
@@ -126,7 +125,7 @@ export const authControllerPasswordRecovery = (
  * @summary Проверка кода восстановления пароля
  */
 export const authControllerCheckPasswordRecoveryCode = (
-  passwordRecoveryCodeInputDto: BodyType<PasswordRecoveryCodeInputDto>,
+  passwordRecoveryCodeInputDto: PasswordRecoveryCodeInputDto,
   options?: SecondParameter<typeof customInstance<void>>,
 ) => {
   return customInstance<void>(
@@ -144,7 +143,7 @@ export const authControllerCheckPasswordRecoveryCode = (
  * @summary Сброс пароля пользователя
  */
 export const authControllerNewPassword = (
-  newPasswordInputDto: BodyType<NewPasswordInputDto>,
+  newPasswordInputDto: NewPasswordInputDto,
   options?: SecondParameter<typeof customInstance<void>>,
 ) => {
   return customInstance<void>(

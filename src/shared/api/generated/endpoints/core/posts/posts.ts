@@ -12,10 +12,9 @@ import type {
   PostsControllerGetProfilePostsParams,
   PostsPageViewDto,
   UpdatePostInputDto,
-} from '../../model';
+} from '../../../model/core';
 
-import { customInstance } from '../../mutator/custom-instance';
-import type { BodyType } from '../../mutator/custom-instance';
+import { customInstance } from '../../../mutator/custom-instance';
 
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
@@ -23,7 +22,7 @@ type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
  * @summary Создать и опубликовать пост
  */
 export const postsControllerCreatePost = (
-  createPostInputDto: BodyType<CreatePostInputDto>,
+  createPostInputDto: CreatePostInputDto,
   options?: SecondParameter<typeof customInstance<PostViewDto>>,
 ) => {
   return customInstance<PostViewDto>(
@@ -52,7 +51,7 @@ export const postsControllerGetPosts = (
  * @summary Сохранить черновик поста
  */
 export const postsControllerSaveDraft = (
-  createPostInputDto: BodyType<CreatePostInputDto>,
+  createPostInputDto: CreatePostInputDto,
   options?: SecondParameter<typeof customInstance<PostViewDto>>,
 ) => {
   return customInstance<PostViewDto>(
@@ -81,7 +80,7 @@ export const postsControllerGetDraft = (
  */
 export const postsControllerEditPost = (
   id: string,
-  updatePostInputDto: BodyType<UpdatePostInputDto>,
+  updatePostInputDto: UpdatePostInputDto,
   options?: SecondParameter<typeof customInstance<void>>,
 ) => {
   return customInstance<void>(

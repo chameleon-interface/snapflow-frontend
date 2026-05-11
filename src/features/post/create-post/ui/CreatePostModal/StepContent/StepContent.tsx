@@ -1,5 +1,5 @@
 import type { CreatePostFlowState } from '@/features/post/create-post/lib/hooks/useFlow';
-import type { ProfileViewDto } from '@/shared/api/generated/model';
+import type { ProfileViewDto } from '@/shared/api/generated/model/core';
 import { AddPhotos, Cropping, Filters, Publish } from '../steps';
 
 type Props = CreatePostFlowState & {

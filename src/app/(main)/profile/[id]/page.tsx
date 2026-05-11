@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { getTranslations } from 'next-intl/server';
 import { ProfilePage } from '@/pages-layer/profile';
-import { postsControllerGetPostById } from '@/shared/api/generated/endpoints/posts/posts';
-import { profileControllerGetPublicProfile } from '@/shared/api/generated/endpoints/profile/profile';
+import { postsControllerGetPostById } from '@/shared/api/generated/endpoints/core/posts/posts';
+import { profileControllerGetPublicProfile } from '@/shared/api/generated/endpoints/core/profile/profile';
 import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
 import { profileKeys } from '@/shared/api/keys-factories/profileKeysFactory';
 import { EmptyStateMessage } from '@/shared/ui';

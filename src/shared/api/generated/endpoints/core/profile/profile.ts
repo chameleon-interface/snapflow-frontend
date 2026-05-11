@@ -11,10 +11,9 @@ import type {
   ProfileViewDto,
   PublicProfileViewDto,
   UpdateProfileInputDto,
-} from '../../model';
+} from '../../../model/core';
 
-import { customInstance } from '../../mutator/custom-instance';
-import type { BodyType } from '../../mutator/custom-instance';
+import { customInstance } from '../../../mutator/custom-instance';
 
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
@@ -22,7 +21,7 @@ type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
  * @summary Обновление профиля текущего пользователя
  */
 export const profileControllerUpdateProfile = (
-  updateProfileInputDto: BodyType<UpdateProfileInputDto>,
+  updateProfileInputDto: UpdateProfileInputDto,
   options?: SecondParameter<typeof customInstance<void>>,
 ) => {
   return customInstance<void>(
@@ -62,7 +61,7 @@ export const profileControllerGetPublicProfile = (
  * @summary Загрузка аватара пользователя
  */
 export const profileControllerUploadAvatar = (
-  profileControllerUploadAvatarBody: BodyType<ProfileControllerUploadAvatarBody>,
+  profileControllerUploadAvatarBody: ProfileControllerUploadAvatarBody,
   options?: SecondParameter<typeof customInstance<AvatarViewDto>>,
 ) => {
   const formData = new FormData();

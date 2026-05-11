@@ -1,4 +1,4 @@
-import type { PostViewDto } from '@/shared/api/generated/model';
+import type { PostViewDto } from '@/shared/api/generated/model/core';
 import { PostCommentsPreview } from './PostCommentsPreview';
 import { PostDescription } from './PostDescription';
 import { PostEngagementSummary } from './PostEngagementSummary';

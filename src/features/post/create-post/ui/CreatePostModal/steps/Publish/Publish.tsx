@@ -1,5 +1,5 @@
 import { useFileObjectUrls } from '@/features/post/create-post/lib';
-import type { ProfileViewDto } from '@/shared/api/generated/model';
+import type { ProfileViewDto } from '@/shared/api/generated/model/core';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useState } from 'react';

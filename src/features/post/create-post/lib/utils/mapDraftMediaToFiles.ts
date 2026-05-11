@@ -1,4 +1,4 @@
-import type { PostMediaViewDto } from '@/shared/api/generated/model';
+import type { PostMediaViewDto } from '@/shared/api/generated/model/core';
 import { downloadBlobByUrl } from '@/shared/api';
 
 const getExtensionFromMimeType = (mimeType: string) => {

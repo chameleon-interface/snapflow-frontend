@@ -1,7 +1,7 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { postsControllerDeletePost } from '@/shared/api/generated/endpoints/posts/posts';
+import { postsControllerDeletePost } from '@/shared/api/generated/endpoints/core/posts/posts';
 import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
 import { profileKeys } from '@/shared/api/keys-factories/profileKeysFactory';
 

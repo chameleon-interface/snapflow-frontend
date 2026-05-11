@@ -10,10 +10,9 @@ import type {
   ConfirmUploadViewDto,
   GenerateUploadUrlViewDto,
   GenerateUploadUrlsInputDto,
-} from '../../model';
+} from '../../../model/core';
 
-import { customInstance } from '../../mutator/custom-instance';
-import type { BodyType } from '../../mutator/custom-instance';
+import { customInstance } from '../../../mutator/custom-instance';
 
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
@@ -22,7 +21,7 @@ type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
  * @summary Сгенерировать ссылки для загрузки медиафайлов
  */
 export const filesMediaControllerGenerateUploadUrls = (
-  generateUploadUrlsInputDto: BodyType<GenerateUploadUrlsInputDto>,
+  generateUploadUrlsInputDto: GenerateUploadUrlsInputDto,
   options?: SecondParameter<typeof customInstance<GenerateUploadUrlViewDto[]>>,
 ) => {
   return customInstance<GenerateUploadUrlViewDto[]>(
@@ -40,7 +39,7 @@ export const filesMediaControllerGenerateUploadUrls = (
  * @summary Подтвердить загрузку медиафайлов
  */
 export const filesMediaControllerConfirmUploads = (
-  confirmUploadInputDto: BodyType<ConfirmUploadInputDto>,
+  confirmUploadInputDto: ConfirmUploadInputDto,
   options?: SecondParameter<typeof customInstance<ConfirmUploadViewDto>>,
 ) => {
   return customInstance<ConfirmUploadViewDto>(

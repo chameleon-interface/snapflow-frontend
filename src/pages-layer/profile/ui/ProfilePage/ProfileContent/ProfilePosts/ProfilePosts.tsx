@@ -6,7 +6,7 @@ import { PostCardPreview } from '@/entities/post';
 import { useTranslations } from 'next-intl';
 import { Button } from 'snapflow-ui-kit/client';
 import { useMe } from '@/entities/user';
-import type { PostViewDto } from '@/shared/api/generated/model';
+import type { PostViewDto } from '@/shared/api/generated/model/core';
 import { isNestedInteractiveTarget } from '@/shared/lib/dom/isNestedInteractiveTarget';
 import { usePostByIdQuery } from '@/widgets/PostModal/api/usePostByIdQuery';
 import { EmptyStateMessage } from '@/shared/ui';

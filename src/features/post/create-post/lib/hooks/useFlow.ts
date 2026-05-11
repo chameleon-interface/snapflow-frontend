@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { toastSuccess } from 'snapflow-ui-kit/client';
-import type { CreatePostInputDto } from '@/shared/api/generated/model';
+import type { CreatePostInputDto } from '@/shared/api/generated/model/core';
 import { useUploadMediaMutation } from '@/shared/api/media/useUploadMediaMutation';
 import { usePhotosState } from './usePhotosState';
 import { useStepState } from './useStepState';

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { profileControllerGetPublicProfile } from '@/shared/api/generated/endpoints/profile/profile';
+import { profileControllerGetPublicProfile } from '@/shared/api/generated/endpoints/core/profile/profile';
 import { profileKeys } from '@/shared/api/keys-factories/profileKeysFactory';
 
 export const usePublicProfileQuery = (profileId: string) => {

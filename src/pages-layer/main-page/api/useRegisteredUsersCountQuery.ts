@@ -1,6 +1,6 @@
 'use client';
 
-import { usersControllerGetTotalCount } from '@/shared/api/generated/endpoints/users/users';
+import { usersControllerGetTotalCount } from '@/shared/api/generated/endpoints/core/users/users';
 import { mainPageKeys } from '@/shared/api/keys-factories/mainPageKeysFactory';
 import { useQuery } from '@tanstack/react-query';
 

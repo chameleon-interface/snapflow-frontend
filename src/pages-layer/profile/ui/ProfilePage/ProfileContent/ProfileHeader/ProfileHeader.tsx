@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { PaidIcon } from 'snapflow-ui-kit/icons';
-import type { PublicProfileViewDto } from '@/shared/api/generated/model';
+import type { PublicProfileViewDto } from '@/shared/api/generated/model/core';
 import { UserAvatar } from '@/shared/ui';
 import s from './ProfileHeader.module.css';
 import { ProfileSettingsButton } from './ProfileSettingsButton/ProfileSettingsButton';

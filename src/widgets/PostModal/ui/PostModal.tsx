@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { Modal } from 'snapflow-ui-kit/client';
 import { useMe } from '@/entities/user';
-import type { PostViewDto } from '@/shared/api/generated/model';
+import type { PostViewDto } from '@/shared/api/generated/model/core';
 import { ConfirmModal } from '@/shared/ui/modals';
 import { usePostModalActions } from './lib/usePostModalActions';
 import { usePostModalState } from './lib/usePostModalState';

@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Button, Typography } from 'snapflow-ui-kit';
-import type { OwnerViewDto } from '@/shared/api/generated/model';
+import type { OwnerViewDto } from '@/shared/api/generated/model/core';
 import { UserAvatar } from '@/shared/ui/UserAvatar';
 import { PostDescriptionField } from '@/shared/ui';
 import styles from './PostEdit.module.css';

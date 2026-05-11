@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { authControllerConfirmRegistration } from '@/shared/api/generated/endpoints/auth/auth';
+import { authControllerConfirmRegistration } from '@/shared/api/generated/endpoints/core/auth/auth';
 import { authKeys } from '@/shared/api/keys-factories/authKeysFactory';
 
 export const useConfirmEmail = (code: string) => {

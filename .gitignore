@@ -49,6 +49,7 @@ next-env.d.ts
 CLAUDE.md
 AGENTS.md
 GEMINI.md
+CONTRIBUTING.md
 .claude
 .ai
 .serena
