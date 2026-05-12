@@ -21,7 +21,7 @@ export const useUpdatePostMutation = () => {
           queryKey: postsKeys.byId(variables.postId),
         }),
         queryClient.invalidateQueries({
-          queryKey: postsKeys.all,
+          queryKey: postsKeys.feed(),
         }),
       ]);
     },

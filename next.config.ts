@@ -7,6 +7,10 @@ const withNextIntl = createNextIntlPlugin({
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ['@countrystatecity/countries'],
+
+  outputFileTracingIncludes: {
+    '/api/locations': ['./node_modules/@countrystatecity/countries/dist/**/*'],
+  },
   images: {
     remotePatterns: [
       {

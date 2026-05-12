@@ -14,7 +14,6 @@ export const useCreatePostMutation = () => {
       postsControllerCreatePost(payload),
     onSuccess: (createdPost) => {
       queryClient.invalidateQueries({ queryKey: postsKeys.feed() });
-      queryClient.invalidateQueries({ queryKey: postsKeys.latest() });
       queryClient.invalidateQueries({
         queryKey: postsKeys.usersPosts(createdPost.owner.userId),
       });
