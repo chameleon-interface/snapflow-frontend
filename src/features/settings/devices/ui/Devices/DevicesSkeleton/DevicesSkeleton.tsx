@@ -13,9 +13,8 @@ const DeviceCardSkeleton = ({
 }) => {
   const rows = Array.from({ length: 4 });
 
-  const body = (
-    <>
-      <Skeleton variant="pulse" height={22} width="42%" radius={6} />
+  const detailBlock = (
+    <div className={styles.detailBody}>
       <div className={styles.rows}>
         {rows.map((_, idx) => (
           <div key={idx} className={styles.row}>
@@ -28,25 +27,35 @@ const DeviceCardSkeleton = ({
         <Skeleton variant="pulse" height={13} width={132} radius={4} />
         <Skeleton variant="pulse" height={14} width={96} radius={4} />
       </div>
-    </>
+    </div>
   );
 
-  if (variant === 'current') {
-    return (
-      <div className={styles.cardShell}>
-        <div className={styles.deviceBlock}>{body}</div>
+  const headerRow = (
+    <div className={styles.cardHeaderRow}>
+      <Skeleton
+        className={styles.deviceIconSkeleton}
+        variant="pulse"
+        height={48}
+        width={48}
+        radius={12}
+      />
+      <div className={styles.headerTitleSlot}>
+        <Skeleton variant="pulse" height={22} width="42%" radius={6} />
       </div>
-    );
-  }
-
-  return (
-    <div className={styles.cardShell}>
-      <div className={styles.cardHeaderRow}>
-        <div className={styles.deviceBlock}>{body}</div>
+      {variant === 'active' ? (
         <div className={styles.logoutSlot}>
           <Skeleton variant="pulse" height={36} width={92} radius={8} />
         </div>
-      </div>
+      ) : (
+        <div className={styles.logoutSlotSpacer} aria-hidden />
+      )}
+    </div>
+  );
+
+  return (
+    <div className={styles.cardShell}>
+      {headerRow}
+      {detailBlock}
     </div>
   );
 };

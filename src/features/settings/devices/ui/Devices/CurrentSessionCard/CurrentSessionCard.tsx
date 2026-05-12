@@ -18,7 +18,11 @@ export const CurrentSessionCard = ({ session }: Props) => {
 
   return (
     <Card>
-      <DeviceHeader deviceName={session?.deviceName} deviceId={deviceId} />
+      <DeviceHeader
+        deviceName={session?.deviceName}
+        deviceId={deviceId}
+        deviceType={session?.deviceType}
+      />
       <DeviceInfo session={session} isCurrentDevice />
     </Card>
   );

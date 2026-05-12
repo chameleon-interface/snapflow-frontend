@@ -14,25 +14,42 @@
   border-radius: 12px;
 }
 
-.deviceBlock {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: 14px;
-
-  min-width: 0;
+.deviceIconSkeleton {
+  flex-shrink: 0;
 }
 
 .cardHeaderRow {
   display: flex;
-  gap: 16px;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.headerTitleSlot {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
+
+  min-width: 0;
 }
 
 .logoutSlot {
   flex-shrink: 0;
-  padding-top: 2px;
+}
+
+.logoutSlotSpacer {
+  flex-shrink: 0;
+  width: 92px;
+  height: 36px;
+}
+
+.detailBody {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .rows {

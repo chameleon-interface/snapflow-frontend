@@ -36,6 +36,7 @@ export const ActiveSessionsList = ({ sessions }: Props) => {
             <DeviceHeader
               deviceName={session.deviceName}
               deviceId={session.deviceId}
+              deviceType={session.deviceType}
               isActiveSession
             />
             <DeviceInfo session={session} isCurrentDevice={session.isCurrent} />

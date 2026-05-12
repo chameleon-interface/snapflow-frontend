@@ -2,17 +2,20 @@ import { useTerminateSessionMutation } from '@/features/settings/devices/api';
 import { useTranslations } from 'next-intl';
 import { Button, Typography } from 'snapflow-ui-kit';
 import { LogOutIcon } from 'snapflow-ui-kit/icons';
+import { DeviceTypeBadge } from '../DeviceTypeBadge';
 import styles from './DeviceHeader.module.css';
 
 type Props = {
   deviceName: string;
   deviceId: string;
+  deviceType?: string;
   isActiveSession?: boolean;
 };
 
 export const DeviceHeader = ({
   deviceName,
   deviceId,
+  deviceType,
   isActiveSession,
 }: Props) => {
   const t = useTranslations('Devices');
@@ -21,15 +24,14 @@ export const DeviceHeader = ({
 
   return (
     <div className={styles.cardHeader}>
-      <Typography variant="text-16-bold" as="h3" className={styles.title}>
-        {deviceNameLabel}
-      </Typography>
+      <div className={styles.leading}>
+        <DeviceTypeBadge deviceType={deviceType} />
+        <Typography variant="text-16-bold" as="h3" className={styles.title}>
+          {deviceNameLabel}
+        </Typography>
+      </div>
       <Button
-        className={
-          isActiveSession
-            ? styles.logOutButtonActive
-            : styles.logOutButtonHidden
-        }
+        className={isActiveSession ? undefined : styles.logOutButtonHidden}
         variant="outlined"
         type="button"
         icon={<LogOutIcon />}
