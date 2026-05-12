@@ -30,17 +30,18 @@ export const DeviceHeader = ({
           {deviceNameLabel}
         </Typography>
       </div>
-      <Button
-        className={isActiveSession ? undefined : styles.logOutButtonHidden}
-        variant="outlined"
-        type="button"
-        icon={<LogOutIcon />}
-        onClick={() => terminateSession({ deviceId })}
-        disabled={isPending}
-        aria-label={t('terminateSessionAria')}
-      >
-        {t('terminateSession')}
-      </Button>
+      {isActiveSession && (
+        <Button
+          variant="outlined"
+          type="button"
+          icon={<LogOutIcon />}
+          onClick={() => terminateSession({ deviceId })}
+          disabled={isPending}
+          aria-label={t('terminateSessionAria')}
+        >
+          {t('terminateSession')}
+        </Button>
+      )}
     </div>
   );
 };
