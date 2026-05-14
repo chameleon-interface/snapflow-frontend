@@ -14,4 +14,7 @@ export * from './paymentViewDtoEndDateOfSubscription';
 export * from './paymentViewDtoProvider';
 export * from './paymentViewDtoSubscriptionType';
 export * from './planViewDto';
+export * from './subscriptionsControllerGetMyPaymentsParams';
+export * from './subscriptionsControllerGetMyPaymentsSortBy';
+export * from './subscriptionsControllerGetMyPaymentsSortDirection';
 export * from './updateAutoRenewalInputDto';

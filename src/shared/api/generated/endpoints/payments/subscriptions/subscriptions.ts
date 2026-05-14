@@ -10,6 +10,7 @@ import type {
   CreateCheckoutSessionInputDto,
   PaginatedPaymentsSwaggerDto,
   PlanViewDto,
+  SubscriptionsControllerGetMyPaymentsParams,
   UpdateAutoRenewalInputDto,
 } from '../../../model/payments';
 
@@ -33,12 +34,13 @@ export const subscriptionsControllerGetPlans = (
  * @summary Получить историю своих платежей по подписке
  */
 export const subscriptionsControllerGetMyPayments = (
+  params?: SubscriptionsControllerGetMyPaymentsParams,
   options?: SecondParameter<
     typeof paymentsInstance<PaginatedPaymentsSwaggerDto>
   >,
 ) => {
   return paymentsInstance<PaginatedPaymentsSwaggerDto>(
-    { url: `/api/v1/subscriptions/my-payments`, method: 'GET' },
+    { url: `/api/v1/subscriptions/my-payments`, method: 'GET', params },
     options,
   );
 };

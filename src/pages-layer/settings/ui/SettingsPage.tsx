@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Tab, Typography } from 'snapflow-ui-kit';
+import { AccountManagementPanel } from '@/features/settings/account-management';
 import { ProfileInfoForm } from '@/features/settings/profile-info';
 import { buildSettingsUrl, SETTINGS_PARTS, SettingsPart } from '../model';
 import s from './SettingsPage.module.css';
@@ -32,6 +33,10 @@ export function SettingsPage({ part }: SettingsPageProps) {
   const renderTabContent = () => {
     if (part === 'info') {
       return <ProfileInfoForm />;
+    }
+
+    if (part === 'subscriptions') {
+      return <AccountManagementPanel />;
     }
 
     return (
