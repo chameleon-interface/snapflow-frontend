@@ -5,12 +5,15 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Typography } from 'snapflow-ui-kit';
 import {
+  currentSubscriptionMock,
   useCreateCheckoutSessionMutation,
   useSubscriptionPlansQuery,
+  useUpdateAutoRenewalMutation,
 } from '@/entities/subscription';
 import { getPaymentResult } from '../../lib/getPaymentResult';
 import { AccountTypeSelector } from '../AccountTypeSelector/AccountTypeSelector';
 import { CheckoutAgreementModal } from '../CheckoutAgreementModal/CheckoutAgreementModal';
+import { CurrentSubscription } from '../CurrentSubscription/CurrentSubscription';
 import { PaymentActions } from '../PaymentActions/PaymentActions';
 import { PaymentResultModal } from '../PaymentResultModal/PaymentResultModal';
 import { SubscriptionPlansSelector } from '../SubscriptionPlansSelector/SubscriptionPlansSelector';
@@ -28,6 +31,10 @@ export const AccountManagementPanel = () => {
   const [selectedPlanIdDraft, setSelectedPlanIdDraft] = useState<string | null>(
     null,
   );
+  const [autoRenewal, setAutoRenewal] = useState(
+    currentSubscriptionMock.autoRenewal,
+  );
+  const [autoRenewalError, setAutoRenewalError] = useState<string | null>(null);
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
   const {
     data: plans = [],
@@ -37,6 +44,8 @@ export const AccountManagementPanel = () => {
   } = useSubscriptionPlansQuery();
   const { mutate: createCheckoutSession, isPending: isCheckoutPending } =
     useCreateCheckoutSessionMutation();
+  const { mutate: updateAutoRenewal, isPending: isAutoRenewalUpdating } =
+    useUpdateAutoRenewalMutation();
   const paymentResult = getPaymentResult(
     searchParams.get('payment'),
     searchParams.get('session_id'),
@@ -82,6 +91,23 @@ export const AccountManagementPanel = () => {
     setIsCheckoutModalOpen(true);
   };
 
+  const handleAutoRenewalChange = (nextAutoRenewal: boolean) => {
+    const previousAutoRenewal = autoRenewal;
+
+    setAutoRenewal(nextAutoRenewal);
+    setAutoRenewalError(null);
+
+    updateAutoRenewal(
+      { autoRenewal: nextAutoRenewal },
+      {
+        onError: () => {
+          setAutoRenewal(previousAutoRenewal);
+          setAutoRenewalError(t('autoRenewalUpdateFailed'));
+        },
+      },
+    );
+  };
+
   const handleCheckoutConfirm = () => {
     if (!selectedPlanId) {
       return;
@@ -112,6 +138,14 @@ export const AccountManagementPanel = () => {
         {t('createPayment')}
       </Typography>
 
+      <CurrentSubscription
+        subscription={currentSubscriptionMock}
+        autoRenewal={autoRenewal}
+        isUpdating={isAutoRenewalUpdating}
+        errorMessage={autoRenewalError}
+        onAutoRenewalChange={handleAutoRenewalChange}
+      />
+
       <AccountTypeSelector
         accountType={accountType}
         onPersonalSelect={handlePersonalSelect}
@@ -129,7 +163,7 @@ export const AccountManagementPanel = () => {
               variant="text-14-bold"
               className={s.sectionTitle}
             >
-              {t('subscriptionCosts')}
+              {t('changeSubscription')}
             </Typography>
 
             <SubscriptionPlansSelector
