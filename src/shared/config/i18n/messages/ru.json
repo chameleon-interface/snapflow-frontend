@@ -98,6 +98,8 @@
       "paymentActions": "Действия оплаты",
       "paypalUnavailable": "Интеграция PayPal пока недоступна.",
       "currentSubscription": "Текущая подписка:",
+      "nextSubscription": "Следующая подписка:",
+      "subscription": "Подписка",
       "expireAt": "Истекает",
       "nextPayment": "Следующий платёж",
       "autoRenewal": "Автопродление",

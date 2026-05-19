@@ -98,6 +98,8 @@
       "paymentActions": "Payment actions",
       "paypalUnavailable": "PayPal integration is not available yet.",
       "currentSubscription": "Current Subscription:",
+      "nextSubscription": "Next Subscription:",
+      "subscription": "Subscription",
       "expireAt": "Expire at",
       "nextPayment": "Next payment",
       "autoRenewal": "Auto-Renewal",

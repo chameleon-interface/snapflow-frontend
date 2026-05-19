@@ -5,7 +5,9 @@ import { formatSubscriptionDate } from '../../lib/formatSubscriptionDate';
 import s from '../AccountManagementPanel/AccountManagementPanel.module.css';
 
 type CurrentSubscriptionProps = {
+  title: string;
   subscription: CurrentSubscriptionMock;
+  showAutoRenewal?: boolean;
   autoRenewal: boolean;
   isUpdating: boolean;
   errorMessage: string | null;
@@ -13,7 +15,9 @@ type CurrentSubscriptionProps = {
 };
 
 export const CurrentSubscription = ({
+  title,
   subscription,
+  showAutoRenewal = true,
   autoRenewal,
   isUpdating,
   errorMessage,
@@ -24,10 +28,19 @@ export const CurrentSubscription = ({
   return (
     <div className={s.section}>
       <Typography as="h3" variant="text-14-bold" className={s.sectionTitle}>
-        {t('currentSubscription')}
+        {title}
       </Typography>
 
       <div className={s.currentSubscriptionBox}>
+        <div className={s.subscriptionDateItem}>
+          <Typography as="span" variant="text-14" className={s.dateLabel}>
+            {t('subscription')}
+          </Typography>
+          <Typography as="span" variant="text-14" className={s.dateValue}>
+            {subscription.planLabel}
+          </Typography>
+        </div>
+
         <div className={s.subscriptionDateItem}>
           <Typography as="span" variant="text-14" className={s.dateLabel}>
             {t('expireAt')}
@@ -47,14 +60,16 @@ export const CurrentSubscription = ({
         </div>
       </div>
 
-      <Checkbox
-        checked={autoRenewal}
-        disabled={isUpdating}
-        className={s.autoRenewal}
-        onChange={(event) => onAutoRenewalChange(event.target.checked)}
-      >
-        {t('autoRenewal')}
-      </Checkbox>
+      {showAutoRenewal && (
+        <Checkbox
+          checked={autoRenewal}
+          disabled={isUpdating}
+          className={s.autoRenewal}
+          onChange={(event) => onAutoRenewalChange(event.target.checked)}
+        >
+          {t('autoRenewal')}
+        </Checkbox>
+      )}
 
       {errorMessage && (
         <Typography as="p" variant="text-14" className={s.errorText}>

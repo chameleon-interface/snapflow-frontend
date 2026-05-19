@@ -1,131 +1,32 @@
 'use client';
 
-import { useState } from 'react';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Typography } from 'snapflow-ui-kit';
 import {
   currentSubscriptionMock,
-  useCreateCheckoutSessionMutation,
-  useSubscriptionPlansQuery,
-  useUpdateAutoRenewalMutation,
+  futureSubscriptionMock,
 } from '@/entities/subscription';
-import { getPaymentResult } from '../../lib/getPaymentResult';
+import { useAccountManagementPanel } from '../../model/useAccountManagementPanel';
 import { AccountTypeSelector } from '../AccountTypeSelector/AccountTypeSelector';
+import { ChangeSubscriptionSection } from '../ChangeSubscriptionSection/ChangeSubscriptionSection';
 import { CheckoutAgreementModal } from '../CheckoutAgreementModal/CheckoutAgreementModal';
 import { CurrentSubscription } from '../CurrentSubscription/CurrentSubscription';
-import { PaymentActions } from '../PaymentActions/PaymentActions';
 import { PaymentResultModal } from '../PaymentResultModal/PaymentResultModal';
-import { SubscriptionPlansSelector } from '../SubscriptionPlansSelector/SubscriptionPlansSelector';
 
 import s from './AccountManagementPanel.module.css';
 
-type AccountType = 'personal' | 'business';
-
 export const AccountManagementPanel = () => {
   const t = useTranslations('Settings.accountManagement');
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const [accountType, setAccountType] = useState<AccountType>('personal');
-  const [selectedPlanIdDraft, setSelectedPlanIdDraft] = useState<string | null>(
-    null,
-  );
-  const [autoRenewal, setAutoRenewal] = useState(
-    currentSubscriptionMock.autoRenewal,
-  );
-  const [autoRenewalError, setAutoRenewalError] = useState<string | null>(null);
-  const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
   const {
-    data: plans = [],
-    isError: isPlansError,
-    isLoading: isPlansLoading,
-    refetch: refetchPlans,
-  } = useSubscriptionPlansQuery();
-  const { mutate: createCheckoutSession, isPending: isCheckoutPending } =
-    useCreateCheckoutSessionMutation();
-  const { mutate: updateAutoRenewal, isPending: isAutoRenewalUpdating } =
-    useUpdateAutoRenewalMutation();
-  const paymentResult = getPaymentResult(
-    searchParams.get('payment'),
-    searchParams.get('session_id'),
-  );
-
-  const isBusinessAccount = accountType === 'business';
-  const isSelectedPlanAvailable = plans.some(
-    (plan) => plan.id === selectedPlanIdDraft,
-  );
-  const selectedPlanId =
-    isBusinessAccount && plans.length > 0
-      ? isSelectedPlanAvailable
-        ? selectedPlanIdDraft
-        : plans[0].id
-      : null;
-  const isPaymentDisabled =
-    !isBusinessAccount ||
-    !selectedPlanId ||
-    isPlansLoading ||
-    isPlansError ||
-    isCheckoutPending;
-
-  const handlePersonalSelect = () => {
-    setAccountType('personal');
-    setSelectedPlanIdDraft(null);
-    setIsCheckoutModalOpen(false);
-  };
-
-  const handleBusinessSelect = () => {
-    setAccountType('business');
-  };
-
-  const handlePayPalClick = () => {
-    // TODO: replace placeholder with PayPal backend flow when API contract is available.
-    alert(t('paypalUnavailable'));
-  };
-
-  const handleStripeClick = () => {
-    if (isPaymentDisabled) {
-      return;
-    }
-
-    setIsCheckoutModalOpen(true);
-  };
-
-  const handleAutoRenewalChange = (nextAutoRenewal: boolean) => {
-    const previousAutoRenewal = autoRenewal;
-
-    setAutoRenewal(nextAutoRenewal);
-    setAutoRenewalError(null);
-
-    updateAutoRenewal(
-      { autoRenewal: nextAutoRenewal },
-      {
-        onError: () => {
-          setAutoRenewal(previousAutoRenewal);
-          setAutoRenewalError(t('autoRenewalUpdateFailed'));
-        },
-      },
-    );
-  };
-
-  const handleCheckoutConfirm = () => {
-    if (!selectedPlanId) {
-      return;
-    }
-
-    createCheckoutSession(
-      { planId: selectedPlanId },
-      {
-        onSuccess: (data) => {
-          window.location.assign(data.url);
-        },
-      },
-    );
-  };
-
-  const handlePaymentResultClose = () => {
-    router.replace(`${pathname}?part=subscriptions`, { scroll: false });
-  };
+    accountTypeSelectorProps,
+    changeSubscriptionProps,
+    checkoutModalProps,
+    currentSubscriptionError,
+    paymentResultModalProps,
+    subscriptionControlProps,
+  } = useAccountManagementPanel();
+  const hasFutureSubscriptionMock =
+    paymentResultModalProps.paymentResult === 'success';
 
   return (
     <section className={s.root} aria-labelledby="account-management-title">
@@ -139,63 +40,36 @@ export const AccountManagementPanel = () => {
       </Typography>
 
       <CurrentSubscription
+        title={t('currentSubscription')}
         subscription={currentSubscriptionMock}
-        autoRenewal={autoRenewal}
-        isUpdating={isAutoRenewalUpdating}
-        errorMessage={autoRenewalError}
-        onAutoRenewalChange={handleAutoRenewalChange}
+        showAutoRenewal={!hasFutureSubscriptionMock}
+        errorMessage={
+          hasFutureSubscriptionMock ? null : currentSubscriptionError
+        }
+        {...subscriptionControlProps}
       />
 
-      <AccountTypeSelector
-        accountType={accountType}
-        onPersonalSelect={handlePersonalSelect}
-        onBusinessSelect={handleBusinessSelect}
-      />
+      {hasFutureSubscriptionMock && (
+        <CurrentSubscription
+          title={t('nextSubscription')}
+          subscription={futureSubscriptionMock}
+          errorMessage={currentSubscriptionError}
+          {...subscriptionControlProps}
+        />
+      )}
+
+      <AccountTypeSelector {...accountTypeSelectorProps} />
 
       <div
-        className={`${s.paymentPanel} ${isBusinessAccount ? s.paymentPanelOpen : ''}`}
-        aria-hidden={!isBusinessAccount}
+        className={`${s.paymentPanel} ${changeSubscriptionProps.isBusinessAccount ? s.paymentPanelOpen : ''}`}
+        aria-hidden={!changeSubscriptionProps.isBusinessAccount}
       >
-        <div className={s.paymentPanelInner}>
-          <div className={s.section}>
-            <Typography
-              as="h3"
-              variant="text-14-bold"
-              className={s.sectionTitle}
-            >
-              {t('changeSubscription')}
-            </Typography>
-
-            <SubscriptionPlansSelector
-              plans={plans}
-              selectedPlanId={selectedPlanId}
-              isBusinessAccount={isBusinessAccount}
-              isLoading={isPlansLoading}
-              isError={isPlansError}
-              onPlanSelect={setSelectedPlanIdDraft}
-              onRetry={() => void refetchPlans()}
-            />
-          </div>
-
-          <PaymentActions
-            disabled={isPaymentDisabled}
-            onPayPalClick={handlePayPalClick}
-            onStripeClick={handleStripeClick}
-          />
-        </div>
+        <ChangeSubscriptionSection {...changeSubscriptionProps} />
       </div>
 
-      <CheckoutAgreementModal
-        isOpen={isCheckoutModalOpen}
-        isLoading={isCheckoutPending}
-        onClose={() => setIsCheckoutModalOpen(false)}
-        onConfirm={handleCheckoutConfirm}
-      />
+      <CheckoutAgreementModal {...checkoutModalProps} />
 
-      <PaymentResultModal
-        paymentResult={paymentResult}
-        onClose={handlePaymentResultClose}
-      />
+      <PaymentResultModal {...paymentResultModalProps} />
     </section>
   );
 };
