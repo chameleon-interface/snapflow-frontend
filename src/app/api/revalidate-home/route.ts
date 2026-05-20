@@ -26,12 +26,12 @@ export const POST = async (request: Request) => {
       );
     }
 
-    const secret = process.env.REVALIDATE_POSTS_JWT_SECRET;
+    const secret = process.env.NEXTJS_REVALIDATION_SECRET;
 
     if (!secret) {
-      console.error('[revalidate-home]: Missing REVALIDATE_POSTS_JWT_SECRET');
+      console.error('[revalidate-home]: Missing NEXTJS_REVALIDATION_SECRET');
       return NextResponse.json(
-        { message: 'Missing server env: REVALIDATE_POSTS_JWT_SECRET' },
+        { message: 'Missing server env: NEXTJS_REVALIDATION_SECRET' },
         { status: 500 },
       );
     }
