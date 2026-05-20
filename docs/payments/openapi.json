@@ -26,7 +26,43 @@
       "get": {
         "description": "Возвращает только успешные платежи (status = PAID) текущего авторизованного пользователя.",
         "operationId": "SubscriptionsController_getMyPayments",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "sortDirection",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "desc",
+              "example": "desc",
+              "type": "string",
+              "enum": ["asc", "desc"]
+            }
+          },
+          {
+            "name": "sortBy",
+            "required": false,
+            "in": "query",
+            "description": "Sort by field",
+            "schema": {
+              "default": "createdAt",
+              "example": "createdAt",
+              "type": "string",
+              "enum": ["createdAt", "provider", "status", "planId"]
+            }
+          },
+          {
+            "name": "pageNumber",
+            "required": false,
+            "in": "query",
+            "schema": { "example": 1, "type": "number" }
+          },
+          {
+            "name": "pageSize",
+            "required": false,
+            "in": "query",
+            "schema": { "example": 4, "type": "number" }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Пагинированный список платежей пользователя со статусом PAID",
@@ -44,6 +80,29 @@
         },
         "security": [{ "access-token": [] }],
         "summary": "Получить историю своих платежей по подписке",
+        "tags": ["Subscriptions"]
+      }
+    },
+    "/api/v1/subscriptions/current": {
+      "get": {
+        "description": "Возвращает только активную подписку (status = ACTIVE | PAST_DUE) текущего авторизованного пользователя.",
+        "operationId": "SubscriptionsController_getMyCurrentSubscription",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Текущая подписка пользователя",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SubscriptionViewDto" }
+              }
+            }
+          },
+          "401": {
+            "description": "Пользователь не авторизован или передан недействительный access-токен"
+          }
+        },
+        "security": [{ "access-token": [] }],
+        "summary": "Получить текущую активную подписку",
         "tags": ["Subscriptions"]
       }
     },
@@ -238,6 +297,66 @@
           }
         },
         "required": ["pagesCount", "page", "pageSize", "totalCount", "items"]
+      },
+      "SubscriptionViewDto": {
+        "type": "object",
+        "properties": {
+          "subscriptionId": {
+            "type": "string",
+            "description": "Идентификатор подписки",
+            "example": "1"
+          },
+          "status": {
+            "type": "string",
+            "description": "Статус подписки (ACTIVE или PAST_DUE)",
+            "example": "ACTIVE",
+            "enum": ["ACTIVE", "CANCELLED", "PAST_DUE", "PENDING"]
+          },
+          "autoRenewal": {
+            "type": "string",
+            "description": "Флаг автопродления подписки",
+            "example": "true",
+            "enum": ["ACTIVE", "CANCELLED", "PAST_DUE", "PENDING"]
+          },
+          "accountType": {
+            "type": "string",
+            "description": "Тип аккаунта (PERSONAL или BUSINESS)",
+            "example": "BUSINESS",
+            "enum": ["PERSONAL", "BUSINESS"]
+          },
+          "subscriptionType": {
+            "type": "string",
+            "description": "Тип подписки",
+            "example": "business_monthly"
+          },
+          "subscriptionLabel": {
+            "type": "string",
+            "description": "Человекочитаемый тип подписки",
+            "example": "Business Monthly",
+            "enum": ["Business Monthly", "Business Yearly"]
+          },
+          "expireAt": {
+            "type": "object",
+            "description": "Дата окончания подписки (ISO-8601) или null",
+            "example": "2026-05-21T10:30:00.000Z",
+            "nullable": true
+          },
+          "nextPayment": {
+            "type": "object",
+            "description": "Дата следующего платежа (ISO-8601) или null",
+            "example": "2026-04-21T10:30:00.000Z"
+          }
+        },
+        "required": [
+          "subscriptionId",
+          "status",
+          "autoRenewal",
+          "accountType",
+          "subscriptionType",
+          "subscriptionLabel",
+          "expireAt",
+          "nextPayment"
+        ]
       },
       "CreateCheckoutSessionInputDto": {
         "type": "object",

@@ -1,18 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import {
-  currentSubscriptionMock,
-  useUpdateAutoRenewalMutation,
-} from '@/entities/subscription';
+import { useUpdateAutoRenewalMutation } from '@/entities/subscription';
 
-export const useAutoRenewalControl = () => {
+type UseAutoRenewalControlParams = {
+  initialAutoRenewal: boolean;
+};
+
+export const useAutoRenewalControl = ({
+  initialAutoRenewal,
+}: UseAutoRenewalControlParams) => {
   const t = useTranslations('Settings.accountManagement');
-  const [autoRenewal, setAutoRenewal] = useState(
-    currentSubscriptionMock.autoRenewal,
-  );
+  const [autoRenewal, setAutoRenewal] = useState(initialAutoRenewal);
   const [autoRenewalError, setAutoRenewalError] = useState<string | null>(null);
   const { mutate: updateAutoRenewal, isPending: isAutoRenewalUpdating } =
     useUpdateAutoRenewalMutation();
+
+  useEffect(() => {
+    setAutoRenewal(initialAutoRenewal);
+  }, [initialAutoRenewal]);
 
   const handleAutoRenewalChange = (nextAutoRenewal: boolean) => {
     const previousAutoRenewal = autoRenewal;

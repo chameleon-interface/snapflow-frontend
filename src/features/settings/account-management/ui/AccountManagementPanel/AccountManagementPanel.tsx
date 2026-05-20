@@ -1,11 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Typography } from 'snapflow-ui-kit';
-import {
-  currentSubscriptionMock,
-  futureSubscriptionMock,
-} from '@/entities/subscription';
+import { Button, Typography } from 'snapflow-ui-kit';
+import { Skeleton } from '@/shared/ui/Skeleton';
 import { useAccountManagementPanel } from '../../model/useAccountManagementPanel';
 import { AccountTypeSelector } from '../AccountTypeSelector/AccountTypeSelector';
 import { ChangeSubscriptionSection } from '../ChangeSubscriptionSection/ChangeSubscriptionSection';
@@ -21,12 +18,11 @@ export const AccountManagementPanel = () => {
     accountTypeSelectorProps,
     changeSubscriptionProps,
     checkoutModalProps,
+    currentSubscriptionProps,
     currentSubscriptionError,
     paymentResultModalProps,
     subscriptionControlProps,
   } = useAccountManagementPanel();
-  const hasFutureSubscriptionMock =
-    paymentResultModalProps.paymentResult === 'success';
 
   return (
     <section className={s.root} aria-labelledby="account-management-title">
@@ -39,20 +35,46 @@ export const AccountManagementPanel = () => {
         {t('createPayment')}
       </Typography>
 
-      <CurrentSubscription
-        title={t('currentSubscription')}
-        subscription={currentSubscriptionMock}
-        showAutoRenewal={!hasFutureSubscriptionMock}
-        errorMessage={
-          hasFutureSubscriptionMock ? null : currentSubscriptionError
-        }
-        {...subscriptionControlProps}
-      />
+      {currentSubscriptionProps.isLoading && (
+        <div className={s.section} aria-label={t('loadingCurrentSubscription')}>
+          <Skeleton height={20} width={160} radius={4} />
+          <div className={s.currentSubscriptionBox}>
+            <Skeleton height={44} width="28%" radius={4} />
+            <Skeleton height={44} width="24%" radius={4} />
+            <Skeleton height={44} width="24%" radius={4} />
+          </div>
+        </div>
+      )}
 
-      {hasFutureSubscriptionMock && (
+      {!currentSubscriptionProps.isLoading &&
+        currentSubscriptionProps.isError && (
+          <div className={s.stateBox} role="alert">
+            <Typography as="p" variant="text-14" className={s.stateText}>
+              {t('currentSubscriptionLoadFailed')}
+            </Typography>
+            <Button
+              type="button"
+              variant="outlined"
+              className={s.retryButton}
+              onClick={currentSubscriptionProps.onRetry}
+            >
+              {t('retry')}
+            </Button>
+          </div>
+        )}
+
+      {!currentSubscriptionProps.isLoading &&
+        !currentSubscriptionProps.isError &&
+        !currentSubscriptionProps.currentSubscription && (
+          <Typography as="p" variant="text-14" className={s.stateBox}>
+            {t('noCurrentSubscription')}
+          </Typography>
+        )}
+
+      {currentSubscriptionProps.currentSubscription && (
         <CurrentSubscription
-          title={t('nextSubscription')}
-          subscription={futureSubscriptionMock}
+          title={t('currentSubscription')}
+          subscription={currentSubscriptionProps.currentSubscription}
           errorMessage={currentSubscriptionError}
           {...subscriptionControlProps}
         />

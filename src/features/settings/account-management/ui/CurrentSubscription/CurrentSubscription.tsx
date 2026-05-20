@@ -1,12 +1,12 @@
 import { useTranslations } from 'next-intl';
 import { Checkbox, Typography } from 'snapflow-ui-kit';
-import type { CurrentSubscriptionMock } from '@/entities/subscription';
+import type { CurrentSubscription as CurrentSubscriptionData } from '@/entities/subscription';
 import { formatSubscriptionDate } from '../../lib/formatSubscriptionDate';
 import s from '../AccountManagementPanel/AccountManagementPanel.module.css';
 
 type CurrentSubscriptionProps = {
   title: string;
-  subscription: CurrentSubscriptionMock;
+  subscription: CurrentSubscriptionData;
   showAutoRenewal?: boolean;
   autoRenewal: boolean;
   isUpdating: boolean;

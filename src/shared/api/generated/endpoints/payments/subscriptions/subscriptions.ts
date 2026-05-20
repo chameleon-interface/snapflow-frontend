@@ -10,6 +10,7 @@ import type {
   CreateCheckoutSessionInputDto,
   PaginatedPaymentsSwaggerDto,
   PlanViewDto,
+  SubscriptionViewDto,
   SubscriptionsControllerGetMyPaymentsParams,
   UpdateAutoRenewalInputDto,
 } from '../../../model/payments';
@@ -41,6 +42,18 @@ export const subscriptionsControllerGetMyPayments = (
 ) => {
   return paymentsInstance<PaginatedPaymentsSwaggerDto>(
     { url: `/api/v1/subscriptions/my-payments`, method: 'GET', params },
+    options,
+  );
+};
+/**
+ * Возвращает только активную подписку (status = ACTIVE | PAST_DUE) текущего авторизованного пользователя.
+ * @summary Получить текущую активную подписку
+ */
+export const subscriptionsControllerGetMyCurrentSubscription = (
+  options?: SecondParameter<typeof paymentsInstance<SubscriptionViewDto>>,
+) => {
+  return paymentsInstance<SubscriptionViewDto>(
+    { url: `/api/v1/subscriptions/current`, method: 'GET' },
     options,
   );
 };
@@ -83,6 +96,9 @@ export type SubscriptionsControllerGetPlansResult = NonNullable<
 >;
 export type SubscriptionsControllerGetMyPaymentsResult = NonNullable<
   Awaited<ReturnType<typeof subscriptionsControllerGetMyPayments>>
+>;
+export type SubscriptionsControllerGetMyCurrentSubscriptionResult = NonNullable<
+  Awaited<ReturnType<typeof subscriptionsControllerGetMyCurrentSubscription>>
 >;
 export type SubscriptionsControllerCreateCheckoutSessionResult = NonNullable<
   Awaited<ReturnType<typeof subscriptionsControllerCreateCheckoutSession>>

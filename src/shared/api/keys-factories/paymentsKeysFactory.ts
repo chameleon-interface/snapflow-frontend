@@ -3,6 +3,7 @@ import type { SubscriptionsControllerGetMyPaymentsParams } from '@/shared/api/ge
 export const paymentsKeys = {
   all: ['payments'],
   plans: () => [...paymentsKeys.all, 'plans'],
+  currentSubscription: () => [...paymentsKeys.all, 'current-subscription'],
   myPayments: (params?: SubscriptionsControllerGetMyPaymentsParams) => [
     ...paymentsKeys.all,
     'my-payments',

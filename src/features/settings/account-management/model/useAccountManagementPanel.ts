@@ -1,7 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { useSubscriptionPlansQuery } from '@/entities/subscription';
+import {
+  useCurrentSubscriptionQuery,
+  useSubscriptionPlansQuery,
+} from '@/entities/subscription';
 import type { AccountType } from './accountManagementTypes';
 import { useAutoRenewalControl } from './useAutoRenewalControl';
 import { useCheckoutFlow } from './useCheckoutFlow';
@@ -16,6 +19,12 @@ export const useAccountManagementPanel = () => {
     isLoading: isPlansLoading,
     refetch: refetchPlans,
   } = useSubscriptionPlansQuery();
+  const {
+    data: currentSubscription,
+    isError: isCurrentSubscriptionError,
+    isLoading: isCurrentSubscriptionLoading,
+    refetch: refetchCurrentSubscription,
+  } = useCurrentSubscriptionQuery();
   const isBusinessAccount = accountType === 'business';
   const { selectedPlanId, handlePlanSelect, resetSelectedPlan } =
     useSelectedSubscriptionPlan({
@@ -27,7 +36,9 @@ export const useAccountManagementPanel = () => {
     autoRenewalError,
     isAutoRenewalUpdating,
     handleAutoRenewalChange,
-  } = useAutoRenewalControl();
+  } = useAutoRenewalControl({
+    initialAutoRenewal: currentSubscription?.autoRenewal ?? false,
+  });
   const { paymentResult, handlePaymentResultClose } = usePaymentResultModal();
 
   const isPaymentDisabled =
@@ -65,6 +76,12 @@ export const useAccountManagementPanel = () => {
       autoRenewal,
       isUpdating: isAutoRenewalUpdating,
       onAutoRenewalChange: handleAutoRenewalChange,
+    },
+    currentSubscriptionProps: {
+      currentSubscription,
+      isLoading: isCurrentSubscriptionLoading,
+      isError: isCurrentSubscriptionError,
+      onRetry: () => void refetchCurrentSubscription(),
     },
     currentSubscriptionError: autoRenewalError,
     changeSubscriptionProps: {
