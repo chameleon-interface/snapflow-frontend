@@ -68,6 +68,32 @@
       "more": "More actions"
     }
   },
+  "Devices": {
+    "sessionsLoadFailed": "Could not load sessions.",
+    "emptyActiveSessions": "No other active sessions.",
+    "sessionTerminated": "Session terminated",
+    "allSessionsTerminated": "All other sessions have been terminated",
+    "currentDeviceTitle": "Current session",
+    "terminateAllOtherSessions": "Terminate all other sessions",
+    "activeSessionsTitle": "Other active sessions",
+    "pageAria": "Sessions",
+    "terminateActionsAria": "Session termination actions",
+    "terminateSession": "Log out",
+    "terminateSessionAria": "Terminate this session on this device",
+    "unknownDevice": "Unknown device",
+    "unknownBrowser": "Unknown browser",
+    "unknownOs": "Unknown OS",
+    "unknownOsVersion": "—",
+    "unknownDeviceType": "Unknown device type",
+    "unknownIp": "—",
+    "unknownLastVisit": "—",
+    "deviceTypeLabel": "Device type",
+    "browserLabel": "Browser",
+    "osLabel": "Operating system",
+    "ipLabel": "IP",
+    "lastVisitLabel": "Last active",
+    "currentDeviceOnline": "Online"
+  },
   "Settings": {
     "tabsAria": "Settings tabs",
     "tabs": {
@@ -146,20 +172,6 @@
       "country": "Country",
       "city": "City",
       "about": "Tell users about yourself"
-    },
-    "stubs": {
-      "devices": {
-        "title": "Devices",
-        "description": "Device management settings will be added in the next iteration."
-      },
-      "subscriptions": {
-        "title": "Account Management",
-        "description": "Subscription and account controls will be added in the next iteration."
-      },
-      "payments": {
-        "title": "My payments",
-        "description": "Payment history and billing settings will be added in the next iteration."
-      }
     }
   },
   "Forms": {

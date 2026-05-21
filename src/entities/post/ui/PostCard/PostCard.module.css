@@ -17,7 +17,8 @@
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 34px rgb(0 0 0 / 32%);
+  box-shadow: 0 14px 34px
+    color-mix(in srgb, var(--color-dark-900) 32%, transparent);
 }
 
 .card:active {

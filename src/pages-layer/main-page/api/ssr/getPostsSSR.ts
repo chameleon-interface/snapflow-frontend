@@ -5,13 +5,8 @@ import { postsControllerGetPosts } from '@/shared/api/generated/endpoints/core/p
 import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
 import { unstable_cache } from 'next/cache';
 
-const LATEST_POSTS_TAG = postsKeys.latest().join(':');
-
 export const getPostsSSR = unstable_cache(
   async () => postsControllerGetPosts(LATEST_POSTS_QUERY_PARAMS),
   [...postsKeys.latest()],
-  {
-    revalidate: 60,
-    tags: [LATEST_POSTS_TAG],
-  },
+  { revalidate: 60 },
 );

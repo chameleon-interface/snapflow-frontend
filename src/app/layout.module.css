@@ -19,7 +19,7 @@ body[data-has-sidebar='true'] .main {
 @media (width <= 768px) {
   body[data-has-sidebar='true'] .main {
     margin-left: 0;
-    padding-bottom: 90px; /* Space for bottom navigation (60px height + 30px extra) */
+    padding-bottom: 90px; /* Место под нижнюю навигацию (высота 60px + запас 30px) */
   }
 }
 
@@ -29,7 +29,7 @@ body[data-has-sidebar='true'] .main {
   }
 
   body[data-has-sidebar='true'] .main {
-    padding-bottom: 75px; /* Adjusted for smaller screens */
+    padding-bottom: 75px; /* Подстройка под более маленькие экраны */
   }
 
   .container {

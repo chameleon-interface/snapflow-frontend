@@ -1,12 +1,13 @@
 'use client';
 
-import { useMemo } from 'react';
-import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
-import { Tab, Typography } from 'snapflow-ui-kit';
 import { AccountManagementPanel } from '@/features/settings/account-management';
+import { Devices } from '@/features/settings/devices/ui';
 import { PaymentsHistoryPanel } from '@/features/settings/payments-history';
 import { ProfileInfoForm } from '@/features/settings/profile-info';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import { useMemo } from 'react';
+import { Tab } from 'snapflow-ui-kit';
 import { buildSettingsUrl, SETTINGS_PARTS, SettingsPart } from '../model';
 import s from './SettingsPage.module.css';
 
@@ -36,6 +37,10 @@ export function SettingsPage({ part }: SettingsPageProps) {
       return <ProfileInfoForm />;
     }
 
+    if (part === 'devices') {
+      return <Devices />;
+    }
+
     if (part === 'subscriptions') {
       return <AccountManagementPanel />;
     }
@@ -44,16 +49,7 @@ export function SettingsPage({ part }: SettingsPageProps) {
       return <PaymentsHistoryPanel />;
     }
 
-    return (
-      <section className={s.stub}>
-        <Typography as="h2" variant="h2">
-          {t(`stubs.${part}.title`)}
-        </Typography>
-        <Typography as="p" variant="text-14" className={s.stubText}>
-          {t(`stubs.${part}.description`)}
-        </Typography>
-      </section>
-    );
+    return null;
   };
 
   return (

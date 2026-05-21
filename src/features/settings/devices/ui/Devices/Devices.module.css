@@ -1,0 +1,26 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.terminateRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (width <= 768px) {
+  .terminateRow {
+    justify-content: stretch;
+  }
+
+  .terminateAllSessionsButton {
+    width: 100%;
+  }
+}

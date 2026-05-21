@@ -3,11 +3,11 @@
 import { useEffect, useState } from 'react';
 
 /**
- * Hook for checking if viewport width is less than or equal to specified breakpoint.
- * Uses window.matchMedia API for optimal performance.
+ * Хук для проверки, что ширина viewport меньше либо равна указанному брейкпоинту.
+ * Использует `window.matchMedia` для оптимальной производительности.
  *
- * @param maxWidth - Maximum viewport width in pixels
- * @returns true if viewport width <= maxWidth, false otherwise
+ * @param maxWidth - Максимальная ширина viewport в пикселях
+ * @returns `true`, если ширина viewport <= maxWidth, иначе `false`
  *
  * @example
  * ```tsx

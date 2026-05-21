@@ -13,7 +13,7 @@ export type PostsControllerGetPostsParams = {
   pageSize?: number;
   sortDirection?: PostsControllerGetPostsSortDirection;
   /**
-   * Sort by filed
+   * Sort by field
    */
   sortBy?: PostsControllerGetPostsSortBy;
 };

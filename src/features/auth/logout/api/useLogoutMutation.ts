@@ -17,7 +17,7 @@ export const useLogoutMutation = () => {
   return useMutation({
     mutationFn: () => authControllerLogout(),
     onMutate: async () => {
-      // Navigate away from auth-only pages immediately to avoid AuthGate redirect flash.
+      // Сразу уходим с auth-only страниц, чтобы избежать "мигания" редиректа от AuthGate.
       router.replace(ROUTES.HOME);
 
       await queryClient.cancelQueries();

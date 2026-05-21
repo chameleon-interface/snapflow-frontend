@@ -1,6 +1,5 @@
 export {
   convertDdMmYyyyToIso8601,
-  formatIso8601ToDdMmYyyy,
   isDdMmYyyyDateInFuture,
   isValidDdMmYyyyDate,
 } from './dateOfBirthFormatters';

@@ -84,7 +84,7 @@
   line-height: 1;
   color: var(--color-light-100);
 
-  background: rgb(0 0 0 / 60%);
+  background: color-mix(in srgb, var(--color-dark-900) 60%, transparent);
 }
 
 .multiMediaBadge svg {

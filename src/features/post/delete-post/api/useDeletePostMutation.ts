@@ -19,7 +19,6 @@ export const useDeletePostMutation = () => {
       postsControllerDeletePost(postId),
     onSuccess: async (_, variables) => {
       await Promise.all([
-        queryClient.invalidateQueries({ queryKey: postsKeys.feed() }),
         queryClient.invalidateQueries({ queryKey: postsKeys.latest() }),
         queryClient.invalidateQueries({
           queryKey: postsKeys.usersPosts(variables.userId),

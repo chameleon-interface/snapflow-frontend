@@ -6,10 +6,10 @@ import {
 } from './patterns';
 
 /**
- * Checks if the given email address belongs to a disposable email service.
+ * Проверяет, относится ли email к сервису одноразовой почты.
  *
- * @param email - The email address to check
- * @returns `true` if the email domain is in the disposable domains list, `false` otherwise
+ * @param email - Email для проверки
+ * @returns `true`, если домен есть в списке одноразовых; иначе `false`
  *
  * @example
  * isDisposableEmail('user@gmail.com') // false
@@ -20,7 +20,7 @@ const isDisposableEmail = (email: string): boolean => {
   return domain ? disposableEmailDomains.has(domain) : false;
 };
 
-// Base fields for reuse
+// Базовые поля для переиспользования
 export const fields = {
   username: z
     .string()
@@ -41,7 +41,7 @@ export const fields = {
     .regex(patterns.passwordRequired, msg.password.required)
     .regex(patterns.passwordAllowed, msg.password.pattern),
 
-  // Simplified password for login (without complexity check)
+  // Упрощённый пароль для логина (без проверки сложности)
   passwordLogin: z.string().min(1, msg.password.fieldRequired),
 
   passwordConfirmation: z.string().min(1, msg.passwordConfirmation.required),

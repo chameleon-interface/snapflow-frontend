@@ -5,7 +5,7 @@
   bottom: 0;
   left: 0;
 
-  /* iOS safe area support for devices with notch/Dynamic Island */
+  /* iOS safe area: поддержка устройств с вырезом/«Dynamic Island» */
   padding-bottom: env(safe-area-inset-bottom);
   border-top: 1px solid var(--color-dark-300);
 
@@ -49,7 +49,7 @@
     filter 160ms ease;
 }
 
-/* Reset button to match link appearance */
+/* Сбрасываем стили кнопки, чтобы она выглядела как ссылка */
 .button {
   cursor: pointer;
   border: none;
@@ -60,7 +60,9 @@
 .link:hover {
   transform: translateY(-1px);
   color: var(--color-accent-500);
-  filter: drop-shadow(0 6px 16px rgb(99 102 241 / 20%));
+  filter: drop-shadow(
+    0 6px 16px color-mix(in srgb, var(--color-accent-500) 20%, transparent)
+  );
 }
 
 .link:active {

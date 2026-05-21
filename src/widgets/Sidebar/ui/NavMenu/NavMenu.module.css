@@ -31,7 +31,8 @@
 
 .link:hover {
   transform: translateX(2px);
-  text-shadow: 0 0 18px rgb(99 102 241 / 18%);
+  text-shadow: 0 0 18px
+    color-mix(in srgb, var(--color-accent-500) 18%, transparent);
 }
 
 .link:active {
