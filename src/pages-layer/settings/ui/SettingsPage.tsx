@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Tab, Typography } from 'snapflow-ui-kit';
 import { AccountManagementPanel } from '@/features/settings/account-management';
+import { PaymentsHistoryPanel } from '@/features/settings/payments-history';
 import { ProfileInfoForm } from '@/features/settings/profile-info';
 import { buildSettingsUrl, SETTINGS_PARTS, SettingsPart } from '../model';
 import s from './SettingsPage.module.css';
@@ -37,6 +38,10 @@ export function SettingsPage({ part }: SettingsPageProps) {
 
     if (part === 'subscriptions') {
       return <AccountManagementPanel />;
+    }
+
+    if (part === 'payments') {
+      return <PaymentsHistoryPanel />;
     }
 
     return (

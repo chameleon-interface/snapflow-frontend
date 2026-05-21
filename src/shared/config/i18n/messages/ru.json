@@ -121,6 +121,18 @@
       "paymentErrorTitle": "Ошибка",
       "paymentErrorMessage": "Транзакция не прошла, попробуйте ещё раз"
     },
+    "paymentsHistory": {
+      "title": "Мои платежи",
+      "dateOfPayment": "Дата платежа",
+      "endDateOfSubscription": "Окончание подписки",
+      "price": "Цена",
+      "subscriptionType": "Тип подписки",
+      "provider": "Тип платежа",
+      "loading": "Загрузка платежей",
+      "loadFailed": "Не удалось загрузить платежи.",
+      "empty": "Платежей пока нет.",
+      "retry": "Повторить"
+    },
     "fields": {
       "username": "Имя пользователя",
       "firstName": "Имя",

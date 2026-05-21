@@ -12,7 +12,9 @@ import { usePaymentResultModal } from './usePaymentResultModal';
 import { useSelectedSubscriptionPlan } from './useSelectedSubscriptionPlan';
 
 export const useAccountManagementPanel = () => {
-  const [accountType, setAccountType] = useState<AccountType>('business');
+  const [accountTypeDraft, setAccountTypeDraft] = useState<AccountType | null>(
+    null,
+  );
   const {
     data: plans = [],
     isError: isPlansError,
@@ -25,6 +27,9 @@ export const useAccountManagementPanel = () => {
     isLoading: isCurrentSubscriptionLoading,
     refetch: refetchCurrentSubscription,
   } = useCurrentSubscriptionQuery();
+  const { paymentResult, handlePaymentResultClose } = usePaymentResultModal();
+  const accountType =
+    accountTypeDraft ?? currentSubscription?.accountType ?? 'personal';
   const isBusinessAccount = accountType === 'business';
   const { selectedPlanId, handlePlanSelect, resetSelectedPlan } =
     useSelectedSubscriptionPlan({
@@ -39,8 +44,6 @@ export const useAccountManagementPanel = () => {
   } = useAutoRenewalControl({
     initialAutoRenewal: currentSubscription?.autoRenewal ?? false,
   });
-  const { paymentResult, handlePaymentResultClose } = usePaymentResultModal();
-
   const isPaymentDisabled =
     !isBusinessAccount || !selectedPlanId || isPlansLoading || isPlansError;
   const {
@@ -57,13 +60,13 @@ export const useAccountManagementPanel = () => {
   const isPaymentActionDisabled = isPaymentDisabled || isCheckoutPending;
 
   const handlePersonalSelect = () => {
-    setAccountType('personal');
+    setAccountTypeDraft('personal');
     resetSelectedPlan();
     handleCheckoutModalClose();
   };
 
   const handleBusinessSelect = () => {
-    setAccountType('business');
+    setAccountTypeDraft('business');
   };
 
   return {

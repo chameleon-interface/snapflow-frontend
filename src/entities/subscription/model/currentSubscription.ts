@@ -5,6 +5,7 @@ export type CurrentSubscription = {
   expireAt: string | null;
   nextPayment: string | null;
   autoRenewal: boolean;
+  accountType: 'personal' | 'business';
 };
 
 const normalizeDate = (value: unknown) => {
@@ -13,6 +14,10 @@ const normalizeDate = (value: unknown) => {
 
 const normalizeAutoRenewal = (value: unknown) => {
   return typeof value === 'boolean' ? value : false;
+};
+
+const normalizeAccountType = (value: unknown) => {
+  return value === 'BUSINESS' ? 'business' : 'personal';
 };
 
 export const mapCurrentSubscription = (
@@ -25,5 +30,6 @@ export const mapCurrentSubscription = (
     expireAt: normalizeDate(source.expireAt),
     nextPayment: normalizeDate(source.nextPayment),
     autoRenewal: normalizeAutoRenewal(source.autoRenewal),
+    accountType: normalizeAccountType(source.accountType),
   };
 };

@@ -121,6 +121,18 @@
       "paymentErrorTitle": "Error",
       "paymentErrorMessage": "Transaction failed, please try again"
     },
+    "paymentsHistory": {
+      "title": "My payments",
+      "dateOfPayment": "Date of Payment",
+      "endDateOfSubscription": "End date of subscription",
+      "price": "Price",
+      "subscriptionType": "Subscription Type",
+      "provider": "Payment Type",
+      "loading": "Loading payments",
+      "loadFailed": "Failed to load payments.",
+      "empty": "No payments yet.",
+      "retry": "Retry"
+    },
     "fields": {
       "username": "Username",
       "firstName": "First Name",
