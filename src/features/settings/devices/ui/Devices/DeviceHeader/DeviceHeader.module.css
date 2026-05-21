@@ -1,0 +1,22 @@
+.cardHeader {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 16px;
+}
+
+.leading {
+  display: flex;
+  flex: 1;
+  gap: 12px;
+  align-items: center;
+
+  min-width: 0;
+}
+
+.title {
+  min-width: 0;
+  margin: 0;
+}

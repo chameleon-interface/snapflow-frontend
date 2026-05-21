@@ -33,7 +33,7 @@ export const Sidebar = () => {
 
   return (
     <>
-      {/* Desktop Sidebar */}
+      {/* Сайдбар (desktop) */}
       <aside className={`${s.sidebar} ${s.desktopOnly}`}>
         <NavMenu
           profileId={data.profileId}
@@ -43,7 +43,7 @@ export const Sidebar = () => {
         <LogoutButton />
       </aside>
 
-      {/* Mobile Bottom Navigation */}
+      {/* Нижняя навигация (mobile) */}
       <div className={s.mobileOnly}>
         <BottomNav
           profileId={data.profileId}

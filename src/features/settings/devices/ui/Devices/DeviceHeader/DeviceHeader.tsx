@@ -1,0 +1,47 @@
+import { useTerminateSessionMutation } from '@/features/settings/devices/api';
+import { useTranslations } from 'next-intl';
+import { Button, Typography } from 'snapflow-ui-kit';
+import { LogOutIcon } from 'snapflow-ui-kit/icons';
+import { DeviceTypeBadge } from '../DeviceTypeBadge';
+import styles from './DeviceHeader.module.css';
+
+type Props = {
+  deviceName: string;
+  deviceId: string;
+  deviceType?: string;
+  isActiveSession?: boolean;
+};
+
+export const DeviceHeader = ({
+  deviceName,
+  deviceId,
+  deviceType,
+  isActiveSession,
+}: Props) => {
+  const t = useTranslations('Devices');
+  const deviceNameLabel = deviceName ?? t('unknownDevice');
+  const { mutate: terminateSession, isPending } = useTerminateSessionMutation();
+
+  return (
+    <div className={styles.cardHeader}>
+      <div className={styles.leading}>
+        <DeviceTypeBadge deviceType={deviceType} />
+        <Typography variant="text-16-bold" as="h3" className={styles.title}>
+          {deviceNameLabel}
+        </Typography>
+      </div>
+      {isActiveSession && (
+        <Button
+          variant="outlined"
+          type="button"
+          icon={<LogOutIcon />}
+          onClick={() => terminateSession({ deviceId })}
+          disabled={isPending}
+          aria-label={t('terminateSessionAria')}
+        >
+          {t('terminateSession')}
+        </Button>
+      )}
+    </div>
+  );
+};

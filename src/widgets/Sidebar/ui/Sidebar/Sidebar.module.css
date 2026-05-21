@@ -13,12 +13,12 @@
   border-right: 1px solid var(--color-dark-300);
 }
 
-/* Desktop-only: visible above 768px */
+/* Только desktop: видно при ширине больше 768px */
 .desktopOnly {
   display: flex;
 }
 
-/* Mobile-only: visible at 768px and below */
+/* Только mobile: видно при ширине 768px и ниже */
 .mobileOnly {
   display: none;
 }

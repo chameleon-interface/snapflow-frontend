@@ -1,9 +1,7 @@
 import { jwtVerify } from 'jose';
-import { revalidateTag } from 'next/cache';
+import { revalidatePath } from 'next/cache';
 import { NextResponse } from 'next/server';
-import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
 
-const LATEST_POSTS_TAG = postsKeys.latest().join(':');
 const REQUIRED_ACTION = 'revalidate_home';
 const encoder = new TextEncoder();
 
@@ -12,7 +10,7 @@ export const POST = async (request: Request) => {
     const authHeader = request.headers.get('authorization');
 
     if (!authHeader?.startsWith('Bearer ')) {
-      console.error('[revalidate-posts]: Invalid authorization header');
+      console.error('[revalidate-home]: Invalid authorization header');
       return NextResponse.json(
         { message: 'Invalid Authorization header. Expected: Bearer <token>' },
         { status: 401 },
@@ -21,19 +19,19 @@ export const POST = async (request: Request) => {
 
     const token = authHeader.slice('Bearer '.length).trim();
     if (!token) {
-      console.error('[revalidate-posts]: Empty bearer token');
+      console.error('[revalidate-home]: Empty bearer token');
       return NextResponse.json(
         { message: 'Bearer token is empty' },
         { status: 401 },
       );
     }
 
-    const secret = process.env.REVALIDATE_POSTS_JWT_SECRET;
+    const secret = process.env.NEXTJS_REVALIDATION_SECRET;
 
     if (!secret) {
-      console.error('[revalidate-posts]: Missing REVALIDATE_POSTS_JWT_SECRET');
+      console.error('[revalidate-home]: Missing NEXTJS_REVALIDATION_SECRET');
       return NextResponse.json(
-        { message: 'Missing server env: REVALIDATE_POSTS_JWT_SECRET' },
+        { message: 'Missing server env: NEXTJS_REVALIDATION_SECRET' },
         { status: 500 },
       );
     }
@@ -43,7 +41,7 @@ export const POST = async (request: Request) => {
     });
 
     if (payload.action !== REQUIRED_ACTION) {
-      console.error('[revalidate-posts]: Forbidden action claim', {
+      console.error('[revalidate-home]: Forbidden action claim', {
         action: payload.action,
       });
       return NextResponse.json(
@@ -52,11 +50,11 @@ export const POST = async (request: Request) => {
       );
     }
 
-    revalidateTag(LATEST_POSTS_TAG, 'max');
+    revalidatePath('/', 'page');
 
     return NextResponse.json({ revalidated: true }, { status: 200 });
   } catch (error) {
-    console.error('[revalidate-posts]: JWT verification failed', { error });
+    console.error('[revalidate-home]: JWT verification failed', { error });
     return NextResponse.json(
       { message: 'Invalid token. Please check your bearer token' },
       { status: 401 },

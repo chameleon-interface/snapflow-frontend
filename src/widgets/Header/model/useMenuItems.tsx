@@ -10,8 +10,8 @@ import {
 import { ROUTES } from '@/shared/config';
 
 /**
- * Hook for creating menu items for mobile menu.
- * Returns auth menu items for unauthorized users and user menu items for authorized users.
+ * Хук для формирования пунктов меню для мобильного меню.
+ * Возвращает пункты для гостя (auth) и пункты для авторизованного пользователя.
  */
 export const useMenuItems = (onLogoutClick?: () => void) => {
   const t = useTranslations('Auth');

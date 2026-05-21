@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useCallback } from 'react';
 import { useLocale } from 'next-intl';
@@ -8,9 +8,9 @@ import { DEFAULT_LANG, type LangCode } from '../config/languages';
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 
 /**
- * Hook for managing the current application language.
+ * Хук для управления текущим языком приложения.
  *
- * Persists selected language to a cookie for SSR/CSR consistency.
+ * Сохраняет выбранный язык в cookie для согласованного поведения SSR/CSR.
  */
 export function useLang() {
   const locale = useLocale();

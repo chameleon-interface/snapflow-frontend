@@ -11,8 +11,8 @@ import { useGetMyProfile, useMe, useUpdateProfile } from '@/entities/user';
 import { DEFAULT_SETTINGS_FORM_VALUES } from '../model/settingsForm';
 import { settingsSchema, type SettingsFormValues } from '../model/schema';
 import { toastSuccess } from 'snapflow-ui-kit/client';
-import { formatIso8601ToDdMmYyyy } from './dateOfBirthFormatters';
 import { prepareProfileInfoPayload } from './prepareProfileInfoPayload';
+import { formatIsoToDdMmYyyy } from '@/shared/lib/formatDate';
 
 type UseProfileInfoFormResult = {
   form: UseFormReturn<SettingsFormValues>;
@@ -77,7 +77,7 @@ export const useProfileInfoForm = (): UseProfileInfoFormResult => {
       username: profile.username ?? '',
       firstName: profile.firstName ?? '',
       lastName: profile.lastName ?? '',
-      dateOfBirth: formatIso8601ToDdMmYyyy(profile.dateOfBirth),
+      dateOfBirth: formatIsoToDdMmYyyy(profile.dateOfBirth),
       country: profile.country ?? '',
       city: profile.city ?? '',
       aboutMe: profile.aboutMe ?? '',

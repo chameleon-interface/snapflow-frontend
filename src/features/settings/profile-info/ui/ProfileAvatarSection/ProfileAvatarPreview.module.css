@@ -73,5 +73,6 @@
 
 .deleteAvatarButton:hover:not(:disabled) {
   transform: scale(1.05);
-  box-shadow: 0 6px 16px rgb(0 0 0 / 40%);
+  box-shadow: 0 6px 16px
+    color-mix(in srgb, var(--color-dark-900) 40%, transparent);
 }

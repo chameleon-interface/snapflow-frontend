@@ -68,6 +68,32 @@
       "more": "Дополнительные действия"
     }
   },
+  "Devices": {
+    "sessionsLoadFailed": "Не удалось загрузить сессии.",
+    "emptyActiveSessions": "Нет других активных сессий.",
+    "sessionTerminated": "Сессия завершена",
+    "allSessionsTerminated": "Все остальные сессии завершены",
+    "currentDeviceTitle": "Текущая сессия",
+    "terminateAllOtherSessions": "Завершить все остальные сессии",
+    "activeSessionsTitle": "Другие активные сессии",
+    "pageAria": "Сессии",
+    "terminateActionsAria": "Действия завершения сессий",
+    "terminateSession": "Выйти",
+    "terminateSessionAria": "Завершить эту сессию на этом устройстве",
+    "unknownDevice": "Неизвестное устройство",
+    "unknownBrowser": "Неизвестный браузер",
+    "unknownOs": "Неизвестная ОС",
+    "unknownOsVersion": "—",
+    "unknownDeviceType": "Неизвестный тип устройства",
+    "unknownIp": "—",
+    "unknownLastVisit": "—",
+    "deviceTypeLabel": "Тип устройства",
+    "browserLabel": "Браузер",
+    "osLabel": "Операционная система",
+    "ipLabel": "IP",
+    "lastVisitLabel": "Последняя активность",
+    "currentDeviceOnline": "В сети"
+  },
   "Settings": {
     "tabsAria": "Вкладки настроек",
     "tabs": {
@@ -102,20 +128,6 @@
       "country": "Страна",
       "city": "Город",
       "about": "Расскажите о себе"
-    },
-    "stubs": {
-      "devices": {
-        "title": "Устройства",
-        "description": "Настройки управления устройствами будут добавлены в следующей итерации."
-      },
-      "subscriptions": {
-        "title": "Управление аккаунтом",
-        "description": "Управление подпиской и аккаунтом будет добавлено в следующей итерации."
-      },
-      "payments": {
-        "title": "Мои платежи",
-        "description": "История платежей и настройки биллинга будут добавлены в следующей итерации."
-      }
     }
   },
   "Forms": {

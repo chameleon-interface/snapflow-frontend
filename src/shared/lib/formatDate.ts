@@ -168,3 +168,34 @@ export const formatShortPostDate = (
 
   return getShortAbsolute(date, locale, now);
 };
+
+/**
+ * Конвертирует ISO 8601 строку даты в формат `dd.MM.yyyy`.
+ * Для `null`/пустого ввода возвращает пустую строку; если парсинг не удался — возвращает исходное значение.
+ */
+
+export const formatIsoToDdMmYyyy = (value: string | null): string => {
+  if (!value) {
+    return '';
+  }
+
+  const isoDateMatch = /^(\d{4})-(\d{2})-(\d{2})/.exec(value);
+
+  if (isoDateMatch) {
+    const [, year, month, day] = isoDateMatch;
+
+    return `${day}.${month}.${year}`;
+  }
+
+  const parsedDate = new Date(value);
+
+  if (Number.isNaN(parsedDate.getTime())) {
+    return value;
+  }
+
+  const day = String(parsedDate.getUTCDate()).padStart(2, '0');
+  const month = String(parsedDate.getUTCMonth() + 1).padStart(2, '0');
+  const year = String(parsedDate.getUTCFullYear());
+
+  return `${day}.${month}.${year}`;
+};
