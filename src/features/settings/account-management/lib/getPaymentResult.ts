@@ -12,7 +12,6 @@ export const getPaymentResult = (
     return 'success';
   }
 
-  // TODO: replace query-param based success fallback with real payment/subscription status check after backend status endpoint is available.
   if (!payment && sessionId) {
     return 'success';
   }

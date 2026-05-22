@@ -30,7 +30,7 @@ export const useCheckoutFlow = ({
   };
 
   const handleCheckoutConfirm = () => {
-    if (!selectedPlanId) {
+    if (isCheckoutPending || isPaymentDisabled || !selectedPlanId) {
       return;
     }
 
