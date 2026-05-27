@@ -58,6 +58,8 @@ export const useAccountManagementPanel = () => {
     selectedPlanId,
   });
   const isPaymentActionDisabled = isPaymentDisabled || isCheckoutPending;
+  const canShowAccountControls =
+    !isCurrentSubscriptionLoading && !isCurrentSubscriptionError;
 
   const handlePersonalSelect = () => {
     setAccountTypeDraft('personal');
@@ -87,6 +89,7 @@ export const useAccountManagementPanel = () => {
       onRetry: () => void refetchCurrentSubscription(),
     },
     currentSubscriptionError: autoRenewalError,
+    canShowAccountControls,
     changeSubscriptionProps: {
       plans,
       selectedPlanId,

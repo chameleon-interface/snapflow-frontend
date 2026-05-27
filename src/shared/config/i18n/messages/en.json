@@ -132,6 +132,7 @@
       "noCurrentSubscription": "No active subscription.",
       "autoRenewal": "Auto-Renewal",
       "autoRenewalUpdateFailed": "Failed to update auto-renewal. Please try again.",
+      "pastDueSubscription": "Payment is overdue. Please update your subscription.",
       "changeSubscription": "Change your subscription:",
       "loadingPlans": "Loading subscription plans",
       "plansLoadFailed": "Failed to load subscription plans.",
@@ -157,6 +158,11 @@
       "loading": "Loading payments",
       "loadFailed": "Failed to load payments.",
       "empty": "No payments yet.",
+      "emptyPage": "No payments on this page.",
+      "providers": {
+        "stripe": "Stripe",
+        "paypal": "PayPal"
+      },
       "retry": "Retry"
     },
     "fields": {

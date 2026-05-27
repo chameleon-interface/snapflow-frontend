@@ -5,7 +5,6 @@
  * Публичное HTTP API сервиса оплат: тарифы и создание Stripe Checkout Session. Вебхуки Stripe и служебные маршруты в документацию не входят.
  * OpenAPI spec version: 1.0.0
  */
-import type { PaymentViewDtoEndDateOfSubscription } from './paymentViewDtoEndDateOfSubscription';
 import type { PaymentViewDtoProvider } from './paymentViewDtoProvider';
 import type { PaymentViewDtoSubscriptionType } from './paymentViewDtoSubscriptionType';
 
@@ -20,7 +19,7 @@ export interface PaymentViewDto {
    * Дата окончания подписки (ISO-8601) или null
    * @nullable
    */
-  endDateOfSubscription: PaymentViewDtoEndDateOfSubscription;
+  endDateOfSubscription: string | null;
   /** Сумма платежа в minor units */
   price: number;
   /** Человекочитаемый тип подписки */

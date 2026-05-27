@@ -169,6 +169,28 @@ export const formatShortPostDate = (
   return getShortAbsolute(date, locale, now);
 };
 
+export const formatCalendarDate = (
+  value: unknown,
+  locale: string,
+  fallback = '-',
+): string => {
+  if (typeof value !== 'string' || value.length === 0) {
+    return fallback;
+  }
+
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return fallback;
+  }
+
+  return new Intl.DateTimeFormat(locale, {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  }).format(date);
+};
+
 /**
  * Конвертирует ISO 8601 строку даты в формат `dd.MM.yyyy`.
  * Для `null`/пустого ввода возвращает пустую строку; если парсинг не удался — возвращает исходное значение.

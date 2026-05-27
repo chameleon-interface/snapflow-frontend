@@ -6,9 +6,6 @@
  * OpenAPI spec version: 1.0.0
  */
 import type { SubscriptionViewDtoAccountType } from './subscriptionViewDtoAccountType';
-import type { SubscriptionViewDtoAutoRenewal } from './subscriptionViewDtoAutoRenewal';
-import type { SubscriptionViewDtoExpireAt } from './subscriptionViewDtoExpireAt';
-import type { SubscriptionViewDtoNextPayment } from './subscriptionViewDtoNextPayment';
 import type { SubscriptionViewDtoStatus } from './subscriptionViewDtoStatus';
 import type { SubscriptionViewDtoSubscriptionLabel } from './subscriptionViewDtoSubscriptionLabel';
 
@@ -18,7 +15,7 @@ export interface SubscriptionViewDto {
   /** Статус подписки (ACTIVE или PAST_DUE) */
   status: SubscriptionViewDtoStatus;
   /** Флаг автопродления подписки */
-  autoRenewal: SubscriptionViewDtoAutoRenewal;
+  autoRenewal: boolean;
   /** Тип аккаунта (PERSONAL или BUSINESS) */
   accountType: SubscriptionViewDtoAccountType;
   /** Тип подписки */
@@ -29,7 +26,10 @@ export interface SubscriptionViewDto {
    * Дата окончания подписки (ISO-8601) или null
    * @nullable
    */
-  expireAt: SubscriptionViewDtoExpireAt;
-  /** Дата следующего платежа (ISO-8601) или null */
-  nextPayment: SubscriptionViewDtoNextPayment;
+  expireAt: string | null;
+  /**
+   * Дата следующего платежа (ISO-8601) или null
+   * @nullable
+   */
+  nextPayment: string | null;
 }

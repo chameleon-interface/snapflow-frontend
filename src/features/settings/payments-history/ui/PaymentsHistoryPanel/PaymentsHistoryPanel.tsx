@@ -22,6 +22,7 @@ export const PaymentsHistoryPanel = () => {
   } = usePaymentsHistoryPanel();
   const payments = data?.items ?? [];
   const pagesCount = data?.pagesCount ?? 0;
+  const totalCount = data?.totalCount ?? 0;
 
   if (isLoading) {
     return (
@@ -50,12 +51,29 @@ export const PaymentsHistoryPanel = () => {
     );
   }
 
-  if (payments.length === 0) {
+  if (payments.length === 0 && totalCount === 0) {
     return (
       <section className={s.root}>
         <Typography as="p" variant="text-14" className={s.stateBox}>
           {t('empty')}
         </Typography>
+      </section>
+    );
+  }
+
+  if (payments.length === 0) {
+    return (
+      <section className={s.root} aria-label={t('title')}>
+        <Typography as="p" variant="text-14" className={s.stateBox}>
+          {t('emptyPage')}
+        </Typography>
+        <PaymentsHistoryPagination
+          pageNumber={pageNumber}
+          pageSize={pageSize}
+          pagesCount={pagesCount}
+          onPageChange={onPageChange}
+          onPageSizeChange={onPageSizeChange}
+        />
       </section>
     );
   }

@@ -132,6 +132,7 @@
       "noCurrentSubscription": "Активной подписки нет.",
       "autoRenewal": "Автопродление",
       "autoRenewalUpdateFailed": "Не удалось обновить автопродление. Попробуйте ещё раз.",
+      "pastDueSubscription": "Платёж просрочен. Обновите подписку.",
       "changeSubscription": "Изменить подписку:",
       "loadingPlans": "Загрузка тарифов",
       "plansLoadFailed": "Не удалось загрузить тарифы.",
@@ -157,6 +158,11 @@
       "loading": "Загрузка платежей",
       "loadFailed": "Не удалось загрузить платежи.",
       "empty": "Платежей пока нет.",
+      "emptyPage": "На этой странице платежей нет.",
+      "providers": {
+        "stripe": "Stripe",
+        "paypal": "PayPal"
+      },
       "retry": "Повторить"
     },
     "fields": {

@@ -16,6 +16,16 @@ export const usePaymentsHistoryPanel = () => {
     [pageNumber, pageSize],
   );
   const query = useMyPaymentsQuery(params);
+  const pagesCount = query.data?.pagesCount ?? 0;
+
+  const handlePageChange = (nextPageNumber: number) => {
+    const clampedPageNumber =
+      pagesCount > 0
+        ? Math.min(Math.max(nextPageNumber, DEFAULT_PAYMENTS_PAGE), pagesCount)
+        : nextPageNumber;
+
+    setPageNumber(clampedPageNumber);
+  };
 
   const handlePageSizeChange = (nextPageSize: number) => {
     setPageSize(nextPageSize);
@@ -26,7 +36,7 @@ export const usePaymentsHistoryPanel = () => {
     ...query,
     pageNumber,
     pageSize,
-    onPageChange: setPageNumber,
+    onPageChange: handlePageChange,
     onPageSizeChange: handlePageSizeChange,
   };
 };

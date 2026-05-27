@@ -1,7 +1,7 @@
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Checkbox, Typography } from 'snapflow-ui-kit';
 import type { CurrentSubscription as CurrentSubscriptionData } from '@/entities/subscription';
-import { formatSubscriptionDate } from '../../lib/formatSubscriptionDate';
+import { formatCalendarDate } from '@/shared/lib';
 import s from '../AccountManagementPanel/AccountManagementPanel.module.css';
 
 type CurrentSubscriptionProps = {
@@ -24,6 +24,7 @@ export const CurrentSubscription = ({
   onAutoRenewalChange,
 }: CurrentSubscriptionProps) => {
   const t = useTranslations('Settings.accountManagement');
+  const locale = useLocale();
 
   return (
     <div className={s.section}>
@@ -46,7 +47,7 @@ export const CurrentSubscription = ({
             {t('expireAt')}
           </Typography>
           <Typography as="span" variant="text-14" className={s.dateValue}>
-            {formatSubscriptionDate(subscription.expireAt)}
+            {formatCalendarDate(subscription.expireAt, locale)}
           </Typography>
         </div>
 
@@ -55,10 +56,16 @@ export const CurrentSubscription = ({
             {t('nextPayment')}
           </Typography>
           <Typography as="span" variant="text-14" className={s.dateValue}>
-            {formatSubscriptionDate(subscription.nextPayment)}
+            {formatCalendarDate(subscription.nextPayment, locale)}
           </Typography>
         </div>
       </div>
+
+      {subscription.status === 'PAST_DUE' && (
+        <Typography as="p" variant="text-14" className={s.errorText}>
+          {t('pastDueSubscription')}
+        </Typography>
+      )}
 
       {showAutoRenewal && (
         <Checkbox

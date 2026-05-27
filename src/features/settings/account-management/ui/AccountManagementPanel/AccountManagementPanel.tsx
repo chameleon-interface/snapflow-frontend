@@ -18,6 +18,7 @@ export const AccountManagementPanel = () => {
     accountTypeSelectorProps,
     changeSubscriptionProps,
     checkoutModalProps,
+    canShowAccountControls,
     currentSubscriptionProps,
     currentSubscriptionError,
     paymentResultModalProps,
@@ -80,14 +81,18 @@ export const AccountManagementPanel = () => {
         />
       )}
 
-      <AccountTypeSelector {...accountTypeSelectorProps} />
+      {canShowAccountControls && (
+        <>
+          <AccountTypeSelector {...accountTypeSelectorProps} />
 
-      <div
-        className={`${s.paymentPanel} ${changeSubscriptionProps.isBusinessAccount ? s.paymentPanelOpen : ''}`}
-        aria-hidden={!changeSubscriptionProps.isBusinessAccount}
-      >
-        <ChangeSubscriptionSection {...changeSubscriptionProps} />
-      </div>
+          <div
+            className={`${s.paymentPanel} ${changeSubscriptionProps.isBusinessAccount ? s.paymentPanelOpen : ''}`}
+            aria-hidden={!changeSubscriptionProps.isBusinessAccount}
+          >
+            <ChangeSubscriptionSection {...changeSubscriptionProps} />
+          </div>
+        </>
+      )}
 
       <CheckoutAgreementModal {...checkoutModalProps} />
 
