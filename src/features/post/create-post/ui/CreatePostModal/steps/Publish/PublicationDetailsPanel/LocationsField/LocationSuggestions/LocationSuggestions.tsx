@@ -1,5 +1,3 @@
-'use client';
-
 import styles from './LocationSuggestions.module.css';
 
 export type LocationSuggestion = { primary: string; secondary: string };

@@ -1,5 +1,3 @@
-'use client';
-
 import { AspectRatioSelector } from './AspectRatioSelector';
 import styles from './CroppingToolbar.module.css';
 import { GallerySelector } from './GallerySelector';

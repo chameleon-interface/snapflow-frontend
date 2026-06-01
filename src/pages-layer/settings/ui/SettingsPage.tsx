@@ -1,6 +1,8 @@
 'use client';
 
+import { AccountManagementPanel } from '@/features/settings/account-management';
 import { Devices } from '@/features/settings/devices/ui';
+import { PaymentsHistoryPanel } from '@/features/settings/payments-history';
 import { ProfileInfoForm } from '@/features/settings/profile-info';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
@@ -40,11 +42,11 @@ export function SettingsPage({ part }: SettingsPageProps) {
     }
 
     if (part === 'subscriptions') {
-      return <div>Subscriptions</div>;
+      return <AccountManagementPanel />;
     }
 
     if (part === 'payments') {
-      return <div>Payments</div>;
+      return <PaymentsHistoryPanel />;
     }
 
     return null;

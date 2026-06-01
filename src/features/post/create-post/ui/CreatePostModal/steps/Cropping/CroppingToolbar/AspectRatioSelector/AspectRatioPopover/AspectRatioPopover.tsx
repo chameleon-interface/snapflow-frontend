@@ -1,5 +1,3 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
 import { AspectRatioOption } from '../AspectRatioOption';
 import styles from './AspectRatioPopover.module.css';

@@ -1,6 +1,6 @@
 'use client';
 
-import { SessionsViewDto } from '@/shared/api/generated/model';
+import { SessionsViewDto } from '@/shared/api/generated/model/core';
 import { formatIsoToDdMmYyyy } from '@/shared/lib/formatDate';
 import { useTranslations } from 'next-intl';
 import { Typography } from 'snapflow-ui-kit';

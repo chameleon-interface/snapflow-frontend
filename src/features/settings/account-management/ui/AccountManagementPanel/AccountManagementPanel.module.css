@@ -1,0 +1,214 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 100%;
+  max-width: 710px;
+}
+
+.visuallyHidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(50%);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sectionTitle {
+  color: var(--color-light-100);
+}
+
+.currentSubscriptionBox {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+
+  padding: 14px 16px;
+  border: 1px solid var(--color-dark-300);
+
+  background-color: var(--color-dark-500);
+}
+
+.subscriptionDateItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 80px;
+}
+
+.dateLabel {
+  color: var(--color-light-900);
+}
+
+.dateValue {
+  color: var(--color-light-100);
+}
+
+.autoRenewal {
+  width: fit-content;
+  color: var(--color-light-100);
+}
+
+.errorText {
+  color: var(--color-danger-500);
+}
+
+.paymentPanel {
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 0fr;
+
+  opacity: 0;
+
+  transition:
+    grid-template-rows 240ms ease,
+    opacity 180ms ease;
+}
+
+.paymentPanelOpen {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.paymentPanelInner {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  min-height: 0;
+}
+
+.optionGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  padding: 14px 16px;
+  border: 1px solid var(--color-dark-300);
+
+  background-color: var(--color-dark-500);
+}
+
+.option {
+  width: fit-content;
+  color: var(--color-light-100);
+}
+
+.planContent {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.planLabel {
+  color: var(--color-light-900);
+}
+
+.plansSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  padding: 14px 16px;
+  border: 1px solid var(--color-dark-300);
+
+  background-color: var(--color-dark-500);
+}
+
+.stateBox {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px 16px;
+  border: 1px solid var(--color-dark-300);
+
+  color: var(--color-light-900);
+
+  background-color: var(--color-dark-500);
+}
+
+.stateText {
+  color: var(--color-light-900);
+}
+
+.retryButton {
+  flex-shrink: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.paymentButton {
+  width: 96px;
+  min-width: 96px;
+  height: 48px;
+  padding: 0;
+}
+
+.paymentLogo {
+  display: block;
+  flex-shrink: 0;
+}
+
+.paypalLogo {
+  width: 58px;
+  height: 28px;
+}
+
+.stripeLogo {
+  width: 58px;
+  height: 28px;
+}
+
+.paymentLabel {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(50%);
+}
+
+@media (width <= 768px) {
+  .currentSubscriptionBox {
+    gap: 24px;
+  }
+
+  .actions {
+    justify-content: stretch;
+  }
+
+  .paymentButton {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}

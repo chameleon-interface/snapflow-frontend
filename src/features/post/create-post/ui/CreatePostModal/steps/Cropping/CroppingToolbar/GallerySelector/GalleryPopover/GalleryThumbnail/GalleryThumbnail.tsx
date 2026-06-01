@@ -1,5 +1,3 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
 import { clsx } from 'clsx';
 import Image from 'next/image';

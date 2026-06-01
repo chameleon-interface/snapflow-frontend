@@ -1,6 +1,6 @@
 'use client';
 
-import type { PostViewDto } from '@/shared/api/generated/model';
+import type { PostViewDto } from '@/shared/api/generated/model/core';
 import { PostAuthorInfo } from '@/entities/post/ui/PostAuthorInfo';
 import { ROUTES } from '@/shared/config/routes';
 import { RelativeTime } from '@/shared/ui';

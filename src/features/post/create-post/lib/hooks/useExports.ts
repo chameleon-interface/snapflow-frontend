@@ -1,5 +1,3 @@
-'use client';
-
 import { useCallback, useState } from 'react';
 import type { Area } from 'react-easy-crop';
 import type { CreatePostStep } from '@/features/post/create-post/model/types';

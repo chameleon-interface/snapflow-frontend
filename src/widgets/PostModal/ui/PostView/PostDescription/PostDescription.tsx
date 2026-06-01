@@ -1,6 +1,6 @@
 'use client';
 
-import type { PostViewDto } from '@/shared/api/generated/model';
+import type { PostViewDto } from '@/shared/api/generated/model/core';
 import { Typography } from 'snapflow-ui-kit';
 import { UserAvatar } from '@/shared/ui/UserAvatar';
 import styles from './PostDescription.module.css';

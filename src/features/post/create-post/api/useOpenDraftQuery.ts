@@ -1,8 +1,8 @@
 'use client';
 
 import axios from 'axios';
-import { postsControllerGetDraft } from '@/shared/api/generated/endpoints/posts/posts';
-import type { PostViewDto } from '@/shared/api/generated/model';
+import { postsControllerGetDraft } from '@/shared/api/generated/endpoints/core/posts/posts';
+import type { PostViewDto } from '@/shared/api/generated/model/core';
 import { useQuery } from '@tanstack/react-query';
 
 export const openDraftQueryKey = () => ['Drafts'] as const;

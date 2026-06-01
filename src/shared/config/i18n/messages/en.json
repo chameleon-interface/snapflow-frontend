@@ -44,6 +44,10 @@
     "noPostsYet": "No posts yet",
     "registeredUsersCountAria": "Registered users: {count}"
   },
+  "SubscriptionPlans": {
+    "businessMonthly": "Business Monthly",
+    "businessYearly": "Business Yearly"
+  },
   "ExpandableText": {
     "showMore": "Show more",
     "showLess": "Hide"
@@ -114,6 +118,56 @@
     "avatarCropModal": {
       "title": "Add a Profile Photo",
       "save": "Save"
+    },
+    "accountManagement": {
+      "accountType": "Account type:",
+      "personal": "Personal",
+      "business": "Business",
+      "stripe": "Stripe",
+      "paypal": "PayPal",
+      "paymentActions": "Payment actions",
+      "paypalUnavailable": "PayPal integration is not available yet.",
+      "currentSubscription": "Current Subscription:",
+      "subscription": "Subscription",
+      "expireAt": "Expire at",
+      "nextPayment": "Next payment",
+      "loadingCurrentSubscription": "Loading current subscription",
+      "currentSubscriptionLoadFailed": "Failed to load current subscription.",
+      "noCurrentSubscription": "No active subscription.",
+      "autoRenewal": "Auto-Renewal",
+      "autoRenewalUpdateFailed": "Failed to update auto-renewal. Please try again.",
+      "pastDueSubscription": "Payment is overdue. Please update your subscription.",
+      "changeSubscription": "Change your subscription:",
+      "loadingPlans": "Loading subscription plans",
+      "plansLoadFailed": "Failed to load subscription plans.",
+      "retry": "Retry",
+      "noPlans": "No subscription plans available.",
+      "createPayment": "Create payment",
+      "agreement": "Auto-renewal will be enabled with this payment. You can disable it anytime in your profile settings",
+      "agree": "I agree",
+      "ok": "OK",
+      "cancel": "Cancel",
+      "paymentSuccessTitle": "Success",
+      "paymentSuccessMessage": "Payment was successful!",
+      "paymentErrorTitle": "Error",
+      "paymentErrorMessage": "Transaction failed, please try again"
+    },
+    "paymentsHistory": {
+      "title": "My payments",
+      "dateOfPayment": "Date of Payment",
+      "endDateOfSubscription": "End date of subscription",
+      "price": "Price",
+      "subscriptionType": "Subscription Type",
+      "provider": "Payment Type",
+      "loading": "Loading payments",
+      "loadFailed": "Failed to load payments.",
+      "empty": "No payments yet.",
+      "emptyPage": "No payments on this page.",
+      "providers": {
+        "stripe": "Stripe",
+        "paypal": "PayPal"
+      },
+      "retry": "Retry"
     },
     "fields": {
       "username": "Username",

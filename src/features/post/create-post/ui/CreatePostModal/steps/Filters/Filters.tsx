@@ -1,5 +1,3 @@
-'use client';
-
 import {
   FILTER_OPTIONS,
   getFilterStyle,

@@ -32,7 +32,86 @@ pnpm lint          # ESLint (нулевые warnings)
 pnpm format:check  # проверка Prettier
 pnpm format:write  # форматирование Prettier
 pnpm stylelint     # линт CSS/SCSS
+pnpm api:docs      # обновление локального Swagger/OpenAPI-файла core API
+pnpm api:docs:payments # обновление локального Swagger/OpenAPI-файла payments API
+pnpm api:generate  # генерация API-клиентов и типов через Orval
 ```
+
+## API / Swagger
+
+Проект использует OpenAPI/Swagger для описания backend API и Orval для генерации API-клиентов и типов.
+
+Локальные Swagger/OpenAPI-файлы хранятся по сервисам:
+
+```bash
+docs/core/openapi.json
+docs/payments/openapi.json
+```
+
+Источники Swagger:
+
+```bash
+Core: https://stage.snapflow.cc/api/v1/docs-json
+Payments: https://stage.payments.snapflow.cc/api/v1/docs-json
+```
+
+Перед началом работы с API обновите нужный локальный Swagger:
+
+```bash
+pnpm api:docs            # core
+pnpm api:docs:payments   # payments
+```
+
+Orval генерирует API-клиенты напрямую из Swagger URL, настроенных в `orval.config.ts`.
+Локальные файлы в `docs/*/openapi.json` нужны как reference-контракты для разработки и ревью.
+
+После изменения Swagger сгенерируйте API-клиенты и типы:
+
+```bash
+pnpm api:generate
+```
+
+Обычный порядок работы для обновления всех локальных контрактов и generated-кода:
+
+```bash
+pnpm api:docs
+pnpm api:docs:payments
+pnpm api:generate
+```
+
+Проверить изменения в Swagger:
+
+```bash
+git diff docs/core/openapi.json
+git diff docs/payments/openapi.json
+```
+
+Сгенерированный API-код разделён по сервисам:
+
+```bash
+src/shared/api/generated/endpoints/core
+src/shared/api/generated/endpoints/payments
+src/shared/api/generated/model/core
+src/shared/api/generated/model/payments
+```
+
+Для запросов используются общий axios instance и generated mutators:
+
+```bash
+src/shared/api/instance.ts
+src/shared/api/generated/mutator/custom-instance.ts
+src/shared/api/generated/mutator/payments-instance.ts
+```
+
+Core API использует `NEXT_PUBLIC_API_URL`.
+Payments API использует `NEXT_PUBLIC_PAYMENTS_API_URL`.
+
+Правила:
+
+- Не пишите API-запрос вручную, если нужная generated function уже существует.
+- Не придумывайте endpoints, DTO, request params или response types вручную.
+- Если backend изменил Swagger, сначала обновите соответствующий `docs/*/openapi.json`, затем запустите `pnpm api:generate`.
+- Если Swagger конфликтует с текущим frontend-кодом, сначала зафиксируйте расхождение, потом меняйте код.
 
 ## Переводы (i18n)
 

@@ -1,5 +1,3 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
 import { Button } from 'snapflow-ui-kit';
 import { ArrowBackIcon } from 'snapflow-ui-kit/icons';
