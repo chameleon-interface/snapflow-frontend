@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { Button, Radio, Typography } from 'snapflow-ui-kit';
 import type { PlanViewDto } from '@/shared/api/generated/model/payments';
+import { getSubscriptionPlanLabelKey } from '@/shared/lib';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { formatPriceInCents } from '../../lib/formatPriceInCents';
 import s from '../AccountManagementPanel/AccountManagementPanel.module.css';
@@ -25,6 +26,7 @@ export const SubscriptionPlansSelector = ({
   onRetry,
 }: SubscriptionPlansSelectorProps) => {
   const t = useTranslations('Settings.accountManagement');
+  const tSubscriptionPlans = useTranslations('SubscriptionPlans');
 
   if (isLoading) {
     return (
@@ -63,22 +65,28 @@ export const SubscriptionPlansSelector = ({
 
   return (
     <div className={s.optionGroup}>
-      {plans.map((plan) => (
-        <Radio
-          key={plan.id}
-          name="subscriptionPlan"
-          value={plan.id}
-          checked={selectedPlanId === plan.id}
-          className={s.option}
-          disabled={!isBusinessAccount}
-          onChange={() => onPlanSelect(plan.id)}
-        >
-          <span className={s.planContent}>
-            <span>{formatPriceInCents(plan.priceInCents)}</span>
-            <span className={s.planLabel}>{plan.label}</span>
-          </span>
-        </Radio>
-      ))}
+      {plans.map((plan) => {
+        const planLabelKey = getSubscriptionPlanLabelKey(plan.label);
+
+        return (
+          <Radio
+            key={plan.id}
+            name="subscriptionPlan"
+            value={plan.id}
+            checked={selectedPlanId === plan.id}
+            className={s.option}
+            disabled={!isBusinessAccount}
+            onChange={() => onPlanSelect(plan.id)}
+          >
+            <span className={s.planContent}>
+              <span>{formatPriceInCents(plan.priceInCents)}</span>
+              <span className={s.planLabel}>
+                {planLabelKey ? tSubscriptionPlans(planLabelKey) : plan.label}
+              </span>
+            </span>
+          </Radio>
+        );
+      })}
     </div>
   );
 };

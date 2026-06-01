@@ -1,7 +1,7 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { Checkbox, Typography } from 'snapflow-ui-kit';
 import type { CurrentSubscription as CurrentSubscriptionData } from '@/entities/subscription';
-import { formatCalendarDate } from '@/shared/lib';
+import { formatCalendarDate, getSubscriptionPlanLabelKey } from '@/shared/lib';
 import s from '../AccountManagementPanel/AccountManagementPanel.module.css';
 
 type CurrentSubscriptionProps = {
@@ -24,7 +24,9 @@ export const CurrentSubscription = ({
   onAutoRenewalChange,
 }: CurrentSubscriptionProps) => {
   const t = useTranslations('Settings.accountManagement');
+  const tSubscriptionPlans = useTranslations('SubscriptionPlans');
   const locale = useLocale();
+  const planLabelKey = getSubscriptionPlanLabelKey(subscription.planLabel);
 
   return (
     <div className={s.section}>
@@ -38,7 +40,9 @@ export const CurrentSubscription = ({
             {t('subscription')}
           </Typography>
           <Typography as="span" variant="text-14" className={s.dateValue}>
-            {subscription.planLabel}
+            {planLabelKey
+              ? tSubscriptionPlans(planLabelKey)
+              : subscription.planLabel}
           </Typography>
         </div>
 

@@ -2,8 +2,9 @@
 
 import { useTranslations } from 'next-intl';
 import { Button, Typography } from 'snapflow-ui-kit';
+import { Pagination } from 'snapflow-ui-kit/client';
+import { PAYMENTS_PAGE_SIZE_OPTIONS } from '../../model/paymentsHistoryParams';
 import { usePaymentsHistoryPanel } from '../../model/usePaymentsHistoryPanel';
-import { PaymentsHistoryPagination } from '../PaymentsHistoryPagination/PaymentsHistoryPagination';
 import { PaymentsHistorySkeleton } from '../PaymentsHistorySkeleton/PaymentsHistorySkeleton';
 import { PaymentsHistoryTable } from '../PaymentsHistoryTable/PaymentsHistoryTable';
 import s from './PaymentsHistoryPanel.module.css';
@@ -67,12 +68,14 @@ export const PaymentsHistoryPanel = () => {
         <Typography as="p" variant="text-14" className={s.stateBox}>
           {t('emptyPage')}
         </Typography>
-        <PaymentsHistoryPagination
-          pageNumber={pageNumber}
+        <Pagination
+          page={pageNumber}
           pageSize={pageSize}
-          pagesCount={pagesCount}
+          totalPages={pagesCount}
           onPageChange={onPageChange}
           onPageSizeChange={onPageSizeChange}
+          showPageSizeSelect
+          pageSizeOptions={PAYMENTS_PAGE_SIZE_OPTIONS}
         />
       </section>
     );
@@ -81,12 +84,14 @@ export const PaymentsHistoryPanel = () => {
   return (
     <section className={s.root} aria-label={t('title')}>
       <PaymentsHistoryTable payments={payments} />
-      <PaymentsHistoryPagination
-        pageNumber={pageNumber}
+      <Pagination
+        page={pageNumber}
         pageSize={pageSize}
-        pagesCount={pagesCount}
+        totalPages={pagesCount}
         onPageChange={onPageChange}
         onPageSizeChange={onPageSizeChange}
+        showPageSizeSelect
+        pageSizeOptions={PAYMENTS_PAGE_SIZE_OPTIONS}
       />
     </section>
   );

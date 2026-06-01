@@ -1,6 +1,6 @@
 import { useLocale, useTranslations } from 'next-intl';
 import type { PaymentViewDto } from '@/shared/api/generated/model/payments';
-import { formatCalendarDate } from '@/shared/lib';
+import { formatCalendarDate, getSubscriptionPlanLabelKey } from '@/shared/lib';
 import { formatPaymentPrice } from '../../lib/formatPaymentPrice';
 import s from './PaymentsHistoryTable.module.css';
 
@@ -23,6 +23,7 @@ export const PaymentsHistoryTable = ({
   payments,
 }: PaymentsHistoryTableProps) => {
   const t = useTranslations('Settings.paymentsHistory');
+  const tSubscriptionPlans = useTranslations('SubscriptionPlans');
   const locale = useLocale();
 
   return (
@@ -40,6 +41,9 @@ export const PaymentsHistoryTable = ({
         <tbody>
           {payments.map((payment) => {
             const providerLabelKey = getProviderLabelKey(payment.provider);
+            const subscriptionPlanLabelKey = getSubscriptionPlanLabelKey(
+              payment.subscriptionType,
+            );
 
             return (
               <tr key={`${payment.subscriptionId}-${payment.dateOfPayment}`}>
@@ -48,7 +52,11 @@ export const PaymentsHistoryTable = ({
                   {formatCalendarDate(payment.endDateOfSubscription, locale)}
                 </td>
                 <td>{formatPaymentPrice(payment.price)}</td>
-                <td>{payment.subscriptionType}</td>
+                <td>
+                  {subscriptionPlanLabelKey
+                    ? tSubscriptionPlans(subscriptionPlanLabelKey)
+                    : payment.subscriptionType}
+                </td>
                 <td>
                   {providerLabelKey ? t(providerLabelKey) : payment.provider}
                 </td>

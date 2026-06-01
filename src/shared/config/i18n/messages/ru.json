@@ -44,6 +44,10 @@
     "noPostsYet": "Постов пока нет",
     "registeredUsersCountAria": "Зарегистрировано пользователей: {count}"
   },
+  "SubscriptionPlans": {
+    "businessMonthly": "Бизнес на месяц",
+    "businessYearly": "Бизнес на год"
+  },
   "ExpandableText": {
     "showMore": "Показать больше",
     "showLess": "Скрыть"

@@ -3,3 +3,4 @@ export * from './photo-picker';
 export * from './storage';
 export * from './validation';
 export * from './formatDate';
+export * from './subscriptionPlanLabels';

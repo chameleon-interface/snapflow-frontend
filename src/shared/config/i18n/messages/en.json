@@ -44,6 +44,10 @@
     "noPostsYet": "No posts yet",
     "registeredUsersCountAria": "Registered users: {count}"
   },
+  "SubscriptionPlans": {
+    "businessMonthly": "Business Monthly",
+    "businessYearly": "Business Yearly"
+  },
   "ExpandableText": {
     "showMore": "Show more",
     "showLess": "Hide"
