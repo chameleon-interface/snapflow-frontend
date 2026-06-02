@@ -1,4 +1,4 @@
-import type { PostsControllerGetPostsParams } from '@/shared/api/generated/model';
+import type { PostsControllerGetPostsParams } from '@/shared/api/generated/model/core';
 
 export const LATEST_POSTS_QUERY_PARAMS: PostsControllerGetPostsParams = {
   pageNumber: 1,

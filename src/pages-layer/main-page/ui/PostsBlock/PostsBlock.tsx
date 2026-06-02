@@ -2,7 +2,7 @@
 
 import type { KeyboardEvent, MouseEvent } from 'react';
 import { PostCardPreview, useLatestPostsQuery } from '@/entities/post';
-import type { PostViewDto } from '@/shared/api/generated/model';
+import type { PostViewDto } from '@/shared/api/generated/model/core';
 import { isNestedInteractiveTarget } from '@/shared/lib/dom/isNestedInteractiveTarget';
 import { getProfilePostRoute } from '@/shared/lib/routes/getProfilePostRoute';
 import { EmptyStateMessage } from '@/shared/ui';

@@ -1,8 +1,8 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { authControllerLogin } from '@/shared/api/generated/endpoints/auth/auth';
-import type { LoginUserInputDto } from '@/shared/api/generated/model';
+import { authControllerLogin } from '@/shared/api/generated/endpoints/core/auth/auth';
+import type { LoginUserInputDto } from '@/shared/api/generated/model/core';
 import { authKeys } from '@/shared/api/keys-factories/authKeysFactory';
 
 import { tokenStorage } from '@/shared/lib';

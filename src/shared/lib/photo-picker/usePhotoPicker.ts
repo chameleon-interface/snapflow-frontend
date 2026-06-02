@@ -1,5 +1,3 @@
-'use client';
-
 import { type ChangeEvent, type RefObject, useMemo, useRef } from 'react';
 import {
   processSelectedFiles,

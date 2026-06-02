@@ -1,5 +1,3 @@
-'use client';
-
 import { CheckmarkIcon } from 'snapflow-ui-kit/icons';
 import styles from '../AspectRatioSelector.module.css';
 

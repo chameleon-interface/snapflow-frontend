@@ -20,6 +20,9 @@
 # production
 /build
 
+# generated API docs
+/docs/
+
 # misc
 mock-server
 .idea
@@ -45,10 +48,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# ai
+# aiСтоит добавить проверку, что URL реально ведёт на Stripe:
 CLAUDE.md
 AGENTS.md
 GEMINI.md
+CONTRIBUTING.md
 .claude
 .ai
 .serena

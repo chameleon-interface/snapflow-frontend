@@ -1,6 +1,6 @@
 'use client';
 
-import type { PostViewDto } from '@/shared/api/generated/model';
+import type { PostViewDto } from '@/shared/api/generated/model/core';
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 import { PostAddComment } from './PostAddComment/PostAddComment';

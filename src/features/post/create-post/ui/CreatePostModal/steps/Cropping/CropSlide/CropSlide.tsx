@@ -1,5 +1,3 @@
-'use client';
-
 import type { Area } from 'react-easy-crop';
 import Cropper from 'react-easy-crop';
 import type { CropPosition } from '@/features/post/create-post/model/types';

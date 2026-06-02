@@ -1,7 +1,5 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
-import type { ProfileViewDto } from '@/shared/api/generated/model';
+import type { ProfileViewDto } from '@/shared/api/generated/model/core';
 import { clsx } from 'clsx';
 import styles from './PublicationDetailsPanel.module.css';
 import { LocationsField } from './LocationsField';

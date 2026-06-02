@@ -1,7 +1,7 @@
 'use client';
 
-import { postsControllerCreatePost } from '@/shared/api/generated/endpoints/posts/posts';
-import type { CreatePostInputDto } from '@/shared/api/generated/model';
+import { postsControllerCreatePost } from '@/shared/api/generated/endpoints/core/posts/posts';
+import type { CreatePostInputDto } from '@/shared/api/generated/model/core';
 import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
 import { profileKeys } from '@/shared/api/keys-factories/profileKeysFactory';
 import { useMutation, useQueryClient } from '@tanstack/react-query';

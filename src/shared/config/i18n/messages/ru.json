@@ -44,6 +44,10 @@
     "noPostsYet": "Постов пока нет",
     "registeredUsersCountAria": "Зарегистрировано пользователей: {count}"
   },
+  "SubscriptionPlans": {
+    "businessMonthly": "Бизнес на месяц",
+    "businessYearly": "Бизнес на год"
+  },
   "ExpandableText": {
     "showMore": "Показать больше",
     "showLess": "Скрыть"
@@ -114,6 +118,56 @@
     "avatarCropModal": {
       "title": "Добавить фото профиля",
       "save": "Сохранить"
+    },
+    "accountManagement": {
+      "accountType": "Тип аккаунта:",
+      "personal": "Личный",
+      "business": "Бизнес",
+      "stripe": "Stripe",
+      "paypal": "PayPal",
+      "paymentActions": "Действия оплаты",
+      "paypalUnavailable": "Интеграция PayPal пока недоступна.",
+      "currentSubscription": "Текущая подписка:",
+      "subscription": "Подписка",
+      "expireAt": "Истекает",
+      "nextPayment": "Следующий платёж",
+      "loadingCurrentSubscription": "Загрузка текущей подписки",
+      "currentSubscriptionLoadFailed": "Не удалось загрузить текущую подписку.",
+      "noCurrentSubscription": "Активной подписки нет.",
+      "autoRenewal": "Автопродление",
+      "autoRenewalUpdateFailed": "Не удалось обновить автопродление. Попробуйте ещё раз.",
+      "pastDueSubscription": "Платёж просрочен. Обновите подписку.",
+      "changeSubscription": "Изменить подписку:",
+      "loadingPlans": "Загрузка тарифов",
+      "plansLoadFailed": "Не удалось загрузить тарифы.",
+      "retry": "Повторить",
+      "noPlans": "Доступных тарифов нет.",
+      "createPayment": "Создать платёж",
+      "agreement": "Автопродление будет включено с этим платежом. Вы сможете отключить его в любое время в настройках профиля",
+      "agree": "Я согласен",
+      "ok": "OK",
+      "cancel": "Отмена",
+      "paymentSuccessTitle": "Успех",
+      "paymentSuccessMessage": "Платёж успешно выполнен!",
+      "paymentErrorTitle": "Ошибка",
+      "paymentErrorMessage": "Транзакция не прошла, попробуйте ещё раз"
+    },
+    "paymentsHistory": {
+      "title": "Мои платежи",
+      "dateOfPayment": "Дата платежа",
+      "endDateOfSubscription": "Окончание подписки",
+      "price": "Цена",
+      "subscriptionType": "Тип подписки",
+      "provider": "Тип платежа",
+      "loading": "Загрузка платежей",
+      "loadFailed": "Не удалось загрузить платежи.",
+      "empty": "Платежей пока нет.",
+      "emptyPage": "На этой странице платежей нет.",
+      "providers": {
+        "stripe": "Stripe",
+        "paypal": "PayPal"
+      },
+      "retry": "Повторить"
     },
     "fields": {
       "username": "Имя пользователя",

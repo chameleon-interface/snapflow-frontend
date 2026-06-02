@@ -1,5 +1,3 @@
-'use client';
-
 import { usePopover } from '@/features/post/create-post/lib';
 import { clsx } from 'clsx';
 import { useTranslations } from 'next-intl';

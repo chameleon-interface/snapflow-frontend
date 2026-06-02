@@ -1,4 +1,4 @@
-import type { UpdateProfileInputDto } from '@/shared/api/generated/model';
+import type { UpdateProfileInputDto } from '@/shared/api/generated/model/core';
 import { convertDdMmYyyyToIso8601 } from './dateOfBirthFormatters';
 import type { SettingsFormValues } from '../model/schema';
 

@@ -1,11 +1,11 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { profileControllerUploadAvatar } from '@/shared/api/generated/endpoints/profile/profile';
+import { profileControllerUploadAvatar } from '@/shared/api/generated/endpoints/core/profile/profile';
 import type {
   AvatarViewDto,
   ProfileControllerUploadAvatarBody,
   PublicProfileViewDto,
   ProfileViewDto,
-} from '@/shared/api/generated/model';
+} from '@/shared/api/generated/model/core';
 import { profileKeys } from '@/shared/api/keys-factories/profileKeysFactory';
 
 export const useUploadProfileAvatar = () => {

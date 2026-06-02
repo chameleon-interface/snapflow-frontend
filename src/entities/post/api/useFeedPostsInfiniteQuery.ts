@@ -2,7 +2,7 @@
 
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
-import { postsControllerGetPosts } from '@/shared/api/generated/endpoints/posts/posts';
+import { postsControllerGetPosts } from '@/shared/api/generated/endpoints/core/posts/posts';
 
 const FEED_PAGE_SIZE = 6;
 

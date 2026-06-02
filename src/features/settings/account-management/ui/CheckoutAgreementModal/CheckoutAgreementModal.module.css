@@ -1,0 +1,47 @@
+.modal {
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  margin-inline: 16px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.message {
+  color: var(--color-light-100);
+}
+
+.checkbox {
+  width: fit-content;
+}
+
+.footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding-top: 24px;
+}
+
+.button {
+  min-width: 96px;
+}
+
+@media (width <= 380px) {
+  .modal {
+    width: 100%;
+    max-width: calc(100vw - 24px);
+    margin-inline: 12px;
+  }
+
+  .footer {
+    flex-direction: column-reverse;
+    padding-top: 18px;
+  }
+
+  .button {
+    width: 100%;
+  }
+}

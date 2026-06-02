@@ -1,7 +1,7 @@
 'use client';
 
-import { postsControllerSaveDraft } from '@/shared/api/generated/endpoints/posts/posts';
-import type { CreatePostInputDto } from '@/shared/api/generated/model';
+import { postsControllerSaveDraft } from '@/shared/api/generated/endpoints/core/posts/posts';
+import type { CreatePostInputDto } from '@/shared/api/generated/model/core';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { openDraftQueryKey } from './useOpenDraftQuery';
 

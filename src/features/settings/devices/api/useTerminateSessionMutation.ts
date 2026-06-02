@@ -1,7 +1,7 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { sessionsControllerDeleteSessionByDeviceId } from '@/shared/api/generated/endpoints/sessions/sessions';
+import { sessionsControllerDeleteSessionByDeviceId } from '@/shared/api/generated/endpoints/core/sessions/sessions';
 import { sessionsKeys } from '@/shared/api/keys-factories/sessionsKeysFactory';
 import { useTranslations } from 'next-intl';
 import { toastSuccess } from 'snapflow-ui-kit/client';

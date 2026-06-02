@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { profileControllerUpdateProfile } from '@/shared/api/generated/endpoints/profile/profile';
+import { profileControllerUpdateProfile } from '@/shared/api/generated/endpoints/core/profile/profile';
 import type {
   ProfileViewDto,
   PublicProfileViewDto,
   UpdateProfileInputDto,
-} from '@/shared/api/generated/model';
+} from '@/shared/api/generated/model/core';
 import { profileKeys } from '@/shared/api/keys-factories/profileKeysFactory';
 
 export const useUpdateProfile = () => {

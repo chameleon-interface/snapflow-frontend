@@ -1,8 +1,8 @@
 'use client';
 
 import { useInfiniteQuery } from '@tanstack/react-query';
-import type { PostViewDto } from '@/shared/api/generated/model';
-import { postsControllerGetProfilePosts } from '@/shared/api/generated/endpoints/posts/posts';
+import type { PostViewDto } from '@/shared/api/generated/model/core';
+import { postsControllerGetProfilePosts } from '@/shared/api/generated/endpoints/core/posts/posts';
 import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
 import { useInfiniteScrollTrigger } from '@/shared/lib/hooks';
 

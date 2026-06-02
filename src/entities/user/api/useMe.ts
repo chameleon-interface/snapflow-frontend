@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { authControllerMe } from '@/shared/api/generated/endpoints/auth/auth';
+import { authControllerMe } from '@/shared/api/generated/endpoints/core/auth/auth';
 import { authKeys } from '@/shared/api/keys-factories/authKeysFactory';
 
 export const useMe = () => {

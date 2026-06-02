@@ -2,7 +2,7 @@
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import { authControllerLogout } from '@/shared/api/generated/endpoints/auth/auth';
+import { authControllerLogout } from '@/shared/api/generated/endpoints/core/auth/auth';
 import { authKeys } from '@/shared/api/keys-factories/authKeysFactory';
 import { ROUTES } from '@/shared/config';
 import { tokenStorage } from '@/shared/lib';

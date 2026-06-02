@@ -1,8 +1,8 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { postsControllerEditPost } from '@/shared/api/generated/endpoints/posts/posts';
-import type { UpdatePostInputDto } from '@/shared/api/generated/model';
+import { postsControllerEditPost } from '@/shared/api/generated/endpoints/core/posts/posts';
+import type { UpdatePostInputDto } from '@/shared/api/generated/model/core';
 import { postsKeys } from '@/shared/api/keys-factories/postsKeysFactory';
 
 type UpdatePostInput = UpdatePostInputDto & {

@@ -7,4 +7,3 @@ export {
 export { processSelectedFiles } from './processSelectedFiles';
 export type { ValidationError } from './processSelectedFiles';
 export { getPhotoNames, mergeSelectedFiles } from './utils';
-export { usePhotoPicker } from './usePhotoPicker';

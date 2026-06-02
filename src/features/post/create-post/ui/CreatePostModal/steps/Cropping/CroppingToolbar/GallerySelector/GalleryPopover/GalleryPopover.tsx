@@ -1,5 +1,3 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
 import { AddPhotoButton } from './AddPhotoButton';
 import { GalleryThumbnail } from './GalleryThumbnail';

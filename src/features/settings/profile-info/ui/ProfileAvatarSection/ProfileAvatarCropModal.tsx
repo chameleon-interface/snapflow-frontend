@@ -1,5 +1,3 @@
-'use client';
-
 import type { Area, Point } from 'react-easy-crop';
 import Cropper from 'react-easy-crop';
 import { Button, Modal } from 'snapflow-ui-kit/client';

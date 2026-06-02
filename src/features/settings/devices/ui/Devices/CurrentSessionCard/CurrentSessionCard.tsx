@@ -1,6 +1,6 @@
 'use client';
 
-import { SessionsViewDto } from '@/shared/api/generated/model/sessionsViewDto';
+import { SessionsViewDto } from '@/shared/api/generated/model/core/sessionsViewDto';
 import { Card } from 'snapflow-ui-kit';
 import { DeviceHeader } from '../DeviceHeader';
 import { DeviceInfo } from '../DeviceInfo';

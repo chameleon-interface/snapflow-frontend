@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { usePhotoPicker } from '@/shared/lib';
+import { usePhotoPicker } from '@/shared/lib/photo-picker/usePhotoPicker';
 import { HiddenFileInput } from '@/shared/ui';
 import { Button, Typography } from 'snapflow-ui-kit';
 import { toastError } from 'snapflow-ui-kit/client';

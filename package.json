@@ -5,6 +5,8 @@
   "packageManager": "pnpm@10.29.3",
   "scripts": {
     "prepare": "husky",
+    "api:docs": "curl -f https://stage.snapflow.cc/api/v1/docs-json -o docs/core/openapi.json",
+    "api:docs:payments": "curl -f https://stage.payments.snapflow.cc/api/v1/docs-json -o docs/payments/openapi.json",
     "api:generate": "orval --config orval.config.ts",
     "dev": "next dev",
     "build": "next build",
