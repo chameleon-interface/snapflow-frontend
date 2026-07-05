@@ -12,19 +12,14 @@
   --bp-md: 768px;
   --bp-sm: 360px;
 
-  /* Midnight Indigo — переопределение ui-kit токенов только в приложении */
-  --color-dark-900: #05070d;
-  --color-dark-700: #0c101c;
-  --color-dark-500: #141b2d;
-  --color-dark-400: #1b2438;
-  --color-dark-300: #27324a;
-  --color-dark-100: #3f4f6d;
-  --color-accent-100: #b4a8ff;
-  --color-accent-300: #9585ff;
-  --color-accent-500: #7c6cf6;
-  --color-accent-700: #6355d4;
-  --color-accent-900: #4a3fa8;
-  --color-light-900: #9aa8c4;
+  /* Snapflow blue shell — dark surfaces + ui-kit accent (не переопределяем accent) */
+  --color-dark-900: #030508;
+  --color-dark-700: #0a0e14;
+  --color-dark-500: #111820;
+  --color-dark-400: #18202c;
+  --color-dark-300: #263040;
+  --color-dark-100: #3d4a5c;
+  --color-light-900: #a8b4c4;
 
   /* App-level decorative tokens */
   --app-radius-sm: 8px;
@@ -57,17 +52,17 @@
   --app-bg-image:
     radial-gradient(
       ellipse 90% 55% at 8% -8%,
-      color-mix(in srgb, var(--color-accent-500) 14%, transparent),
+      color-mix(in srgb, var(--color-accent-500) 16%, transparent),
       transparent 58%
     ),
     radial-gradient(
       ellipse 70% 45% at 96% 4%,
-      color-mix(in srgb, #38bdf8 10%, transparent),
+      color-mix(in srgb, var(--color-accent-300) 12%, transparent),
       transparent 52%
     ),
     radial-gradient(
       ellipse 55% 35% at 50% 108%,
-      color-mix(in srgb, var(--color-accent-700) 12%, transparent),
+      color-mix(in srgb, var(--color-accent-700) 14%, transparent),
       transparent 55%
     );
 }
