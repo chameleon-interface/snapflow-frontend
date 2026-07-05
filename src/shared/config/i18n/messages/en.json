@@ -1,4 +1,14 @@
 {
+  "Notifications": {
+    "ariaLabel": "Notifications",
+    "ariaLabelWithCount": "Notifications, {count} unread",
+    "title": "Notifications",
+    "empty": "No notifications",
+    "newNotification": "New notification!",
+    "newBadge": "New",
+    "loading": "Loading...",
+    "loadingMore": "Loading..."
+  },
   "Auth": {
     "logOut": "Log out",
     "logOutSuccess": "You are now logged out",

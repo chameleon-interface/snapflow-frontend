@@ -25,4 +25,6 @@ export interface PublicProfileViewDto {
    */
   aboutMe: string | null;
   userMetadata: UserMetadataViewDto;
+  /** Подписан ли текущий авторизованный зритель на пользователя. Отсутствует для гостя. */
+  isFollowing?: boolean;
 }

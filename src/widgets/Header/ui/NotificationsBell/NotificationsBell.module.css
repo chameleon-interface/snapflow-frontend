@@ -1,0 +1,243 @@
+.wrapper {
+  position: relative;
+}
+
+.trigger {
+  cursor: pointer;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+
+  color: var(--color-light-100);
+
+  background: none;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.triggerInner {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+}
+
+.trigger:hover {
+  color: var(--color-accent-500);
+  background-color: color-mix(
+    in srgb,
+    var(--color-accent-500) 12%,
+    transparent
+  );
+}
+
+.triggerActive {
+  color: var(--color-accent-500);
+  background-color: color-mix(
+    in srgb,
+    var(--color-accent-500) 16%,
+    transparent
+  );
+  box-shadow: 0 0 0 1px
+    color-mix(in srgb, var(--color-accent-500) 28%, transparent);
+}
+
+.triggerHasUnread:not(.triggerActive) {
+  color: var(--color-light-100);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--color-accent-700);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.trigger:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.triggerActive .icon {
+  transform: rotate(-12deg) scale(1.05);
+}
+
+.triggerHasUnread:hover .icon,
+.triggerHasUnread:focus-visible .icon {
+  animation: bell-ring 0.55s ease-in-out;
+}
+
+.popover {
+  position: absolute;
+  z-index: 110;
+  top: calc(100% + 12px);
+  right: -8px;
+  transform-origin: calc(100% - 24px) 0;
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  width: 360px;
+  max-height: 440px;
+  border: 1px solid
+    color-mix(in srgb, var(--color-accent-500) 18%, var(--color-dark-300));
+  border-radius: 12px;
+
+  background:
+    radial-gradient(
+      120% 80% at 100% 0%,
+      color-mix(in srgb, var(--color-accent-500) 10%, transparent) 0%,
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      var(--color-dark-500) 0%,
+      var(--color-dark-700) 100%
+    );
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-light-100) 4%, transparent),
+    0 12px 28px color-mix(in srgb, var(--color-dark-900) 45%, transparent),
+    0 24px 48px color-mix(in srgb, var(--color-dark-900) 35%, transparent);
+
+  animation: popover-enter 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.popover::before,
+.popover::after {
+  content: '';
+
+  position: absolute;
+  top: -7px;
+  right: 18px;
+
+  width: 0;
+  height: 0;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+}
+
+.popover::before {
+  border-bottom: 7px solid
+    color-mix(in srgb, var(--color-accent-500) 18%, var(--color-dark-300));
+}
+
+.popover::after {
+  top: -6px;
+  border-bottom: 7px solid var(--color-dark-500);
+}
+
+.header {
+  position: relative;
+  padding: 18px 18px 14px;
+}
+
+.header::after {
+  content: '';
+
+  position: absolute;
+  right: 18px;
+  bottom: 0;
+  left: 18px;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--color-accent-500) 45%, var(--color-dark-300)) 50%,
+    transparent 100%
+  );
+}
+
+.title {
+  color: var(--color-light-100);
+  letter-spacing: 0.01em;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 120px;
+}
+
+.empty {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-light-900);
+  text-align: center;
+}
+
+@keyframes popover-enter {
+  from {
+    transform: translateY(-10px) scale(0.96);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bell-ring {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+
+  20% {
+    transform: rotate(14deg);
+  }
+
+  40% {
+    transform: rotate(-12deg);
+  }
+
+  60% {
+    transform: rotate(8deg);
+  }
+
+  80% {
+    transform: rotate(-4deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .popover {
+    animation: none;
+  }
+
+  .triggerActive .icon {
+    transform: none;
+  }
+
+  .triggerHasUnread:hover .icon,
+  .triggerHasUnread:focus-visible .icon {
+    animation: none;
+  }
+}

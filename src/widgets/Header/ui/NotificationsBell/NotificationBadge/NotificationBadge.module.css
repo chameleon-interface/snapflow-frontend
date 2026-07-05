@@ -1,0 +1,68 @@
+.badge {
+  pointer-events: none;
+
+  position: absolute;
+  top: -5px;
+  right: -8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border: 2px solid var(--color-dark-700);
+  border-radius: 999px;
+
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-light-100);
+
+  background: linear-gradient(
+    135deg,
+    var(--color-danger-500) 0%,
+    color-mix(in srgb, var(--color-danger-500) 70%, #ff6b6b) 100%
+  );
+  box-shadow:
+    0 2px 8px color-mix(in srgb, var(--color-danger-500) 45%, transparent),
+    0 0 0 0 color-mix(in srgb, var(--color-danger-500) 50%, transparent);
+
+  animation:
+    badge-pop 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    badge-pulse 2.4s ease-out infinite;
+}
+
+@keyframes badge-pop {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes badge-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 2px 8px color-mix(in srgb, var(--color-danger-500) 45%, transparent),
+      0 0 0 0 color-mix(in srgb, var(--color-danger-500) 45%, transparent);
+  }
+
+  55% {
+    box-shadow:
+      0 2px 8px color-mix(in srgb, var(--color-danger-500) 45%, transparent),
+      0 0 0 6px transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge {
+    animation: none;
+  }
+}

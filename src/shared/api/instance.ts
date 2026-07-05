@@ -1,15 +1,9 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
-import { tokenStorage } from '@/shared/lib';
+import { refreshAccessToken, tokenStorage } from '@/shared/lib';
 
 export const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
   withCredentials: true, // Required for refresh cookies
-});
-
-// Separate instance to avoid interceptor loop on refresh request
-const refreshApi = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
-  withCredentials: true,
 });
 
 api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
@@ -74,18 +68,18 @@ api.interceptors.response.use(
     isRefreshing = true;
 
     try {
-      const { data } = await refreshApi.post<{ accessToken: string }>(
-        'auth/refresh-token',
-      );
+      const accessToken = await refreshAccessToken();
 
-      tokenStorage.set(data.accessToken);
-      processQueue(null, data.accessToken);
-      originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
+      if (!accessToken) {
+        throw new Error('Failed to refresh access token');
+      }
+
+      processQueue(null, accessToken);
+      originalRequest.headers.Authorization = `Bearer ${accessToken}`;
 
       return api(originalRequest);
     } catch (refreshError) {
       processQueue(refreshError as AxiosError, null);
-      tokenStorage.clear();
 
       return Promise.reject(refreshError);
     } finally {

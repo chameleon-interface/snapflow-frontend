@@ -1,0 +1,1 @@
+export { NotificationsBellTrigger } from './NotificationsBellTrigger';

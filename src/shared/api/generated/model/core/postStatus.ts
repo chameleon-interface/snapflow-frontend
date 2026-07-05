@@ -7,7 +7,7 @@
  */
 
 /**
- * Post status
+ * Статус публикации
  */
 export type PostStatus = (typeof PostStatus)[keyof typeof PostStatus];
 

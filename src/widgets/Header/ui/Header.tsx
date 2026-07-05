@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { LanguageSwitcher } from '@/features/language-switcher';
 import { MobileMenu } from './MobileMenu/MobileMenu';
+import { NotificationsBell } from './NotificationsBell';
 import { useMe } from '@/entities/user';
 import { ROUTES } from '@/shared/config';
 
@@ -24,6 +25,7 @@ export const Header = () => {
         Snapflow
       </Typography>
       <div className={s.actions}>
+        {data && <NotificationsBell />}
         <LanguageSwitcher />
         <div className={s.mobileOnly}>
           <MobileMenu />

@@ -5,7 +5,11 @@
  * REST API для SnapFlow
  * OpenAPI spec version: 1.0.0
  */
-import type { TotalCountRegisteredUsersViewDto } from '../../../model/core';
+import type {
+  SearchUsersPageViewDto,
+  TotalCountRegisteredUsersViewDto,
+  UsersControllerSearchUsersParams,
+} from '../../../model/core';
 
 import { customInstance } from '../../../mutator/custom-instance';
 
@@ -25,6 +29,22 @@ export const usersControllerGetTotalCount = (
     options,
   );
 };
+/**
+ * Возвращает пользователей с частичным совпадением username. Требуется JWT.
+ * @summary Поиск пользователей по username (cursor-пагинация)
+ */
+export const usersControllerSearchUsers = (
+  params: UsersControllerSearchUsersParams,
+  options?: SecondParameter<typeof customInstance<SearchUsersPageViewDto>>,
+) => {
+  return customInstance<SearchUsersPageViewDto>(
+    { url: `/api/v1/users/search`, method: 'GET', params },
+    options,
+  );
+};
 export type UsersControllerGetTotalCountResult = NonNullable<
   Awaited<ReturnType<typeof usersControllerGetTotalCount>>
+>;
+export type UsersControllerSearchUsersResult = NonNullable<
+  Awaited<ReturnType<typeof usersControllerSearchUsers>>
 >;
