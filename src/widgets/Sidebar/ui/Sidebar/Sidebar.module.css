@@ -10,7 +10,13 @@
   width: var(--sidebar-width);
   height: calc(100vh - var(--header-height));
   padding: 72px 0 36px 60px;
-  border-right: 1px solid var(--color-dark-300);
+  border-right: 1px solid var(--app-border-subtle);
+
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-dark-500) 18%, transparent) 0%,
+    transparent 42%
+  );
 }
 
 /* Только desktop: видно при ширине больше 768px */

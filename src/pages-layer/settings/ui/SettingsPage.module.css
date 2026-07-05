@@ -46,9 +46,15 @@
 
   max-width: 620px;
   padding: 24px;
-  border: 1px solid var(--color-dark-300);
+  border: 1px solid var(--app-border-subtle);
+  border-radius: var(--app-radius-md);
 
-  background-color: var(--color-dark-500);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--color-dark-500) 92%, transparent) 0%,
+    color-mix(in srgb, var(--color-dark-700) 96%, transparent) 100%
+  );
+  box-shadow: var(--app-shadow-soft);
 }
 
 .stubText {

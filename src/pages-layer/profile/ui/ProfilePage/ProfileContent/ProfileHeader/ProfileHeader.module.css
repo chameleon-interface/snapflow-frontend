@@ -89,7 +89,13 @@
 }
 
 .userData li span {
-  color: var(--color-light-100);
+  color: var(--color-light-900);
+}
+
+.userData li strong {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-accent-100);
 }
 
 .bio {
