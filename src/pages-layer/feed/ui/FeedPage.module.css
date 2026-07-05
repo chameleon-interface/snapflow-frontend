@@ -2,22 +2,38 @@
   width: 100%;
 }
 
+.pageHeader {
+  width: min(100%, var(--feed-width));
+  margin: 0 auto 28px;
+  padding-inline: 4px;
+}
+
+.pageTitle {
+  margin: 0;
+
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-light-100);
+  letter-spacing: -0.02em;
+}
+
 .content {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 28px;
 
-  width: min(100%, 491px);
+  width: min(100%, var(--feed-width));
   margin-inline: auto;
 }
 
 .stateCard {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   align-items: center;
 
-  padding: 40px 24px;
+  padding: 48px 28px;
   border: 1px solid var(--app-border-subtle);
   border-radius: var(--app-radius-lg);
 
@@ -32,13 +48,14 @@
 }
 
 .stateText {
+  max-width: 36ch;
   color: var(--color-light-900);
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 28px;
 }
 
 .loadMoreTrigger {
@@ -57,18 +74,12 @@
   align-items: center;
 }
 
-@media (width >= 1280px) {
-  .content {
-    margin-inline: 131px auto;
-  }
-}
-
 @media (width <= 768px) {
-  .content {
-    width: 100%;
+  .pageHeader {
+    margin-bottom: 20px;
   }
 
   .list {
-    gap: 24px;
+    gap: 20px;
   }
 }

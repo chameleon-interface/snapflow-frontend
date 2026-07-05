@@ -1,22 +1,50 @@
 .sidebar {
   position: fixed;
-  top: var(--header-height);
-  left: 0;
+  z-index: 90;
+  inset: calc(var(--header-height) + var(--sidebar-gap)) auto var(--sidebar-gap)
+    var(--sidebar-gap);
 
   display: flex;
   flex-direction: column;
+  gap: 20px;
   justify-content: space-between;
 
-  width: var(--sidebar-width);
-  height: calc(100vh - var(--header-height));
-  padding: 72px 0 36px 60px;
-  border-right: 1px solid var(--app-border-subtle);
+  box-sizing: border-box;
+  width: var(--sidebar-panel-width);
+  padding: 20px 14px;
+  border: 1px solid var(--app-border-subtle);
+  border-radius: var(--app-radius-lg);
 
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--color-dark-500) 18%, transparent) 0%,
-    transparent 42%
+  background: color-mix(in srgb, var(--color-dark-500) 72%, transparent);
+  backdrop-filter: blur(20px) saturate(150%);
+  box-shadow: var(--app-shadow-soft);
+}
+
+.brand {
+  display: block;
+
+  padding: 4px 10px;
+
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-light-100);
+  letter-spacing: 0.01em;
+
+  filter: drop-shadow(
+    0 0 16px color-mix(in srgb, var(--color-accent-500) 20%, transparent)
   );
+}
+
+.navSection {
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.footer {
+  flex-shrink: 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--app-border-subtle);
 }
 
 /* Только desktop: видно при ширине больше 768px */

@@ -1,7 +1,7 @@
 .mainPage {
   display: flex;
   flex-direction: column;
-  gap: clamp(20px, 3.2vw, 40px);
+  gap: clamp(28px, 4vw, 48px);
 
   width: 100%;
   min-width: 0;
@@ -15,6 +15,6 @@
 
 @media (width <= 380px) {
   .mainPage {
-    gap: 18px;
+    gap: 20px;
   }
 }

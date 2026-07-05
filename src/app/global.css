@@ -1,9 +1,13 @@
 :root {
   --font-inter: 'Inter', sans-serif;
-  --header-height: 60px;
-  --sidebar-width: 220px;
-  --container-width: 972px;
-  --container-padding: 15px;
+  --header-height: 64px;
+  --sidebar-panel-width: 228px;
+  --sidebar-gap: 16px;
+  --sidebar-width: calc(var(--sidebar-panel-width) + var(--sidebar-gap) * 2);
+  --container-width: 1140px;
+  --container-padding: 24px;
+  --feed-width: 540px;
+  --profile-max-width: 960px;
   --bp-xl: 1280px;
   --bp-md: 768px;
   --bp-sm: 360px;

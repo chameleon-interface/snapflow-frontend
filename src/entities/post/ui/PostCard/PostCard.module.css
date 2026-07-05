@@ -3,8 +3,10 @@
 
   transform: translateZ(0);
 
+  overflow: hidden;
+
   width: 100%;
-  max-width: 491px;
+  max-width: var(--feed-width);
   border: 1px solid var(--app-border-subtle);
   border-radius: var(--app-radius-lg);
 
@@ -34,7 +36,8 @@
 .content {
   display: flex;
   flex-direction: column;
-  padding: 16px 18px 18px;
+  gap: 4px;
+  padding: 16px 20px 20px;
 }
 
 @media (width <= 768px) {

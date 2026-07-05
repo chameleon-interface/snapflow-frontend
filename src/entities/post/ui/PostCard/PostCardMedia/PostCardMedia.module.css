@@ -2,22 +2,15 @@
   overflow: hidden;
 
   box-sizing: border-box;
-  aspect-ratio: 491 / 504;
+  aspect-ratio: 1 / 1;
   width: 100%;
-  border: 1px solid var(--color-dark-300);
-  border-radius: 2px;
+  border-block: 1px solid var(--app-border-subtle);
 
   background: var(--color-dark-500);
 
   transition:
     border-color 200ms ease,
     box-shadow 200ms ease;
-}
-
-.mediaWrap:hover {
-  border-color: var(--color-dark-100);
-  box-shadow: 0 10px 22px
-    color-mix(in srgb, var(--color-dark-900) 22%, transparent);
 }
 
 .carousel {
@@ -33,7 +26,7 @@
 }
 
 .carousel .mediaImage {
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 
@@ -50,11 +43,6 @@
 @media (prefers-reduced-motion: reduce) {
   .mediaWrap {
     transition: none;
-  }
-
-  .mediaWrap:hover {
-    border-color: var(--color-dark-300);
-    box-shadow: none;
   }
 }
 

@@ -1,9 +1,9 @@
 .header {
   display: flex;
-  gap: 38px;
+  gap: clamp(24px, 4vw, 38px);
   align-items: flex-start;
 
-  margin-bottom: 48px;
+  margin-bottom: 0;
 
   animation: profile-header-enter 260ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }

@@ -22,12 +22,16 @@ export function ProfileContent() {
 
   return (
     <section className={s.page}>
-      <ProfileHeader profile={profile} />
-      <ProfilePosts
-        profileId={id}
-        userId={profile.userId}
-        postsCount={profile.userMetadata.publicationsCount ?? 0}
-      />
+      <div className={s.profileCard}>
+        <ProfileHeader profile={profile} />
+      </div>
+      <div className={s.postsSection}>
+        <ProfilePosts
+          profileId={id}
+          userId={profile.userId}
+          postsCount={profile.userMetadata.publicationsCount ?? 0}
+        />
+      </div>
     </section>
   );
 }

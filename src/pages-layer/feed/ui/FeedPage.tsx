@@ -57,6 +57,12 @@ export function FeedPage() {
 
   return (
     <section className={s.page}>
+      <header className={s.pageHeader}>
+        <Typography as="h1" variant="h1" className={s.pageTitle}>
+          {t('title')}
+        </Typography>
+      </header>
+
       <div className={s.content}>
         <div className={s.list}>
           {posts.map((post) => (

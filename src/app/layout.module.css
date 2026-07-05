@@ -1,14 +1,14 @@
 .main {
   min-height: calc(100vh - var(--header-height));
   margin-top: var(--header-height);
-  padding-bottom: 30px;
+  padding-bottom: 40px;
 }
 
 .container {
   width: 100%;
   max-width: calc(var(--container-width) + var(--container-padding) * 2);
   margin: 0 auto;
-  padding-top: 24px;
+  padding-top: 32px;
   padding-inline: var(--container-padding);
 }
 
@@ -16,23 +16,32 @@ body[data-has-sidebar='true'] .main {
   margin-left: var(--sidebar-width);
 }
 
+body[data-has-sidebar='true'] .container {
+  max-width: min(
+    calc(var(--container-width) + var(--container-padding) * 2),
+    calc(100vw - var(--sidebar-width) - var(--container-padding))
+  );
+}
+
 @media (width <= 768px) {
   body[data-has-sidebar='true'] .main {
     margin-left: 0;
-    padding-bottom: 90px; /* Место под нижнюю навигацию (высота 60px + запас 30px) */
+    padding-bottom: calc(88px + env(safe-area-inset-bottom));
+  }
+
+  .container {
+    padding-top: 20px;
+    padding-inline: 16px;
   }
 }
 
 @media (width <= 380px) {
-  .main {
-    padding-bottom: 15px;
-  }
-
   body[data-has-sidebar='true'] .main {
-    padding-bottom: 75px; /* Подстройка под более маленькие экраны */
+    padding-bottom: calc(76px + env(safe-area-inset-bottom));
   }
 
   .container {
-    padding-top: 17px;
+    padding-top: 16px;
+    padding-inline: 12px;
   }
 }
