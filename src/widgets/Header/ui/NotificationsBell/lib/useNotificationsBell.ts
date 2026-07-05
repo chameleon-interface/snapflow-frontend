@@ -7,7 +7,7 @@ import {
   useUnreadNotificationsCountQuery,
 } from '@/entities/notification';
 import { flattenNotificationPages } from './flattenNotificationPages';
-import { useMarkAllReadOnOpen } from './useMarkAllReadOnOpen';
+import { useMarkAllReadOnClose } from './useMarkAllReadOnClose';
 import { useNotificationsPopover } from './useNotificationsPopover';
 
 export const useNotificationsBell = () => {
@@ -39,7 +39,7 @@ export const useNotificationsBell = () => {
   }, [fetchNextPage]);
 
   useNotificationsPopover({ isOpen, onClose: close, wrapperRef });
-  useMarkAllReadOnOpen(isOpen, markAllRead);
+  useMarkAllReadOnClose(isOpen, markAllRead);
 
   return {
     isOpen,

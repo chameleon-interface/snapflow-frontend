@@ -2,9 +2,10 @@
 
 import { clsx } from 'clsx';
 import type { Notification } from '@/entities/notification';
+import { formatIsoDatesInText } from '@/shared/lib';
 import { RelativeTime } from '@/shared/ui/RelativeTime';
 import { Typography } from 'snapflow-ui-kit';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import s from './NotificationItem.module.css';
 
 type NotificationItemProps = {
@@ -12,12 +13,14 @@ type NotificationItemProps = {
 };
 
 export const NotificationItem = ({ notification }: NotificationItemProps) => {
+  const locale = useLocale();
   const t = useTranslations('Notifications');
   const isUnread = !notification.isRead;
+  const formattedMessage = formatIsoDatesInText(notification.message, locale);
 
   return (
     <article
-      className={clsx(s.item, isUnread && s.itemUnread)}
+      className={clsx(s.item, isUnread ? s.itemUnread : s.itemRead)}
       aria-labelledby={`notification-${notification.id}-title`}
     >
       {isUnread ? <span className={s.unreadIndicator} aria-hidden /> : null}
@@ -36,7 +39,7 @@ export const NotificationItem = ({ notification }: NotificationItemProps) => {
           ) : null}
         </div>
         <Typography variant="text-14" as="p" className={s.message}>
-          {notification.message}
+          {formattedMessage}
         </Typography>
         <RelativeTime isoDate={notification.createdAt} className={s.time} />
       </div>

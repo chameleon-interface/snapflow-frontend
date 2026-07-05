@@ -61,6 +61,11 @@
   color: var(--color-light-100);
 }
 
+.itemRead .title {
+  font-weight: 600;
+  color: var(--color-light-900);
+}
+
 .newBadge {
   padding: 2px 8px;
   border-radius: 999px;
@@ -83,10 +88,18 @@
   color: var(--color-light-900);
 }
 
+.itemRead .message {
+  color: color-mix(in srgb, var(--color-light-900) 88%, transparent);
+}
+
 .itemUnread .message {
   color: color-mix(in srgb, var(--color-light-100) 82%, var(--color-light-900));
 }
 
 .time {
   color: var(--color-dark-100);
+}
+
+.itemRead .time {
+  color: color-mix(in srgb, var(--color-dark-100) 70%, transparent);
 }
