@@ -50,14 +50,7 @@
     color-mix(in srgb, var(--color-dark-900) 62%, transparent);
   --app-shadow-hover: 0 22px 56px
     color-mix(in srgb, var(--color-accent-500) 14%, var(--color-dark-900));
-}
-
-body {
-  font-family: var(--font-inter), sans-serif;
-  color: var(--color-light-100);
-
-  background-color: var(--color-dark-700);
-  background-image:
+  --app-bg-image:
     radial-gradient(
       ellipse 90% 55% at 8% -8%,
       color-mix(in srgb, var(--color-accent-500) 14%, transparent),
@@ -73,6 +66,14 @@ body {
       color-mix(in srgb, var(--color-accent-700) 12%, transparent),
       transparent 55%
     );
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+  color: var(--color-light-100);
+
+  background-color: var(--color-dark-700);
+  background-image: var(--app-bg-image);
   background-attachment: fixed;
 }
 
