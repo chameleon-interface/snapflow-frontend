@@ -23,9 +23,13 @@ export const NotificationItem = ({ notification }: NotificationItemProps) => {
       className={clsx(s.item, isUnread ? s.itemUnread : s.itemRead)}
       aria-labelledby={`notification-${notification.id}-title`}
     >
-      {isUnread ? <span className={s.unreadIndicator} aria-hidden /> : null}
       <div className={s.content}>
         <div className={s.header}>
+          {isUnread ? (
+            <span className={s.unreadIndicatorWrap} aria-hidden>
+              <span className={s.unreadIndicator} />
+            </span>
+          ) : null}
           <Typography
             id={`notification-${notification.id}-title`}
             variant="text-14-bold"
