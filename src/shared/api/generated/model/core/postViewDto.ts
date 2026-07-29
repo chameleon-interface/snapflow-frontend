@@ -8,20 +8,29 @@
 import type { OwnerViewDto } from './ownerViewDto';
 import type { PostMediaViewDto } from './postMediaViewDto';
 import type { PostStatus } from './postStatus';
+import type { RecentLikerViewDto } from './recentLikerViewDto';
 
 export interface PostViewDto {
-  /** Post identifier */
+  /** Идентификатор публикации */
   id: string;
   /**
-   * Post description
+   * Описание публикации
    * @nullable
    */
   description: string | null;
-  /** Post status */
+  /** Статус публикации */
   status: PostStatus;
-  /** Post creation date in ISO format */
+  /** Дата создания публикации в формате ISO */
   createdAt: string;
-  /** Post media list */
+  /** Список медиа публикации */
   postMedias: PostMediaViewDto[];
   owner: OwnerViewDto;
+  /** Общее количество лайков */
+  likesCount: number;
+  /** Общее количество комментариев (включая ответы) */
+  commentsCount: number;
+  /** Поставил ли текущий пользователь лайк */
+  isLikedByCurrentUser: boolean;
+  /** До 3 последних поставивших лайк (сначала самые новые) */
+  recentLikers: RecentLikerViewDto[];
 }

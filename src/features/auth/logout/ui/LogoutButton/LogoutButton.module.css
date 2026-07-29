@@ -1,9 +1,20 @@
 .button {
-  align-self: start;
+  justify-content: flex-start;
 
-  padding: 0;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--app-radius-sm);
 
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  color: var(--color-light-100);
+  color: var(--color-light-900);
+
+  transition:
+    color 160ms ease,
+    background-color 160ms ease;
+}
+
+.button:hover {
+  color: var(--color-danger-300);
+  background: color-mix(in srgb, var(--color-danger-500) 10%, transparent);
 }

@@ -221,3 +221,13 @@ export const formatIsoToDdMmYyyy = (value: string | null): string => {
 
   return `${day}.${month}.${year}`;
 };
+
+const ISO_DATE_TIME_IN_TEXT_PATTERN =
+  /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?(?:Z|[+-]\d{2}:\d{2})?/g;
+
+/** Заменяет ISO-даты внутри текста на локализованную календарную дату. */
+export const formatIsoDatesInText = (text: string, locale: string): string => {
+  return text.replace(ISO_DATE_TIME_IN_TEXT_PATTERN, (match) =>
+    formatCalendarDate(match, locale, match),
+  );
+};

@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
 import { SplashScreenGate } from '@/shared/ui/SplashScreen';
+import { NotificationsProvider } from '@/features/notifications';
 import { useTranslations } from 'next-intl';
 import {
   reactQueryApiErrorHandler,
@@ -57,7 +58,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SplashScreenGate>{children}</SplashScreenGate>
+      <NotificationsProvider>
+        <SplashScreenGate>{children}</SplashScreenGate>
+      </NotificationsProvider>
       <ReactQueryDevtools
         initialIsOpen={false}
         position="bottom"

@@ -1,18 +1,79 @@
 :root {
   --font-inter: 'Inter', sans-serif;
-  --header-height: 60px;
-  --sidebar-width: 220px;
-  --container-width: 972px;
-  --container-padding: 15px;
+  --header-height: 64px;
+  --sidebar-panel-width: 228px;
+  --sidebar-gap: 16px;
+  --sidebar-width: calc(var(--sidebar-panel-width) + var(--sidebar-gap) * 2);
+  --container-width: 1140px;
+  --container-padding: 24px;
+  --feed-width: 540px;
+  --profile-max-width: 960px;
   --bp-xl: 1280px;
   --bp-md: 768px;
   --bp-sm: 360px;
+
+  /* Snapflow blue shell — dark surfaces + ui-kit accent (не переопределяем accent) */
+  --color-dark-900: #030508;
+  --color-dark-700: #0a0e14;
+  --color-dark-500: #111820;
+  --color-dark-400: #18202c;
+  --color-dark-300: #263040;
+  --color-dark-100: #3d4a5c;
+  --color-light-900: #a8b4c4;
+
+  /* App-level decorative tokens */
+  --app-radius-sm: 8px;
+  --app-radius-md: 12px;
+  --app-radius-lg: 16px;
+  --app-surface-glass: color-mix(
+    in srgb,
+    var(--color-dark-500) 78%,
+    transparent
+  );
+  --app-border-subtle: color-mix(
+    in srgb,
+    var(--color-accent-500) 16%,
+    var(--color-dark-300)
+  );
+  --app-border-strong: color-mix(
+    in srgb,
+    var(--color-accent-500) 28%,
+    var(--color-dark-300)
+  );
+  --app-glow-accent: color-mix(
+    in srgb,
+    var(--color-accent-500) 32%,
+    transparent
+  );
+  --app-shadow-soft: 0 18px 48px
+    color-mix(in srgb, var(--color-dark-900) 62%, transparent);
+  --app-shadow-hover: 0 22px 56px
+    color-mix(in srgb, var(--color-accent-500) 14%, var(--color-dark-900));
+  --app-bg-image:
+    radial-gradient(
+      ellipse 90% 55% at 8% -8%,
+      color-mix(in srgb, var(--color-accent-500) 16%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 70% 45% at 96% 4%,
+      color-mix(in srgb, var(--color-accent-300) 12%, transparent),
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 55% 35% at 50% 108%,
+      color-mix(in srgb, var(--color-accent-700) 14%, transparent),
+      transparent 55%
+    );
 }
 
 body {
   font-family: var(--font-inter), sans-serif;
   color: var(--color-light-100);
+
   background-color: var(--color-dark-700);
+  background-image: var(--app-bg-image);
+  background-attachment: fixed;
 }
 
 a {

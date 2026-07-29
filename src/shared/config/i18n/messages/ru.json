@@ -1,4 +1,14 @@
 {
+  "Notifications": {
+    "ariaLabel": "Уведомления",
+    "ariaLabelWithCount": "Уведомления, {count} непрочитанных",
+    "title": "Уведомления",
+    "empty": "Нет уведомлений",
+    "newNotification": "Новое уведомление!",
+    "newBadge": "Новое",
+    "loading": "Загрузка...",
+    "loadingMore": "Загрузка..."
+  },
   "Auth": {
     "logOut": "Выйти",
     "logOutSuccess": "Вы вышли из аккаунта",

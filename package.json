@@ -52,6 +52,7 @@
     "react-hook-form": "7.72.1",
     "react-hot-toast": "2.6.0",
     "snapflow-ui-kit": "1.2.18",
+    "socket.io-client": "^4.8.3",
     "zod": "4.3.6"
   },
   "devDependencies": {

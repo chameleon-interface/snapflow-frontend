@@ -1,0 +1,113 @@
+.item {
+  margin-inline: -8px;
+  padding: 12px;
+  border-radius: 8px;
+  transition:
+    background-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.item:hover {
+  background-color: color-mix(in srgb, var(--color-light-100) 4%, transparent);
+}
+
+.item:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+.itemUnread {
+  background-color: color-mix(in srgb, var(--color-accent-500) 8%, transparent);
+}
+
+.itemUnread:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--color-accent-500) 12%,
+    transparent
+  );
+}
+
+.unreadIndicatorWrap {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 10px;
+  margin-right: 2px;
+}
+
+.unreadIndicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+
+  background: var(--color-accent-300);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--color-accent-500) 24%, transparent),
+    0 0 12px color-mix(in srgb, var(--color-accent-500) 80%, transparent);
+}
+
+.content {
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+
+  margin-bottom: 6px;
+}
+
+.title {
+  color: var(--color-light-100);
+}
+
+.itemRead .title {
+  font-weight: 600;
+  color: var(--color-light-900);
+}
+
+.newBadge {
+  padding: 3px 10px;
+  border: 1px solid color-mix(in srgb, var(--color-accent-300) 55%, transparent);
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-accent-100);
+  letter-spacing: 0.02em;
+
+  background-color: color-mix(
+    in srgb,
+    var(--color-accent-500) 32%,
+    transparent
+  );
+  box-shadow: 0 0 14px
+    color-mix(in srgb, var(--color-accent-500) 28%, transparent);
+}
+
+.message {
+  margin: 0 0 8px;
+  line-height: 1.45;
+  color: var(--color-light-900);
+}
+
+.itemRead .message {
+  color: color-mix(in srgb, var(--color-light-900) 88%, transparent);
+}
+
+.itemUnread .message {
+  color: color-mix(in srgb, var(--color-light-100) 82%, var(--color-light-900));
+}
+
+.time {
+  color: var(--color-dark-100);
+}
+
+.itemRead .time {
+  color: color-mix(in srgb, var(--color-dark-100) 70%, transparent);
+}

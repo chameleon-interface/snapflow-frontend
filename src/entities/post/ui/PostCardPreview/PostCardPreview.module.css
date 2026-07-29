@@ -28,8 +28,8 @@
   aspect-ratio: 1 / 1;
   width: 100%;
   min-height: 0;
-  border: 1px solid var(--color-dark-300);
-  border-radius: 2px;
+  border: 1px solid var(--app-border-subtle);
+  border-radius: var(--app-radius-md);
 
   background-color: var(--color-dark-500);
 
@@ -40,10 +40,10 @@
 }
 
 .postCard:hover .carousel {
-  transform: translateY(-1px);
-  border-color: var(--color-dark-100);
-  box-shadow: 0 10px 24px
-    color-mix(in srgb, var(--color-dark-900) 24%, transparent);
+  transform: translateY(-2px);
+  border-color: var(--app-border-strong);
+  box-shadow: 0 14px 32px
+    color-mix(in srgb, var(--color-accent-500) 12%, var(--color-dark-900));
 }
 
 .postCard:active .carousel {

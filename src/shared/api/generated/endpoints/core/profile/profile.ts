@@ -7,7 +7,10 @@
  */
 import type {
   AvatarViewDto,
+  ProfileControllerGetProfileFollowersParams,
+  ProfileControllerGetProfileFollowingParams,
   ProfileControllerUploadAvatarBody,
+  ProfileFollowListPageViewDto,
   ProfileViewDto,
   PublicProfileViewDto,
   UpdateProfileInputDto,
@@ -46,6 +49,47 @@ export const profileControllerGetProfile = (
   );
 };
 /**
+ * Возвращает пользователей, на которых подписан владелец профиля. Требуется JWT. Из выдачи исключаются удалённые и забаненные пользователи.
+ * @summary Список подписок профиля (cursor-пагинация)
+ */
+export const profileControllerGetProfileFollowing = (
+  profileId: number,
+  params?: ProfileControllerGetProfileFollowingParams,
+  options?: SecondParameter<
+    typeof customInstance<ProfileFollowListPageViewDto>
+  >,
+) => {
+  return customInstance<ProfileFollowListPageViewDto>(
+    {
+      url: `/api/v1/users/profile/${profileId}/following`,
+      method: 'GET',
+      params,
+    },
+    options,
+  );
+};
+/**
+ * Возвращает пользователей, подписанных на владельца профиля. Требуется JWT. Из выдачи исключаются удалённые и забаненные пользователи.
+ * @summary Список подписчиков профиля (cursor-пагинация)
+ */
+export const profileControllerGetProfileFollowers = (
+  profileId: number,
+  params?: ProfileControllerGetProfileFollowersParams,
+  options?: SecondParameter<
+    typeof customInstance<ProfileFollowListPageViewDto>
+  >,
+) => {
+  return customInstance<ProfileFollowListPageViewDto>(
+    {
+      url: `/api/v1/users/profile/${profileId}/followers`,
+      method: 'GET',
+      params,
+    },
+    options,
+  );
+};
+/**
+ * Публичный эндпоинт. Bearer token опционален: при валидном JWT в ответе будет поле isFollowing. userMetadata содержит followersCount (подписчики), followingCount (подписки) и publicationsCount.
  * @summary Получение публичного профиля пользователя
  */
 export const profileControllerGetPublicProfile = (
@@ -89,6 +133,12 @@ export type ProfileControllerUpdateProfileResult = NonNullable<
 >;
 export type ProfileControllerGetProfileResult = NonNullable<
   Awaited<ReturnType<typeof profileControllerGetProfile>>
+>;
+export type ProfileControllerGetProfileFollowingResult = NonNullable<
+  Awaited<ReturnType<typeof profileControllerGetProfileFollowing>>
+>;
+export type ProfileControllerGetProfileFollowersResult = NonNullable<
+  Awaited<ReturnType<typeof profileControllerGetProfileFollowers>>
 >;
 export type ProfileControllerGetPublicProfileResult = NonNullable<
   Awaited<ReturnType<typeof profileControllerGetPublicProfile>>

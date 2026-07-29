@@ -7,11 +7,14 @@
  */
 import type {
   CreatePostInputDto,
+  FeedPageViewDto,
   PostViewDto,
+  PostsControllerGetFeedParams,
   PostsControllerGetPostsParams,
   PostsControllerGetProfilePostsParams,
   PostsPageViewDto,
   UpdatePostInputDto,
+  UserPostsPageViewDto,
 } from '../../../model/core';
 
 import { customInstance } from '../../../mutator/custom-instance';
@@ -118,14 +121,40 @@ export const postsControllerGetPostById = (
   );
 };
 /**
- * @summary Получить публичные посты пользователя с пагинацией
+ * @summary Поставить или убрать лайк с публикации
+ */
+export const postsControllerTogglePostLike = (
+  postId: number,
+  options?: SecondParameter<typeof customInstance<void>>,
+) => {
+  return customInstance<void>(
+    { url: `/api/v1/posts/${postId}/like`, method: 'POST' },
+    options,
+  );
+};
+/**
+ * Возвращает опубликованные посты пользователей, на которых подписан текущий пользователь. Первый запрос без cursor, далее передавать nextCursor из предыдущего ответа. При отсутствии подписок возвращается пустая страница.
+ * @summary Получить ленту постов подписок (cursor-пагинация)
+ */
+export const postsControllerGetFeed = (
+  params?: PostsControllerGetFeedParams,
+  options?: SecondParameter<typeof customInstance<FeedPageViewDto>>,
+) => {
+  return customInstance<FeedPageViewDto>(
+    { url: `/api/v1/posts/feed`, method: 'GET', params },
+    options,
+  );
+};
+/**
+ * Возвращает опубликованные посты пользователя. Первый запрос без cursor, далее передавать nextCursor из предыдущего ответа.
+ * @summary Получить публичные посты пользователя (cursor-пагинация)
  */
 export const postsControllerGetProfilePosts = (
   userId: string,
   params?: PostsControllerGetProfilePostsParams,
-  options?: SecondParameter<typeof customInstance<PostsPageViewDto>>,
+  options?: SecondParameter<typeof customInstance<UserPostsPageViewDto>>,
 ) => {
-  return customInstance<PostsPageViewDto>(
+  return customInstance<UserPostsPageViewDto>(
     { url: `/api/v1/posts/user/${userId}`, method: 'GET', params },
     options,
   );
@@ -150,6 +179,12 @@ export type PostsControllerDeletePostResult = NonNullable<
 >;
 export type PostsControllerGetPostByIdResult = NonNullable<
   Awaited<ReturnType<typeof postsControllerGetPostById>>
+>;
+export type PostsControllerTogglePostLikeResult = NonNullable<
+  Awaited<ReturnType<typeof postsControllerTogglePostLike>>
+>;
+export type PostsControllerGetFeedResult = NonNullable<
+  Awaited<ReturnType<typeof postsControllerGetFeed>>
 >;
 export type PostsControllerGetProfilePostsResult = NonNullable<
   Awaited<ReturnType<typeof postsControllerGetProfilePosts>>

@@ -5,15 +5,14 @@
  * REST API для SnapFlow
  * OpenAPI spec version: 1.0.0
  */
-import type { PostsControllerGetProfilePostsSortBy } from './postsControllerGetProfilePostsSortBy';
-import type { PostsControllerGetProfilePostsSortDirection } from './postsControllerGetProfilePostsSortDirection';
 
 export type PostsControllerGetProfilePostsParams = {
-  pageNumber?: number;
-  pageSize?: number;
-  sortDirection?: PostsControllerGetProfilePostsSortDirection;
   /**
-   * Sort by field
+   * Первый запрос без cursor, далее передавать nextCursor из предыдущего ответа
    */
-  sortBy?: PostsControllerGetProfilePostsSortBy;
+  cursor?: string;
+  /**
+   * @minimum 1
+   */
+  limit?: number;
 };

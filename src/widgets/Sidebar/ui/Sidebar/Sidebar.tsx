@@ -35,12 +35,17 @@ export const Sidebar = () => {
     <>
       {/* Сайдбар (desktop) */}
       <aside className={`${s.sidebar} ${s.desktopOnly}`}>
-        <NavMenu
-          profileId={data.profileId}
-          onOpenCreatePostModal={handleOpenCreatePostModal}
-          isCreatePostModalOpen={isCreatePostModalOpen}
-        />
-        <LogoutButton />
+        <div className={s.navSection}>
+          <NavMenu
+            profileId={data.profileId}
+            onOpenCreatePostModal={handleOpenCreatePostModal}
+            isCreatePostModalOpen={isCreatePostModalOpen}
+          />
+        </div>
+
+        <div className={s.footer}>
+          <LogoutButton />
+        </div>
       </aside>
 
       {/* Нижняя навигация (mobile) */}
